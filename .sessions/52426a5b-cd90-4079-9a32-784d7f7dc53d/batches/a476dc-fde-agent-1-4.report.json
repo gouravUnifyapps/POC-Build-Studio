@@ -1,0 +1,51 @@
+{
+  "tasks": [
+    {
+      "id": "t31",
+      "status": "ok",
+      "change": "created",
+      "ids": { "entity": "6ad1cc4d4ed0d53c8978fe5b", "group": "6ad1c5e1b0913a13ff2ce7b5" },
+      "readBack": [
+        "POC Studio Live API · receive build result 6ad1cc4d4ed0d53c8978fe5b: before the write get_api_group 6ad1c5e1b0913a13ff2ce7b5 showed apiCount 0, list_apis for the group answered total 0, and list_apis with automationId 6ad1c99ad885ae5a4da04722 answered total 0 (the automation was not yet an API).",
+        "POC Studio Live API · receive build result 6ad1cc4d4ed0d53c8978fe5b: save_api answered saved true, notStored [], no warning (it warns when the automation is not deployed).",
+        "POC Studio Live API · receive build result 6ad1cc4d4ed0d53c8978fe5b: get_api read back name \"POC Studio Live API · receive build result\", groupId 6ad1c5e1b0913a13ff2ce7b5, path \"receive-build-result\", methods [POST], apiType REST, active true, url \"https://orbit.uat.unifyapps.com/api-endpoint/poc-studio-live/receive-build-result\", backing {type CALLABLE_WORKFLOW, automationId 6ad1c99ad885ae5a4da04722} with no pinned version.",
+        "POC Studio Live API · receive build result 6ad1cc4d4ed0d53c8978fe5b: contract contentType application/json, no path or query parameters, no request headers; requestBodySchema properties row_id (required), kind, gate, title, summary, documents (list of name, type, format, content, link) and feedback (list of phase, source, actor_name, text, skill); responseSchemaByStatusCode 200, 400 and 404, each an object with a string status.",
+        "POC Studio Live API 6ad1c5e1b0913a13ff2ce7b5: get_api_group after the write shows apiCount 1 and the API above in apis with the same URL and backing."
+      ],
+      "unverified": [
+        "The automation's deployed state was not read by this task (no automation tool here): it rests on the t29 read-back (deployment DEPLOYED, deployedVersion 1) and on save_api answering with no not-deployed warning. One check that would settle it: search_workflows for 6ad1c99ad885ae5a4da04722 showing deployment.status DEPLOYED.",
+        "The API was not called, as the task says: the first call runs the automation and writes real rows. Whether a POST answers 200 {status: \"posted\"} is unproven.",
+        "No policy is attached to the API or its group (policyIds [] on both), so there is no rate limit, CORS rule or request validation on this endpoint."
+      ],
+      "notes": [
+        "handover: API id 6ad1cc4d4ed0d53c8978fe5b in group 6ad1c5e1b0913a13ff2ce7b5; full call URL https://orbit.uat.unifyapps.com/api-endpoint/poc-studio-live/receive-build-result, method POST, JSON body, backed by the callable automation 6ad1c99ad885ae5a4da04722 (no version pinned, so each call runs the latest deployed version); the caller signs in with the access profile of the next task (header api-token); no key is in this note."
+      ],
+      "error": ""
+    },
+    {
+      "id": "t33",
+      "status": "ok",
+      "change": "created",
+      "ids": { "entity": "6ad1cc555858c17f62ad03d1", "client": "6ad1c5e1b0913a13ff2ce7b7", "group": "6ad1c5e1b0913a13ff2ce7b5" },
+      "readBack": [
+        "POC Studio Live report-back 6ad1cc555858c17f62ad03d1: before the write get_client 6ad1c5e1b0913a13ff2ce7b7 showed accessProfiles [] (no profile of this name), and get_api_group showed the group 6ad1c5e1b0913a13ff2ce7b5 with the receive-build-result API.",
+        "POC Studio Live report-back 6ad1cc555858c17f62ad03d1: save_access_profile answered saved true, notStored [], deadGroupIds [], shownOnce true, with the key written to a private file (secretFile named below); the key itself was never read.",
+        "POC Studio Live report-back 6ad1cc555858c17f62ad03d1: get_access_profile read back name \"POC Studio Live report-back\", clientId 6ad1c5e1b0913a13ff2ce7b7, active true, auth {method AUTH_TOKEN, authenticationKeyId masked, tokenInHeader true, tokenInQuery false, tokenKeyList [api-token]}, groupIds [6ad1c5e1b0913a13ff2ce7b5], allowedApis {} (every API of that one group), policyIds [].",
+        "POC Studio Live report-back 6ad1cc555858c17f62ad03d1: howToCall {authMethod AUTH_TOKEN, headers [api-token], queryParams []}: the caller sends the key in the api-token header.",
+        "POC Studio Live client 6ad1c5e1b0913a13ff2ce7b7: get_client lists the profile 6ad1cc555858c17f62ad03d1 (active, AUTH_TOKEN, group 6ad1c5e1b0913a13ff2ce7b5); get_api_group lists the same profile under accessProfiles.",
+        "Security: rule 5 held (no key typed or read; it sits in the private file); rule 1 held (the profile lists only the group POC Studio Live API and is not a No Auth profile)."
+      ],
+      "unverified": [
+        "The key was not tried: the task forbids a call_api here, and call_api would not prove this key anyway (it uses its own test caller for an Auth Token profile). The first real caller proves it.",
+        "Security: allowedApis is empty, so the profile reaches every API of the group, including any added to it later; narrow it with allowedApis if the group gets a second API.",
+        "Security: no policy (rate limit, IP allow list) is attached to the profile, the API or the group - needs the person to add one if the endpoint should be limited."
+      ],
+      "notes": [
+        "Key file: /Users/gouravmahunta/Desktop/DEMO studio test/POST design skill/Demo studio/.sessions/52426a5b-cd90-4079-9a32-784d7f7dc53d/secrets/6ad1cc555858c17f62ad03d1.txt",
+        "handover: access profile id 6ad1cc555858c17f62ad03d1 on client 6ad1c5e1b0913a13ff2ce7b7; the caller must send the key in the header named api-token (howToCall headers [api-token], not in the query); the key is only in the private file named in the Key file line. The platform warned that a new Auth Token key can be refused for several minutes (seen about 3 to 5 minutes); a refused call keeps the refusal cached, so the first caller should wait more than a minute without calling before it retries.",
+        "The save answered a warning that the gateway can refuse this new Auth Token key for a while (a known platform cache behaviour, not a wrong key)."
+      ],
+      "error": ""
+    }
+  ]
+}

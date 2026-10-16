@@ -1,0 +1,3 @@
+v3.4 original                                    stop #E8EDF7: .micro brand 4.21, .ground ink-3 4.43 | stop #F0F6FC: .micro brand 4.54, .ground ink-3 4.78 | stop #F8EEF9: .micro brand 4.37, .ground ink-3 4.60
+fresh transform                                  stop #EBEFE9: .micro brand 4.26, .ground ink-3 4.47 | stop #F2F7F0: .micro brand 4.57, .ground ink-3 4.79 | stop #F2F5ED: .micro brand 4.50, .ground ink-3 4.72
+SOURCE (bundle.css gradient, tokens.css values)  stop #EDEEE9: .micro brand 4.27, .ground ink-3 4.44 | stop #F5F6F1: .micro brand 4.59, .ground ink-3 4.77 | stop #F5F3EE: .micro brand 4.49, .ground ink-3 4.67

@@ -1,0 +1,1096 @@
+{
+  "entities": [
+    {
+      "kind": "app",
+      "id": "app-79ea7266eab9",
+      "name": "POC Studio Live",
+      "version": 8,
+      "stale": false
+    },
+    {
+      "kind": "page",
+      "id": "e_global_app-79ea7266eab9",
+      "name": "global-page-of-app-79ea7266eab9",
+      "version": 0,
+      "stale": false,
+      "appId": "app-79ea7266eab9",
+      "dataSources": [
+        {
+          "id": "e_6ad1cf9fc0f97b3e983d929d",
+          "name": "Approve skill suggestion"
+        },
+        {
+          "id": "e_6ad1cac5674d735893a4e364",
+          "name": "Approve gate"
+        },
+        {
+          "id": "e_6ad1c91e99f8a565172184ad",
+          "name": "Start build"
+        },
+        {
+          "id": "e_6ad1c855c0f97b3e983c6f4d",
+          "name": "data_delete_app-79ea7266eab9"
+        },
+        {
+          "id": "e_6ad1c855c0f97b3e983c6f4a",
+          "name": "data_fetchOne_app-79ea7266eab9"
+        },
+        {
+          "id": "e_6ad1c855c0f97b3e983c6f47",
+          "name": "data_fetch_app-79ea7266eab9"
+        },
+        {
+          "id": "e_6ad1c85599f8a56517217068",
+          "name": "data_update_app-79ea7266eab9"
+        },
+        {
+          "id": "e_6ad1c85599f8a56517217065",
+          "name": "data_create_app-79ea7266eab9"
+        }
+      ]
+    },
+    {
+      "kind": "automation",
+      "id": "6ad1c66313ea2c28e645e538",
+      "name": "POC Studio Live · Start build",
+      "version": 2,
+      "stale": false
+    },
+    {
+      "kind": "automation",
+      "id": "6ad1c663d885ae5a4d9fd8a6",
+      "name": "POC Studio Live · Save POC from Slack",
+      "version": 2,
+      "stale": false
+    },
+    {
+      "kind": "automation",
+      "id": "6ad1c99ad885ae5a4da04722",
+      "name": "POC Studio Live · Receive build result",
+      "version": 0,
+      "stale": false
+    },
+    {
+      "kind": "automation",
+      "id": "6ad1c75967956c53e38f1a70",
+      "name": "POC Studio Live · Approve gate",
+      "version": 1,
+      "stale": false
+    },
+    {
+      "kind": "automation",
+      "id": "6ad1c9dcbaada8326ecfd65a",
+      "name": "POC Studio Live · Read channels into History",
+      "version": 1,
+      "stale": false
+    },
+    {
+      "kind": "automation",
+      "id": "6ad1cc2a300f9003500f1da3",
+      "name": "POC Studio Live · Slack listener",
+      "version": 3,
+      "stale": false
+    },
+    {
+      "kind": "automation",
+      "id": "6ad1cd1b6123771ba2c0346e",
+      "name": "POC Studio Live · Approve skill suggestion",
+      "version": 1,
+      "stale": false
+    },
+    {
+      "kind": "automation",
+      "id": "6ad1cde96123771ba2c052bc",
+      "name": "POC Studio Live · Suggest skill improvements",
+      "version": 0,
+      "stale": false
+    },
+    {
+      "kind": "object",
+      "id": "psl_poc",
+      "name": "POC Studio Live · POC",
+      "version": 0,
+      "stale": false
+    },
+    {
+      "kind": "object",
+      "id": "psl_activity",
+      "name": "POC Studio Live · Activity",
+      "version": 0,
+      "stale": false
+    },
+    {
+      "kind": "object",
+      "id": "psl_skill",
+      "name": "POC Studio Live · Skill",
+      "version": 0,
+      "stale": false
+    },
+    {
+      "kind": "object",
+      "id": "psl_skill_suggestion",
+      "name": "POC Studio Live · Skill suggestion",
+      "version": 0,
+      "stale": false
+    },
+    {
+      "kind": "object",
+      "id": "psl_iteration",
+      "name": "POC Studio Live · Iteration",
+      "version": 0,
+      "stale": false
+    },
+    {
+      "kind": "object",
+      "id": "psl_document",
+      "name": "POC Studio Live · Document",
+      "version": 0,
+      "stale": false
+    },
+    {
+      "kind": "object",
+      "id": "psl_feedback",
+      "name": "POC Studio Live · Feedback",
+      "version": 0,
+      "stale": false
+    },
+    {
+      "kind": "ai-agent",
+      "id": "e_6ad1ca0bc0f97b3e983d2679",
+      "name": "POC Studio Agent",
+      "version": 6,
+      "stale": false
+    }
+  ],
+  "edges": [
+    {
+      "from": {
+        "kind": "page",
+        "id": "e_global_app-79ea7266eab9",
+        "name": "global-page-of-app-79ea7266eab9",
+        "part": "data source Approve skill suggestion"
+      },
+      "to": {
+        "kind": "automation",
+        "id": "6ad1cd1b6123771ba2c0346e",
+        "name": "POC Studio Live · Approve skill suggestion"
+      },
+      "via": "data source",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "page",
+        "id": "e_global_app-79ea7266eab9",
+        "name": "global-page-of-app-79ea7266eab9",
+        "part": "data source Approve gate"
+      },
+      "to": {
+        "kind": "automation",
+        "id": "6ad1c75967956c53e38f1a70",
+        "name": "POC Studio Live · Approve gate"
+      },
+      "via": "data source",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "page",
+        "id": "e_global_app-79ea7266eab9",
+        "name": "global-page-of-app-79ea7266eab9",
+        "part": "data source Start build"
+      },
+      "to": {
+        "kind": "automation",
+        "id": "6ad1c66313ea2c28e645e538",
+        "name": "POC Studio Live · Start build"
+      },
+      "via": "data source",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "page",
+        "id": "e_global_app-79ea7266eab9",
+        "name": "global-page-of-app-79ea7266eab9",
+        "part": "data source data_delete_app-79ea7266eab9"
+      },
+      "to": {
+        "kind": "object",
+        "id": "{{object_type}}",
+        "name": null
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "page",
+        "id": "e_global_app-79ea7266eab9",
+        "name": "global-page-of-app-79ea7266eab9",
+        "part": "data source data_fetchOne_app-79ea7266eab9"
+      },
+      "to": {
+        "kind": "object",
+        "id": "{{object_type}}",
+        "name": null
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "page",
+        "id": "e_global_app-79ea7266eab9",
+        "name": "global-page-of-app-79ea7266eab9",
+        "part": "data source data_fetch_app-79ea7266eab9"
+      },
+      "to": {
+        "kind": "object",
+        "id": "{{object_type}}",
+        "name": null
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "page",
+        "id": "e_global_app-79ea7266eab9",
+        "name": "global-page-of-app-79ea7266eab9",
+        "part": "data source data_update_app-79ea7266eab9"
+      },
+      "to": {
+        "kind": "object",
+        "id": "{{object_type}}",
+        "name": null
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "page",
+        "id": "e_global_app-79ea7266eab9",
+        "name": "global-page-of-app-79ea7266eab9",
+        "part": "data source data_create_app-79ea7266eab9"
+      },
+      "to": {
+        "kind": "object",
+        "id": "{{object_type}}",
+        "name": null
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c663d885ae5a4d9fd8a6",
+        "name": "POC Studio Live · Save POC from Slack",
+        "part": "node Read the POC row to note the manager on"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c663d885ae5a4d9fd8a6",
+        "name": "POC Studio Live · Save POC from Slack",
+        "part": "node Write the manager onto the row, field by field"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c663d885ae5a4d9fd8a6",
+        "name": "POC Studio Live · Save POC from Slack",
+        "part": "node Look for a POC with the same use case name, ignoring case, in any channel"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c663d885ae5a4d9fd8a6",
+        "name": "POC Studio Live · Save POC from Slack",
+        "part": "node Read an existing POC row of the same channel for its client"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c663d885ae5a4d9fd8a6",
+        "name": "POC Studio Live · Save POC from Slack",
+        "part": "node Look for a row that already holds the generated POC id"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c663d885ae5a4d9fd8a6",
+        "name": "POC Studio Live · Save POC from Slack",
+        "part": "node Create the POC row, leaving out the values that are blank"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c663d885ae5a4d9fd8a6",
+        "name": "POC Studio Live · Save POC from Slack",
+        "part": "node Log the poc_started activity"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_activity",
+        "name": "POC Studio Live · Activity"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Read the POC row"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Record G1 as passed by the Judge"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Log the Judge's G1 decision"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_activity",
+        "name": "POC Studio Live · Activity"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Move the row to the G2 gate"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Find the latest version of this document on the row"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_document",
+        "name": "POC Studio Live · Document"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Save the document for review"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_document",
+        "name": "POC Studio Live · Document"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Log that the gate was posted"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_activity",
+        "name": "POC Studio Live · Activity"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Move the row to the G3 gate"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Find the latest version of this document on the row"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_document",
+        "name": "POC Studio Live · Document"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Save the document for review"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_document",
+        "name": "POC Studio Live · Document"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Log that the gate was posted"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_activity",
+        "name": "POC Studio Live · Activity"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Count the iterations the row already has"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_iteration",
+        "name": "POC Studio Live · Iteration"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Log the change"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_iteration",
+        "name": "POC Studio Live · Iteration"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Open a feedback ticket"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_feedback",
+        "name": "POC Studio Live · Feedback"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Log the change in the activity feed"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_activity",
+        "name": "POC Studio Live · Activity"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Block the row and say what it is blocked on"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c99ad885ae5a4da04722",
+        "name": "POC Studio Live · Receive build result",
+        "part": "node Record the status line"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c75967956c53e38f1a70",
+        "name": "POC Studio Live · Approve gate",
+        "part": "node Read the POC row"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c75967956c53e38f1a70",
+        "name": "POC Studio Live · Approve gate",
+        "part": "node Record the approval and any gate transition on the row"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c75967956c53e38f1a70",
+        "name": "POC Studio Live · Approve gate",
+        "part": "node Stamp last_activity and last_activity_at"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c75967956c53e38f1a70",
+        "name": "POC Studio Live · Approve gate",
+        "part": "node Approve the documents that were in review for this gate"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_document",
+        "name": "POC Studio Live · Document"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c75967956c53e38f1a70",
+        "name": "POC Studio Live · Approve gate",
+        "part": "node Log the approval as an activity row"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_activity",
+        "name": "POC Studio Live · Activity"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c75967956c53e38f1a70",
+        "name": "POC Studio Live · Approve gate",
+        "part": "node Callable"
+      },
+      "to": {
+        "kind": "automation",
+        "id": "6ad1c66313ea2c28e645e538",
+        "name": "POC Studio Live · Start build"
+      },
+      "via": "call node",
+      "fields": [
+        "build_run_id",
+        "message",
+        "status"
+      ]
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c9dcbaada8326ecfd65a",
+        "name": "POC Studio Live · Read channels into History",
+        "part": "node Read the live POC rows"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c9dcbaada8326ecfd65a",
+        "name": "POC Studio Live · Read channels into History",
+        "part": "node Write the activity row; an upsert, so a repeat cannot fail"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_activity",
+        "name": "POC Studio Live · Activity"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c9dcbaada8326ecfd65a",
+        "name": "POC Studio Live · Read channels into History",
+        "part": "node Write the document row; an upsert, so a repeat cannot fail"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_document",
+        "name": "POC Studio Live · Document"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c9dcbaada8326ecfd65a",
+        "name": "POC Studio Live · Read channels into History",
+        "part": "node Move the row's cursor to the newest message read"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1c9dcbaada8326ecfd65a",
+        "name": "POC Studio Live · Read channels into History",
+        "part": "node Stamp the row's last activity"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cc2a300f9003500f1da3",
+        "name": "POC Studio Live · Slack listener",
+        "part": "node Find the use case rows of this channel name"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cc2a300f9003500f1da3",
+        "name": "POC Studio Live · Slack listener",
+        "part": "node Link the row to the channel"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cc2a300f9003500f1da3",
+        "name": "POC Studio Live · Slack listener",
+        "part": "node Find the row whose manager question thread this is"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cc2a300f9003500f1da3",
+        "name": "POC Studio Live · Slack listener",
+        "part": "node Read the POC row"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cc2a300f9003500f1da3",
+        "name": "POC Studio Live · Slack listener",
+        "part": "node Approve the gate as the owner"
+      },
+      "to": {
+        "kind": "automation",
+        "id": "6ad1c75967956c53e38f1a70",
+        "name": "POC Studio Live · Approve gate"
+      },
+      "via": "call node",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cd1b6123771ba2c0346e",
+        "name": "POC Studio Live · Approve skill suggestion",
+        "part": "node Fetch the managers of all POCs, manager columns only"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_poc",
+        "name": "POC Studio Live · POC"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cd1b6123771ba2c0346e",
+        "name": "POC Studio Live · Approve skill suggestion",
+        "part": "node Fetch the suggestion"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_skill_suggestion",
+        "name": "POC Studio Live · Skill suggestion"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cd1b6123771ba2c0346e",
+        "name": "POC Studio Live · Approve skill suggestion",
+        "part": "node Fetch the skill the suggestion is for"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_skill",
+        "name": "POC Studio Live · Skill"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cd1b6123771ba2c0346e",
+        "name": "POC Studio Live · Approve skill suggestion",
+        "part": "node Fetch the evidence tickets that exist"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_feedback",
+        "name": "POC Studio Live · Feedback"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cd1b6123771ba2c0346e",
+        "name": "POC Studio Live · Approve skill suggestion",
+        "part": "node Set the skill's current version and prompt"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_skill",
+        "name": "POC Studio Live · Skill"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cd1b6123771ba2c0346e",
+        "name": "POC Studio Live · Approve skill suggestion",
+        "part": "node Mark the ticket resolved"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_feedback",
+        "name": "POC Studio Live · Feedback"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cd1b6123771ba2c0346e",
+        "name": "POC Studio Live · Approve skill suggestion",
+        "part": "node Mark the suggestion approved"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_skill_suggestion",
+        "name": "POC Studio Live · Skill suggestion"
+      },
+      "via": "storage write",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cde96123771ba2c052bc",
+        "name": "POC Studio Live · Suggest skill improvements",
+        "part": "node Fetch every skill"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_skill",
+        "name": "POC Studio Live · Skill"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cde96123771ba2c052bc",
+        "name": "POC Studio Live · Suggest skill improvements",
+        "part": "node Count the skill's pending suggestions"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_skill_suggestion",
+        "name": "POC Studio Live · Skill suggestion"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cde96123771ba2c052bc",
+        "name": "POC Studio Live · Suggest skill improvements",
+        "part": "node Fetch the skill's approved suggestions, approval time only"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_skill_suggestion",
+        "name": "POC Studio Live · Skill suggestion"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cde96123771ba2c052bc",
+        "name": "POC Studio Live · Suggest skill improvements",
+        "part": "node Fetch the skill's open tickets raised after that approval"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_feedback",
+        "name": "POC Studio Live · Feedback"
+      },
+      "via": "storage read",
+      "fields": []
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cde96123771ba2c052bc",
+        "name": "POC Studio Live · Suggest skill improvements",
+        "part": "node Ask the model for an improved prompt, JSON answer"
+      },
+      "to": {
+        "kind": "automation",
+        "id": "66dfd76eb70dad256986b784",
+        "name": null
+      },
+      "via": "call node",
+      "fields": [
+        "llmResponse"
+      ]
+    },
+    {
+      "from": {
+        "kind": "automation",
+        "id": "6ad1cde96123771ba2c052bc",
+        "name": "POC Studio Live · Suggest skill improvements",
+        "part": "node Write one pending suggestion for the skill"
+      },
+      "to": {
+        "kind": "object",
+        "id": "psl_skill_suggestion",
+        "name": "POC Studio Live · Skill suggestion"
+      },
+      "via": "storage write",
+      "fields": []
+    }
+  ],
+  "unknown": [
+    {
+      "kind": "ai-agent",
+      "id": "e_6ad1ca0bc0f97b3e983d2679",
+      "name": "POC Studio Agent",
+      "reason": "its tools are not in the cache (get_agent)"
+    }
+  ]
+}

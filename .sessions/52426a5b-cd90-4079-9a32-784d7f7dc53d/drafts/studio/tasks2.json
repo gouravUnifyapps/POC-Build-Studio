@@ -1,0 +1,99 @@
+[
+ {
+  "id": "t1",
+  "title": "Shell: POC Studio Live \u00b7 Approve skill suggestion",
+  "kind": "automation-shell",
+  "entity": {
+   "kind": "automation",
+   "name": "POC Studio Live \u00b7 Approve skill suggestion"
+  },
+  "dependsOn": [],
+  "body": "1. Read: `search_workflows` for `POC Studio Live \u00b7 Approve skill suggestion`. If it exists, stop and report: a shell is only for a new automation.\n2. Create the callable automation `POC Studio Live \u00b7 Approve skill suggestion` with `setup` = `suggestion_id` string, `caller_email` string, `caller_name` string and `result` = `status` string, `skill_id` string, `to_version` integer, `message` string, and a stub body that returns a typed value for every output field (the stub answers `status` \"error\" and a `message` saying it is a contract shell). It is called by the Feedback page's Approve button.\n3. `compile_and_save_workflow` with no `workflowId`, fixing every finding until it saves.\n4. `deploy_workflow` with that `workflowId`, deploymentNotes `Contract shell for POC Studio Live \u00b7 Approve skill suggestion`. Step 3 must be the last save.\n5. Read back `search_workflows` for its `deployment` and `describe_callable_workflow` for its inputs; quote both. Report the `workflowId` in `ids.entity`, and a `handover:` note with the workflow id and the exact input keys.",
+  "proof": "search_workflows shows POC Studio Live \u00b7 Approve skill suggestion with a deployment and describe_callable_workflow lists suggestion_id, caller_email and caller_name."
+ },
+ {
+  "id": "t2",
+  "title": "Build POC Studio Live \u00b7 Suggest skill improvements",
+  "kind": "automation",
+  "entity": {
+   "kind": "automation",
+   "name": "POC Studio Live \u00b7 Suggest skill improvements"
+  },
+  "dependsOn": [],
+  "body": "1. Read: `search_workflows` for `POC Studio Live \u00b7 Suggest skill improvements` (it must not exist yet); load `automation-runtime`, `data-fetching`, `data-transforms-and-code`, `dates-and-time`, `node-inputs-and-pills` and `resiliency` before writing a node; read `get_dsl_reference` once. If the contract below differs from what the shell holds, stop and report.\n2. Done when: the automation implements this contract exactly: automation \u00b7 create \u00b7 POC Studio Live \u00b7 Suggest skill improvements: scheduled once a week (Monday, 09:00, time zone Asia/Kolkata), one run at a time. For each `psl_skill`: collect the `psl_feedback` rows whose `target_skill` equals the skill's `skill_id`, whose `status` is `open` and whose `created_at` is later than the newest `approved_at` of that skill's approved `psl_skill_suggestion` rows (no approved suggestion means all); skip the skill when it already has a `pending` suggestion or fewer than 3 such tickets; otherwise call the platform automation \"Simple Call LLM\" (id `66dfd76eb70dad256986b784`, JSON response) with a system prompt that says it improves the prompt of one POC-builder skill from the feedback given on its output and answers a JSON object with `summary` (one sentence) and `proposed_prompt` (the whole new prompt), and as content the skill's current prompt and the tickets' `feedback` texts; parse the answer to an object and write one `psl_skill_suggestion` row: `suggestion_id` `SUG-<skill id>-<epoch ms>`, `skill`, `from_version` the skill's `current_version`, `to_version` one higher, `summary`, `proposed_prompt`, `evidence_count`, `evidence_tickets` (the ticket numbers, comma-separated), `status` `pending`, `created_at` now. A model answer that is not a JSON object with both keys writes nothing for that skill and the run continues with the next skill. Each skill is handled on its own; the run ends with a stop.\n3. Facts: objects are `psl_skill` (pk `skill_id`: `name`, `current_version`, `prompt`), `psl_skill_suggestion` (pk `suggestion_id`: `skill`, `from_version`, `to_version`, `summary`, `proposed_prompt`, `evidence_count`, `evidence_tickets`, `status` pending or approved, `created_at`, `approved_by`, `approved_at`), `psl_feedback` (pk `ticket_no`: `target_skill`, `status` open, in_review, resolved or not_incorporated, `feedback`, `created_at`, `action_taken`, `reviewed_by`, `resolved_at`) and `psl_poc` (`manager_email`, `manager_name`); read each with `describe_storage_object` first. Writes to existing records set single fields (`update_record_fields_by_id`), never replace a whole record. Dates are epoch milliseconds. The trigger is `schedule` with `cron` \"EXPRESSION\", `expression` \"0 9 * * 1\" and `timezone` \"Asia/Kolkata\" (the weekly form the DSL reference gives; if it refuses that form use the interval form `frequency` WEEKS, `interval` 1). Use a native `for` loop over the skills. The model call is `callables_call_automation` of the platform automation `66dfd76eb70dad256986b784` (\"Simple Call LLM\") with `content`, `systemPrompt`, `response_format` json_object and `type` text; parse its `llmResponse` with `utility_by_unifyapps_to_json_object` and test that `summary` and `proposed_prompt` are both non-empty strings before writing. The suggestion id uses the current epoch milliseconds. The run ends with `stop()`. Compile with `compile_and_save_workflow`, fixing every finding until it saves. Do not deploy.\n4. Read back: `open_workflow` for the saved definition and quote its trigger, the node names in order and the result schema; for a callable, `describe_callable_workflow` for its inputs.\n5. Report ids, readBack, unverified and notes, and a `handover:` note with the workflow id, its input keys and its result keys.",
+  "proof": "open_workflow shows a weekly schedule trigger, a loop over psl_skill, the ticket fetch with the approval cut-off, the pending-suggestion and threshold guards, the Simple Call LLM call, the JSON parse and the create of a psl_skill_suggestion row."
+ },
+ {
+  "id": "t3",
+  "title": "Deploy POC Studio Live \u00b7 Suggest skill improvements",
+  "kind": "deploy",
+  "entity": {
+   "kind": "automation",
+   "name": "POC Studio Live \u00b7 Suggest skill improvements"
+  },
+  "dependsOn": [
+   "t2"
+  ],
+  "body": "1. Read: `search_workflows` for `POC Studio Live \u00b7 Suggest skill improvements` to get its `workflowId` and the saved `definitionVersion`; read `get_records` for `psl_skill_suggestion` (the seeded rows are approved) and note the total.\n2. Done when: the saved version is the deployed version, and one run on the seeded tickets has left exactly one pending suggestion for the skill `prd-writer` (five open tickets since its last approval) and none for `mockup-drafter` (two open tickets) or `build-report-writer`.\n3. `deploy_workflow` with that `workflowId`, deploymentNotes `POC Studio Live \u00b7 Suggest skill improvements`. Then ONE `trigger_workflow_run` of the deployed automation (it writes the one pending suggestion on purpose; never run it twice) and `inspect_workflow_run` for its result.\n4. Read back `search_workflows` (`deployment.status` DEPLOYED, `definitionVersion` equal to the saved version) and `get_records` for `psl_skill_suggestion` filtered to status `pending`: quote the one row's `skill`, `from_version`, `to_version`, `evidence_count` and `evidence_tickets`, and the first 200 characters of `summary`.\n5. Report ids, readBack, unverified and notes. If the model answer was not usable and no row was written, report it as unverified with the run's error; do not run a second time.",
+  "proof": "search_workflows shows POC Studio Live \u00b7 Suggest skill improvements DEPLOYED with definitionVersion equal to the saved version, and get_records on psl_skill_suggestion shows one pending row for prd-writer."
+ },
+ {
+  "id": "t4",
+  "title": "Build POC Studio Live \u00b7 Approve skill suggestion",
+  "kind": "automation",
+  "entity": {
+   "kind": "automation",
+   "name": "POC Studio Live \u00b7 Approve skill suggestion"
+  },
+  "dependsOn": [
+   "t1"
+  ],
+  "body": "1. Read: `search_workflows` for `POC Studio Live \u00b7 Approve skill suggestion` and open the shell's `workflowId` from `Built so far` with `open_workflow` (keep its input and result contract); load `automation-runtime`, `data-fetching`, `data-transforms-and-code`, `dates-and-time`, `node-inputs-and-pills` and `resiliency` before writing a node; read `get_dsl_reference` once. If the contract below differs from what the shell holds, stop and report.\n2. Done when: the automation implements this contract exactly: automation \u00b7 create \u00b7 POC Studio Live \u00b7 Approve skill suggestion: callable, called by the Approve button on the Feedback page. Inputs: `suggestion_id` (required), `caller_email`, `caller_name`. Result: `status` one of `approved` `already_decided` `forbidden` `not_found` `error`, `skill_id`, `to_version`, `message`. The caller must be a manager: `caller_email` equals the `manager_email` of at least one `psl_poc` row, or `caller_name` equals a `manager_name` (case-insensitive); otherwise `forbidden`. A suggestion whose status is not `pending` answers `already_decided`. Approving sets the suggestion `approved` with `approved_by` the caller's name and `approved_at` now; sets the `psl_skill` row's `current_version` to `to_version` and `prompt` to `proposed_prompt`; sets each ticket in `evidence_tickets` to status `resolved` with `action_taken` \"Included in `<skill name>` v`<to_version>`\", `reviewed_by` the caller's name and `resolved_at` now. Writes to existing rows set single fields, never replace the record.\n3. Facts: objects are `psl_skill` (pk `skill_id`: `name`, `current_version`, `prompt`), `psl_skill_suggestion` (pk `suggestion_id`: `skill`, `from_version`, `to_version`, `summary`, `proposed_prompt`, `evidence_count`, `evidence_tickets`, `status` pending or approved, `created_at`, `approved_by`, `approved_at`), `psl_feedback` (pk `ticket_no`: `target_skill`, `status` open, in_review, resolved or not_incorporated, `feedback`, `created_at`, `action_taken`, `reviewed_by`, `resolved_at`) and `psl_poc` (`manager_email`, `manager_name`); read each with `describe_storage_object` first. Writes to existing records set single fields (`update_record_fields_by_id`), never replace a whole record. Dates are epoch milliseconds. The manager check reads `psl_poc` rows with a `manager_email` or `manager_name` equal to the caller (case-insensitive; compare trimmed values; an empty caller value never matches). Slack is not used. Every path answers a result. Compile with `compile_and_save_workflow` using the shell's `workflowId`, fixing every finding until it saves. Do not deploy.\n4. Read back: `open_workflow` for the saved definition and quote its trigger, the node names in order and the result schema; for a callable, `describe_callable_workflow` for its inputs.\n5. Report ids, readBack, unverified and notes, and a `handover:` note with the workflow id, its input keys and its result keys.",
+  "proof": "open_workflow shows a callable with the contract's inputs and result, the manager check, the pending guard, the suggestion and skill updates and the ticket resolution."
+ },
+ {
+  "id": "t5",
+  "title": "Deploy POC Studio Live \u00b7 Approve skill suggestion",
+  "kind": "deploy",
+  "entity": {
+   "kind": "automation",
+   "name": "POC Studio Live \u00b7 Approve skill suggestion"
+  },
+  "dependsOn": [
+   "t4"
+  ],
+  "body": "1. Read: `search_workflows` for `POC Studio Live \u00b7 Approve skill suggestion` to get its `workflowId` and the saved `definitionVersion`.\n2. Done when: the saved version is the deployed version.\n3. `deploy_workflow` with that `workflowId`, deploymentNotes `POC Studio Live \u00b7 Approve skill suggestion`.\n4. Read back `search_workflows`: `deployment.status` DEPLOYED and `definitionVersion` equal to the saved version read in step 1; quote both.\n5. Report ids, readBack, unverified and notes.",
+  "proof": "search_workflows shows POC Studio Live \u00b7 Approve skill suggestion DEPLOYED with definitionVersion equal to the saved version."
+ },
+ {
+  "id": "t6",
+  "title": "Code app: Feedback page, version, pending suggestion, Approve",
+  "kind": "code-app",
+  "entity": {
+   "kind": "code-app",
+   "name": "POC Studio Live",
+   "id": "app-79ea7266eab9"
+  },
+  "dependsOn": [
+   "t1"
+  ],
+  "body": "1. Read: `get_code_app` for `app-79ea7266eab9` and the checkout from `get_branch_codebase`; the source app `app-b4fe5a0a30eb` changed after the clone was made (its head is now `48b64ea4936d2a50c84226619ed74cdc34e78586`, the message says \"I made both changes on the Skills & Feedback page\"): download its main again read-only with `get_branch_codebase` into a separate folder, never hold, push or publish it, compare its `src/orbit/views/FeedbackBoard.tsx` and the CSS it uses with the clone's, and keep the source's newest layout where it does not conflict with `/Users/gouravmahunta/Desktop/DEMO studio test/POST design skill/Demo studio/.sessions/52426a5b-cd90-4079-9a32-784d7f7dc53d/drafts/studio/design.md` (Feedback block); read `/Users/gouravmahunta/Desktop/DEMO studio test/POST design skill/Demo studio/.sessions/52426a5b-cd90-4079-9a32-784d7f7dc53d/drafts/studio/design.md` (the Feedback block) and `/Users/gouravmahunta/Desktop/DEMO studio test/POST design skill/Demo studio/.sessions/52426a5b-cd90-4079-9a32-784d7f7dc53d/drafts/studio/design-package.md` rules 2 and 5, and the automation-integration skill's `alwaysInPrompt` files.\n2. Done when, exactly as `/Users/gouravmahunta/Desktop/DEMO studio test/POST design skill/Demo studio/.sessions/52426a5b-cd90-4079-9a32-784d7f7dc53d/drafts/studio/design.md` describes the Feedback page and using only the classes it names: each skill group's summary card shows the current version and a \"Suggestion pending\" tag when a suggestion is pending and a version list from the skill's approved suggestions (three shown, the rest behind a chevron); the pending suggestion is the first item of the group's article stack as an AI Insight card with the current prompt beside the proposed one (no word diff), the evidence tickets as links to the articles below, and ONE Approve button, rendered only for a manager-viewer (the viewer's email or full name matches `manager_email` or `manager_name` on at least one `psl_poc` row; everyone else sees the hint \"A manager approves this.\"); a group with a pending suggestion keeps its card when a status filter leaves no articles. Approve calls `POC Studio Live \u00b7 Approve skill suggestion` with `suggestion_id`, `caller_email`, `caller_name` and shows the page's default toasts for approved, already decided, forbidden and error. Components come from the class inventory, never a second implementation, never a new colour value, never a Tailwind colour, radius, shadow or type utility: Tailwind only for layout the kit has no class for.\n3. Data: the app reads `psl_skill`, `psl_skill_suggestion`, `psl_feedback` and `psl_poc` through the Storage sources already in `bindings.ts` and calls the automation (its shell is in `Built so far`) through its own automation data source: `create_code_app_data_sources` with `kind` automation, that `automationId`, `inputFields` `suggestion_id`, `caller_email`, `caller_name`, and a name. Read the automation result's `status`, never the HTTP status. The Feedback page keeps the Home \"Open feedback\" tile as its entry and nothing new is added to the rail.\n4. Read back: the push's `commit` and `files`; `get_code_app` answering the commit as `head.sha`; `callables.ts` holding the Approve skill suggestion block next to the two earlier blocks; the `previewUrl`, quoted.\n5. Report ids (the app id as `ids.entity`), readBack, unverified (say whether the source's newest Feedback changes were kept or conflicted) and notes, and a `handover:` note with the app id and the preview address.",
+  "proof": "get_code_app answers the push commit as head.sha; callables.ts holds the Approve skill suggestion block; the committed Feedback screen shows the version, the pending suggestion card and the manager-only Approve."
+ },
+ {
+  "id": "t7",
+  "title": "Publish code app POC Studio Live (skill loop)",
+  "kind": "code-publish",
+  "entity": {
+   "kind": "code-app",
+   "name": "POC Studio Live",
+   "id": "app-79ea7266eab9"
+  },
+  "dependsOn": [
+   "t6",
+   "t5"
+  ],
+  "body": "1. Read: `get_code_app` for `app-79ea7266eab9`: the head, `busy` and the current deployment; the branch must be free (released).\n2. Done when: the head commit of the last code-app task is the deployed version of the app.\n3. Apply `publish_code_app` with a `versionNote` \"POC Studio Live v2: skill-improvement loop, suggestions and versions on the Feedback page\".\n4. Read back the reply's `deployed` read-back: `deployed` true with the `commitHash`, and the published address; quote them. The publish adds its own commit, so never compare the head to the deployed commit.\n5. Report ids, readBack, unverified and notes, and a `handover:` note with the published address.",
+  "proof": "publish_code_app answers deployed true with a commitHash and the published address."
+ }
+]

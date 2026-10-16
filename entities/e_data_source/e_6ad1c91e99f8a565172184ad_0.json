@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "key": "e_data_source:e_6ad1c91e99f8a565172184ad",
+  "entityType": "e_data_source",
+  "id": "e_6ad1c91e99f8a565172184ad",
+  "version": 0,
+  "cachedAt": "2026-10-16T06:54:09.850Z",
+  "source": "solution-refresh",
+  "entity": {
+    "createdTime": 1792133406492,
+    "deleted": false,
+    "entityType": "e_data_source",
+    "id": "e_6ad1c91e99f8a565172184ad",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792133406492,
+    "modifiedTime": 1792133406492,
+    "ownerUserId": 66770,
+    "properties": {
+      "metadata": {
+        "isManuallyRenamed": false
+      },
+      "dpOn": [],
+      "inputs": {
+        "automationId": "6ad1c66313ea2c28e645e538",
+        "runtimeConnections": {},
+        "version": "-1",
+        "parameters": {
+          "poc_id": "{{poc_id}}",
+          "mode": "{{mode}}",
+          "approved_prd_link": "{{approved_prd_link}}"
+        },
+        "synchronous": true
+      },
+      "advancedOptions": {
+        "refetchOnWindowFocus": true,
+        "timing": {
+          "runQueryOnPageLoad": false,
+          "runQueryPeriodically": false
+        },
+        "runBehaviour": "automatic"
+      },
+      "name": "Start build",
+      "context": {
+        "appName": "callables",
+        "resourceName": "callables_call_automation",
+        "resourceVersion": 3156
+      },
+      "type": "APPLICATION",
+      "dP": [
+        {
+          "p": "inputs.parameters.poc_id"
+        },
+        {
+          "p": "inputs.parameters.mode"
+        },
+        {
+          "p": "inputs.parameters.approved_prd_link"
+        }
+      ],
+      "interfacePageId": "e_global_app-79ea7266eab9"
+    },
+    "standard": false,
+    "version": 0
+  }
+}

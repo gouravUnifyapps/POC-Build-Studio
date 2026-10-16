@@ -1,0 +1,130 @@
+{
+  "tasks": [
+    {
+      "id": "t10",
+      "status": "ok",
+      "change": "updated",
+      "ids": {
+        "entity": "psl_document",
+        "records": [
+          "POC-pentland-vulnerability-20261001__4_design_system__prd-with-flowchart__v3",
+          "POC-pentland-vulnerability-20261001__2_research_assess__understand-brief__v1",
+          "POC-pentland-vulnerability-20261001__1_signal_capture__scope-call-notes__v1",
+          "POC-pentland-vulnerability-20261001__1_signal_capture__asset-inventory-sample-masked__v1",
+          "POC-pentland-vulnerability-20261001__4_design_system__remediation-queue-mockup__v2",
+          "POC-pentland-product-enrichment-20261008__1_signal_capture__attribute-list__v2"
+        ]
+      },
+      "readBack": [
+        "psl_document: get_records before the write answered total 0, so all 6 rows of psl_document.json were missing; every type, stage, gate_pack, status and format value in the file is a code the object holds, and every poc is a seeded psl_poc id.",
+        "psl_document: the PRD row (file row 4, the long-text test) was written first, alone: apply_record_edits create ok true, recordId POC-pentland-vulnerability-20261001__4_design_system__prd-with-flowchart__v3.",
+        "psl_document PRD row, long-text check: get_records with filters document_id EQUAL that id, content REGEX ^[\\s\\S]{6763}$, content STARTS_WITH \"<!doctype html>\\n<html lang=\\\"en\\\">\" and content ENDS_WITH \"</main></body></html>\\n\" answered total 1, so the stored content is exactly 6763 characters, the file's length, and starts and ends as the file does; the create result also echoed the whole content string.",
+        "psl_document remediation-queue-mockup v2 (the other HTML row): get_records with content REGEX ^[\\s\\S]{2561}$ and ENDS_WITH \"</div></body></html>\\n\" answered total 1, the file's length of 2561.",
+        "psl_document: the other 5 rows made in one apply_record_edits call, every result ok true.",
+        "psl_document: get_records limit 200 answered total 6, equal to the 6 rows of psl_document.json, with type, stage, gate_pack, status, format and version as the file gives (PRD: brd, 4_design_system, g2, in_review, html, version 3).",
+        "psl_document POC-pentland-vulnerability-20261001__2_research_assess__understand-brief__v1: the create result echoes every field of the file's row (summary, content, created_by Nebula, saved_at 1791276600000, format markdown, status approved, gate_pack g1)."
+      ],
+      "unverified": [
+        "The PRD and mockup content strings were checked by exact length, start and end only, not by a byte comparison with the file: no tool puts a stored string beside a file. A same-length substitution inside the text would not show.",
+        "The two link rows have no content (the file leaves it out) and only the PRD, the mockup and the brief were examined field by field in the create results; the others are confirmed by their ok create results and the total of 6."
+      ],
+      "notes": [
+        "No row existed before, so nothing was rewritten.",
+        "The platform echoed every field of the PRD row in the create result, content included, with no shortening."
+      ],
+      "error": ""
+    },
+    {
+      "id": "t11",
+      "status": "ok",
+      "change": "updated",
+      "ids": {
+        "entity": "psl_feedback",
+        "records": ["FB-1", "FB-2", "FB-3", "FB-4", "FB-5", "FB-6", "FB-7", "FB-8", "FB-9", "FB-10"]
+      },
+      "readBack": [
+        "psl_feedback: get_records before the write answered total 0, so all 10 rows of psl_feedback.json were missing; status open|resolved, severity high|medium, gate g2 and poc_stage 3_scope|4_design_system are all codes the object holds, and every poc is a seeded psl_poc id.",
+        "psl_feedback: apply_record_edits made 10 creates in one call, every result ok true, recordId FB-1 to FB-10.",
+        "psl_feedback: get_records limit 1 answered total 10, equal to the 10 rows of psl_feedback.json.",
+        "psl_feedback FB-10, read by id: poc \"POC-pentland-vulnerability-20261001\", client_name \"Pentland\", poc_stage \"4_design_system\", gate \"g2\", iteration 2, severity \"high\", status \"open\", target_skill \"mockup-drafter\", title \"Mockup has no owner view\", given_by_name \"Gourav Mahunta\", created_at 1791700800000, with quote and feedback; every field of the file's row present."
+      ],
+      "unverified": [
+        "Only FB-10 was re-read by id; the other nine rows are confirmed by their ok create results, which echo every property, and by the total of 10."
+      ],
+      "notes": [
+        "No row existed before, so nothing was rewritten."
+      ],
+      "error": ""
+    },
+    {
+      "id": "t12",
+      "status": "ok",
+      "change": "updated",
+      "ids": {
+        "entity": "psl_iteration",
+        "records": [
+          "ITR-1791018900000-1",
+          "ITR-1791091800000-1",
+          "ITR-1791176100000-1",
+          "ITR-1791273600000-1",
+          "ITR-1791453000000-1",
+          "ITR-1791541800000-1",
+          "ITR-1791700800000-1"
+        ]
+      },
+      "readBack": [
+        "psl_iteration: get_records before the write answered total 0, so all 7 rows of psl_iteration.json were missing; phase plan and source judge|person are codes the object holds, and every poc is a seeded psl_poc id.",
+        "psl_iteration: apply_record_edits made 7 creates in one call, every result ok true, recordId ITR-1791018900000-1 to ITR-1791700800000-1.",
+        "psl_iteration: get_records limit 1 answered total 7, equal to the 7 rows of psl_iteration.json.",
+        "psl_iteration ITR-1791700800000-1, read by id: poc \"POC-pentland-vulnerability-20261001\", phase \"plan\", source \"person\", actor_name \"Gourav Mahunta\", actor_email \"gourav.mahunta@unifyapps.com\", title \"Mockup has no owner view\", skill \"mockup-drafter\", related_document \"POC-pentland-vulnerability-20261001__4_design_system__remediation-queue-mockup__v2\", related_ticket \"FB-10\", slack_ref, created_at 1791700800000; every field of the file's row present."
+      ],
+      "unverified": [
+        "Only ITR-1791700800000-1 was re-read by id; the other six rows are confirmed by their ok create results, which echo every property, and by the total of 7."
+      ],
+      "notes": [
+        "No row existed before, so nothing was rewritten.",
+        "related_document and related_ticket are plain strings, not lookups, so a row passes whether or not the ticket or document it names exists; the tickets FB-4 to FB-10 and the two documents named here all exist now in psl_feedback and psl_document."
+      ],
+      "error": ""
+    },
+    {
+      "id": "t13",
+      "status": "ok",
+      "change": "updated",
+      "ids": {
+        "entity": "psl_activity",
+        "records": [
+          "SLK-C0SEED0001-1790916120.000100",
+          "SLK-C0SEED0001-1791022200.000200",
+          "SLK-C0SEED0001-1791024000.000300",
+          "SLK-C0SEED0001-1791264900.000400",
+          "ACT-1791276900000-0001",
+          "ACT-1791288000000-0002",
+          "SLK-C0SEED0001-1791346680.000500",
+          "ACT-1791973500000-0003",
+          "SLK-C0SEED0001-1791975600.000600",
+          "ACT-1791975900000-0004",
+          "SLK-C0SEED0001-1791441900.000700",
+          "SLK-C0SEED0001-1791880500.000800",
+          "ACT-1791784200000-0005",
+          "ACT-1791801900000-0006",
+          "ACT-1791863400000-0007"
+        ]
+      },
+      "readBack": [
+        "psl_activity: get_records before the write answered total 0, so all 15 rows of psl_activity.json were missing; type input_added|document_saved|gate_posted|gate_decided|owner_approved|manager_approved, actor_type person|ai, gate g1|g2|g3 and decision approve are all codes the object holds, and every poc is a seeded psl_poc id.",
+        "psl_activity: apply_record_edits made 15 creates in one call, every result ok true; the Slack rows keep a dot in their id (SLK-C0SEED0001-1790916120.000100) and were accepted.",
+        "psl_activity: get_records limit 1 answered total 15, equal to the 15 rows of psl_activity.json.",
+        "psl_activity ACT-1791863400000-0007, read by id: poc \"POC-kestrel-fraud-alerts-20260826\", type \"manager_approved\", stage \"6_finalize\", gate \"g3\", decision \"approve\", actor_type \"person\", actor_name \"Rahul Sen\", actor_email \"rahul.sen@example.com\", message \"Rahul Sen approved Build, waiting on Ishita Verma in Slack\", posted_to \"kestrel-poc\", created_at 1791863400000; every field of the file's row present."
+      ],
+      "unverified": [
+        "Only ACT-1791863400000-0007 was re-read by id; the other fourteen rows are confirmed by their ok create results, which echo every property, and by the total of 15.",
+        "The 8 Slack rows carry C0SEED channel ids and slack.invalid links, which belong to no real Slack channel; as the file gives them."
+      ],
+      "notes": [
+        "No row existed before, so nothing was rewritten."
+      ],
+      "error": ""
+    }
+  ]
+}

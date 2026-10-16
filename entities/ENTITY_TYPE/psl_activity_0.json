@@ -1,0 +1,587 @@
+{
+  "schemaVersion": 1,
+  "key": "ENTITY_TYPE:psl_activity",
+  "entityType": "ENTITY_TYPE",
+  "id": "psl_activity",
+  "version": 0,
+  "cachedAt": "2026-10-16T13:59:49.206Z",
+  "source": "solution-refresh",
+  "ref": {
+    "id": "psl_activity",
+    "type": "ENTITY_TYPE",
+    "state": "COMPLETED"
+  },
+  "entity": {
+    "columnCounts": 16,
+    "createdTime": 1792132588307,
+    "deleted": false,
+    "description": "POC Studio Live: one row per event. activity_id is client-sent: Slack rows SLK-<channel id>-<slack ts>, system rows ACT-<epoch>-<n>.",
+    "id": "psl_activity",
+    "input": {
+      "type": "SCHEMA_AND_LAYOUT",
+      "dynamic": false,
+      "layout": {
+        "ui:order": [
+          "activity_id",
+          "poc",
+          "type",
+          "stage",
+          "gate",
+          "decision",
+          "actor_type",
+          "actor_name",
+          "actor_email",
+          "message",
+          "related_document",
+          "posted_to",
+          "created_at",
+          "actor_avatar_url",
+          "slack_ts",
+          "slack_ref"
+        ]
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "activity_id": {
+            "type": "string",
+            "title": "Activity ID",
+            "help": "Slack rows SLK-<channel id>-<slack ts>, system rows ACT-<epoch>-<n>",
+            "primaryKey": true,
+            "uniqueKey": true,
+            "searchable": true,
+            "sortable": true
+          },
+          "poc": {
+            "type": "string",
+            "format": "single-select",
+            "title": "POC",
+            "help": "The parent's poc_id",
+            "sortable": true,
+            "foreignKey": {
+              "reference": "ENTITY_ID:psl_poc"
+            }
+          },
+          "type": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Type",
+            "oneOf": [
+              {
+                "const": "poc_started",
+                "title": "POC started"
+              },
+              {
+                "const": "stage_started",
+                "title": "Stage started"
+              },
+              {
+                "const": "stage_completed",
+                "title": "Stage completed"
+              },
+              {
+                "const": "document_saved",
+                "title": "Document saved"
+              },
+              {
+                "const": "gate_posted",
+                "title": "Gate posted"
+              },
+              {
+                "const": "gate_decided",
+                "title": "Gate decided"
+              },
+              {
+                "const": "feedback_created",
+                "title": "Feedback created"
+              },
+              {
+                "const": "feedback_reviewed",
+                "title": "Feedback reviewed"
+              },
+              {
+                "const": "input_added",
+                "title": "Input added"
+              },
+              {
+                "const": "nudge_sent",
+                "title": "Nudge sent"
+              },
+              {
+                "const": "poc_stopped",
+                "title": "POC stopped"
+              },
+              {
+                "const": "poc_restarted",
+                "title": "POC restarted"
+              },
+              {
+                "const": "owner_approved",
+                "title": "Owner approved"
+              },
+              {
+                "const": "manager_approved",
+                "title": "Manager approved"
+              },
+              {
+                "const": "iteration_logged",
+                "title": "Change made"
+              }
+            ]
+          },
+          "stage": {
+            "type": "string",
+            "title": "Stage",
+            "sortable": true
+          },
+          "gate": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Gate",
+            "oneOf": [
+              {
+                "const": "none",
+                "title": "None"
+              },
+              {
+                "const": "g1",
+                "title": "G1 · Scope check"
+              },
+              {
+                "const": "g2",
+                "title": "G2 · Design check"
+              },
+              {
+                "const": "g3",
+                "title": "G3 · Build sign-off"
+              },
+              {
+                "const": "g4",
+                "title": "G4 · Release"
+              }
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Decision",
+            "oneOf": [
+              {
+                "const": "approve",
+                "title": "Approve"
+              },
+              {
+                "const": "request_changes",
+                "title": "Request changes"
+              },
+              {
+                "const": "stop",
+                "title": "Stop"
+              }
+            ]
+          },
+          "actor_type": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Actor type",
+            "oneOf": [
+              {
+                "const": "ai",
+                "title": "AI"
+              },
+              {
+                "const": "person",
+                "title": "Person"
+              },
+              {
+                "const": "system",
+                "title": "System"
+              }
+            ]
+          },
+          "actor_name": {
+            "type": "string",
+            "title": "Actor name"
+          },
+          "actor_email": {
+            "type": "string",
+            "title": "Actor email"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "nameField": true,
+            "searchable": true
+          },
+          "related_document": {
+            "type": "string",
+            "title": "Related document"
+          },
+          "posted_to": {
+            "type": "string",
+            "title": "Posted to"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "date-time",
+            "dateFormat": "epoch",
+            "title": "Created at",
+            "sortable": true
+          },
+          "actor_avatar_url": {
+            "type": "string",
+            "title": "Actor avatar URL"
+          },
+          "slack_ts": {
+            "type": "string",
+            "title": "Slack ts"
+          },
+          "slack_ref": {
+            "type": "string",
+            "title": "Slack ref",
+            "help": "Slack permalink"
+          }
+        },
+        "required": [
+          "activity_id",
+          "poc",
+          "type",
+          "actor_type",
+          "actor_name",
+          "message",
+          "created_at"
+        ]
+      }
+    },
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792132588364,
+    "lcName": "poc studio live · activity",
+    "metadata": {
+      "auditable": false,
+      "autoGeneratedFields": [],
+      "cacheable": false,
+      "captureActivity": false,
+      "captureReferences": false,
+      "captureReporting": false,
+      "customIndexDefinitions": [
+        {
+          "indexFieldMetadataList": [
+            {
+              "field": "properties.poc",
+              "type": 1
+            },
+            {
+              "field": "properties.created_at",
+              "type": -1
+            }
+          ],
+          "name": "idx_poc_created",
+          "status": "SUCCESS"
+        }
+      ],
+      "dateFields": [
+        "created_at"
+      ],
+      "deleteStaleEntitiesOnConfigSync": false,
+      "deployable": false,
+      "derivedEdgeEntity": false,
+      "encryptedFields": [],
+      "external": false,
+      "filterableFields": [
+        "activity_id",
+        "poc",
+        "type",
+        "stage",
+        "gate",
+        "decision",
+        "actor_type",
+        "actor_name",
+        "actor_email",
+        "message",
+        "related_document",
+        "posted_to",
+        "created_at",
+        "actor_avatar_url",
+        "slack_ts",
+        "slack_ref"
+      ],
+      "graphType": "LEGACY_MDM",
+      "hasTimeSeriesRecords": true,
+      "hashedFields": [],
+      "inaccessibleFromUI": false,
+      "includeInDependency": false,
+      "nameField": "message",
+      "partFields": [],
+      "piiFields": [],
+      "primaryKeyField": "activity_id",
+      "referenceKeys": [
+        {
+          "key": "properties.poc",
+          "referenceType": "psl_poc"
+        }
+      ],
+      "scdType2Enabled": false,
+      "schemaValidationEnabled": true,
+      "searchableFields": [
+        "activity_id",
+        "message",
+        "message"
+      ],
+      "sessionBackedStorageEnabled": false,
+      "skipConfigSyncIfModified": false,
+      "skipDeletedEntityBackup": false,
+      "skipFetchBeforeUpdate": false,
+      "skipIndexLimitValidation": false,
+      "skipPermissionCheckForAggregation": false,
+      "skipPermissionsFilter": false,
+      "skipReportingEventsOrdering": false,
+      "skipRoutineLoad": false,
+      "skipTotalHitsInAggregation": false,
+      "skipVersionIncrementOnUpdate": false,
+      "storeDetails": {
+        "store": "MONGO",
+        "uniqueKeySupported": true
+      },
+      "supportsDistinctValues": false,
+      "supportsWebhook": false,
+      "syncFromSourceCustomer": false,
+      "translationsEnabled": false,
+      "uniqueKeyFields": [
+        "activity_id"
+      ],
+      "urlValidationEnabledFields": [],
+      "useCachedEntityStoreForAutomations": false,
+      "userLevelEncryption": false,
+      "vectorFields": [],
+      "versioningEnabled": false
+    },
+    "modifiedTime": 1792132588364,
+    "name": "POC Studio Live · Activity",
+    "ownerUserId": 66770,
+    "packaged": false,
+    "pluralName": "POC Studio Live · Activity",
+    "schema": {
+      "type": "SCHEMA",
+      "dynamic": false,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "activity_id": {
+            "type": "string",
+            "title": "Activity ID",
+            "help": "Slack rows SLK-<channel id>-<slack ts>, system rows ACT-<epoch>-<n>",
+            "primaryKey": true,
+            "uniqueKey": true,
+            "searchable": true,
+            "sortable": true
+          },
+          "poc": {
+            "type": "string",
+            "format": "single-select",
+            "title": "POC",
+            "help": "The parent's poc_id",
+            "sortable": true,
+            "foreignKey": {
+              "reference": "ENTITY_ID:psl_poc"
+            }
+          },
+          "type": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Type",
+            "oneOf": [
+              {
+                "const": "poc_started",
+                "title": "POC started"
+              },
+              {
+                "const": "stage_started",
+                "title": "Stage started"
+              },
+              {
+                "const": "stage_completed",
+                "title": "Stage completed"
+              },
+              {
+                "const": "document_saved",
+                "title": "Document saved"
+              },
+              {
+                "const": "gate_posted",
+                "title": "Gate posted"
+              },
+              {
+                "const": "gate_decided",
+                "title": "Gate decided"
+              },
+              {
+                "const": "feedback_created",
+                "title": "Feedback created"
+              },
+              {
+                "const": "feedback_reviewed",
+                "title": "Feedback reviewed"
+              },
+              {
+                "const": "input_added",
+                "title": "Input added"
+              },
+              {
+                "const": "nudge_sent",
+                "title": "Nudge sent"
+              },
+              {
+                "const": "poc_stopped",
+                "title": "POC stopped"
+              },
+              {
+                "const": "poc_restarted",
+                "title": "POC restarted"
+              },
+              {
+                "const": "owner_approved",
+                "title": "Owner approved"
+              },
+              {
+                "const": "manager_approved",
+                "title": "Manager approved"
+              },
+              {
+                "const": "iteration_logged",
+                "title": "Change made"
+              }
+            ]
+          },
+          "stage": {
+            "type": "string",
+            "title": "Stage",
+            "sortable": true
+          },
+          "gate": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Gate",
+            "oneOf": [
+              {
+                "const": "none",
+                "title": "None"
+              },
+              {
+                "const": "g1",
+                "title": "G1 · Scope check"
+              },
+              {
+                "const": "g2",
+                "title": "G2 · Design check"
+              },
+              {
+                "const": "g3",
+                "title": "G3 · Build sign-off"
+              },
+              {
+                "const": "g4",
+                "title": "G4 · Release"
+              }
+            ]
+          },
+          "decision": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Decision",
+            "oneOf": [
+              {
+                "const": "approve",
+                "title": "Approve"
+              },
+              {
+                "const": "request_changes",
+                "title": "Request changes"
+              },
+              {
+                "const": "stop",
+                "title": "Stop"
+              }
+            ]
+          },
+          "actor_type": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Actor type",
+            "oneOf": [
+              {
+                "const": "ai",
+                "title": "AI"
+              },
+              {
+                "const": "person",
+                "title": "Person"
+              },
+              {
+                "const": "system",
+                "title": "System"
+              }
+            ]
+          },
+          "actor_name": {
+            "type": "string",
+            "title": "Actor name"
+          },
+          "actor_email": {
+            "type": "string",
+            "title": "Actor email"
+          },
+          "message": {
+            "type": "string",
+            "title": "Message",
+            "nameField": true,
+            "searchable": true
+          },
+          "related_document": {
+            "type": "string",
+            "title": "Related document"
+          },
+          "posted_to": {
+            "type": "string",
+            "title": "Posted to"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "date-time",
+            "dateFormat": "epoch",
+            "title": "Created at",
+            "sortable": true
+          },
+          "actor_avatar_url": {
+            "type": "string",
+            "title": "Actor avatar URL"
+          },
+          "slack_ts": {
+            "type": "string",
+            "title": "Slack ts"
+          },
+          "slack_ref": {
+            "type": "string",
+            "title": "Slack ref",
+            "help": "Slack permalink"
+          }
+        },
+        "required": [
+          "activity_id",
+          "poc",
+          "type",
+          "actor_type",
+          "actor_name",
+          "message",
+          "created_at"
+        ]
+      }
+    },
+    "standard": false,
+    "tags": [
+      "Nebula"
+    ],
+    "version": 0,
+    "entityType": "ENTITY_TYPE"
+  }
+}

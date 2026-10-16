@@ -1,0 +1,183 @@
+{
+ "object": "psl_activity",
+ "primary_key": "activity_id",
+ "count": 15,
+ "rows": [
+  {
+   "activity_id": "SLK-C0SEED0001-1790916120.000100",
+   "poc": "POC-pentland-vulnerability-20261001",
+   "type": "input_added",
+   "actor_type": "person",
+   "actor_name": "Gourav Mahunta",
+   "message": "Kicking off the Pentland Vulnerability Use Case. Their security team wants findings from three scanners in one triage view. I will share a sample export once they send it.",
+   "created_at": 1790916120000,
+   "slack_ts": "1790916120.000100",
+   "slack_ref": "https://slack.invalid/archives/C0SEED0001/p1790916120000100"
+  },
+  {
+   "activity_id": "SLK-C0SEED0001-1791022200.000200",
+   "poc": "POC-pentland-vulnerability-20261001",
+   "type": "input_added",
+   "actor_type": "person",
+   "actor_name": "Marcus Hale",
+   "message": "New info for the Pentland Vulnerability Use Case: we can share the scanner export for the retail estate only. Corporate IT assets are out of scope for now.",
+   "created_at": 1791022200000,
+   "slack_ts": "1791022200.000200",
+   "slack_ref": "https://slack.invalid/archives/C0SEED0001/p1791022200000200"
+  },
+  {
+   "activity_id": "SLK-C0SEED0001-1791024000.000300",
+   "poc": "POC-pentland-vulnerability-20261001",
+   "type": "document_saved",
+   "actor_type": "person",
+   "actor_name": "Gourav Mahunta",
+   "message": "Shared the masked asset inventory sample (about 480 rows) for the Pentland Vulnerability Use Case.",
+   "related_document": "POC-pentland-vulnerability-20261001__1_signal_capture__asset-inventory-sample-masked__v1",
+   "created_at": 1791024000000,
+   "slack_ts": "1791024000.000300",
+   "slack_ref": "https://slack.invalid/archives/C0SEED0001/p1791024000000300"
+  },
+  {
+   "activity_id": "SLK-C0SEED0001-1791264900.000400",
+   "poc": "POC-pentland-vulnerability-20261001",
+   "type": "input_added",
+   "actor_type": "person",
+   "actor_name": "Gourav Mahunta",
+   "message": "Announcement: scope of the Pentland Vulnerability Use Case is confirmed. Scanner exports in, ranked remediation queue out, and a manager sign-off before any ticket is raised.",
+   "created_at": 1791264900000,
+   "slack_ts": "1791264900.000400",
+   "slack_ref": "https://slack.invalid/archives/C0SEED0001/p1791264900000400"
+  },
+  {
+   "activity_id": "ACT-1791276900000-0001",
+   "poc": "POC-pentland-vulnerability-20261001",
+   "type": "gate_posted",
+   "stage": "2_research_assess",
+   "gate": "g1",
+   "actor_type": "ai",
+   "actor_name": "Nebula",
+   "message": "posted Understand for approval",
+   "created_at": 1791276900000
+  },
+  {
+   "activity_id": "ACT-1791288000000-0002",
+   "poc": "POC-pentland-vulnerability-20261001",
+   "type": "gate_decided",
+   "stage": "2_research_assess",
+   "gate": "g1",
+   "decision": "approve",
+   "actor_type": "person",
+   "actor_name": "Gourav Mahunta",
+   "actor_email": "gourav.mahunta@unifyapps.com",
+   "message": "Gourav Mahunta approved Understand, Plan starts",
+   "posted_to": "pentland-poc",
+   "created_at": 1791288000000
+  },
+  {
+   "activity_id": "SLK-C0SEED0001-1791346680.000500",
+   "poc": "POC-pentland-vulnerability-20261001",
+   "type": "input_added",
+   "actor_type": "person",
+   "actor_name": "Gourav Mahunta",
+   "message": "Status update on the Pentland Vulnerability Use Case: the Understand brief passed review. Plan is next, PRD draft this week.",
+   "created_at": 1791346680000,
+   "slack_ts": "1791346680.000500",
+   "slack_ref": "https://slack.invalid/archives/C0SEED0001/p1791346680000500"
+  },
+  {
+   "activity_id": "ACT-1791973500000-0003",
+   "poc": "POC-pentland-vulnerability-20261001",
+   "type": "gate_posted",
+   "stage": "4_design_system",
+   "gate": "g2",
+   "actor_type": "ai",
+   "actor_name": "Nebula",
+   "message": "posted Plan for approval",
+   "created_at": 1791973500000
+  },
+  {
+   "activity_id": "SLK-C0SEED0001-1791975600.000600",
+   "poc": "POC-pentland-vulnerability-20261001",
+   "type": "input_added",
+   "actor_type": "person",
+   "actor_name": "Gourav Mahunta",
+   "message": "Status update on the Pentland Vulnerability Use Case: PRD v3 and the mockup are ready for the Plan approval.",
+   "created_at": 1791975600000,
+   "slack_ts": "1791975600.000600",
+   "slack_ref": "https://slack.invalid/archives/C0SEED0001/p1791975600000600"
+  },
+  {
+   "activity_id": "ACT-1791975900000-0004",
+   "poc": "POC-pentland-vulnerability-20261001",
+   "type": "owner_approved",
+   "stage": "4_design_system",
+   "gate": "g2",
+   "decision": "approve",
+   "actor_type": "person",
+   "actor_name": "Gourav Mahunta",
+   "actor_email": "gourav.mahunta@unifyapps.com",
+   "message": "Gourav Mahunta approved Plan in Slack",
+   "posted_to": "pentland-poc",
+   "created_at": 1791975900000
+  },
+  {
+   "activity_id": "SLK-C0SEED0001-1791441900.000700",
+   "poc": "POC-pentland-product-enrichment-20261008",
+   "type": "input_added",
+   "actor_type": "person",
+   "actor_name": "Diya Rao",
+   "message": "Kicking off the Pentland Product Enrichment Use Case. Goal: fill missing product attributes from supplier sheets before they reach the catalogue.",
+   "created_at": 1791441900000,
+   "slack_ts": "1791441900.000700",
+   "slack_ref": "https://slack.invalid/archives/C0SEED0001/p1791441900000700"
+  },
+  {
+   "activity_id": "SLK-C0SEED0001-1791880500.000800",
+   "poc": "POC-pentland-product-enrichment-20261008",
+   "type": "document_saved",
+   "actor_type": "person",
+   "actor_name": "Marcus Hale",
+   "message": "New info for the Pentland Product Enrichment Use Case: attribute list v2 attached. Colour and material are mandatory, fit is optional.",
+   "related_document": "POC-pentland-product-enrichment-20261008__1_signal_capture__attribute-list__v2",
+   "created_at": 1791880500000,
+   "slack_ts": "1791880500.000800",
+   "slack_ref": "https://slack.invalid/archives/C0SEED0001/p1791880500000800"
+  },
+  {
+   "activity_id": "ACT-1791784200000-0005",
+   "poc": "POC-harborline-claims-triage-20260921",
+   "type": "gate_posted",
+   "stage": "2_research_assess",
+   "gate": "g1",
+   "actor_type": "ai",
+   "actor_name": "Nebula",
+   "message": "posted Understand for approval",
+   "created_at": 1791784200000
+  },
+  {
+   "activity_id": "ACT-1791801900000-0006",
+   "poc": "POC-kestrel-fraud-alerts-20260826",
+   "type": "gate_posted",
+   "stage": "6_finalize",
+   "gate": "g3",
+   "actor_type": "ai",
+   "actor_name": "Nebula",
+   "message": "posted Build for approval",
+   "created_at": 1791801900000
+  },
+  {
+   "activity_id": "ACT-1791863400000-0007",
+   "poc": "POC-kestrel-fraud-alerts-20260826",
+   "type": "manager_approved",
+   "stage": "6_finalize",
+   "gate": "g3",
+   "decision": "approve",
+   "actor_type": "person",
+   "actor_name": "Rahul Sen",
+   "actor_email": "rahul.sen@example.com",
+   "message": "Rahul Sen approved Build, waiting on Ishita Verma in Slack",
+   "posted_to": "kestrel-poc",
+   "created_at": 1791863400000
+  }
+ ]
+}

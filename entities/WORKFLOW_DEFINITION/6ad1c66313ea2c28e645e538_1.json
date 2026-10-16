@@ -1,0 +1,1087 @@
+{
+  "schemaVersion": 1,
+  "key": "WORKFLOW_DEFINITION:6ad1c66313ea2c28e645e538",
+  "entityType": "WORKFLOW_DEFINITION",
+  "id": "6ad1c66313ea2c28e645e538",
+  "version": 1,
+  "cachedAt": "2026-10-16T08:52:34.129Z",
+  "source": "solution-refresh",
+  "ref": {
+    "id": "6ad1c66313ea2c28e645e538",
+    "type": "WORKFLOW_DEFINITION",
+    "state": "COMPLETED"
+  },
+  "entity": {
+    "appsUsed": [
+      "slack"
+    ],
+    "createdTime": 1792132707871,
+    "deleted": false,
+    "deployedVersion": 2,
+    "deploymentState": {
+      "deployedAt": 1792133193236,
+      "deployedBy": 66770,
+      "deployedDefinitionId": "6ad1c8496123771ba2befce2",
+      "deploymentNotes": "POC Studio Live · Start build [nebula task t_639203afcf0f]",
+      "status": "DEPLOYED",
+      "version": 2,
+      "workflowVersion": 1
+    },
+    "description": "Called by the app's Build button and by Approve gate to start a build run for one POC. Checks the inputs, refuses a second plan run while the row already has a build run, fires the Claude routine, then stores the session link on the row, writes a stage_started activity row and posts the session link in the row's Slack channel.",
+    "edges": [
+      {
+        "fromNodeId": "n_a73ny",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_mg2qz",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_mg2qz",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_rsmkx",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_rsmkx",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_xlg7y",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_rsmkx",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_hijnm",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_xlg7y",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_hijnm",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_hijnm",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_p78nr",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_p78nr",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_77wkl",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_p78nr",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_yyjoe",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_77wkl",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_yyjoe",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_yyjoe",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_7br54",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_7br54",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_932ni",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_7br54",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_b6tx4",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_932ni",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_b6tx4",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_b6tx4",
+        "name": "success",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_bvd0p",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_b6tx4",
+        "name": "error",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_5gde7",
+        "type": "error"
+      },
+      {
+        "fromNodeId": "n_bvd0p",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_gqb4b",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_bvd0p",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_bipc7",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_gqb4b",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_696ia",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_696ia",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_y6eot",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_y6eot",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_3ojn7",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_3ojn7",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_h6cri",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_3ojn7",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_b2kxz",
+        "type": "next"
+      }
+    ],
+    "id": "6ad1c66313ea2c28e645e538",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792133193237,
+    "lcName": "poc studio live · start build",
+    "modifiedTime": 1792133193237,
+    "name": "POC Studio Live · Start build",
+    "nodes": [
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_from_automation"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "25vy0-1",
+        "id": "n_a73ny",
+        "index": 1,
+        "inputs": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "title": "Status"
+              },
+              "build_run_id": {
+                "type": "string",
+                "title": "Build run id"
+              },
+              "message": {
+                "type": "string",
+                "title": "Message"
+              }
+            },
+            "required": [
+              "status",
+              "build_run_id",
+              "message"
+            ]
+          },
+          "setup": {
+            "type": "object",
+            "properties": {
+              "poc_id": {
+                "type": "string",
+                "title": "POC id"
+              },
+              "mode": {
+                "type": "string",
+                "title": "Mode"
+              },
+              "approved_prd_link": {
+                "type": "string",
+                "title": "Approved PRD link"
+              }
+            },
+            "required": [
+              "poc_id"
+            ]
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Callable",
+        "title": "Trigger from automation",
+        "trigger": {
+          "type": "CALLABLE"
+        },
+        "type": "START"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "25vy0-1",
+        "id": "n_mg2qz",
+        "index": 2,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "valid": {
+                "type": "boolean",
+                "title": "Valid"
+              },
+              "error": {
+                "type": "string",
+                "title": "Error"
+              },
+              "pocId": {
+                "type": "string",
+                "title": "POC id"
+              },
+              "mode": {
+                "type": "string",
+                "title": "Mode"
+              },
+              "prdLink": {
+                "type": "string",
+                "title": "Approved PRD link"
+              }
+            }
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "pocId": {
+                "type": "string",
+                "title": "POC id"
+              },
+              "mode": {
+                "type": "string",
+                "title": "Mode"
+              },
+              "prdLink": {
+                "type": "string",
+                "title": "Approved PRD link"
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef text = { String name -> (value(name)?.toString() ?: '').trim() }\ndef flat = { String s -> s.replaceAll(/[\\r\\n\\t]+/, ' ').trim() }\ndef pocId = text('pocId')\ndef mode = text('mode').toLowerCase() ?: 'plan'\ndef problem = ''\nif (!pocId) problem = 'poc_id is required.'\nelse if (pocId.length() > 200 || pocId != flat(pocId)) problem = 'poc_id is not valid.'\nelse if (!(mode in ['plan', 'build'])) problem = 'mode must be plan or build.'\ndef prd = mode == 'build' ? flat(text('prdLink')) : ''\nresult = [valid: problem == '', error: problem, pocId: pocId, mode: mode, prdLink: prd]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "pocId": "{{ n_a73ny.outputs.poc_id }}",
+            "mode": "{{ n_a73ny.outputs.mode }}",
+            "prdLink": "{{ n_a73ny.outputs.approved_prd_link }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Check the inputs",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "25vy0-1",
+        "id": "n_rsmkx",
+        "index": 3,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_mg2qz.outputs.result.valid }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": false
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Inputs invalid?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_rsmkx@25vy0-1@y",
+        "id": "n_xlg7y",
+        "index": 4,
+        "inputs": {
+          "result": {
+            "status": "error",
+            "build_run_id": "=\"\"",
+            "message": "{{ n_mg2qz.outputs.result.error }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Refuse the request",
+        "title": "Respond to automation",
+        "type": "STOP"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_fetch_records",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "25vy0-1",
+        "id": "n_hijnm",
+        "index": 5,
+        "inputs": {
+          "triggerInputCondition": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "properties_poc_id",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_mg2qz.outputs.result.pocId }}"
+                }
+              }
+            ]
+          },
+          "shouldSearchInAnalyticsStore": false,
+          "object_type": "psl_poc",
+          "includeRoleMappings": false,
+          "includeCurrentUserPermissions": false,
+          "translationsOption": "DEFAULT",
+          "numberOfRecordsToFetch": "SINGLE",
+          "readThroughSessionVariables": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Read the POC row",
+        "title": "Fetch records",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "25vy0-1",
+        "id": "n_p78nr",
+        "index": 6,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_hijnm.outputs.id }}",
+              "filter": {
+                "operator": "MISSING"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "No such POC?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_p78nr@25vy0-1@y",
+        "id": "n_77wkl",
+        "index": 7,
+        "inputs": {
+          "result": {
+            "status": "not_found",
+            "build_run_id": "=\"\"",
+            "message": "No POC with id {{ n_mg2qz.outputs.result.pocId }} was found."
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Answer not found",
+        "title": "Respond to automation",
+        "type": "STOP"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "25vy0-1",
+        "id": "n_yyjoe",
+        "index": 8,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "alreadyRunning": {
+                "type": "boolean",
+                "title": "Already running"
+              },
+              "client": {
+                "type": "string",
+                "title": "Client"
+              },
+              "useCase": {
+                "type": "string",
+                "title": "Use case"
+              },
+              "channelId": {
+                "type": "string",
+                "title": "Slack channel id"
+              },
+              "prdLine": {
+                "type": "string",
+                "title": "PRD line"
+              },
+              "stage": {
+                "type": "string",
+                "title": "Stage"
+              }
+            }
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "mode": {
+                "type": "string",
+                "title": "Mode"
+              },
+              "clientName": {
+                "type": "string",
+                "title": "Client name"
+              },
+              "useCase": {
+                "type": "string",
+                "title": "Use case"
+              },
+              "channelId": {
+                "type": "string",
+                "title": "Slack channel id"
+              },
+              "buildRunId": {
+                "type": "string",
+                "title": "Build run id"
+              },
+              "prdLink": {
+                "type": "string",
+                "title": "Approved PRD link"
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef flat = { String name -> (value(name)?.toString() ?: '').replaceAll(/[\\r\\n\\t]+/, ' ').trim() }\ndef nl = String.valueOf((char) 10)\ndef mode = flat('mode')\ndef link = flat('prdLink')\nresult = [\n  alreadyRunning: (mode == 'plan' && flat('buildRunId') != ''),\n  client: flat('clientName'),\n  useCase: flat('useCase'),\n  channelId: flat('channelId'),\n  prdLine: (mode == 'build' ? nl + 'approved_prd_link: ' + link : ''),\n  stage: (mode == 'build' ? '5_build' : '1_signal_capture')\n]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "mode": "{{ n_mg2qz.outputs.result.mode }}",
+            "clientName": "{{ n_hijnm.outputs.properties.client_name }}",
+            "useCase": "{{ n_hijnm.outputs.properties.use_case }}",
+            "channelId": "{{ n_hijnm.outputs.properties.slack_channel_id }}",
+            "buildRunId": "{{ n_hijnm.outputs.properties.build_run_id }}",
+            "prdLink": "{{ n_mg2qz.outputs.result.prdLink }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Prepare the request values",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "25vy0-1",
+        "id": "n_7br54",
+        "index": 9,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_yyjoe.outputs.result.alreadyRunning }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": true
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Plan run already started for this row?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_7br54@25vy0-1@y",
+        "id": "n_932ni",
+        "index": 10,
+        "inputs": {
+          "result": {
+            "status": "already_running",
+            "build_run_id": "{{ n_hijnm.outputs.properties.build_run_id }}",
+            "message": "A build is already running for {{ n_yyjoe.outputs.result.useCase }}."
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Answer already running",
+        "title": "Respond to automation",
+        "type": "STOP"
+      },
+      {
+        "context": {
+          "appName": "custom_http_endpoint",
+          "resourceName": "custom_http_endpoint_execute",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "MANUAL",
+        "groupId": "25vy0-1",
+        "id": "n_b6tx4",
+        "index": 11,
+        "inputs": {
+          "isAsync": false,
+          "enableProxy": false,
+          "requestTimeoutInSecs": -1,
+          "httpMethod": "POST",
+          "body": {
+            "text": "command: /build\nclient: {{ n_yyjoe.outputs.result.client }}\nuse_case: {{ n_yyjoe.outputs.result.useCase }}\nrow_id: {{ n_mg2qz.outputs.result.pocId }}\nmode: {{ n_mg2qz.outputs.result.mode }}\nslack_channel_id: {{ n_yyjoe.outputs.result.channelId }}{{ n_yyjoe.outputs.result.prdLine }}\nreport_url: {{ __ENV__.outputs.POC_STUDIO_REPORT_URL }}\nreport_header: {{ __ENV__.outputs.POC_STUDIO_REPORT_HEADER }}"
+          },
+          "connectionType": "DIRECT",
+          "sslVerify": false,
+          "path": "/v1/claude_code/routines/:routine_id/fire",
+          "responseSchema": {
+            "type": "object",
+            "properties": {
+              "type": {
+                "type": "string"
+              },
+              "claude_code_session_id": {
+                "type": "string"
+              },
+              "claude_code_session_url": {
+                "type": "string"
+              }
+            }
+          },
+          "baseUrl": "https://api.anthropic.com",
+          "httpVersion": "HTTP_2",
+          "bodySchema": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "title": "Text"
+              }
+            }
+          },
+          "responseContentType": "application/json",
+          "followRedirects": "NORMAL",
+          "headersList": [
+            {
+              "key": "Authorization",
+              "value": "Bearer {{ __ENV__.outputs.CLAUDE_ROUTINE_TOKEN }}"
+            },
+            {
+              "key": "anthropic-beta",
+              "value": "experimental-cc-routine-2026-04-01"
+            },
+            {
+              "key": "anthropic-version",
+              "value": "2023-06-01"
+            },
+            {
+              "key": "Content-Type",
+              "value": "application/json"
+            }
+          ],
+          "pathParamsList": [
+            {
+              "key": "routine_id",
+              "value": "{{ __ENV__.outputs.CLAUDE_ROUTINE_ID }}"
+            }
+          ],
+          "authType": "CUSTOM",
+          "requestContentType": "application/json",
+          "ignoreTrailingSlashes": false,
+          "certificateType": "CERT_STRING"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "MANUAL"
+        },
+        "skip": false,
+        "subTitle": "Fire the Claude routine",
+        "title": "Execute REST request",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_b6tx4@25vy0-1@success",
+        "id": "n_bvd0p",
+        "index": 12,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_b6tx4.outputs.status }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": 200
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Routine accepted the request?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_update_record_fields_by_id",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_bvd0p@n_b6tx4@25vy0-1@success@y",
+        "id": "n_gqb4b",
+        "index": 13,
+        "inputs": {
+          "recordId": "{{ n_hijnm.outputs.id }}",
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_poc",
+          "skipIfBlank": false,
+          "skipPermissionCheck": false,
+          "updateFields": [
+            {
+              "fieldName": "properties.build_run_id",
+              "actionType": "SET",
+              "setValue": "{{ n_b6tx4.outputs.result.claude_code_session_url }}"
+            },
+            {
+              "fieldName": "properties.stage",
+              "actionType": "SET",
+              "setValue": "{{ n_yyjoe.outputs.result.stage }}"
+            },
+            {
+              "fieldName": "properties.status",
+              "actionType": "SET",
+              "setValue": "running"
+            }
+          ],
+          "skipSchemaValidation": true,
+          "unsetIfNull": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Store the session link, stage and status on the row",
+        "title": "Update an existing record's fields",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_create_record",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_bvd0p@n_b6tx4@25vy0-1@success@y",
+        "id": "n_696ia",
+        "index": 14,
+        "inputs": {
+          "useRawPayload": false,
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_activity",
+          "skipIfBlank": false,
+          "inlineRefresh": false,
+          "record": {
+            "activity_id": "ACT-{{ __RUN__.outputs.currentTime }}-{{ __RUN__.outputs.executionId }}",
+            "poc": "{{ n_hijnm.outputs.id }}",
+            "type": "stage_started",
+            "stage": "{{ n_yyjoe.outputs.result.stage }}",
+            "gate": "none",
+            "actor_type": "system",
+            "actor_name": "POC Studio Live",
+            "message": "Build started · {{ n_mg2qz.outputs.result.mode }}",
+            "posted_to": "{{ n_hijnm.outputs.properties.slack_channel }}",
+            "created_at": "{{ __RUN__.outputs.currentTime }}"
+          },
+          "useUuid": false,
+          "batching": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Write the stage_started activity row",
+        "title": "Create record",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_post_message_in_channel",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_bvd0p@n_b6tx4@25vy0-1@success@y",
+        "id": "n_y6eot",
+        "index": 15,
+        "inputs": {
+          "link_names": true,
+          "messageType": "text",
+          "channel": "{{ n_yyjoe.outputs.result.channelId }}",
+          "text": "Build started for {{ n_yyjoe.outputs.result.useCase }}. Claude session: {{ n_b6tx4.outputs.result.claude_code_session_url }}",
+          "token_type": "bot_token",
+          "mrkdwn": true
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Post the session link in the row's channel",
+        "title": "Post message",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_bvd0p@n_b6tx4@25vy0-1@success@y",
+        "id": "n_3ojn7",
+        "index": 16,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_y6eot.outputs.ok }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": true
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Slack post went through?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_3ojn7@n_bvd0p@n_b6tx4@25vy0-1@success@y@y",
+        "id": "n_h6cri",
+        "index": 17,
+        "inputs": {
+          "result": {
+            "status": "started",
+            "build_run_id": "{{ n_b6tx4.outputs.result.claude_code_session_url }}",
+            "message": "Build started ({{ n_mg2qz.outputs.result.mode }}). Claude session: {{ n_b6tx4.outputs.result.claude_code_session_url }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Answer started",
+        "title": "Respond to automation",
+        "type": "STOP"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_3ojn7@n_bvd0p@n_b6tx4@25vy0-1@success@y@n",
+        "id": "n_b2kxz",
+        "index": 18,
+        "inputs": {
+          "result": {
+            "status": "started",
+            "build_run_id": "{{ n_b6tx4.outputs.result.claude_code_session_url }}",
+            "message": "Build started ({{ n_mg2qz.outputs.result.mode }}), but the Slack post did not go through. Claude session: {{ n_b6tx4.outputs.result.claude_code_session_url }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Answer started, Slack post failed",
+        "title": "Respond to automation",
+        "type": "STOP"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_bvd0p@n_b6tx4@25vy0-1@success@n",
+        "id": "n_bipc7",
+        "index": 19,
+        "inputs": {
+          "result": {
+            "status": "error",
+            "build_run_id": "=\"\"",
+            "message": "The Claude routine did not accept the build request (HTTP {{ n_b6tx4.outputs.status }}). Nothing was changed."
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Answer error, routine refused",
+        "title": "Respond to automation",
+        "type": "STOP"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_b6tx4@25vy0-1@error",
+        "id": "n_5gde7",
+        "index": 20,
+        "inputs": {
+          "result": {
+            "status": "error",
+            "build_run_id": "=\"\"",
+            "message": "The Claude routine call failed (HTTP {{ n_b6tx4.outputs.status }}). Nothing was changed."
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Answer error, routine call failed",
+        "title": "Respond to automation",
+        "type": "STOP"
+      }
+    ],
+    "ownerUserId": 66770,
+    "settings": {
+      "enableNodeLevelLogging": true,
+      "enableRunLogging": true,
+      "enableVariableLogging": true,
+      "route": {
+        "default": false,
+        "tierName": "global"
+      }
+    },
+    "standard": false,
+    "tags": [
+      "AI Generated",
+      "Nebula"
+    ],
+    "version": 1,
+    "entityType": "WORKFLOW_DEFINITION"
+  }
+}

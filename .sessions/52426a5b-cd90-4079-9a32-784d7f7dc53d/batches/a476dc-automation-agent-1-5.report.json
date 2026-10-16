@@ -1,0 +1,24 @@
+{
+  "tasks": [
+    {
+      "id": "t25",
+      "status": "ok",
+      "change": "updated",
+      "ids": { "entity": "6ad1c75967956c53e38f1a70" },
+      "readBack": [
+        "POC Studio Live · Approve gate 6ad1c75967956c53e38f1a70: before the deploy search_workflows showed version 1 (saved definitionVersion to deploy: 1), nodeCount 32, deployment {DEPLOYED, deployedVersion 1, definitionVersion 0, deployedAt 1792132961629}, so the live copy was still the contract shell; open_workflow read just before the deploy returned version 1, 32 nodes, 29683 characters, the same size as the version the eight draft test runs used, so the saved version was the tested one.",
+        "POC Studio Live · Approve gate 6ad1c75967956c53e38f1a70: deploy_workflow with deploymentNotes 'POC Studio Live · Approve gate' answered ok:true, workflowVersion 1, deployedVersion 2, paused false, storedVersion 1, message 'Deployed version 1 of automation 6ad1c75967956c53e38f1a70.'",
+        "POC Studio Live · Approve gate 6ad1c75967956c53e38f1a70: search_workflows after the deploy shows version 1, nodeCount 32, deployment.status DEPLOYED, definitionVersion 1 (equal to the saved version 1 read in step 1), deployedVersion 2, deployedAt 1792134223516."
+      ],
+      "unverified": [
+        "The deployed copy has not been called: no test run of this task named the effects of a decided approval (psl_poc, psl_document and psl_activity writes, a Slack direct message, a Start build call). Check: one approve on a throwaway POC row through the app's Approve button, then get_records on psl_poc, psl_document and psl_activity, and the warnings the call returns.",
+        "POC_STUDIO_APP_URL is still not saved (get_env_variables answered missing in t24), so the direct message and the Start build approved_prd_link carry no link until it is. Check: get_env_variables names [POC_STUDIO_APP_URL] answers found."
+      ],
+      "notes": [
+        "Release approval: the plan's approval (the accepted spec names this deploy under Ready when), not the person's answer to this call; the router's message gave it as 'yes, deploy POC Studio Live · Approve gate. The spec the person accepted names it under Ready when, so it is already approved'.",
+        "handover: Approve gate workflowId 6ad1c75967956c53e38f1a70 now runs the real build (deployedVersion 2 = saved definitionVersion 1, replacing the contract shell). Input keys poc_id, role ('manager' or 'owner'), caller_email, caller_name, caller_slack_id (all strings, none required); result keys status ('decided', 'already_decided', 'forbidden', 'error'), gate_passed (boolean), warnings (list of strings, [] when none), message. The app's Approve button (role manager) and the Slack listener (role owner) can call it now; for a row created from Slack manager_email may be empty, so pass both caller_email and caller_name."
+      ],
+      "error": ""
+    }
+  ]
+}

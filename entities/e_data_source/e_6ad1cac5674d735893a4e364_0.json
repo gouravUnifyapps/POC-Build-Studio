@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "key": "e_data_source:e_6ad1cac5674d735893a4e364",
+  "entityType": "e_data_source",
+  "id": "e_6ad1cac5674d735893a4e364",
+  "version": 0,
+  "cachedAt": "2026-10-16T06:59:00.770Z",
+  "source": "solution-refresh",
+  "entity": {
+    "createdTime": 1792133829867,
+    "deleted": false,
+    "entityType": "e_data_source",
+    "id": "e_6ad1cac5674d735893a4e364",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792133829867,
+    "modifiedTime": 1792133829867,
+    "ownerUserId": 66770,
+    "properties": {
+      "metadata": {
+        "isManuallyRenamed": false
+      },
+      "dpOn": [],
+      "inputs": {
+        "automationId": "6ad1c75967956c53e38f1a70",
+        "runtimeConnections": {},
+        "version": "-1",
+        "parameters": {
+          "poc_id": "{{poc_id}}",
+          "role": "{{role}}",
+          "caller_email": "{{caller_email}}",
+          "caller_name": "{{caller_name}}",
+          "caller_slack_id": "{{caller_slack_id}}"
+        },
+        "synchronous": true
+      },
+      "advancedOptions": {
+        "refetchOnWindowFocus": true,
+        "timing": {
+          "runQueryOnPageLoad": false,
+          "runQueryPeriodically": false
+        },
+        "runBehaviour": "automatic"
+      },
+      "name": "Approve gate",
+      "context": {
+        "appName": "callables",
+        "resourceName": "callables_call_automation",
+        "resourceVersion": 3156
+      },
+      "type": "APPLICATION",
+      "dP": [
+        {
+          "p": "inputs.parameters.poc_id"
+        },
+        {
+          "p": "inputs.parameters.role"
+        },
+        {
+          "p": "inputs.parameters.caller_email"
+        },
+        {
+          "p": "inputs.parameters.caller_name"
+        },
+        {
+          "p": "inputs.parameters.caller_slack_id"
+        }
+      ],
+      "interfacePageId": "e_global_app-79ea7266eab9"
+    },
+    "standard": false,
+    "version": 0
+  }
+}

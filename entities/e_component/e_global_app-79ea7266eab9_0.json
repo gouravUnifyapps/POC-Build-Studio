@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "key": "e_component:e_global_app-79ea7266eab9",
+  "entityType": "e_component",
+  "id": "e_global_app-79ea7266eab9",
+  "version": 0,
+  "cachedAt": "2026-10-16T06:54:09.845Z",
+  "source": "solution-refresh",
+  "entity": {
+    "createdTime": 1792133136652,
+    "deleted": false,
+    "entityType": "e_component",
+    "id": "e_global_app-79ea7266eab9",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792133136652,
+    "modifiedTime": 1792133136652,
+    "ownerUserId": 66770,
+    "properties": {
+      "layout": {
+        "body": "root_id",
+        "header": "header_id",
+        "footer": "footer_id"
+      },
+      "interfaceType": "application",
+      "componentType": "PAGE",
+      "metadata": {
+        "_version": 2
+      },
+      "blocks": {
+        "header_id": {
+          "additional": {
+            "isRootBlock": true
+          },
+          "id": "header_id",
+          "displayName": "header",
+          "dataSourceIds": [],
+          "dpOn": [],
+          "component": {
+            "appearance": {
+              "direction": "row",
+              "alignItems": "stretch",
+              "justifyContent": "flex-start",
+              "reverseOrder": false,
+              "styles": {
+                "width": "w-full",
+                "flexWrap": "flex-nowrap",
+                "gap": {
+                  "all": "gap-xl"
+                },
+                "padding": {
+                  "all": "p-xl"
+                }
+              },
+              "theme": "inherit"
+            },
+            "componentType": "Stack",
+            "content": {
+              "blockIds": [
+                "__PLACEHOLDER__"
+              ]
+            }
+          },
+          "visibility": {
+            "value": false
+          }
+        },
+        "root_id": {
+          "dataSourceIds": [],
+          "dpOn": [],
+          "additional": {
+            "isRootBlock": true
+          },
+          "id": "root_id",
+          "displayName": "body",
+          "component": {
+            "appearance": {
+              "direction": "column",
+              "alignItems": "stretch",
+              "justifyContent": "flex-start",
+              "wrapContent": false,
+              "reverseOrder": false,
+              "styles": {
+                "height": "h-full",
+                "width": "w-full",
+                "flexWrap": "flex-nowrap",
+                "gap": {
+                  "all": "gap-md"
+                },
+                "backgroundColor": "bg-workspace",
+                "padding": {
+                  "all": "p-xl"
+                }
+              },
+              "theme": "inherit"
+            },
+            "componentType": "Stack",
+            "content": {
+              "blockIds": [
+                "__PLACEHOLDER__"
+              ]
+            }
+          },
+          "visibility": {
+            "value": true
+          }
+        },
+        "footer_id": {
+          "dataSourceIds": [],
+          "dpOn": [],
+          "additional": {
+            "isRootBlock": true
+          },
+          "id": "footer_id",
+          "displayName": "footer",
+          "component": {
+            "appearance": {
+              "direction": "row",
+              "alignItems": "stretch",
+              "justifyContent": "flex-start",
+              "reverseOrder": false,
+              "styles": {
+                "width": "w-full",
+                "flexWrap": "flex-nowrap",
+                "gap": {
+                  "all": "gap-md"
+                },
+                "padding": {
+                  "all": "p-xl"
+                }
+              },
+              "theme": "inherit"
+            },
+            "componentType": "Stack",
+            "content": {
+              "blockIds": [
+                "__PLACEHOLDER__"
+              ]
+            }
+          },
+          "visibility": {
+            "value": false
+          }
+        }
+      },
+      "flags": {
+        "shouldUseBuiltDependencies": true
+      },
+      "name": "global-page-of-app-79ea7266eab9",
+      "interfaceId": "app-79ea7266eab9",
+      "dataSources": {},
+      "slug": "global-page-of-app-79ea7266eab9",
+      "pageVariables": {}
+    },
+    "standard": false,
+    "version": 0
+  }
+}

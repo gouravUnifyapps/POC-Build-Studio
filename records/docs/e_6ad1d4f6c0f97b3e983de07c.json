@@ -1,0 +1,17 @@
+{
+  "createdTime": 1792136438166,
+  "deleted": false,
+  "entityType": "solution_document",
+  "id": "e_6ad1d4f6c0f97b3e983de07c",
+  "lastModifiedBy": 66770,
+  "lastPlatformUpdateBy": 66770,
+  "lastPlatformUpdateOn": 1792136438166,
+  "modifiedTime": 1792136438166,
+  "ownerUserId": 66770,
+  "properties": {
+    "document": "---\nnebula: 3\nslug: \"poc-studio-live-suggest-skill-improvements\"\nname: \"POC Studio Live · Suggest skill improvements\"\nsummary: \"Weekly scheduled automation that drafts a prompt change for each skill with enough open feedback and saves it as a pending suggestion.\"\nentities: [{\"kind\":\"automation\",\"name\":\"POC Studio Live · Suggest skill improvements\"}]\nplanIds: [\"e_6ad1ccf1674d735893a55297\"]\nupdatedAt: \"2026-10-16T07:40:35.152Z\"\n---\n## What it does\nRuns on a weekly schedule (Monday 09:00 IST), one run at a time. For each skill in `psl_skill` with enough qualifying feedback tickets in `psl_feedback` and no pending suggestion, it asks an LLM (Simple Call LLM) for a summary and a proposed prompt, and writes a `psl_skill_suggestion` row: `suggestion_id` `SUG-<skill_id>-<epoch ms>`, status `pending`, `evidence_tickets` comma-separated in ticket order, `from_version` = current version, `to_version` one higher.\n\n## Known issue (2026-10-16)\nIts first run (6ad1cebbd885ae5a4da0dd8b) wrote nothing: the model's JSON answer held unescaped double quotes inside `proposed_prompt`, so the parse failed. Until the parse is made tolerant, no pending suggestion exists on UAT.",
+    "solutionId": "e_6ad1b45199f8a565171d7f1c"
+  },
+  "standard": false,
+  "version": 0
+}

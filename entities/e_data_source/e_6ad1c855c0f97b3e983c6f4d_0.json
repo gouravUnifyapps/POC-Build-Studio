@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "key": "e_data_source:e_6ad1c855c0f97b3e983c6f4d",
+  "entityType": "e_data_source",
+  "id": "e_6ad1c855c0f97b3e983c6f4d",
+  "version": 0,
+  "cachedAt": "2026-10-16T06:54:09.856Z",
+  "source": "solution-refresh",
+  "entity": {
+    "createdTime": 1792133205985,
+    "deleted": false,
+    "entityType": "e_data_source",
+    "id": "e_6ad1c855c0f97b3e983c6f4d",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792133205985,
+    "modifiedTime": 1792133205985,
+    "ownerUserId": 66770,
+    "properties": {
+      "metadata": {
+        "isManuallyRenamed": false
+      },
+      "dpOn": [],
+      "inputs": {
+        "writeThroughSessionVariables": false,
+        "object_type": "{{object_type}}",
+        "entityId": "{{entityId}}"
+      },
+      "advancedOptions": {
+        "refetchOnWindowFocus": true,
+        "timing": {
+          "runQueryOnPageLoad": false,
+          "runQueryPeriodically": false
+        },
+        "runBehaviour": "automatic"
+      },
+      "name": "data_delete_app-79ea7266eab9",
+      "context": {
+        "appName": "storage_by_unifyapps",
+        "resourceName": "storage_by_unifyapps_delete_record_by_id"
+      },
+      "interfaceId": "app-79ea7266eab9",
+      "type": "APPLICATION",
+      "dP": [
+        {
+          "p": "inputs.object_type"
+        },
+        {
+          "p": "inputs.entityId"
+        }
+      ],
+      "interfacePageId": "e_global_app-79ea7266eab9"
+    },
+    "standard": false,
+    "version": 0
+  }
+}

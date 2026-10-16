@@ -1,0 +1,248 @@
+{
+ "rootTokens": {
+  "--accent": "rgba(41,70,27,.045)",
+  "--inner": "rgba(41,70,27,.045)",
+  "--accent-text": "#6a5a32",
+  "--accent-soft": "#b39f6e",
+  "--brand": "#4a7c30"
+ },
+ "cards": [
+  {
+   "sel": "#t-tile",
+   "className": "tile",
+   "borderTopWidth": "0px",
+   "borderLeftWidth": "0px",
+   "radius": "10px",
+   "backdrop": "blur(22px) saturate(1.6)",
+   "shadow": "rgba(17, 26, 12, 0.05) 0px 1px 2px 0px, rgba(17, 26, 12, 0.28) 0px 12px 32px -18px, rgba(255, 255, 255, 0.92) 0px 1px 0px 0px inset",
+   "bgColor": "rgba(255, 255, 255, 0.72)"
+  },
+  {
+   "sel": "#t-solid",
+   "className": "solid pad",
+   "borderTopWidth": "0px",
+   "borderLeftWidth": "0px",
+   "radius": "10px",
+   "backdrop": "none",
+   "shadow": "rgba(17, 26, 12, 0.05) 0px 1px 2px 0px, rgba(17, 26, 12, 0.28) 0px 12px 32px -18px, rgba(255, 255, 255, 0.92) 0px 1px 0px 0px inset",
+   "bgColor": "rgba(255, 255, 255, 0.965)"
+  },
+  {
+   "sel": "#t-g1",
+   "className": "g1 pad",
+   "borderTopWidth": "0px",
+   "borderLeftWidth": "0px",
+   "radius": "10px",
+   "backdrop": "blur(22px) saturate(1.6)",
+   "shadow": "rgba(17, 26, 12, 0.05) 0px 1px 2px 0px, rgba(17, 26, 12, 0.28) 0px 12px 32px -18px, rgba(255, 255, 255, 0.92) 0px 1px 0px 0px inset",
+   "bgColor": "rgba(255, 255, 255, 0.72)"
+  },
+  {
+   "sel": "#t-tblwrap",
+   "className": "tblwrap",
+   "borderTopWidth": "0px",
+   "borderLeftWidth": "0px",
+   "radius": "10px",
+   "backdrop": "none",
+   "shadow": "rgba(17, 26, 12, 0.05) 0px 1px 2px 0px, rgba(17, 26, 12, 0.28) 0px 12px 32px -18px, rgba(255, 255, 255, 0.92) 0px 1px 0px 0px inset",
+   "bgColor": "rgba(255, 255, 255, 0.965)"
+  },
+  {
+   "sel": "#t-banner",
+   "className": "ps-banner need ob-approval ob-approval--gate has-action",
+   "borderTopWidth": "0px",
+   "borderLeftWidth": "0px",
+   "radius": "10px",
+   "backdrop": "none",
+   "shadow": "rgba(17, 26, 12, 0.05) 0px 1px 2px 0px, rgba(17, 26, 12, 0.28) 0px 12px 32px -18px, rgba(255, 255, 255, 0.92) 0px 1px 0px 0px inset",
+   "bgColor": "rgba(255, 255, 255, 0.965)"
+  },
+  {
+   "sel": "#t-doclist",
+   "className": "ob-doclist",
+   "borderTopWidth": "0px",
+   "borderLeftWidth": "0px",
+   "radius": "10px",
+   "backdrop": "none",
+   "shadow": "rgba(255, 255, 255, 0.92) 0px 1px 0px 0px inset, rgba(15, 20, 12, 0.07) 0px 0px 0px 1px",
+   "bgColor": "rgba(255, 255, 255, 0.965)"
+  },
+  {
+   "sel": "#t-skill",
+   "className": "ps-skill",
+   "borderTopWidth": "0px",
+   "borderLeftWidth": "0px",
+   "radius": "10px",
+   "backdrop": "none",
+   "shadow": "rgba(17, 26, 12, 0.05) 0px 1px 2px 0px, rgba(17, 26, 12, 0.28) 0px 12px 32px -18px, rgba(255, 255, 255, 0.92) 0px 1px 0px 0px inset",
+   "bgColor": "rgba(255, 255, 255, 0.965)"
+  },
+  {
+   "sel": "#t-fb",
+   "className": "ps-fb ob-fb",
+   "borderTopWidth": "0px",
+   "borderLeftWidth": "0px",
+   "radius": "10px",
+   "backdrop": "none",
+   "shadow": "rgba(255, 255, 255, 0.92) 0px 1px 0px 0px inset, rgba(6, 14, 4, 0.05) 0px 1px 2px 0px",
+   "bgColor": "rgba(255, 255, 255, 0.965)"
+  },
+  {
+   "sel": "#t-drawer",
+   "className": "ps-drawer ob-drawer",
+   "borderTopWidth": "0px",
+   "borderLeftWidth": "0px",
+   "radius": "10px",
+   "backdrop": "none",
+   "shadow": "rgba(17, 26, 12, 0.07) 0px 2px 6px 0px, rgba(17, 26, 12, 0.4) 0px 28px 60px -26px, rgba(255, 255, 255, 0.92) 0px 1px 0px 0px inset",
+   "bgColor": "rgb(248, 244, 238)"
+  },
+  {
+   "sel": "#t-tabpanel",
+   "className": "tabpanel",
+   "borderTopWidth": "0px",
+   "borderLeftWidth": "0px",
+   "radius": "0px",
+   "backdrop": "blur(26px) saturate(1.7)",
+   "shadow": "rgba(17, 26, 12, 0.05) 0px 1px 2px 0px, rgba(17, 26, 12, 0.28) 0px 12px 32px -18px, rgba(255, 255, 255, 0.92) 0px 1px 0px 0px inset",
+   "bgColor": "rgba(255, 255, 255, 0.82)"
+  },
+  {
+   "sel": "#t-loopsbox",
+   "className": "ob-loops-box",
+   "borderTopWidth": "1px",
+   "borderLeftWidth": "1px",
+   "radius": "10px",
+   "backdrop": "none",
+   "shadow": "none",
+   "bgColor": "color(srgb 0.701961 0.623529 0.431373 / 0.12)"
+  },
+  {
+   "sel": "#t-rail",
+   "className": "ps-rail",
+   "borderTopWidth": "0px",
+   "borderLeftWidth": "0px",
+   "radius": "0px",
+   "backdrop": "none",
+   "shadow": "none",
+   "bgColor": "rgb(7, 26, 5)"
+  }
+ ],
+ "type": {
+  "thFamily": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, monospace",
+  "thSize": "10.5px",
+  "thWeight": "600",
+  "bodyFamily": "Spectral, Georgia, \"Times New Roman\", serif",
+  "bodySize": "15px",
+  "bodyTabular": "tabular-nums",
+  "tagSize": "11.5px",
+  "btnSize": "14px",
+  "btnSmSize": "13px",
+  "plexLoaded": true,
+  "spectralLoaded": true,
+  "spectral600": true
+ },
+ "digitWidthsSpectral": [
+  7.5,
+  7.5,
+  7.5,
+  7.5,
+  7.5,
+  7.5,
+  7.5,
+  7.5,
+  7.5,
+  7.5
+ ],
+ "digitWidthsGeorgia": [
+  9.207,
+  6.445,
+  8.943
+ ],
+ "tagBrand": {
+  "color": "rgb(74, 124, 48)",
+  "bg": "rgba(74, 124, 48, 0.1)",
+  "radius": "999px"
+ },
+ "avatars": [
+  {
+   "cls": "av ob-tone-0",
+   "bgImage": "linear-gradient(150deg, rgb(78, 88, 45), rgb(15, 40, 5))",
+   "color": "rgb(255, 255, 255)",
+   "radius": "50%"
+  },
+  {
+   "cls": "av ob-tone-1",
+   "bgImage": "linear-gradient(150deg, rgba(41, 70, 27, 0.043), rgb(106, 90, 50))",
+   "color": "rgb(255, 255, 255)",
+   "radius": "50%"
+  },
+  {
+   "cls": "av ob-tone-2",
+   "bgImage": "linear-gradient(150deg, rgb(53, 137, 120), rgb(39, 110, 95))",
+   "color": "rgb(255, 255, 255)",
+   "radius": "50%"
+  },
+  {
+   "cls": "av ob-tone-3",
+   "bgImage": "linear-gradient(150deg, rgb(159, 78, 7), rgb(106, 90, 50))",
+   "color": "rgb(255, 255, 255)",
+   "radius": "50%"
+  },
+  {
+   "cls": "av ob-tone-4",
+   "bgImage": "linear-gradient(150deg, rgb(74, 124, 48), rgb(41, 70, 27))",
+   "color": "rgb(255, 255, 255)",
+   "radius": "50%"
+  },
+  {
+   "cls": "av ob-tone-5",
+   "bgImage": "linear-gradient(150deg, rgb(73, 123, 48), rgb(32, 55, 21))",
+   "color": "rgb(255, 255, 255)",
+   "radius": "50%"
+  },
+  {
+   "cls": "av ob-av-ai",
+   "bgImage": "none",
+   "color": "rgb(106, 90, 50)",
+   "radius": "6px"
+  }
+ ],
+ "gate": {
+  "open": "rgba(41, 70, 27, 0.043) 0px 0px 0px 2px inset, rgba(132, 115, 71, 0.12) 0px 0px 0px 5px",
+  "done": "none",
+  "radius": "4px"
+ },
+ "chip": {
+  "color": "rgb(106, 90, 50)",
+  "bg": "color(srgb 0.701961 0.623529 0.431373 / 0.28)"
+ },
+ "latest": {
+  "color": "rgb(106, 90, 50)",
+  "bg": "color(srgb 0.701961 0.623529 0.431373 / 0.45)"
+ },
+ "loopsBox": {
+  "border": "1px",
+  "radius": "10px"
+ },
+ "msg": {
+  "maxWidth": "78%",
+  "whoFamily": "\"IBM Plex Mono\", ui-monospace, SFMono-Regular, Menlo, monospace",
+  "bubBg": "rgba(255, 255, 255, 0.82)",
+  "bubRadius": "10px",
+  "alignSelf": "flex-start"
+ },
+ "railBg": {
+  "color": "rgb(7, 26, 5)",
+  "image": "linear-gradient(199deg, rgb(50, 66, 35) 1.43%, rgb(1, 42, 0) 35.22%, rgb(7, 26, 5) 70.99%)"
+ },
+ "radii": {
+  "0px": 37,
+  "10px": 11,
+  "999px": 12,
+  "50%": 7,
+  "6px": 2,
+  "4px": 2
+ },
+ "pageScrollX": false
+}

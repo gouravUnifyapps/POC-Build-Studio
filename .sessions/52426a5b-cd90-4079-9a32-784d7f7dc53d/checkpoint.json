@@ -1,0 +1,52 @@
+{
+  "claudeSessionId": "52426a5b-cd90-4079-9a32-784d7f7dc53d",
+  "cwd": "/Users/gouravmahunta/Desktop/DEMO studio test/POST design skill/Demo studio",
+  "transcriptPath": "/Users/gouravmahunta/.claude/projects/-Users-gouravmahunta-Desktop-DEMO-studio-test-POST-design-skill-Demo-studio/52426a5b-cd90-4079-9a32-784d7f7dc53d.jsonl",
+  "updatedAt": "2026-10-16T07:24:31.041Z",
+  "event": "SessionStart",
+  "checkpoint": {
+    "key": "poc-studio-live--orbit.uat.unifyapps.com--e_6ad1b45199f8a565171d7f1c",
+    "home": "/Users/gouravmahunta/Desktop/DEMO studio test/POST design skill/Demo studio",
+    "planIds": [
+      "e_6ad1c588674d735893a476dc",
+      "e_6ad1ccf1674d735893a55297"
+    ],
+    "plans": [
+      {
+        "planId": "e_6ad1c588674d735893a476dc",
+        "title": "POC Studio Live",
+        "status": "implemented",
+        "counts": {
+          "pending": 0,
+          "running": 0,
+          "done": 39,
+          "failed": 0,
+          "skipped": 0
+        },
+        "running": []
+      },
+      {
+        "planId": "e_6ad1ccf1674d735893a55297",
+        "title": "POC Studio Live: skill-improvement loop",
+        "status": "in_progress",
+        "counts": {
+          "pending": 1,
+          "running": 2,
+          "done": 4,
+          "failed": 0,
+          "skipped": 0
+        },
+        "running": [
+          {
+            "id": "t5",
+            "agentName": "a55297-automation-agent-1"
+          },
+          {
+            "id": "t6",
+            "agentName": "a55297-code-app-agent-1"
+          }
+        ]
+      }
+    ]
+  }
+}

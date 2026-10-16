@@ -1,0 +1,369 @@
+diff --git a/app/src/data/callables.ts b/app/src/data/callables.ts
+index 92d5223..ef14e24 100644
+--- a/app/src/data/callables.ts
++++ b/app/src/data/callables.ts
+@@ -58,3 +58,23 @@ export const APPROVE_GATE = {
+   overridable: ["poc_id", "role", "caller_email", "caller_name", "caller_slack_id"],
+ } as const
+ // <<< callable 6ad1c75967956c53e38f1a70
++
++// >>> callable 6ad1cd1b6123771ba2c0346e
++export const APPROVE_SKILL_SUGGESTION = {
++  id: "e_6ad1cf9fc0f97b3e983d929d",
++  context: {"appName": "callables", "resourceName": "callables_call_automation", "resourceVersion": 3156},
++  automationId: "6ad1cd1b6123771ba2c0346e",
++  storedInputs: {
++  "automationId": "6ad1cd1b6123771ba2c0346e",
++  "version": "-1",
++  "runtimeConnections": {},
++  "parameters": {
++    "suggestion_id": "{{suggestion_id}}",
++    "caller_email": "{{caller_email}}",
++    "caller_name": "{{caller_name}}"
++  },
++  "synchronous": true
++},
++  overridable: ["suggestion_id", "caller_email", "caller_name"],
++} as const
++// <<< callable 6ad1cd1b6123771ba2c0346e
+diff --git a/app/src/data/orbit.ts b/app/src/data/orbit.ts
+index 986b6f9..b5c88e1 100644
+--- a/app/src/data/orbit.ts
++++ b/app/src/data/orbit.ts
+@@ -1,11 +1,25 @@
+ // Orbit's ONE data module: every read of the app's objects goes through here. Records pass
+ // through with their stored field names; this file fills defaults on read.
+ //
+-// The app writes no record itself. Its two changes go through automations: Start build
+-// (./startBuild.ts) and Approve gate (./approveGate.ts).
++// The app writes no record itself. Its three changes go through automations: Start build
++// (./startBuild.ts), Approve gate (./approveGate.ts) and Approve skill suggestion
++// (./approveSuggestion.ts).
+ import { useEffect, useMemo, useRef } from 'react'
+ import { ENTITY, useData } from '@/data'
+-import { FB_SEVERITIES, type Act, type Doc, type DocFormat, type Fb, type FbSeverity, type GateState, type Iteration, type Poc, type Snapshot } from '@/orbit/lib/model'
++import {
++  FB_SEVERITIES,
++  type Act,
++  type Doc,
++  type DocFormat,
++  type Fb,
++  type FbSeverity,
++  type GateState,
++  type Iteration,
++  type Poc,
++  type Skill,
++  type Snapshot,
++  type Suggestion,
++} from '@/orbit/lib/model'
+ import { GATES, normGate, normPhase, type GateKey } from '@/orbit/lib/loop'
+ import { clientName } from '@/orbit/lib/format'
+ 
+@@ -15,6 +29,8 @@ export const OBJECTS = {
+   feedback: ENTITY.pslFeedback,
+   activity: ENTITY.pslActivity,
+   iteration: ENTITY.pslIteration,
++  skill: ENTITY.pslSkill,
++  suggestion: ENTITY.pslSkillSuggestion,
+ } as const
+ 
+ /* ---------- reading ---------- */
+@@ -163,6 +179,41 @@ function toIteration(r: Row): Iteration | null {
+   }
+ }
+ 
++function toSkill(r: Row): Skill {
++  return {
++    id: r.id,
++    skill_id: str(r.skill_id).trim() || r.id,
++    name: str(r.name) || str(r.skill_id) || r.id,
++    current_version: num(r.current_version),
++    prompt: str(r.prompt),
++  }
++}
++
++/** The ticket numbers a suggestion rests on: stored as one comma-separated string. */
++const ticketList = (v: unknown) =>
++  str(v)
++    .split(',')
++    .map((t) => t.trim())
++    .filter(Boolean)
++
++function toSuggestion(r: Row): Suggestion {
++  return {
++    id: r.id,
++    suggestion_id: str(r.suggestion_id) || r.id,
++    skill: str(r.skill).trim(),
++    from_version: num(r.from_version),
++    to_version: num(r.to_version),
++    summary: str(r.summary),
++    proposed_prompt: str(r.proposed_prompt),
++    evidence_count: num(r.evidence_count),
++    evidence_tickets: ticketList(r.evidence_tickets),
++    status: str(r.status) || 'pending',
++    created_at: num(r.created_at) || num(r.createdTime),
++    approved_by: str(r.approved_by),
++    approved_at: num(r.approved_at),
++  }
++}
++
+ const PAGE = 200
+ 
+ /** Reads up to three pages of one object; each next page is asked for only when the one
+@@ -208,6 +259,14 @@ export function useOrbitActivity() {
+ export function useOrbitIterations() {
+   return usePaged('orbit-iterations', OBJECTS.iteration)
+ }
++/** The POC-builder skills, with the version each runs and its prompt. */
++export function useOrbitSkills() {
++  return usePaged('orbit-skills', OBJECTS.skill)
++}
++/** The suggested prompt changes, pending and approved. */
++export function useOrbitSuggestions() {
++  return usePaged('orbit-suggestions', OBJECTS.suggestion)
++}
+ 
+ export interface OrbitData {
+   snap: Snapshot
+@@ -216,6 +275,11 @@ export interface OrbitData {
+   loading: boolean
+   error: unknown
+   truncated: boolean
++  /** the skills and their suggestions have loaded at least once: the Feedback page waits for
++   *  them, no other screen does */
++  skillsReady: boolean
++  /** reading the skills or their suggestions failed */
++  skillsError: unknown
+   /** read every object again, after a failed load */
+   retry: () => void
+ }
+@@ -232,6 +296,8 @@ export function useOrbitData(): OrbitData {
+   const fb = useOrbitFeedback()
+   const acts = useOrbitActivity()
+   const its = useOrbitIterations()
++  const skills = useOrbitSkills()
++  const sugs = useOrbitSuggestions()
+   const snap = useMemo<Snapshot>(
+     () => ({
+       pocs: pocs.rows.map(toPoc),
+@@ -239,8 +305,10 @@ export function useOrbitData(): OrbitData {
+       fb: fb.rows.map(toFb),
+       acts: acts.rows.map(toAct),
+       its: its.rows.map(toIteration).filter((x): x is Iteration => x !== null),
++      skills: skills.rows.map(toSkill),
++      sugs: sugs.rows.map(toSuggestion),
+     }),
+-    [pocs.rows, docs.rows, fb.rows, acts.rows, its.rows],
++    [pocs.rows, docs.rows, fb.rows, acts.rows, its.rows, skills.rows, sugs.rows],
+   )
+   const retry = () => {
+     pocs.refetch()
+@@ -248,6 +316,8 @@ export function useOrbitData(): OrbitData {
+     fb.refetch()
+     acts.refetch()
+     its.refetch()
++    skills.refetch()
++    sugs.refetch()
+   }
+   // the timer always calls the newest `retry`, so it is set up once and never restarts
+   const latest = useRef(retry)
+@@ -262,6 +332,8 @@ export function useOrbitData(): OrbitData {
+     loading: pocs.loading || docs.loading || fb.loading || acts.loading,
+     error: pocs.error || docs.error || fb.error || acts.error,
+     truncated: pocs.truncated || docs.truncated || fb.truncated || acts.truncated,
++    skillsReady: skills.loaded && sugs.loaded,
++    skillsError: skills.error || sugs.error,
+     retry,
+   }
+ }
+diff --git a/app/src/orbit/components/DataNotice.tsx b/app/src/orbit/components/DataNotice.tsx
+index 345228b..62a41ee 100644
+--- a/app/src/orbit/components/DataNotice.tsx
++++ b/app/src/orbit/components/DataNotice.tsx
+@@ -11,15 +11,17 @@ function RetryButton() {
+   )
+ }
+ 
+-/** One line above the lists when the records cannot be shown in full. */
+-export function DataNotice() {
++/** One line above the lists when the records cannot be shown in full. `also` is a failed read
++ *  of records only the screen itself uses. */
++export function DataNotice({ also }: { also?: unknown }) {
+   const { ready, error, truncated } = useOrbit()
+-  if (!ready || (!error && !truncated)) return null
++  const failed = error || also
++  if (!ready || (!failed && !truncated)) return null
+   return (
+     <div className="ob-datanote" role="status">
+       <Icon name="alert" size="sm" />
+-      <span>{error ? "Some records couldn't be refreshed. What you see may be out of date." : 'Showing the first 600 records of each kind.'}</span>
+-      {error ? <RetryButton /> : null}
++      <span>{failed ? "Some records couldn't be refreshed. What you see may be out of date." : 'Showing the first 600 records of each kind.'}</span>
++      {failed ? <RetryButton /> : null}
+     </div>
+   )
+ }
+diff --git a/app/src/orbit/lib/actions.ts b/app/src/orbit/lib/actions.ts
+index a6bb299..d7c9994 100644
+--- a/app/src/orbit/lib/actions.ts
++++ b/app/src/orbit/lib/actions.ts
+@@ -1,10 +1,13 @@
+-// The one change the app makes: the manager's gate approval. POCs are created from Slack,
+-// never here, and the Feedback page only reads. The approval is not written by the app: it is
+-// one call to the automation "POC Studio Live · Approve gate" (src/data/approveGate.ts), which
+-// records it, moves the POC on when both approvals are in, and tells the owner in Slack.
++// The changes the app makes: the manager's gate approval and the manager's approval of a
++// suggested prompt change. POCs are created from Slack, never here. Neither approval is written
++// by the app: each is one call to an automation. "POC Studio Live · Approve gate"
++// (src/data/approveGate.ts) records the gate approval, moves the POC on when both approvals are
++// in, and tells the owner in Slack. "POC Studio Live · Approve skill suggestion"
++// (src/data/approveSuggestion.ts) makes the suggested prompt the skill's current one.
+ import { useApproveGate, type ApproveGateResult } from '@/data/approveGate'
++import { useApproveSuggestion, type ApproveSuggestionResult } from '@/data/approveSuggestion'
+ import { phaseByKey, phaseIdx, phaseOf, phaseOfGate, PHASES, type GateKey } from './loop'
+-import { meName, type Fb, type Poc, type Viewer } from './model'
++import { meName, type Fb, type Poc, type Suggestion, type Viewer } from './model'
+ 
+ export interface ApproveResult {
+   /** what the automation answered: the approval was recorded, was already there, was refused
+@@ -23,6 +26,7 @@ export interface ApproveResult {
+ 
+ export function useOrbitActions(me: Viewer) {
+   const approve = useApproveGate()
++  const approveSuggested = useApproveSuggestion()
+ 
+   /** The manager's approval of the open gate. When the owner has already approved it in
+    *  Slack, the gate passes and the POC moves to the first stage of the next phase. */
+@@ -46,7 +50,13 @@ export function useOrbitActions(me: Viewer) {
+     }
+   }
+ 
+-  return { approveGate }
++  /** The manager's approval of a suggested prompt change: the skill then runs the suggested
++   *  prompt, and the tickets the suggestion rests on are resolved. */
++  function approveSuggestion(s: Suggestion): Promise<ApproveSuggestionResult> {
++    return approveSuggested({ suggestion_id: s.suggestion_id, caller_email: me.email, caller_name: meName(me) })
++  }
++
++  return { approveGate, approveSuggestion }
+ }
+ 
+ export type OrbitActions = ReturnType<typeof useOrbitActions>
+diff --git a/app/src/orbit/lib/model.ts b/app/src/orbit/lib/model.ts
+index 558a118..d245e50 100644
+--- a/app/src/orbit/lib/model.ts
++++ b/app/src/orbit/lib/model.ts
+@@ -142,12 +142,45 @@ export interface Iteration {
+   created_at: number
+ }
+ 
++/** One POC-builder skill: the version it runs and the prompt of that version. */
++export interface Skill {
++  id: string
++  skill_id: string
++  name: string
++  current_version: number
++  prompt: string
++}
++
++/** The suggestion states the app knows: waiting for a manager, or approved. */
++export type SuggestionStatus = 'pending' | 'approved'
++/** A suggested change to one skill's prompt, written by the weekly analysis from open feedback. */
++export interface Suggestion {
++  id: string
++  suggestion_id: string
++  /** the skill's `skill_id` */
++  skill: string
++  from_version: number
++  to_version: number
++  summary: string
++  proposed_prompt: string
++  evidence_count: number
++  /** the feedback ticket numbers the suggestion rests on, as stored: comma-separated */
++  evidence_tickets: string[]
++  /** the stored code, as stored */
++  status: string
++  created_at: number
++  approved_by: string
++  approved_at: number
++}
++
+ export interface Snapshot {
+   pocs: Poc[]
+   docs: Doc[]
+   fb: Fb[]
+   acts: Act[]
+   its: Iteration[]
++  skills: Skill[]
++  sugs: Suggestion[]
+ }
+ 
+ export interface Viewer {
+@@ -217,6 +250,11 @@ function matches(name: string, email: string, me: Viewer): boolean {
+ }
+ export const isOwner = (p: Poc, me: Viewer) => matches(p.owner_name, p.owner_email, me)
+ export const isManager = (p: Poc, me: Viewer) => matches(p.manager_name, p.manager_email, me)
++/** The viewer manages at least one POC: their email or full name is that POC's manager_email
++ *  or manager_name. The rule the approval automation applies to its caller, so a button shown
++ *  to this viewer is one the automation accepts. */
++export const isManagerAnywhere = (pocs: Poc[], me: Viewer): boolean =>
++  me.ready && pocs.some((p) => same(p.manager_email, me.email) || same(p.manager_name, me.name))
+ 
+ /* ---------- where a POC is ---------- */
+ export const isDemoReady = (p: Poc) => p.status === 'demo_ready' || p.stage === '8_demo_ready'
+@@ -344,6 +382,16 @@ export function pocOf(s: Snapshot, ref: string | null | undefined): Poc | undefi
+   return s.pocs.find((p) => refersTo(ref, p))
+ }
+ 
++export const skillOf = (s: Snapshot, skillId: string): Skill | undefined => (skillId ? s.skills.find((k) => k.skill_id === skillId) : undefined)
++
++/** The skill's suggestions still waiting for a decision, newest first. */
++export const pendingOf = (s: Snapshot, skillId: string): Suggestion[] =>
++  s.sugs.filter((x) => x.skill === skillId && x.status === 'pending').sort((a, b) => b.created_at - a.created_at)
++
++/** The skill's approved suggestions, newest version first: its version list. */
++export const approvedOf = (s: Snapshot, skillId: string): Suggestion[] =>
++  s.sugs.filter((x) => x.skill === skillId && x.status === 'approved').sort((a, b) => b.to_version - a.to_version || b.approved_at - a.approved_at)
++
+ /** Latest version of each document: one row per POC, stage and name. */
+ export function latestOnly(ds: Doc[]): Doc[] {
+   const latest = new Map<string, Doc>()
+diff --git a/app/src/orbit/views/FeedbackBoard.tsx b/app/src/orbit/views/FeedbackBoard.tsx
+index 4d6d768..b18144c 100644
+--- a/app/src/orbit/views/FeedbackBoard.tsx
++++ b/app/src/orbit/views/FeedbackBoard.tsx
+@@ -1,12 +1,28 @@
+-// Feedback: changes asked for the POC-builder skills, grouped by the skill they affect.
+-// Read-only for everyone: it shows what the feedback records hold.
+-import { useState } from 'react'
++// Feedback: changes asked for the POC-builder skills, grouped by the skill they affect. Each
++// skill's card shows the version it runs and the versions approved so far. A suggested prompt
++// change waits as the first item of its group, beside the current prompt, for a manager to
++// approve: that approval is the one change this page makes, through an automation.
++import { Fragment, useEffect, useState, type MouseEvent } from 'react'
+ import { useOrbit } from '@/orbit/lib/context'
+-import { clientName } from '@/orbit/lib/format'
+-import { FB_STATUSES, fbStatusLabel, pocOf, type Fb, type FbStatus, type Tone } from '@/orbit/lib/model'
++import { clientName, plural } from '@/orbit/lib/format'
++import {
++  FB_STATUSES,
++  approvedOf,
++  fbStatusLabel,
++  isManagerAnywhere,
++  pendingOf,
++  pocOf,
++  skillOf,
++  type Fb,
++  type FbStatus,
++  type Skill,
++  type Suggestion,
++  type Tone,
++} from '@/orbit/lib/model'
+ import { fbPhaseLabel } from '@/orbit/lib/actions'
++import { fail, ok, warn } from '@/orbit/lib/notify'
+ import { useFormatters } from '@/lib/i18n'
+-import { Empty, Icon, Tag } from '@/orbit/components/bits'
++import { Empty, Icon, Markdown, Tag } from '@/orbit/components/bits'
+ import { DataNotice, LoadError, Loading } from '@/orbit/components/DataNotice'
+ 
+ /** 'all', or a stored status code */

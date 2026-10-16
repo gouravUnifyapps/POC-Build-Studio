@@ -1,0 +1,1913 @@
+{
+  "schemaVersion": 1,
+  "key": "WORKFLOW_DEFINITION:6ad1c75967956c53e38f1a70",
+  "entityType": "WORKFLOW_DEFINITION",
+  "id": "6ad1c75967956c53e38f1a70",
+  "version": 1,
+  "cachedAt": "2026-10-16T13:59:49.650Z",
+  "source": "solution-refresh",
+  "ref": {
+    "id": "6ad1c75967956c53e38f1a70",
+    "type": "WORKFLOW_DEFINITION",
+    "state": "COMPLETED"
+  },
+  "entity": {
+    "appsUsed": [
+      "slack"
+    ],
+    "createdTime": 1792132953929,
+    "deleted": false,
+    "deployedVersion": 2,
+    "deploymentState": {
+      "deployedAt": 1792134223516,
+      "deployedBy": 66770,
+      "deployedDefinitionId": "6ad1cc4fd885ae5a4da092a5",
+      "deploymentNotes": "POC Studio Live · Approve gate [nebula task t_639203afcf0f]",
+      "status": "DEPLOYED",
+      "version": 2,
+      "workflowVersion": 1
+    },
+    "description": "Records the manager's or the owner's approval of a POC's open gate. Called by the app's Approve button (role manager) and by the Slack listener (role owner). When both approvals are in, the gate passes and the POC moves to the next phase; then it tells the owner in Slack and, for the Plan gate of a POC with a build run, starts the build.",
+    "edges": [
+      {
+        "fromNodeId": "n_u29pa",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_fl51t",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_fl51t",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_6px1p",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_6px1p",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_6wz2r",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_6px1p",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_8ti8u",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_6wz2r",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_8ti8u",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_8ti8u",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_o6xlc",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_o6xlc",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_syw9b",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_o6xlc",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_wc34g",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_syw9b",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_wc34g",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_wc34g",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_2xxy9",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_2xxy9",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_qp3rl",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_2xxy9",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_3jyl6",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_qp3rl",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_3jyl6",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_3jyl6",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_9ggfm",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_3jyl6",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_5fsi8",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_9ggfm",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_5fsi8",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_5fsi8",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_i8n0l",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_i8n0l",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_lkt4t",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_lkt4t",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_r3v77",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_lkt4t",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_mp5a1",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_r3v77",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_mp5a1",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_mp5a1",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_vanjm",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_vanjm",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_2f3b0",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_vanjm",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_533a7",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_2f3b0",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_533a7",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_533a7",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_putj5",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_putj5",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_bker8",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_putj5",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_p5eib",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_bker8",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_fvbob",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_fvbob",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_5h8xo",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_fvbob",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_p5eib",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_5h8xo",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_p5eib",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_p5eib",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_j4dif",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_j4dif",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_oh09w",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_j4dif",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_6g0wt",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_oh09w",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_0p9u0",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_oh09w",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_of35c",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_0p9u0",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_of35c",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_of35c",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_6g0wt",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_6g0wt",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_6h3cp",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_6g0wt",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_f3sgl",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_6h3cp",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_f3sgl",
+        "type": "next"
+      }
+    ],
+    "id": "6ad1c75967956c53e38f1a70",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792134223517,
+    "lcName": "poc studio live · approve gate",
+    "modifiedTime": 1792134223517,
+    "name": "POC Studio Live · Approve gate",
+    "nodes": [
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_from_automation"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_u29pa",
+        "index": 1,
+        "inputs": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "title": "Status"
+              },
+              "gate_passed": {
+                "type": "boolean",
+                "title": "Gate passed"
+              },
+              "warnings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Warnings"
+              },
+              "message": {
+                "type": "string",
+                "title": "Message"
+              }
+            }
+          },
+          "setup": {
+            "type": "object",
+            "properties": {
+              "poc_id": {
+                "type": "string",
+                "title": "POC id"
+              },
+              "role": {
+                "type": "string",
+                "title": "Role (manager or owner)"
+              },
+              "caller_email": {
+                "type": "string",
+                "title": "Caller email"
+              },
+              "caller_name": {
+                "type": "string",
+                "title": "Caller name"
+              },
+              "caller_slack_id": {
+                "type": "string",
+                "title": "Caller Slack id"
+              }
+            },
+            "required": []
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Callable",
+        "title": "Trigger from automation",
+        "trigger": {
+          "type": "CALLABLE"
+        },
+        "type": "START"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_fl51t",
+        "index": 2,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "valid": {
+                "type": "string",
+                "title": "Valid"
+              },
+              "error": {
+                "type": "string",
+                "title": "Error"
+              },
+              "pocId": {
+                "type": "string",
+                "title": "POC id"
+              },
+              "role": {
+                "type": "string",
+                "title": "Role"
+              },
+              "callerEmail": {
+                "type": "string",
+                "title": "Caller email"
+              },
+              "callerName": {
+                "type": "string",
+                "title": "Caller name"
+              },
+              "callerSlackId": {
+                "type": "string",
+                "title": "Caller Slack id"
+              }
+            }
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "pocIdIn": {
+                "type": "string",
+                "title": "POC id"
+              },
+              "roleIn": {
+                "type": "string",
+                "title": "Role"
+              },
+              "callerEmailIn": {
+                "type": "string",
+                "title": "Caller email"
+              },
+              "callerNameIn": {
+                "type": "string",
+                "title": "Caller name"
+              },
+              "callerSlackIdIn": {
+                "type": "string",
+                "title": "Caller Slack id"
+              }
+            }
+          },
+          "code": "def val = { String n -> binding.hasVariable(n) ? binding.getVariable(n) : null }\ndef txt = { String n -> val(n) == null ? '' : val(n).toString().trim() }\ndef slackId = txt('callerSlackIdIn')\nif (slackId.startsWith('<@') && slackId.endsWith('>')) {\n  slackId = slackId.substring(2, slackId.length() - 1)\n  def p = slackId.indexOf('|')\n  if (p >= 0) { slackId = slackId.substring(0, p) }\n}\nslackId = slackId.trim().toUpperCase()\ndef role = txt('roleIn').toLowerCase()\ndef pocId = txt('pocIdIn')\ndef errors = []\nif (!pocId) { errors << 'poc_id is required' }\nif (role != 'manager' && role != 'owner') { errors << 'role must be manager or owner' }\nresult = [valid: (errors ? 'no' : 'yes'), error: errors.join('; '), pocId: pocId, role: role, callerEmail: txt('callerEmailIn'), callerName: txt('callerNameIn'), callerSlackId: slackId]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "pocIdIn": "{{ n_u29pa.outputs.poc_id }}",
+            "roleIn": "{{ n_u29pa.outputs.role }}",
+            "callerEmailIn": "{{ n_u29pa.outputs.caller_email }}",
+            "callerNameIn": "{{ n_u29pa.outputs.caller_name }}",
+            "callerSlackIdIn": "{{ n_u29pa.outputs.caller_slack_id }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Normalize and validate the inputs",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_6px1p",
+        "index": 3,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_fl51t.outputs.result.valid }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": "no"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Answer error when the input is invalid",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_6px1p@2hlp7-1@y",
+        "id": "n_6wz2r",
+        "index": 4,
+        "inputs": {
+          "result": {
+            "status": "error",
+            "gate_passed": false,
+            "warnings": [],
+            "message": "{{ n_fl51t.outputs.result.error }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Callable",
+        "title": "Respond to automation",
+        "type": "STOP"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_fetch_records",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_8ti8u",
+        "index": 5,
+        "inputs": {
+          "triggerInputCondition": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "properties_poc_id",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_fl51t.outputs.result.pocId }}"
+                }
+              }
+            ]
+          },
+          "shouldSearchInAnalyticsStore": false,
+          "object_type": "psl_poc",
+          "includeRoleMappings": false,
+          "includeCurrentUserPermissions": false,
+          "translationsOption": "DEFAULT",
+          "page": {
+            "paginateBy": "OFFSET",
+            "limit": 1,
+            "offset": 0
+          },
+          "numberOfRecordsToFetch": "MULTIPLE",
+          "readThroughSessionVariables": false,
+          "includeTotalCount": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Read the POC row",
+        "title": "Fetch records",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_o6xlc",
+        "index": 6,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_8ti8u.outputs.objects[0].id }}",
+              "filter": {
+                "operator": "MISSING"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Answer error when the row does not exist",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_o6xlc@2hlp7-1@y",
+        "id": "n_syw9b",
+        "index": 7,
+        "inputs": {
+          "result": {
+            "status": "error",
+            "gate_passed": false,
+            "warnings": [],
+            "message": "No POC has the id {{ n_fl51t.outputs.result.pocId }}. Nothing was changed."
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Callable",
+        "title": "Respond to automation",
+        "type": "STOP"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_wc34g",
+        "index": 8,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "outcome": {
+                "type": "string",
+                "title": "Outcome"
+              },
+              "message": {
+                "type": "string",
+                "title": "Message"
+              },
+              "gate": {
+                "type": "string",
+                "title": "Gate"
+              },
+              "passed": {
+                "type": "string",
+                "title": "Gate passed"
+              },
+              "updates": {
+                "type": "array",
+                "title": "Field updates",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "fieldName": {
+                      "type": "string",
+                      "title": "Field name"
+                    },
+                    "value": {
+                      "type": "string",
+                      "title": "Value"
+                    }
+                  }
+                }
+              },
+              "lastActivity": {
+                "type": "string",
+                "title": "Last activity"
+              },
+              "activityId": {
+                "type": "string",
+                "title": "Activity id"
+              },
+              "activityType": {
+                "type": "string",
+                "title": "Activity type"
+              },
+              "activityStage": {
+                "type": "string",
+                "title": "Activity stage"
+              },
+              "actorName": {
+                "type": "string",
+                "title": "Actor name"
+              },
+              "actorEmail": {
+                "type": "string",
+                "title": "Actor email"
+              },
+              "postedTo": {
+                "type": "string",
+                "title": "Posted to"
+              },
+              "sendDm": {
+                "type": "string",
+                "title": "Send direct message"
+              },
+              "dmSkipped": {
+                "type": "string",
+                "title": "Direct message skipped"
+              },
+              "ownerSlackId": {
+                "type": "string",
+                "title": "Owner Slack id"
+              },
+              "startBuild": {
+                "type": "string",
+                "title": "Start build"
+              },
+              "appLink": {
+                "type": "string",
+                "title": "App link"
+              }
+            }
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "pocIdIn": {
+                "type": "string",
+                "title": "POC id"
+              },
+              "roleIn": {
+                "type": "string",
+                "title": "Role"
+              },
+              "callerEmailIn": {
+                "type": "string",
+                "title": "Caller email"
+              },
+              "callerNameIn": {
+                "type": "string",
+                "title": "Caller name"
+              },
+              "callerSlackIdIn": {
+                "type": "string",
+                "title": "Caller Slack id"
+              },
+              "currentGateIn": {
+                "type": "string",
+                "title": "Current gate"
+              },
+              "stageIn": {
+                "type": "string",
+                "title": "Stage"
+              },
+              "ownerNameIn": {
+                "type": "string",
+                "title": "Owner name"
+              },
+              "ownerEmailIn": {
+                "type": "string",
+                "title": "Owner email"
+              },
+              "ownerSlackIdIn": {
+                "type": "string",
+                "title": "Owner Slack id"
+              },
+              "managerNameIn": {
+                "type": "string",
+                "title": "Manager name"
+              },
+              "managerEmailIn": {
+                "type": "string",
+                "title": "Manager email"
+              },
+              "slackChannelIn": {
+                "type": "string",
+                "title": "Slack channel"
+              },
+              "gateSummaryIn": {
+                "type": "string",
+                "title": "Gate summary"
+              },
+              "buildRunIdIn": {
+                "type": "string",
+                "title": "Build run id"
+              },
+              "g1_owner_approved": {
+                "type": "boolean",
+                "title": "G1 owner approved"
+              },
+              "g1_manager_approved": {
+                "type": "boolean",
+                "title": "G1 manager approved"
+              },
+              "g2_owner_approved": {
+                "type": "boolean",
+                "title": "G2 owner approved"
+              },
+              "g2_manager_approved": {
+                "type": "boolean",
+                "title": "G2 manager approved"
+              },
+              "g3_owner_approved": {
+                "type": "boolean",
+                "title": "G3 owner approved"
+              },
+              "g3_manager_approved": {
+                "type": "boolean",
+                "title": "G3 manager approved"
+              },
+              "nowMsIn": {
+                "type": "integer",
+                "title": "Now (epoch ms)"
+              },
+              "appUrlIn": {
+                "type": "string",
+                "title": "App URL"
+              }
+            }
+          },
+          "code": "def val = { String n -> binding.hasVariable(n) ? binding.getVariable(n) : null }\ndef txt = { String n -> val(n) == null ? '' : val(n).toString().trim() }\ndef isTrue = { String n -> val(n) != null && val(n).toString() == 'true' }\ndef same = { String a, String b -> a && b && a.equalsIgnoreCase(b) }\ndef role = txt('roleIn')\ndef pocId = txt('pocIdIn')\ndef gate = txt('currentGateIn')\ndef callerEmail = txt('callerEmailIn')\ndef callerName = txt('callerNameIn')\ndef callerSlackId = txt('callerSlackIdIn')\ndef ownerName = txt('ownerNameIn')\ndef ownerEmail = txt('ownerEmailIn')\ndef ownerSlackId = txt('ownerSlackIdIn')\ndef managerName = txt('managerNameIn')\ndef managerEmail = txt('managerEmailIn')\ndef allowed = role == 'manager' ? (same(callerEmail, managerEmail) || same(callerName, managerName)) : same(callerSlackId, ownerSlackId)\ndef labels = [g1: 'Understand', g2: 'Plan', g3: 'Build']\ndef nexts = [g1: 'Plan', g2: 'Build', g3: 'Deliver']\ndef stages = [g1: '3_scope', g2: '5_build', g3: '7_collaterals']\ndef open = labels.containsKey(gate)\ndef outcome = 'decided'\ndef message = ''\nif (!allowed) {\n  outcome = 'forbidden'\n  message = role == 'manager' ? 'Only the manager of this POC can approve as manager. The approval was not recorded.' : 'Only the owner of this POC can approve as owner. The approval was not recorded.'\n} else if (!open) {\n  outcome = 'already'\n  message = 'No gate is open for approval on this POC.'\n} else if (isTrue(gate + '_' + role + '_approved')) {\n  outcome = 'already'\n  message = 'The ' + role + ' has already approved ' + labels[gate] + '.'\n}\nlong nowMs = val('nowMsIn') == null ? 0L : (val('nowMsIn') as long)\nif (nowMs <= 0L) { nowMs = System.currentTimeMillis() }\ndef appUrl = txt('appUrlIn')\nwhile (appUrl.endsWith('/')) { appUrl = appUrl.substring(0, appUrl.length() - 1) }\ndef appLink = appUrl ? (appUrl + '/pocs/' + pocId) : ''\ndef passed = false\ndef updates = []\ndef lastActivity = ''\ndef activityType = ''\ndef actorName = ''\ndef actorEmail = ''\nif (outcome == 'decided') {\n  def other = role == 'manager' ? 'owner' : 'manager'\n  passed = isTrue(gate + '_' + other + '_approved')\n  def who = role == 'manager' ? (callerName ?: managerName ?: callerEmail ?: 'The manager') : (callerName ?: ownerName ?: 'The owner')\n  actorName = who\n  actorEmail = role == 'manager' ? (callerEmail ?: managerEmail) : ownerEmail\n  updates << [fieldName: 'properties.' + gate + '_' + role + '_approved', value: 'true']\n  if (passed) {\n    updates << [fieldName: 'properties.' + gate + '_status', value: 'approved']\n    updates << [fieldName: 'properties.current_gate', value: 'none']\n    updates << [fieldName: 'properties.stage', value: stages[gate]]\n    updates << [fieldName: 'properties.status', value: 'running']\n    if (txt('gateSummaryIn')) { updates << [fieldName: 'properties.' + gate + '_summary', value: txt('gateSummaryIn')] }\n    lastActivity = who + ' approved ' + labels[gate] + ' · ' + nexts[gate] + ' starts'\n    activityType = 'gate_decided'\n  } else if (role == 'manager') {\n    lastActivity = who + ' approved ' + labels[gate] + ' · waiting on ' + (ownerName ?: 'the owner') + ' in Slack'\n    activityType = 'manager_approved'\n  } else {\n    lastActivity = who + ' approved ' + labels[gate] + ' · waiting on ' + (managerName ?: 'the manager')\n    activityType = 'owner_approved'\n  }\n  message = lastActivity\n}\ndef decided = outcome == 'decided'\ndef sendDm = decided && role == 'manager' && ownerSlackId\ndef dmSkipped = decided && role == 'manager' && !ownerSlackId\ndef startBuild = decided && passed && gate == 'g2' && txt('buildRunIdIn')\nresult = [outcome: outcome, message: message, gate: (open ? gate : ''), passed: (passed ? 'yes' : 'no'), updates: updates, lastActivity: lastActivity, activityId: 'ACT-' + nowMs + '-' + (role == 'manager' ? '1' : '2'), activityType: activityType, activityStage: txt('stageIn'), actorName: actorName, actorEmail: actorEmail, postedTo: txt('slackChannelIn'), sendDm: (sendDm ? 'yes' : 'no'), dmSkipped: (dmSkipped ? 'yes' : 'no'), ownerSlackId: ownerSlackId, startBuild: (startBuild ? 'yes' : 'no'), appLink: appLink]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "pocIdIn": "{{ n_fl51t.outputs.result.pocId }}",
+            "roleIn": "{{ n_fl51t.outputs.result.role }}",
+            "callerEmailIn": "{{ n_fl51t.outputs.result.callerEmail }}",
+            "callerNameIn": "{{ n_fl51t.outputs.result.callerName }}",
+            "callerSlackIdIn": "{{ n_fl51t.outputs.result.callerSlackId }}",
+            "currentGateIn": "{{ n_8ti8u.outputs.objects[0].properties.current_gate }}",
+            "stageIn": "{{ n_8ti8u.outputs.objects[0].properties.stage }}",
+            "ownerNameIn": "{{ n_8ti8u.outputs.objects[0].properties.owner_name }}",
+            "ownerEmailIn": "{{ n_8ti8u.outputs.objects[0].properties.owner_email }}",
+            "ownerSlackIdIn": "{{ n_8ti8u.outputs.objects[0].properties.owner_slack_id }}",
+            "managerNameIn": "{{ n_8ti8u.outputs.objects[0].properties.manager_name }}",
+            "managerEmailIn": "{{ n_8ti8u.outputs.objects[0].properties.manager_email }}",
+            "slackChannelIn": "{{ n_8ti8u.outputs.objects[0].properties.slack_channel }}",
+            "gateSummaryIn": "{{ n_8ti8u.outputs.objects[0].properties.gate_summary }}",
+            "buildRunIdIn": "{{ n_8ti8u.outputs.objects[0].properties.build_run_id }}",
+            "g1_owner_approved": "{{ n_8ti8u.outputs.objects[0].properties.g1_owner_approved }}",
+            "g1_manager_approved": "{{ n_8ti8u.outputs.objects[0].properties.g1_manager_approved }}",
+            "g2_owner_approved": "{{ n_8ti8u.outputs.objects[0].properties.g2_owner_approved }}",
+            "g2_manager_approved": "{{ n_8ti8u.outputs.objects[0].properties.g2_manager_approved }}",
+            "g3_owner_approved": "{{ n_8ti8u.outputs.objects[0].properties.g3_owner_approved }}",
+            "g3_manager_approved": "{{ n_8ti8u.outputs.objects[0].properties.g3_manager_approved }}",
+            "nowMsIn": "{{ __RUN__.outputs.currentTime }}",
+            "appUrlIn": "{{ __ENV__.outputs.POC_STUDIO_APP_URL }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Check who is calling and work out the transition",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_2xxy9",
+        "index": 9,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_wc34g.outputs.result.outcome }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": "forbidden"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Answer forbidden when the caller is not that role of the POC",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_2xxy9@2hlp7-1@y",
+        "id": "n_qp3rl",
+        "index": 10,
+        "inputs": {
+          "result": {
+            "status": "forbidden",
+            "gate_passed": false,
+            "warnings": [],
+            "message": "{{ n_wc34g.outputs.result.message }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Callable",
+        "title": "Respond to automation",
+        "type": "STOP"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_3jyl6",
+        "index": 11,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_wc34g.outputs.result.outcome }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": "already"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Answer already_decided when no gate is open or this role has approved",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_3jyl6@2hlp7-1@y",
+        "id": "n_9ggfm",
+        "index": 12,
+        "inputs": {
+          "result": {
+            "status": "already_decided",
+            "gate_passed": false,
+            "warnings": [],
+            "message": "{{ n_wc34g.outputs.result.message }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Callable",
+        "title": "Respond to automation",
+        "type": "STOP"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_update_record_fields_by_id",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_5fsi8",
+        "index": 13,
+        "inputs": {
+          "recordId": "{{ n_8ti8u.outputs.objects[0].id }}",
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_poc",
+          "skipIfBlank": false,
+          "skipPermissionCheck": false,
+          "updateFields": {
+            "ua:type": "mappedArray",
+            "source": "{{ n_wc34g.outputs.result.updates }}",
+            "items": {
+              "fieldName": "{{ n_wc34g.outputs.result.updates[0].fieldName }}",
+              "actionType": "SET",
+              "setValue": "{{ n_wc34g.outputs.result.updates[0].value }}"
+            }
+          },
+          "skipSchemaValidation": true,
+          "unsetIfNull": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Record the approval and any gate transition on the row",
+        "title": "Update an existing record's fields",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_update_record_fields_by_id",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_i8n0l",
+        "index": 14,
+        "inputs": {
+          "recordId": "{{ n_8ti8u.outputs.objects[0].id }}",
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_poc",
+          "skipIfBlank": false,
+          "skipPermissionCheck": false,
+          "updateFields": [
+            {
+              "fieldName": "properties.last_activity",
+              "actionType": "SET",
+              "setValue": "{{ n_wc34g.outputs.result.lastActivity }}"
+            },
+            {
+              "fieldName": "properties.last_activity_at",
+              "actionType": "SET",
+              "setValue": "{{ __RUN__.outputs.currentTime }}"
+            }
+          ],
+          "skipSchemaValidation": true,
+          "unsetIfNull": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Stamp last_activity and last_activity_at",
+        "title": "Update an existing record's fields",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_lkt4t",
+        "index": 15,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_wc34g.outputs.result.passed }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": "yes"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Did the gate pass?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_update_records",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_lkt4t@2hlp7-1@y",
+        "id": "n_r3v77",
+        "index": 16,
+        "inputs": {
+          "numberOfRecordsToUpdate": "MULTIPLE",
+          "triggerInputCondition": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "properties_poc",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_fl51t.outputs.result.pocId }}"
+                }
+              },
+              {
+                "property": "properties_gate_pack",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_wc34g.outputs.result.gate }}"
+                }
+              },
+              {
+                "property": "properties_status",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "in_review"
+                }
+              }
+            ]
+          },
+          "object_type": "psl_document",
+          "skipIfBlank": false,
+          "skipVersionCapture": false,
+          "updateFields": [
+            {
+              "fieldName": "properties.status",
+              "actionType": "SET",
+              "setValue": "approved"
+            }
+          ],
+          "page": {
+            "offset": 0,
+            "limit": 500
+          },
+          "skipSchemaValidation": true,
+          "unsetIfNull": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Approve the documents that were in review for this gate",
+        "title": "Update records by query",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_create_record",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "2hlp7-1",
+        "id": "n_mp5a1",
+        "index": 17,
+        "inputs": {
+          "useRawPayload": false,
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_activity",
+          "skipIfBlank": true,
+          "inlineRefresh": false,
+          "record": {
+            "activity_id": "{{ n_wc34g.outputs.result.activityId }}",
+            "poc": "{{ n_fl51t.outputs.result.pocId }}",
+            "type": "{{ n_wc34g.outputs.result.activityType }}",
+            "stage": "{{ n_wc34g.outputs.result.activityStage }}",
+            "gate": "{{ n_wc34g.outputs.result.gate }}",
+            "decision": "approve",
+            "actor_type": "person",
+            "actor_name": "{{ n_wc34g.outputs.result.actorName }}",
+            "actor_email": "{{ n_wc34g.outputs.result.actorEmail }}",
+            "message": "{{ n_wc34g.outputs.result.lastActivity }}",
+            "posted_to": "{{ n_wc34g.outputs.result.postedTo }}",
+            "created_at": "{{ __RUN__.outputs.currentTime }}"
+          },
+          "useUuid": false,
+          "batching": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Log the approval as an activity row",
+        "title": "Create record",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_vanjm",
+        "index": 18,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_wc34g.outputs.result.startBuild }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": "yes"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Start the build run when the Plan gate passed on a POC with a build run",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_call_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_vanjm@2hlp7-1@y",
+        "id": "n_2f3b0",
+        "index": 19,
+        "inputs": {
+          "automationId": "6ad1c66313ea2c28e645e538",
+          "synchronous": true,
+          "version": "-1",
+          "parameters": {
+            "poc_id": "{{ n_fl51t.outputs.result.pocId }}",
+            "mode": "build",
+            "approved_prd_link": "{{ n_wc34g.outputs.result.appLink }}"
+          },
+          "executeOnSameVM": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Callable",
+        "title": "Call {{moduleDefs.WORKFLOW_DEFINITION.name.toLowerCase()}}",
+        "type": "CALL_WORKFLOW"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_533a7",
+        "index": 20,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "title": "Text"
+              },
+              "sessionLink": {
+                "type": "string",
+                "title": "Session link"
+              },
+              "startWarning": {
+                "type": "string",
+                "title": "Start build warning"
+              }
+            }
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "appLinkIn": {
+                "type": "string",
+                "title": "App link"
+              },
+              "startRanIn": {
+                "type": "string",
+                "title": "Start build ran"
+              },
+              "startStatusIn": {
+                "type": "string",
+                "title": "Start build status"
+              },
+              "startRunIn": {
+                "type": "string",
+                "title": "Start build run id"
+              },
+              "startMessageIn": {
+                "type": "string",
+                "title": "Start build message"
+              }
+            }
+          },
+          "code": "def val = { String n -> binding.hasVariable(n) ? binding.getVariable(n) : null }\ndef txt = { String n -> val(n) == null ? '' : val(n).toString().trim() }\ndef nl = String.valueOf((char) 10)\ndef appLink = txt('appLinkIn')\ndef ran = txt('startRanIn') == 'yes'\ndef st = txt('startStatusIn')\ndef sessionLink = (ran && st == 'started') ? txt('startRunIn') : ''\ndef text = 'Manager approved, continue'\nif (appLink) { text = text + nl + appLink }\nif (sessionLink) { text = text + nl + 'New build session: ' + sessionLink }\ndef startWarning = ''\nif (ran && st != 'started') { startWarning = 'Start build did not start a run (' + (st ?: 'no answer') + '): ' + (txt('startMessageIn') ?: 'no message') }\nresult = [text: text, sessionLink: sessionLink, startWarning: startWarning]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "appLinkIn": "{{ n_wc34g.outputs.result.appLink }}",
+            "startRanIn": "{{ n_wc34g.outputs.result.startBuild }}",
+            "startStatusIn": "{{ n_2f3b0.outputs.status }}",
+            "startRunIn": "{{ n_2f3b0.outputs.build_run_id }}",
+            "startMessageIn": "{{ n_2f3b0.outputs.message }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Compose the direct message text",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_putj5",
+        "index": 21,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_wc34g.outputs.result.sendDm }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": "yes"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Tell the owner in Slack when the manager approved",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_open_conversation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_putj5@2hlp7-1@y",
+        "id": "n_bker8",
+        "index": 22,
+        "inputs": {
+          "return_im": false,
+          "prevent_creation": false,
+          "token_type": "bot_token",
+          "users": [
+            "{{ n_wc34g.outputs.result.ownerSlackId }}"
+          ]
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Open the direct conversation with the owner",
+        "title": "Open MPIM conversation",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_putj5@2hlp7-1@y",
+        "id": "n_fvbob",
+        "index": 23,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_bker8.outputs.channel.id }}",
+              "filter": {
+                "operator": "EXISTS"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Was the conversation opened?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_post_message_in_channel",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_fvbob@n_putj5@2hlp7-1@y@y",
+        "id": "n_5h8xo",
+        "index": 24,
+        "inputs": {
+          "link_names": true,
+          "messageType": "text",
+          "channel": "{{ n_bker8.outputs.channel.id }}",
+          "text": "{{ n_533a7.outputs.result.text }}",
+          "token_type": "bot_token",
+          "mrkdwn": true
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Post the message to the owner",
+        "title": "Post message",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_p5eib",
+        "index": 25,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "warnings": {
+                "type": "array",
+                "title": "Warnings",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "hasWarnings": {
+                "type": "string",
+                "title": "Has warnings"
+              },
+              "message": {
+                "type": "string",
+                "title": "Message"
+              }
+            }
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "dmSkippedIn": {
+                "type": "string",
+                "title": "Direct message skipped"
+              },
+              "sendDmIn": {
+                "type": "string",
+                "title": "Send direct message"
+              },
+              "dmOk": {
+                "type": "boolean",
+                "title": "Conversation opened"
+              },
+              "dmError": {
+                "type": "string",
+                "title": "Open error"
+              },
+              "postOk": {
+                "type": "boolean",
+                "title": "Message posted"
+              },
+              "startWarningIn": {
+                "type": "string",
+                "title": "Start build warning"
+              },
+              "activityIdIn": {
+                "type": "string",
+                "title": "Activity row id"
+              },
+              "baseMessageIn": {
+                "type": "string",
+                "title": "Message"
+              },
+              "sessionLinkIn": {
+                "type": "string",
+                "title": "Session link"
+              }
+            }
+          },
+          "code": "def val = { String n -> binding.hasVariable(n) ? binding.getVariable(n) : null }\ndef txt = { String n -> val(n) == null ? '' : val(n).toString().trim() }\ndef isTrue = { String n -> val(n) != null && val(n).toString() == 'true' }\ndef warnings = []\nif (txt('dmSkippedIn') == 'yes') { warnings << 'The owner has no Slack id on the row, so the direct message was not sent' }\nif (txt('sendDmIn') == 'yes') {\n  if (!isTrue('dmOk')) {\n    warnings << ('The direct message to the owner was not sent: Slack could not open the conversation' + (txt('dmError') ? ' (' + txt('dmError') + ')' : ''))\n  } else if (!isTrue('postOk')) {\n    warnings << 'The direct message to the owner was not sent: Slack refused the post'\n  }\n}\nif (txt('startWarningIn')) { warnings << txt('startWarningIn') }\nif (!txt('activityIdIn')) { warnings << 'The activity row was not saved' }\ndef message = txt('baseMessageIn')\nif (txt('sessionLinkIn')) { message = message + ' Build session: ' + txt('sessionLinkIn') }\nresult = [warnings: warnings, hasWarnings: (warnings ? 'yes' : 'no'), message: message]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "dmSkippedIn": "{{ n_wc34g.outputs.result.dmSkipped }}",
+            "sendDmIn": "{{ n_wc34g.outputs.result.sendDm }}",
+            "dmOk": "{{ n_bker8.outputs.ok }}",
+            "dmError": "{{ n_bker8.outputs.error }}",
+            "postOk": "{{ n_5h8xo.outputs.ok }}",
+            "startWarningIn": "{{ n_533a7.outputs.result.startWarning }}",
+            "activityIdIn": "{{ n_mp5a1.outputs.id }}",
+            "baseMessageIn": "{{ n_wc34g.outputs.result.message }}",
+            "sessionLinkIn": "{{ n_533a7.outputs.result.sessionLink }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Collect the warnings and the final message",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_j4dif",
+        "index": 26,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_wc34g.outputs.result.passed }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": "yes"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Did the gate pass?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_j4dif@2hlp7-1@y",
+        "id": "n_oh09w",
+        "index": 27,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_p5eib.outputs.result.hasWarnings }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": "yes"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Are there warnings?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_oh09w@n_j4dif@2hlp7-1@y@y",
+        "id": "n_0p9u0",
+        "index": 28,
+        "inputs": {
+          "result": {
+            "status": "decided",
+            "gate_passed": true,
+            "warnings": {
+              "ua:type": "mappedArray",
+              "source": "{{ n_p5eib.outputs.result.warnings }}",
+              "items": "{{ n_p5eib.outputs.result.warnings[0] }}"
+            },
+            "message": "{{ n_p5eib.outputs.result.message }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Answer decided, gate passed, with warnings",
+        "title": "Respond to automation",
+        "type": "STOP"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_j4dif@2hlp7-1@y",
+        "id": "n_of35c",
+        "index": 29,
+        "inputs": {
+          "result": {
+            "status": "decided",
+            "gate_passed": true,
+            "warnings": [],
+            "message": "{{ n_p5eib.outputs.result.message }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Answer decided, gate passed",
+        "title": "Respond to automation",
+        "type": "STOP"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_6g0wt",
+        "index": 30,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_p5eib.outputs.result.hasWarnings }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": "yes"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Are there warnings?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_6g0wt@2hlp7-1@y",
+        "id": "n_6h3cp",
+        "index": 31,
+        "inputs": {
+          "result": {
+            "status": "decided",
+            "gate_passed": false,
+            "warnings": {
+              "ua:type": "mappedArray",
+              "source": "{{ n_p5eib.outputs.result.warnings }}",
+              "items": "{{ n_p5eib.outputs.result.warnings[0] }}"
+            },
+            "message": "{{ n_p5eib.outputs.result.message }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Answer decided, still waiting on the other approval, with warnings",
+        "title": "Respond to automation",
+        "type": "STOP"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_f3sgl",
+        "index": 32,
+        "inputs": {
+          "result": {
+            "status": "decided",
+            "gate_passed": false,
+            "warnings": [],
+            "message": "{{ n_p5eib.outputs.result.message }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Answer decided, still waiting on the other approval",
+        "title": "Respond to automation",
+        "type": "STOP"
+      }
+    ],
+    "ownerUserId": 66770,
+    "settings": {
+      "enableNodeLevelLogging": true,
+      "enableRunLogging": true,
+      "enableVariableLogging": true,
+      "route": {
+        "default": false,
+        "tierName": "global"
+      }
+    },
+    "standard": false,
+    "tags": [
+      "AI Generated",
+      "Nebula"
+    ],
+    "version": 1,
+    "entityType": "WORKFLOW_DEFINITION"
+  }
+}

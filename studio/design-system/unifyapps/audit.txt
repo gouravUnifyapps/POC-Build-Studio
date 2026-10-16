@@ -1,0 +1,380 @@
+AUDIT  ·  UnifyApps · POC Studio Live  ·  clone mode (ledger design.clone_vs_system)
+==========================================================================================
+What is measured here: the SOURCE app's own stylesheet (app-b4fe5a0a30eb/main/app/src/orbit/ds/tokens.css, ds/bundle.css, orbit.css),
+because the clone keeps it as is. The fresh v3.4 transform (client.css) is only the comparison baseline (section E).
+Every ratio comes from scripts/reskin.py (its audit, or its contrast maths imported by source-audit/measure*.py). Bar: 4.5 text, 3.0 non-text.
+Scripts and raw outputs: source-audit/ . Browser checks ran on source-audit/harness.html (the three files plus sample markup,
+Playwright, light theme), NOT on the signed-in app, which this session cannot open.
+
+A. reskin.py audit --css tokens.css, UNTOUCHED  (the script reads v3.4's token names, so it finds the inks and nothing else)
+------------------------------------------------------------------------------------------
+light --ink on base                                     17.03:1  pass
+light --ink on glass-1                                  18.19:1  pass
+light --ink on glass-2                                  18.36:1  pass
+light --ink on glass-3                                  18.53:1  pass
+light --ink on glass-solid                              18.64:1  pass
+light --ink-2 on base                                    6.81:1  pass
+light --ink-2 on glass-1                                 7.27:1  pass
+light --ink-2 on glass-2                                 7.34:1  pass
+light --ink-2 on glass-3                                 7.41:1  pass
+light --ink-2 on glass-solid                             7.45:1  pass
+light --ink-3 on base                                    4.73:1  pass
+light --ink-3 on glass-1                                 5.05:1  pass
+light --ink-3 on glass-2                                 5.10:1  pass
+light --ink-3 on glass-3                                 5.14:1  pass
+light --ink-3 on glass-solid                             5.18:1  pass
+light --ink-mute on base                                 2.59:1  under 3:1, dimmed role
+light --ink-mute on glass-1                              2.77:1  under 3:1, dimmed role
+light --ink-mute on glass-2                              2.79:1  under 3:1, dimmed role
+light --ink-mute on glass-3                              2.82:1  under 3:1, dimmed role
+light --ink-mute on glass-solid                          2.83:1  under 3:1, dimmed role
+dark  --ink on base                                     12.29:1  pass
+dark  --ink on glass-1                                  10.00:1  pass
+dark  --ink on glass-2                                   9.07:1  pass
+dark  --ink on glass-3                                   8.09:1  pass
+dark  --ink on glass-solid                               8.22:1  pass
+dark  --ink-2 on base                                    8.05:1  pass
+dark  --ink-2 on glass-1                                 6.55:1  pass
+dark  --ink-2 on glass-2                                 5.94:1  pass
+dark  --ink-2 on glass-3                                 5.30:1  pass
+dark  --ink-2 on glass-solid                             5.38:1  pass
+dark  --ink-3 on base                                    7.18:1  pass
+dark  --ink-3 on glass-1                                 5.84:1  pass
+dark  --ink-3 on glass-2                                 5.30:1  pass
+dark  --ink-3 on glass-3                                 4.73:1  pass
+dark  --ink-3 on glass-solid                             4.80:1  pass
+dark  --ink-mute on base                                 4.46:1  pass
+dark  --ink-mute on glass-1                              3.63:1  pass
+dark  --ink-mute on glass-2                              3.29:1  pass
+dark  --ink-mute on glass-3                              2.93:1  under 3:1, dimmed role
+dark  --ink-mute on glass-solid                          2.98:1  under 3:1, dimmed role
+text failures: 0 | dimmed roles under 3:1: 7 (v3.4 ships --ink-mute dimmed on purpose; a change here is a design decision, not a fix)
+
+B. reskin.py audit --css bundle.css, UNTOUCHED
+------------------------------------------------------------------------------------------
+text failures: 0 | dimmed roles under 3:1: 0 (v3.4 ships --ink-mute dimmed on purpose; a change here is a design decision, not a fix)
+(bundle.css holds no :root colour tokens, so the script finds no role to measure. That is an empty result, not a pass.)
+
+C. reskin.py audit on source-measured.css  =  tokens.css with variable NAMES mapped to v3.4's (--status-X to --st-X, --status-X-tint to --st-X-t,
+   --sp-blue as an alias of --brand) and the .btn-p stops written as the three --fill hexes. No value is touched; the file is in source-audit/.
+------------------------------------------------------------------------------------------
+light --ink on base                                     17.03:1  pass
+light --ink on glass-1                                  18.19:1  pass
+light --ink on glass-2                                  18.36:1  pass
+light --ink on glass-3                                  18.53:1  pass
+light --ink on glass-solid                              18.64:1  pass
+light --ink-2 on base                                    6.81:1  pass
+light --ink-2 on glass-1                                 7.27:1  pass
+light --ink-2 on glass-2                                 7.34:1  pass
+light --ink-2 on glass-3                                 7.41:1  pass
+light --ink-2 on glass-solid                             7.45:1  pass
+light --ink-3 on base                                    4.73:1  pass
+light --ink-3 on glass-1                                 5.05:1  pass
+light --ink-3 on glass-2                                 5.10:1  pass
+light --ink-3 on glass-3                                 5.14:1  pass
+light --ink-3 on glass-solid                             5.18:1  pass
+light --ink-mute on base                                 2.59:1  under 3:1, dimmed role
+light --ink-mute on glass-1                              2.77:1  under 3:1, dimmed role
+light --ink-mute on glass-2                              2.79:1  under 3:1, dimmed role
+light --ink-mute on glass-3                              2.82:1  under 3:1, dimmed role
+light --ink-mute on glass-solid                          2.83:1  under 3:1, dimmed role
+light --sp-blue (accent as text) on base                 4.55:1  pass
+light #fff on .btn-p stop 1 #4E582D                      7.61:1  pass
+light #fff on .btn-p stop 2 #2E3F1A                     11.40:1  pass
+light #fff on .btn-p stop 3 #0F2805                     15.84:1  pass
+light --st-neutral text on its tint over glass-1         6.30:1  pass
+light --st-attention text on its tint over glass-1       4.92:1  pass
+light --st-negative text on its tint over glass-1        6.25:1  pass
+light --st-positive text on its tint over glass-1        5.03:1  pass
+dark  --ink on base                                     12.29:1  pass
+dark  --ink on glass-1                                  10.00:1  pass
+dark  --ink on glass-2                                   9.07:1  pass
+dark  --ink on glass-3                                   8.09:1  pass
+dark  --ink on glass-solid                               8.22:1  pass
+dark  --ink-2 on base                                    8.05:1  pass
+dark  --ink-2 on glass-1                                 6.55:1  pass
+dark  --ink-2 on glass-2                                 5.94:1  pass
+dark  --ink-2 on glass-3                                 5.30:1  pass
+dark  --ink-2 on glass-solid                             5.38:1  pass
+dark  --ink-3 on base                                    7.18:1  pass
+dark  --ink-3 on glass-1                                 5.84:1  pass
+dark  --ink-3 on glass-2                                 5.30:1  pass
+dark  --ink-3 on glass-3                                 4.73:1  pass
+dark  --ink-3 on glass-solid                             4.80:1  pass
+dark  --ink-mute on base                                 4.46:1  pass
+dark  --ink-mute on glass-1                              3.63:1  pass
+dark  --ink-mute on glass-2                              3.29:1  pass
+dark  --ink-mute on glass-3                              2.93:1  under 3:1, dimmed role
+dark  --ink-mute on glass-solid                          2.98:1  under 3:1, dimmed role
+dark  --sp-blue (accent as text) on base                 7.21:1  pass
+dark  --st-neutral text on its tint over glass-1         5.70:1  pass
+dark  --st-attention text on its tint over glass-1       5.61:1  pass
+dark  --st-negative text on its tint over glass-1        5.75:1  pass
+dark  --st-positive text on its tint over glass-1        5.82:1  pass
+text failures: 0 | dimmed roles under 3:1: 7 (v3.4 ships --ink-mute dimmed on purpose; a change here is a design decision, not a fix)
+
+D. Roles the script does not cover, same maths (source-audit/measure.py, measure2.py, measure3.py)
+------------------------------------------------------------------------------------------
+D1. tokens against their grounds, the rail, the logo, the chart ramp
+light  --brand (accent text) on base                                    4.55:1  bar 4.5  pass
+light  --brand on glass-solid                                           4.98:1  bar 4.5  pass
+light  --brand-deep on base                                             9.65:1  bar 4.5  pass
+light  --accent-text on base                                            6.14:1  bar 4.5  pass
+light  --accent-text on glass-solid                                     6.72:1  bar 4.5  pass
+light  --accent (bronze) on base, non-text                              4.28:1  bar 3.0  pass
+light  --accent-soft on base, non-text                                  2.37:1  bar 3.0  under 3:1
+light  --focus ring on base, non-text                                   4.55:1  bar 3.0  pass
+light  #ffffff on --fill-1                                              7.61:1  bar 4.5  pass
+light  #ffffff on --fill-2                                             11.40:1  bar 4.5  pass
+light  #ffffff on --fill-3                                             15.84:1  bar 4.5  pass
+light  white on --pos-fill-1 (.pip.done digit)                          4.20:1  bar 4.5  FAIL
+light  white on --pos-fill-2 (.pip.done digit)                          6.03:1  bar 4.5  pass
+light  --status-neutral on glass-solid (plain)                          7.45:1  bar 4.5  pass
+light  --status-attention on glass-solid (plain)                        5.88:1  bar 4.5  pass
+light  --status-negative on glass-solid (plain)                         7.63:1  bar 4.5  pass
+light  --status-positive on glass-solid (plain)                         6.03:1  bar 4.5  pass
+light  tooltip --tip-ink on --tip-bg                                   17.03:1  bar 4.5  pass
+light  --chart-1 on glass-solid, non-text                              12.97:1  bar 3.0  pass
+light  --chart-2 on glass-solid, non-text                               8.06:1  bar 3.0  pass
+light  --chart-3 on glass-solid, non-text                               5.05:1  bar 3.0  pass
+light  --chart-4 on glass-solid, non-text                               3.23:1  bar 3.0  pass
+light  --chart-5 on glass-solid, non-text                               2.44:1  bar 3.0  under 3:1
+light  --chart-6 on glass-solid, non-text                               1.78:1  bar 3.0  under 3:1
+light  --chart-1 vs --chart-2, adjacent steps                           1.61:1  bar 1.3  (info)
+light  --chart-2 vs --chart-3, adjacent steps                           1.60:1  bar 1.3  (info)
+light  --chart-3 vs --chart-4, adjacent steps                           1.56:1  bar 1.3  (info)
+light  --chart-4 vs --chart-5, adjacent steps                           1.32:1  bar 1.3  (info)
+light  --chart-5 vs --chart-6, adjacent steps                           1.37:1  bar 1.3  (info)
+dark   --brand (accent text) on base                                    7.21:1  bar 4.5  pass
+dark   --brand on glass-solid                                           4.82:1  bar 4.5  pass
+dark   --brand-deep on base                                             3.58:1  bar 4.5  FAIL
+dark   --accent-text on base                                            8.00:1  bar 4.5  pass
+dark   --accent-text on glass-solid                                     5.35:1  bar 4.5  pass
+dark   --accent (bronze) on base, non-text                              6.74:1  bar 3.0  pass
+dark   --accent-soft on base, non-text                                 10.17:1  bar 3.0  pass
+dark   --focus ring on base, non-text                                   7.21:1  bar 3.0  pass
+dark   #ffffff on --fill-1                                              4.98:1  bar 4.5  pass
+dark   #ffffff on --fill-2                                              6.45:1  bar 4.5  pass
+dark   #ffffff on --fill-3                                             10.26:1  bar 4.5  pass
+dark   white on --pos-fill-1 (.pip.done digit)                          4.20:1  bar 4.5  FAIL
+dark   white on --pos-fill-2 (.pip.done digit)                          6.03:1  bar 4.5  pass
+dark   --status-neutral on glass-solid (plain)                          5.69:1  bar 4.5  pass
+dark   --status-attention on glass-solid (plain)                        5.67:1  bar 4.5  pass
+dark   --status-negative on glass-solid (plain)                         5.65:1  bar 4.5  pass
+dark   --status-positive on glass-solid (plain)                         5.90:1  bar 4.5  pass
+dark   tooltip --tip-ink on --tip-bg                                   12.29:1  bar 4.5  pass
+dark   --chart-1 on glass-solid, non-text                               9.59:1  bar 3.0  pass
+dark   --chart-2 on glass-solid, non-text                               7.72:1  bar 3.0  pass
+dark   --chart-3 on glass-solid, non-text                               5.97:1  bar 3.0  pass
+dark   --chart-4 on glass-solid, non-text                               4.51:1  bar 3.0  pass
+dark   --chart-5 on glass-solid, non-text                               3.18:1  bar 3.0  pass
+dark   --chart-6 on glass-solid, non-text                               2.26:1  bar 3.0  under 3:1
+dark   --chart-1 vs --chart-2, adjacent steps                           1.24:1  bar 1.3  (info)
+dark   --chart-2 vs --chart-3, adjacent steps                           1.29:1  bar 1.3  (info)
+dark   --chart-3 vs --chart-4, adjacent steps                           1.32:1  bar 1.3  (info)
+dark   --chart-4 vs --chart-5, adjacent steps                           1.42:1  bar 1.3  (info)
+dark   --chart-5 vs --chart-6, adjacent steps                           1.41:1  bar 1.3  (info)
+rail   --nav-ink on --nav-1 #324223                                     8.72:1  bar 4.5  pass
+rail   --nav-ink-2 (.80) on --nav-1                                     6.24:1  bar 4.5  pass
+rail   --nav-ink-3 (.64) on --nav-1                                     4.63:1  bar 4.5  pass
+rail   --nav-mark (active marker) on --nav-1, non-text                  4.35:1  bar 3.0  pass
+rail   logo #EDE6D7 (source's reversed PNG) on --nav-1, non-text        8.72:1  bar 3.0  pass
+rail   kit reversed-mono.svg #FFFFFF on --nav-1, non-text              10.83:1  bar 3.0  pass
+rail   --nav-ink on --nav-2 #012a00                                    12.68:1  bar 4.5  pass
+rail   --nav-ink-2 (.80) on --nav-2                                     8.50:1  bar 4.5  pass
+rail   --nav-ink-3 (.64) on --nav-2                                     5.91:1  bar 4.5  pass
+rail   --nav-mark (active marker) on --nav-2, non-text                  6.32:1  bar 3.0  pass
+rail   logo #EDE6D7 (source's reversed PNG) on --nav-2, non-text       12.68:1  bar 3.0  pass
+rail   kit reversed-mono.svg #FFFFFF on --nav-2, non-text              15.76:1  bar 3.0  pass
+rail   --nav-ink on --nav-3 #071a05                                    14.58:1  bar 4.5  pass
+rail   --nav-ink-2 (.80) on --nav-3                                     9.58:1  bar 4.5  pass
+rail   --nav-ink-3 (.64) on --nav-3                                     6.53:1  bar 4.5  pass
+rail   --nav-mark (active marker) on --nav-3, non-text                  7.27:1  bar 3.0  pass
+rail   logo #EDE6D7 (source's reversed PNG) on --nav-3, non-text       14.58:1  bar 3.0  pass
+rail   kit reversed-mono.svg #FFFFFF on --nav-3, non-text              18.12:1  bar 3.0  pass
+rail   --nav-ink on active item over --nav-1                            6.03:1  bar 4.5  pass
+rail   --nav-ink on active item over --nav-2                            8.83:1  bar 4.5  pass
+rail   --nav-ink on active item over --nav-3                           10.21:1  bar 4.5  pass
+light  kit gold lockup #847347 on --base, non-text                      4.24:1  bar 3.0  pass
+light  kit gold lockup #847347 on glass-solid, non-text                 4.64:1  bar 3.0  pass
+rows below their bar: 7
+
+D2. product rules in orbit.css and bundle.css (each row names its rule); LIGHT is the theme the app runs, DARK is latent
+light  .tag.ob-tag-brand                                              --brand on --brand-tint over glass-1  ('Building' tag)           4.27:1 bar 4.5 FAIL
+light  .tag.ob-tag-accent                                             --accent-text on --accent-tint over glass-1                      5.69:1 bar 4.5 pass
+light  .tag (no tone)                                                 --ink-2 on --inner over glass-1                                  6.75:1 bar 4.5 pass
+light  .av.ob-av-ai                                                   --accent-text on --accent-tint over glass-1                      5.69:1 bar 4.5 pass
+light  .tag.ob-tag-brand                                              --brand on --brand-tint over glass-solid  ('Building' tag)       4.38:1 bar 4.5 FAIL
+light  .tag.ob-tag-accent                                             --accent-text on --accent-tint over glass-solid                  5.80:1 bar 4.5 pass
+light  .tag (no tone)                                                 --ink-2 on --inner over glass-solid                              6.92:1 bar 4.5 pass
+light  .av.ob-av-ai                                                   --accent-text on --accent-tint over glass-solid                  5.80:1 bar 4.5 pass
+light  .ps-nav-item .ct.hot                                           --nav-3 on --nav-mark                                            7.27:1 bar 4.5 pass
+light  .ps-iconbtn .badge / .btn-d:hover                              --on-fill on --status-negative                                   7.64:1 bar 4.5 pass
+dark   .tag.ob-tag-brand                                              --brand on --brand-tint over glass-1  ('Building' tag)           4.49:1 bar 4.5 FAIL
+dark   .tag.ob-tag-accent                                             --accent-text on --accent-tint over glass-1                      5.09:1 bar 4.5 pass
+dark   .tag (no tone)                                                 --ink-2 on --inner over glass-1                                  5.61:1 bar 4.5 pass
+dark   .av.ob-av-ai                                                   --accent-text on --accent-tint over glass-1                      5.09:1 bar 4.5 pass
+dark   .tag.ob-tag-brand                                              --brand on --brand-tint over glass-solid  ('Building' tag)       3.78:1 bar 4.5 FAIL
+dark   .tag.ob-tag-accent                                             --accent-text on --accent-tint over glass-solid                  4.28:1 bar 4.5 FAIL
+dark   .tag (no tone)                                                 --ink-2 on --inner over glass-solid                              4.66:1 bar 4.5 pass
+dark   .av.ob-av-ai                                                   --accent-text on --accent-tint over glass-solid                  4.28:1 bar 4.5 FAIL
+dark   .ps-nav-item .ct.hot                                           --nav-3 on --nav-mark                                            7.27:1 bar 4.5 pass
+dark   .ps-iconbtn .badge / .btn-d:hover                              --on-fill on --status-negative                                   1.92:1 bar 4.5 FAIL
+light  .av.ob-tone-0                                                  white on gradient start (--fill-1 to --fill-3)                   7.61:1 bar 4.5 pass
+light  .av.ob-tone-0                                                  white on gradient mid (--fill-1 to --fill-3)                    11.27:1 bar 4.5 pass
+light  .av.ob-tone-0                                                  white on gradient end (--fill-1 to --fill-3)                    15.84:1 bar 4.5 pass
+light  .av.ob-tone-1 (as rendered: --accent = --inner)                white on gradient start                                          1.08:1 bar 4.5 FAIL
+light  .av.ob-tone-1 (as rendered: --accent = --inner)                white on gradient mid                                            2.37:1 bar 4.5 FAIL
+light  .av.ob-tone-1 (as rendered: --accent = --inner)                white on gradient end                                            6.73:1 bar 4.5 pass
+light  .av.ob-tone-2                                                  white on gradient start (--pos-fill-1 to --pos-fill-2)           4.20:1 bar 4.5 FAIL
+light  .av.ob-tone-2                                                  white on gradient mid (--pos-fill-1 to --pos-fill-2)             4.98:1 bar 4.5 pass
+light  .av.ob-tone-2                                                  white on gradient end (--pos-fill-1 to --pos-fill-2)             6.03:1 bar 4.5 pass
+light  .av.ob-tone-3                                                  white on gradient start (--status-attention to --accent-text)    5.89:1 bar 4.5 pass
+light  .av.ob-tone-3                                                  white on gradient mid (--status-attention to --accent-text)      6.43:1 bar 4.5 pass
+light  .av.ob-tone-3                                                  white on gradient end (--status-attention to --accent-text)      6.73:1 bar 4.5 pass
+light  .av.ob-tone-4                                                  white on gradient start (--brand to --brand-deep)                4.98:1 bar 4.5 pass
+light  .av.ob-tone-4                                                  white on gradient mid (--brand to --brand-deep)                  7.20:1 bar 4.5 pass
+light  .av.ob-tone-4                                                  white on gradient end (--brand to --brand-deep)                 10.57:1 bar 4.5 pass
+light  .av.ob-tone-5                                                  white on gradient start (--chart-3 to --chart-1)                 5.05:1 bar 4.5 pass
+light  .av.ob-tone-5                                                  white on gradient mid (--chart-3 to --chart-1)                   8.08:1 bar 4.5 pass
+light  .av.ob-tone-5                                                  white on gradient end (--chart-3 to --chart-1)                  12.97:1 bar 4.5 pass
+light  .ob-jgate.is-open .ob-jgate-d ring, as rendered in light (--accent = --inner) ring colour on --glass-solid (non-text 3:1)                      1.08:1 bar 3.0 FAIL
+dark   .ob-jgate.is-open ring, dark (--accent = bronze, but dark is not wired) ring colour on --glass-solid (non-text 3:1)                      4.51:1 bar 3.0 pass
+light  .ob-jgate.is-open ring if --accent were the declared bronze #857242 ring colour on --glass-solid (non-text 3:1)                      4.68:1 bar 3.0 pass
+rows below bar: 11
+
+D3. iteration chip, Latest pill and the two proposed fixes (rows marked IF are what the rule WOULD measure after the fix; nothing was changed)
+.ob-loops-chip chip                                            --accent-text on accent-soft 28% over base             4.94:1 bar 4.5 pass
+.ob-loops-chip chip                                            --accent-text on accent-soft 28% over glass-solid      5.31:1 bar 4.5 pass
+.ob-loops-chip chip hover/open                                 --accent-text on accent-soft 48% over base             4.19:1 bar 4.5 FAIL
+.ob-loops-chip chip hover/open                                 --accent-text on accent-soft 48% over glass-solid      4.43:1 bar 4.5 FAIL
+.ob-loops-box rows                                             --ink on box                                          16.84:1 bar 4.5 pass
+.ob-loops-box rows                                             --ink-2 on box                                         6.73:1 bar 4.5 pass
+.ob-loops-box rows                                             --ink-3 (time) on box                                  4.68:1 bar 4.5 pass
+.ob-loops-row:hover                                            --ink on hover wash                                   14.29:1 bar 4.5 pass
+.ob-loops-latest                                               --accent-text on accent-soft 45% over box              4.26:1 bar 4.5 FAIL
+.ob-branch-n                                                   white on top stop #806F44                              4.91:1 bar 4.5 pass
+.ob-branch-n                                                   white on bottom stop --accent-text                     6.73:1 bar 4.5 pass
+.av.ob-tone-1 IF --accent = #857242 (fix P1)                   white on gradient start                                4.68:1 bar 4.5 pass
+.av.ob-tone-1 IF --accent = #857242 (fix P1)                   white on gradient mid                                  5.58:1 bar 4.5 pass
+.av.ob-tone-1 IF --accent = #857242 (fix P1)                   white on gradient end                                  6.73:1 bar 4.5 pass
+.ob-jgate.is-open ring IF --accent = #857242 (fix P1)          ring on glass-solid, non-text                          4.68:1 bar 3.0 pass
+.ob-jgate-d / .ob-jcard.is-selected ring (--accent-soft, as is) ring on glass-solid, non-text                          2.59:1 bar 3.0 FAIL
+.tag.ob-tag-brand IF color = --brand-deep (fix P2)             --brand-deep on --brand-tint over glass-solid          9.30:1 bar 4.5 pass
+
+D4. kit parts the NEW regions reuse (source-audit/measure4.py): the AI Insight card for the pending skill suggestion, the bubble for Slack rows
+v3.4 original                                    stop #E8EDF7: .micro brand 4.21, .ground ink-3 4.43 | stop #F0F6FC: .micro brand 4.54, .ground ink-3 4.78 | stop #F8EEF9: .micro brand 4.37, .ground ink-3 4.60
+fresh transform                                  stop #EBEFE9: .micro brand 4.26, .ground ink-3 4.47 | stop #F2F7F0: .micro brand 4.57, .ground ink-3 4.79 | stop #F2F5ED: .micro brand 4.50, .ground ink-3 4.72
+SOURCE (bundle.css gradient, tokens.css values)  stop #EDEEE9: .micro brand 4.27, .ground ink-3 4.44 | stop #F5F6F1: .micro brand 4.59, .ground ink-3 4.77 | stop #F5F3EE: .micro brand 4.49, .ground ink-3 4.67
+History bubble (.msg.ai): ink on the bubble 18.64, ink-2 7.45; the sender label (.who, ink-3) and the time (.ob-mono-t, ink-3) on the tab panel 5.10 (all pass).
+The AI card's two small text roles sit just under 4.5 at the gradient's left stop in v3.4 itself (4.21 / 4.43); the source is not worse (4.27 / 4.44). INHERITED, not introduced by the clone.
+
+E. BASELINE: reskin.py audit --css client.css  (fresh v3.4 transform, --hue 103 --secondary-hue 74 --positive-hue 138; max abs dY 0.00496; count check ok)
+------------------------------------------------------------------------------------------
+light --ink on base                                     17.01:1  pass
+light --ink on glass-1                                  18.19:1  pass
+light --ink on glass-2                                  18.36:1  pass
+light --ink on glass-3                                  18.45:1  pass
+light --ink on glass-solid                              18.56:1  pass
+light --ink-2 on base                                    6.85:1  pass
+light --ink-2 on glass-1                                 7.33:1  pass
+light --ink-2 on glass-2                                 7.40:1  pass
+light --ink-2 on glass-3                                 7.43:1  pass
+light --ink-2 on glass-solid                             7.48:1  pass
+light --ink-3 on base                                    4.76:1  pass
+light --ink-3 on glass-1                                 5.09:1  pass
+light --ink-3 on glass-2                                 5.13:1  pass
+light --ink-3 on glass-3                                 5.16:1  pass
+light --ink-3 on glass-solid                             5.19:1  pass
+light --ink-mute on base                                 2.59:1  under 3:1, dimmed role
+light --ink-mute on glass-1                              2.77:1  under 3:1, dimmed role
+light --ink-mute on glass-2                              2.80:1  under 3:1, dimmed role
+light --ink-mute on glass-3                              2.81:1  under 3:1, dimmed role
+light --ink-mute on glass-solid                          2.83:1  under 3:1, dimmed role
+light --sp-blue (accent as text) on base                 4.53:1  pass
+light #fff on .btn-p stop 1 #3A7F1E                      4.96:1  pass
+light #fff on .btn-p stop 2 #306B19                      6.48:1  pass
+light #fff on .btn-p stop 3 #224A11                     10.22:1  pass
+light --st-neutral text on its tint over glass-1         6.33:1  pass
+light --st-attention text on its tint over glass-1       4.97:1  pass
+light --st-negative text on its tint over glass-1        6.22:1  pass
+light --st-positive text on its tint over glass-1        5.06:1  pass
+dark  --ink on base                                     12.17:1  pass
+dark  --ink on glass-1                                   9.87:1  pass
+dark  --ink on glass-2                                   9.00:1  pass
+dark  --ink on glass-3                                   7.98:1  pass
+dark  --ink on glass-solid                               8.11:1  pass
+dark  --ink-2 on base                                    8.00:1  pass
+dark  --ink-2 on glass-1                                 6.49:1  pass
+dark  --ink-2 on glass-2                                 5.92:1  pass
+dark  --ink-2 on glass-3                                 5.25:1  pass
+dark  --ink-2 on glass-solid                             5.33:1  pass
+dark  --ink-3 on base                                    7.13:1  pass
+dark  --ink-3 on glass-1                                 5.78:1  pass
+dark  --ink-3 on glass-2                                 5.27:1  pass
+dark  --ink-3 on glass-3                                 4.67:1  pass
+dark  --ink-3 on glass-solid                             4.75:1  pass
+dark  --ink-mute on base                                 4.43:1  pass
+dark  --ink-mute on glass-1                              3.60:1  pass
+dark  --ink-mute on glass-2                              3.28:1  pass
+dark  --ink-mute on glass-3                              2.91:1  under 3:1, dimmed role
+dark  --ink-mute on glass-solid                          2.95:1  under 3:1, dimmed role
+dark  --sp-blue (accent as text) on base                 7.18:1  pass
+dark  --st-neutral text on its tint over glass-1         5.11:1  pass
+dark  --st-attention text on its tint over glass-1       5.23:1  pass
+dark  --st-negative text on its tint over glass-1        4.67:1  pass
+dark  --st-positive text on its tint over glass-1        5.43:1  pass
+text failures: 0 | dimmed roles under 3:1: 7 (v3.4 ships --ink-mute dimmed on purpose; a change here is a design decision, not a fix)
+
+F. STEP 6 MECHANICAL CHECKS, ticked by hand for the SOURCE CSS.  [x] pass  [ ] fail  [-] not applicable or not run (said why)
+------------------------------------------------------------------------------------------
+[-] Rendered and screenshotted in light AND dark.   Light: sample markup of the kit and product classes rendered and read back in a browser
+    (computed styles, source-audit/computed-checks.json); the signed-in app itself was not opened. Dark: not rendered. The source forces
+    data-theme=light (Shell.tsx) and has no switch, so dark is unreachable: a gap, port-note.md section 5.
+[x] grep -rno 'stroke[A-Z]' src/orbit  returns nothing. Icons are kebab-case SVG strings in orbit/lib/icons.ts (stroke-width etc.).
+[x] bare rgb triples (--x: r,g,b)  none in tokens.css, bundle.css or orbit.css. The ambient field is three full rgba tokens (--aurora-1..3),
+    inventory says bare_aur_triples 0 for all three files. Nothing can be left on a previous brand by a hex-and-rgba replace.
+[ ] Card border-width computes 0.   11 of 12 sampled cards compute 0 (.tile .solid .g1 .tblwrap .ps-banner .ob-doclist .ps-skill .ps-fb
+    .ps-drawer .tabpanel .ps-rail). FAIL: .ob-loops-box (the iterations panel) computes 1px and carries a 1px hairline caret border (orbit.css 1537-1556).
+    Note: .ob-doclist, .ob-fb, .ob-appr, .ob-pick, .ob-jcard.is-done draw a 1px hairline with box-shadow, so border-width is 0 but the outline shows.
+[x] Gradient cards carry no inset ring.   .ob-jcard.is-building/.is-waiting/.is-blocked and .ps-banner.need/.run/.block/.ready/.stale have no ring unselected;
+    the selected phase card adds one 1.5px ring, a state (see its contrast, row D3).
+[x] backdrop-filter computes blur(...) saturate(...) on glass tiers: .tile and .g1 blur(22px) saturate(1.6), .tabpanel blur(26px) saturate(1.7).
+    .solid, .tblwrap, .ps-banner, .ps-skill, .ps-fb, .ps-drawer compute none: the opaque rung, as v3.4 holds containers.
+[x] 1px top edge on every glass surface.   --edge (inset 0 1px 0 rgba(255,255,255,.92)) is in the computed box-shadow of every sampled surface.
+[ ] Radii only {10, 6, pill, circle}.   Rendered rules are on the scale (var(--r) 47 uses, --r-sm 27, pill 18, 50% 27) with ONE exception that renders:
+    .ob-jgate-d, the gate diamond, 4px (computed). Zero-radius rotated squares (.ps-mini i.g, .ps-legend .lg-gate) are shapes, not corners.
+    Off scale but never rendered: .ob-branch-line 12px (no TSX references it), .thumbs2 8px, .kpi2 5px, .legend i 3px, .sth .ln 2px (all v3.4's own),
+    the studio steps 28/22/16/12 (declared tokens, used only by .studio2 and .canv, which no screen renders).
+[x] Table header is IBM Plex Mono 10.5px and the face is embedded.   Computed on .tbl thead th: "IBM Plex Mono", 10.5px, weight 600;
+    document.fonts.check true after load; index.html links IBM Plex Mono 400/500/600 from fonts.googleapis.com (the app CSP must allow that host and fonts.gstatic.com).
+[x] Body face swapped (Spectral): numerals tabular.   Canvas advance of 0..9 at 15px is 7.5 for every digit; body computes font-variant-numeric: tabular-nums.
+    Four sizes hold their hierarchy: 15 body, 13 small, 11 mono micro, 19 title, 34 display. CHANGED from v3.4: .display is weight 400, tracking -.02em
+    (v3.4: 600, -.028em). Distinct px sizes in the files: v3.4 20, bundle.css 22, orbit.css 15 (v3.4's own list is already longer than four).
+    Fixed-width layouts: not measured (needs the signed-in app).
+[x] Tag font-size < button font-size.   .tag 11.5px; .btn 14px; .btn-sm 13px (computed).
+[ ] Status tags >= 4.5 composited.   The four tonal tags pass: light 4.92 to 6.30, dark 5.61 to 5.82 (section C). FAIL: the fifth, .tag.ob-tag-brand ("Building"),
+    4.27 on glass-1 and 4.38 on glass-solid in light, 4.49 / 3.78 in dark. v3.4 has no brand-tone tag; the source added one.
+[x] Logo mark >= 3:1 on its ground.   The source's cream logo PNG (#EDE6D7) on the three rail stops 8.72 / 12.68 / 14.58; the kit's reversed-mono.svg (#FFFFFF)
+    10.83 / 15.76 / 18.12; the kit's gold lockup #847347 on --base 4.24 and on glass-solid 4.64 (non-text bar 3.0).
+[-] One <style>.   A code app imports tokens.css, bundle.css, orbit.css (and the engine's Tailwind index.css); there is no inline <style>, and the project rules forbid inline styles in TSX.
+[-] No horizontal page scroll, zero JS errors.   Not measured: the app needs a sign-in. The harness page: scrollWidth <= clientWidth, no console error except a favicon 404.
+[-] Theme switch correct under both OS schemes.   No switch in product chrome (v3.4 doctrine) and none in this app; light forced.
+[x] Narrow a filter until it returns nothing.   Read in Home.tsx and FeedbackBoard.tsx (not run): "No POCs yet" / "No feedback yet" and
+    "No POCs match these filters" / "No {status} feedback" are separate states, each with its own action. Home has NO search field and no "n of m" (doctrine, Components,
+    first bullet); its toolbar is one .seg of statuses, a Phase select, an Owner select and Clear all.
+
+RESULT
+------------------------------------------------------------------------------------------
+reskin.py: 0 text failures on tokens.css and on its name-mapped copy; the 7 dimmed --ink-mute roles are v3.4's own (placeholder and disabled only).
+By hand, beyond the script, in LIGHT (the one wired theme): 6 findings (D1 covers two roles) below their bar on the source's own CSS, all in product rules the script cannot see:
+  D1  --accent is re-bound to --inner by orbit.css:22: avatar tone 1 initials 1.08 / 2.37 / 6.73 (start, centre, end); open-gate ring 1.08:1
+  D2  .tag.ob-tag-brand "Building" 4.27 / 4.38 (bar 4.5)
+  D3  .ob-loops-chip hover/open 4.19 / 4.43 and .ob-loops-latest 4.26 (bar 4.5)
+  D4  --accent-soft as a ring (gate diamond, selected phase card) 2.37 on base / 2.59 on glass-solid (bar 3.0)
+  D5  .ob-loops-box card outline 1px (rule: no card borders)
+  D6  .ob-jgate-d radius 4px (rule: five-step scale)
+  plus inherited unchanged from v3.4: white on --pos-fill-1 4.20 (v3.4's #2C8A74 measures the same); the chart ramp's steps 5 and 6 (2.44, 1.78; v3.4 2.44, 1.79),
+  which no screen draws; the AI Insight card's .micro 4.27 and .ground 4.44 at its left gradient stop (v3.4: 4.21 and 4.43), which the new Feedback card reuses.
+Latent in DARK (unwired): .tag.ob-tag-brand 4.49/3.78, .av.ob-av-ai and .ob-tag-accent 4.28 on glass-solid, --on-fill on --status-negative 1.92, --brand-deep text 3.58.
+Nothing in the source's CSS was edited. Two one-rule fixes at the cause are proposed, not applied (port-note.md section 3).

@@ -1,0 +1,41 @@
+light --ink on base                                     17.03:1  pass
+light --ink on glass-1                                  18.19:1  pass
+light --ink on glass-2                                  18.36:1  pass
+light --ink on glass-3                                  18.53:1  pass
+light --ink on glass-solid                              18.64:1  pass
+light --ink-2 on base                                    6.81:1  pass
+light --ink-2 on glass-1                                 7.27:1  pass
+light --ink-2 on glass-2                                 7.34:1  pass
+light --ink-2 on glass-3                                 7.41:1  pass
+light --ink-2 on glass-solid                             7.45:1  pass
+light --ink-3 on base                                    4.73:1  pass
+light --ink-3 on glass-1                                 5.05:1  pass
+light --ink-3 on glass-2                                 5.10:1  pass
+light --ink-3 on glass-3                                 5.14:1  pass
+light --ink-3 on glass-solid                             5.18:1  pass
+light --ink-mute on base                                 2.59:1  under 3:1, dimmed role
+light --ink-mute on glass-1                              2.77:1  under 3:1, dimmed role
+light --ink-mute on glass-2                              2.79:1  under 3:1, dimmed role
+light --ink-mute on glass-3                              2.82:1  under 3:1, dimmed role
+light --ink-mute on glass-solid                          2.83:1  under 3:1, dimmed role
+dark  --ink on base                                     12.29:1  pass
+dark  --ink on glass-1                                  10.00:1  pass
+dark  --ink on glass-2                                   9.07:1  pass
+dark  --ink on glass-3                                   8.09:1  pass
+dark  --ink on glass-solid                               8.22:1  pass
+dark  --ink-2 on base                                    8.05:1  pass
+dark  --ink-2 on glass-1                                 6.55:1  pass
+dark  --ink-2 on glass-2                                 5.94:1  pass
+dark  --ink-2 on glass-3                                 5.30:1  pass
+dark  --ink-2 on glass-solid                             5.38:1  pass
+dark  --ink-3 on base                                    7.18:1  pass
+dark  --ink-3 on glass-1                                 5.84:1  pass
+dark  --ink-3 on glass-2                                 5.30:1  pass
+dark  --ink-3 on glass-3                                 4.73:1  pass
+dark  --ink-3 on glass-solid                             4.80:1  pass
+dark  --ink-mute on base                                 4.46:1  pass
+dark  --ink-mute on glass-1                              3.63:1  pass
+dark  --ink-mute on glass-2                              3.29:1  pass
+dark  --ink-mute on glass-3                              2.93:1  under 3:1, dimmed role
+dark  --ink-mute on glass-solid                          2.98:1  under 3:1, dimmed role
+text failures: 0 | dimmed roles under 3:1: 7 (v3.4 ships --ink-mute dimmed on purpose; a change here is a design decision, not a fix)

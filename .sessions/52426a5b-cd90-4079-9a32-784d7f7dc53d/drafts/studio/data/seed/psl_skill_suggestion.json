@@ -1,0 +1,35 @@
+{
+ "object": "psl_skill_suggestion",
+ "primary_key": "suggestion_id",
+ "count": 2,
+ "rows": [
+  {
+   "suggestion_id": "SUG-prd-writer-v3",
+   "skill": "prd-writer",
+   "from_version": 2,
+   "to_version": 3,
+   "summary": "Every flowchart must draw each approval step; the goal needs a numeric success measure.",
+   "proposed_prompt": "You write the PRD for a prospect POC use case. Input: the approved Understand brief, the prospect's inputs and any gate feedback. Output one self-contained HTML page: problem, goal with a numeric success measure, users, a flowchart as inline SVG that draws every approval step, scope in and out, screens, data, risks. Put what changed since the last version at the top. Keep it under 20 KB, no external files, no scripts. Name the owner and manager. Never state a fact about the prospect that is not in the inputs; mark assumptions.",
+   "evidence_count": 2,
+   "evidence_tickets": "FB-1,FB-2",
+   "status": "approved",
+   "created_at": 1790652600000,
+   "approved_by": "Rahul Sen",
+   "approved_at": 1790920800000
+  },
+  {
+   "suggestion_id": "SUG-mockup-drafter-v2",
+   "skill": "mockup-drafter",
+   "from_version": 1,
+   "to_version": 2,
+   "summary": "Always draw a view for each role named in the PRD, not only the first role's.",
+   "proposed_prompt": "You draw UI mockups for an approved-in-principle PRD. Output one self-contained HTML page per lead screen with realistic sample rows. Always include a view for each role in the PRD (analyst or operator, asset or case owner, manager). Use the app's design tokens, no external files, no scripts. Say which screen each mockup belongs to and what the viewer should notice.",
+   "evidence_count": 1,
+   "evidence_tickets": "FB-3",
+   "status": "approved",
+   "created_at": 1790047800000,
+   "approved_by": "Rahul Sen",
+   "approved_at": 1790328600000
+  }
+ ]
+}

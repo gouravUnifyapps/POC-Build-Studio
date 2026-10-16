@@ -1,0 +1,31 @@
+{
+  "tasks": [
+    {
+      "id": "t19",
+      "status": "ok",
+      "change": "updated",
+      "ids": {
+        "entity": "e_6ad1ca0bc0f97b3e983d2679",
+        "tool": "e_6ad1ca0fc0f97b3e983d26dd",
+        "automation": "6ad1c663d885ae5a4d9fd8a6"
+      },
+      "readBack": [
+        "POC Studio Agent e_6ad1ca0bc0f97b3e983d2679: get_agent before the publish showed published false, needsPublish true, version 1, models {runs, picksTask, answerGeneration} all 'e_69b41a443d6f1815768c245f', and tool SavePOCFromSlack e_6ad1ca0fc0f97b3e983d26dd enabled true, topicId 'GLOBAL', automationId 6ad1c663d885ae5a4d9fd8a6.",
+        "POC Studio Agent e_6ad1ca0bc0f97b3e983d2679: publish_agent with confirmed true (Answer from the person: 'yes, publish POC Studio Agent. The spec the person accepted names it under Ready when, so it is already approved; do not ask again.') replied ok true, publishedVersion 1, live true, agent.published true, agent.needsPublish false, automationSaid {response: \"success\"}.",
+        "POC Studio Agent e_6ad1ca0bc0f97b3e983d2679: get_agent after the publish shows published true, needsPublish false, version 6, readiness {canRun true, missing []}, the same instructions text, the same model on all three slots, and tool SavePOCFromSlack enabled true; deployments [] (deploy_agent was not called, as the task says)."
+      ],
+      "unverified": [
+        "get_agent prints no publishedVersion field: the publishedVersion 1 comes from the publish_agent reply, and get_agent then reads version 6 with needsPublish false. Check: a second publish_agent on an unchanged draft, then compare the version numbers.",
+        "That the invoke-agent node of the Slack listener runs this published version is not run here: no run through an automation step was made. Check: the listener task's test of branch (2), a trace of the agent's case.",
+        "The published copy was not run itself: send_test_message runs the draft, and the last draft run (case e_6ad1ca5ec0f97b3e983d2983, in t18) matches the published instructions and tool.",
+        "Security: guardrail rules (content filter, grounding, PII masking) are still not set on POC Studio Agent and no Nebula tool writes them — needs an admin to set them in the agent's settings if the policy asks for it. Visibility is private: sharedWith holds only the owner (people []), and the tenant-wide groups 'All Users' and 'testing' listed under tenantWide are the platform's own, which no agent share changes."
+      ],
+      "notes": [
+        "handover: AI agent POC Studio Agent id e_6ad1ca0bc0f97b3e983d2679 is published (publish_agent publishedVersion 1, live true; get_agent published true, needsPublish false) and has no deployment on purpose. The Slack listener's invoke-agent node takes this id and sends one message of lines: channel id, channel name, tagger slack id, thread ts, then (only in a manager thread) poc id, then the text. It answers one or two lines of plain text, and its tool SavePOCFromSlack runs automation 6ad1c663d885ae5a4d9fd8a6.",
+        "Correction to the t18 read-back: get_agent now lists tools count 3, the bound SavePOCFromSlack and two records, generateChartTool and requestClarification, which update_agent created switched off (enabled false). The model is still offered GenerateChartWithBlocks and ClarifyFromUser in the run trace (see the t18 feedback entry).",
+        "feedback:\nBug: after `publish_agent` the reply says `publishedVersion: 1` while `get_agent` reads the agent at `version: 6`, and `get_agent` has no published-version field to compare.\nContext: POC Studio Agent `e_6ad1ca0bc0f97b3e983d2679`, a new advanced agent that had `version: 1` and `needsPublish: true` before the publish; `publish_agent {confirmed:true}` then `get_agent`. Surface: the version numbers `publish_agent` and `get_agent` print.\nWhere: unknown\nEvidence: `publish_agent` replied `agent.version: 1, published: true, needsPublish: false, publishedVersion: 1, live: true, automationSaid: {response: \"success\"}`; `get_agent` right after replied `version: 6, published: true, needsPublish: false`, with no `publishedVersion` key.\nCause: Unknown — next check: read the agent's version before and after a second `publish_agent` on an agent with no draft change, and see whether the publish automation itself moves the version.\nRegression: Create an agent, publish it, read `get_agent`: the version it prints should equal the `publishedVersion` the publish reply printed, or `get_agent` should name the published version."
+      ],
+      "error": ""
+    }
+  ]
+}

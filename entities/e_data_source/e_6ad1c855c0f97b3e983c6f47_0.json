@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "key": "e_data_source:e_6ad1c855c0f97b3e983c6f47",
+  "entityType": "e_data_source",
+  "id": "e_6ad1c855c0f97b3e983c6f47",
+  "version": 0,
+  "cachedAt": "2026-10-16T06:54:09.867Z",
+  "source": "solution-refresh",
+  "entity": {
+    "createdTime": 1792133205860,
+    "deleted": false,
+    "entityType": "e_data_source",
+    "id": "e_6ad1c855c0f97b3e983c6f47",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792133205860,
+    "modifiedTime": 1792133205860,
+    "ownerUserId": 66770,
+    "properties": {
+      "metadata": {
+        "isManuallyRenamed": false
+      },
+      "dpOn": [],
+      "inputs": {
+        "triggerInputCondition": "{{triggerInputCondition}}",
+        "shouldSearchInAnalyticsStore": false,
+        "searchField": "{{searchField}}",
+        "object_type": "{{object_type}}",
+        "includeRoleMappings": false,
+        "includeCurrentUserPermissions": false,
+        "translationsOption": "DEFAULT",
+        "sortBy": "{{sortBy}}",
+        "page": "{{page}}",
+        "numberOfRecordsToFetch": "MULTIPLE",
+        "readThroughSessionVariables": false,
+        "includeTotalCount": true
+      },
+      "advancedOptions": {
+        "refetchOnWindowFocus": true,
+        "timing": {
+          "runQueryOnPageLoad": false,
+          "runQueryPeriodically": false
+        },
+        "runBehaviour": "automatic"
+      },
+      "name": "data_fetch_app-79ea7266eab9",
+      "context": {
+        "appName": "storage_by_unifyapps",
+        "resourceName": "storage_by_unifyapps_fetch_records"
+      },
+      "interfaceId": "app-79ea7266eab9",
+      "type": "APPLICATION",
+      "dP": [
+        {
+          "p": "inputs.object_type"
+        },
+        {
+          "p": "inputs.triggerInputCondition"
+        },
+        {
+          "p": "inputs.page"
+        },
+        {
+          "p": "inputs.sortBy"
+        },
+        {
+          "p": "inputs.searchField"
+        }
+      ],
+      "interfacePageId": "e_global_app-79ea7266eab9"
+    },
+    "standard": false,
+    "version": 0
+  }
+}

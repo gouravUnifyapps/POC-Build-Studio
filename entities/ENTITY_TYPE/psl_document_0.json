@@ -1,0 +1,711 @@
+{
+  "schemaVersion": 1,
+  "key": "ENTITY_TYPE:psl_document",
+  "entityType": "ENTITY_TYPE",
+  "id": "psl_document",
+  "version": 0,
+  "cachedAt": "2026-10-16T13:59:49.249Z",
+  "source": "solution-refresh",
+  "ref": {
+    "id": "psl_document",
+    "type": "ENTITY_TYPE",
+    "state": "COMPLETED"
+  },
+  "entity": {
+    "columnCounts": 14,
+    "createdTime": 1792132767576,
+    "deleted": false,
+    "description": "POC Studio Live: one row per document version. document_id is client-sent: <poc id>__<stage>__<name slug>__v<n>.",
+    "id": "psl_document",
+    "input": {
+      "type": "SCHEMA_AND_LAYOUT",
+      "dynamic": false,
+      "layout": {
+        "ui:order": [
+          "document_id",
+          "poc",
+          "name",
+          "type",
+          "stage",
+          "gate_pack",
+          "version",
+          "status",
+          "summary",
+          "content",
+          "file_link",
+          "created_by",
+          "saved_at",
+          "format"
+        ]
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "document_id": {
+            "type": "string",
+            "title": "Document ID",
+            "help": "<poc id>__<stage>__<name slug>__v<n>",
+            "primaryKey": true,
+            "uniqueKey": true,
+            "searchable": true,
+            "sortable": true
+          },
+          "poc": {
+            "type": "string",
+            "format": "single-select",
+            "title": "POC",
+            "help": "The parent's poc_id",
+            "sortable": true,
+            "foreignKey": {
+              "reference": "ENTITY_ID:psl_poc"
+            }
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "nameField": true,
+            "searchable": true,
+            "sortable": true
+          },
+          "type": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Type",
+            "oneOf": [
+              {
+                "const": "brief",
+                "title": "Brief"
+              },
+              {
+                "const": "input",
+                "title": "Input"
+              },
+              {
+                "const": "requirements",
+                "title": "Requirements"
+              },
+              {
+                "const": "scope",
+                "title": "Scope"
+              },
+              {
+                "const": "email",
+                "title": "Email"
+              },
+              {
+                "const": "brd",
+                "title": "BRD"
+              },
+              {
+                "const": "design_system",
+                "title": "Design system"
+              },
+              {
+                "const": "build_report",
+                "title": "Build report"
+              },
+              {
+                "const": "app",
+                "title": "App"
+              },
+              {
+                "const": "evidence_pack",
+                "title": "Evidence pack"
+              },
+              {
+                "const": "demo_script",
+                "title": "Demo script"
+              },
+              {
+                "const": "deck",
+                "title": "Deck"
+              },
+              {
+                "const": "video",
+                "title": "Video"
+              },
+              {
+                "const": "use_case",
+                "title": "Use case"
+              },
+              {
+                "const": "design",
+                "title": "Design"
+              },
+              {
+                "const": "automation",
+                "title": "Automation"
+              },
+              {
+                "const": "object",
+                "title": "Object"
+              },
+              {
+                "const": "agent",
+                "title": "AI agent"
+              },
+              {
+                "const": "walkthrough",
+                "title": "Walkthrough"
+              },
+              {
+                "const": "poc_link",
+                "title": "POC app link"
+              }
+            ]
+          },
+          "stage": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Stage",
+            "sortable": true,
+            "oneOf": [
+              {
+                "const": "0_kickoff",
+                "title": "Kickoff"
+              },
+              {
+                "const": "1_signal_capture",
+                "title": "Signal capture"
+              },
+              {
+                "const": "2_research_assess",
+                "title": "Research & assess"
+              },
+              {
+                "const": "3_scope",
+                "title": "Scope the demo"
+              },
+              {
+                "const": "4_design_system",
+                "title": "Design system"
+              },
+              {
+                "const": "5_build",
+                "title": "Build with Nebula"
+              },
+              {
+                "const": "6_finalize",
+                "title": "Finalize"
+              },
+              {
+                "const": "7_collaterals",
+                "title": "Collaterals"
+              },
+              {
+                "const": "8_demo_ready",
+                "title": "Demo-ready"
+              }
+            ]
+          },
+          "gate_pack": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Gate pack",
+            "default": "none",
+            "oneOf": [
+              {
+                "const": "none",
+                "title": "None"
+              },
+              {
+                "const": "g1",
+                "title": "G1 · Scope check"
+              },
+              {
+                "const": "g2",
+                "title": "G2 · Design check"
+              },
+              {
+                "const": "g3",
+                "title": "G3 · Build sign-off"
+              },
+              {
+                "const": "g4",
+                "title": "G4 · Release"
+              }
+            ]
+          },
+          "version": {
+            "type": "integer",
+            "title": "Version",
+            "sortable": true
+          },
+          "status": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Status",
+            "sortable": true,
+            "oneOf": [
+              {
+                "const": "draft",
+                "title": "Draft"
+              },
+              {
+                "const": "in_review",
+                "title": "In review"
+              },
+              {
+                "const": "approved",
+                "title": "Approved"
+              },
+              {
+                "const": "final",
+                "title": "Final"
+              },
+              {
+                "const": "superseded",
+                "title": "Superseded"
+              }
+            ]
+          },
+          "summary": {
+            "type": "string",
+            "title": "Summary"
+          },
+          "content": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Content",
+            "help": "HTML or Markdown"
+          },
+          "file_link": {
+            "type": "string",
+            "title": "File link"
+          },
+          "created_by": {
+            "type": "string",
+            "title": "Created by"
+          },
+          "saved_at": {
+            "type": "integer",
+            "format": "date-time",
+            "dateFormat": "epoch",
+            "title": "Saved at",
+            "sortable": true
+          },
+          "format": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Format",
+            "oneOf": [
+              {
+                "const": "markdown",
+                "title": "Markdown"
+              },
+              {
+                "const": "html",
+                "title": "HTML"
+              },
+              {
+                "const": "link",
+                "title": "Link"
+              }
+            ]
+          }
+        },
+        "required": [
+          "document_id",
+          "poc",
+          "name",
+          "type",
+          "stage",
+          "version",
+          "status",
+          "created_by",
+          "saved_at"
+        ]
+      }
+    },
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792132767625,
+    "lcName": "poc studio live · document",
+    "metadata": {
+      "auditable": false,
+      "autoGeneratedFields": [],
+      "cacheable": false,
+      "captureActivity": false,
+      "captureReferences": false,
+      "captureReporting": false,
+      "customIndexDefinitions": [
+        {
+          "indexFieldMetadataList": [
+            {
+              "field": "properties.poc",
+              "type": 1
+            }
+          ],
+          "name": "idx_poc",
+          "status": "SUCCESS"
+        }
+      ],
+      "dateFields": [
+        "saved_at"
+      ],
+      "deleteStaleEntitiesOnConfigSync": false,
+      "deployable": false,
+      "derivedEdgeEntity": false,
+      "encryptedFields": [],
+      "external": false,
+      "filterableFields": [
+        "document_id",
+        "poc",
+        "name",
+        "type",
+        "stage",
+        "gate_pack",
+        "version",
+        "status",
+        "summary",
+        "content",
+        "file_link",
+        "created_by",
+        "saved_at",
+        "format"
+      ],
+      "graphType": "LEGACY_MDM",
+      "hasTimeSeriesRecords": true,
+      "hashedFields": [],
+      "inaccessibleFromUI": false,
+      "includeInDependency": false,
+      "nameField": "name",
+      "partFields": [],
+      "piiFields": [],
+      "primaryKeyField": "document_id",
+      "referenceKeys": [
+        {
+          "key": "properties.poc",
+          "referenceType": "psl_poc"
+        }
+      ],
+      "scdType2Enabled": false,
+      "schemaValidationEnabled": true,
+      "searchableFields": [
+        "document_id",
+        "name",
+        "name"
+      ],
+      "sessionBackedStorageEnabled": false,
+      "skipConfigSyncIfModified": false,
+      "skipDeletedEntityBackup": false,
+      "skipFetchBeforeUpdate": false,
+      "skipIndexLimitValidation": false,
+      "skipPermissionCheckForAggregation": false,
+      "skipPermissionsFilter": false,
+      "skipReportingEventsOrdering": false,
+      "skipRoutineLoad": false,
+      "skipTotalHitsInAggregation": false,
+      "skipVersionIncrementOnUpdate": false,
+      "storeDetails": {
+        "store": "MONGO",
+        "uniqueKeySupported": true
+      },
+      "supportsDistinctValues": false,
+      "supportsWebhook": false,
+      "syncFromSourceCustomer": false,
+      "translationsEnabled": false,
+      "uniqueKeyFields": [
+        "document_id"
+      ],
+      "urlValidationEnabledFields": [],
+      "useCachedEntityStoreForAutomations": false,
+      "userLevelEncryption": false,
+      "vectorFields": [],
+      "versioningEnabled": false
+    },
+    "modifiedTime": 1792132767625,
+    "name": "POC Studio Live · Document",
+    "ownerUserId": 66770,
+    "packaged": false,
+    "pluralName": "POC Studio Live · Documents",
+    "schema": {
+      "type": "SCHEMA",
+      "dynamic": false,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "document_id": {
+            "type": "string",
+            "title": "Document ID",
+            "help": "<poc id>__<stage>__<name slug>__v<n>",
+            "primaryKey": true,
+            "uniqueKey": true,
+            "searchable": true,
+            "sortable": true
+          },
+          "poc": {
+            "type": "string",
+            "format": "single-select",
+            "title": "POC",
+            "help": "The parent's poc_id",
+            "sortable": true,
+            "foreignKey": {
+              "reference": "ENTITY_ID:psl_poc"
+            }
+          },
+          "name": {
+            "type": "string",
+            "title": "Name",
+            "nameField": true,
+            "searchable": true,
+            "sortable": true
+          },
+          "type": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Type",
+            "oneOf": [
+              {
+                "const": "brief",
+                "title": "Brief"
+              },
+              {
+                "const": "input",
+                "title": "Input"
+              },
+              {
+                "const": "requirements",
+                "title": "Requirements"
+              },
+              {
+                "const": "scope",
+                "title": "Scope"
+              },
+              {
+                "const": "email",
+                "title": "Email"
+              },
+              {
+                "const": "brd",
+                "title": "BRD"
+              },
+              {
+                "const": "design_system",
+                "title": "Design system"
+              },
+              {
+                "const": "build_report",
+                "title": "Build report"
+              },
+              {
+                "const": "app",
+                "title": "App"
+              },
+              {
+                "const": "evidence_pack",
+                "title": "Evidence pack"
+              },
+              {
+                "const": "demo_script",
+                "title": "Demo script"
+              },
+              {
+                "const": "deck",
+                "title": "Deck"
+              },
+              {
+                "const": "video",
+                "title": "Video"
+              },
+              {
+                "const": "use_case",
+                "title": "Use case"
+              },
+              {
+                "const": "design",
+                "title": "Design"
+              },
+              {
+                "const": "automation",
+                "title": "Automation"
+              },
+              {
+                "const": "object",
+                "title": "Object"
+              },
+              {
+                "const": "agent",
+                "title": "AI agent"
+              },
+              {
+                "const": "walkthrough",
+                "title": "Walkthrough"
+              },
+              {
+                "const": "poc_link",
+                "title": "POC app link"
+              }
+            ]
+          },
+          "stage": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Stage",
+            "sortable": true,
+            "oneOf": [
+              {
+                "const": "0_kickoff",
+                "title": "Kickoff"
+              },
+              {
+                "const": "1_signal_capture",
+                "title": "Signal capture"
+              },
+              {
+                "const": "2_research_assess",
+                "title": "Research & assess"
+              },
+              {
+                "const": "3_scope",
+                "title": "Scope the demo"
+              },
+              {
+                "const": "4_design_system",
+                "title": "Design system"
+              },
+              {
+                "const": "5_build",
+                "title": "Build with Nebula"
+              },
+              {
+                "const": "6_finalize",
+                "title": "Finalize"
+              },
+              {
+                "const": "7_collaterals",
+                "title": "Collaterals"
+              },
+              {
+                "const": "8_demo_ready",
+                "title": "Demo-ready"
+              }
+            ]
+          },
+          "gate_pack": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Gate pack",
+            "default": "none",
+            "oneOf": [
+              {
+                "const": "none",
+                "title": "None"
+              },
+              {
+                "const": "g1",
+                "title": "G1 · Scope check"
+              },
+              {
+                "const": "g2",
+                "title": "G2 · Design check"
+              },
+              {
+                "const": "g3",
+                "title": "G3 · Build sign-off"
+              },
+              {
+                "const": "g4",
+                "title": "G4 · Release"
+              }
+            ]
+          },
+          "version": {
+            "type": "integer",
+            "title": "Version",
+            "sortable": true
+          },
+          "status": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Status",
+            "sortable": true,
+            "oneOf": [
+              {
+                "const": "draft",
+                "title": "Draft"
+              },
+              {
+                "const": "in_review",
+                "title": "In review"
+              },
+              {
+                "const": "approved",
+                "title": "Approved"
+              },
+              {
+                "const": "final",
+                "title": "Final"
+              },
+              {
+                "const": "superseded",
+                "title": "Superseded"
+              }
+            ]
+          },
+          "summary": {
+            "type": "string",
+            "title": "Summary"
+          },
+          "content": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Content",
+            "help": "HTML or Markdown"
+          },
+          "file_link": {
+            "type": "string",
+            "title": "File link"
+          },
+          "created_by": {
+            "type": "string",
+            "title": "Created by"
+          },
+          "saved_at": {
+            "type": "integer",
+            "format": "date-time",
+            "dateFormat": "epoch",
+            "title": "Saved at",
+            "sortable": true
+          },
+          "format": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Format",
+            "oneOf": [
+              {
+                "const": "markdown",
+                "title": "Markdown"
+              },
+              {
+                "const": "html",
+                "title": "HTML"
+              },
+              {
+                "const": "link",
+                "title": "Link"
+              }
+            ]
+          }
+        },
+        "required": [
+          "document_id",
+          "poc",
+          "name",
+          "type",
+          "stage",
+          "version",
+          "status",
+          "created_by",
+          "saved_at"
+        ]
+      }
+    },
+    "standard": false,
+    "tags": [
+      "Nebula"
+    ],
+    "version": 0,
+    "entityType": "ENTITY_TYPE"
+  }
+}

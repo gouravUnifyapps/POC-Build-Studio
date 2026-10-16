@@ -1,0 +1,34 @@
+NEBULA=/Users/gouravmahunta/.claude/plugins/cache/nebula/nebula/3.55.8
+STUDIO_ROOT=/Users/gouravmahunta/.claude/plugins/cache/demo-studio/demo-studio/0.8.1
+STUDIO=/Users/gouravmahunta/Desktop/DEMO studio test/POST design skill/Demo studio/.sessions/52426a5b-cd90-4079-9a32-784d7f7dc53d/drafts/studio
+CLI=bash "$NEBULA/scripts/run-node.sh" "$NEBULA/scripts/nebula.mjs"   (add --json; CLAUDE_CODE_SESSION_ID=52426a5b-cd90-4079-9a32-784d7f7dc53d is set)
+REFS=$STUDIO_ROOT/skills/build/references
+WORKDIR=/Users/gouravmahunta/Desktop/DEMO studio test/POST design skill/Demo studio
+PROFILE=/Users/gouravmahunta/Desktop/DEMO studio test/POST design skill/Demo studio/studio/profiles/unifyapps.md
+REQUEST=/Users/gouravmahunta/Desktop/DEMO studio test/POST design skill/Demo studio/.sessions/52426a5b-cd90-4079-9a32-784d7f7dc53d/drafts/studio/request.md   (read it in full: it is the request word for word)
+SOLUTION=e_6ad1b45199f8a565171d7f1c  'POC Studio Live', the NEW solution this build writes to, tenant orbit.uat.unifyapps.com
+SOURCE=e_6ad1031ce0ef8b24527e9ed9  'POC Studio', the solution whose UI is to be cloned. READ-ONLY. Never write to it, never edit its entities.
+# Designer, message 2
+
+phase: look  (CLONE MODE: read this whole message; it changes the pipeline on one point and only that)
+
+Read: $PROFILE, $STUDIO/brand.md (your own phase-brand file), $STUDIO/rulings.md (the Judge's chosen storyline and the entity list), $STUDIO/source-ui.md §2 and §5, $STUDIO/stand-in.md rows design.clone_vs_system, ui.created_state, ui.history_render, artifact.review_vs_logged, and the ledger. The source app's code is on disk, read-only for you: $WORKDIR/app-b4fe5a0a30eb/main/app/src/ (its stylesheets are src/orbit/ds/bundle.css, src/orbit/ds/tokens.css, src/orbit/orbit.css; its screens src/orbit/views/**). Never edit anything there.
+
+## The one change to the pipeline (ledger row design.clone_vs_system, settled by STAND-IN, source REQUEST + PROFILE + READ)
+The request says 'Clone this UI'. The source app already carries Design Language v3.4 on the UnifyApps brand (its bundle.css is headed 'Design Language v3.4 ported to the UnifyApps brand', forest green #4a7c30, bronze #857242, cream #f8f4ee, Spectral + IBM Plex Mono, the brand-gradient nav rail; hue 103, the hue you chose; the ledger row design.hue is settled green). So the app's stylesheet is the SOURCE's, copied as is; the fresh transform is NOT put over it. You still run the pipeline's measurement steps so the system's audit stands behind it:
+1. Extract v34.css and run reskin.py transform with --hue 103 --secondary-hue 74 --positive-hue 138 (your phase-brand recommendation, now confirmed) into studio/design-system/unifyapps/client.css ONLY as the comparison baseline, and report in port-note.md how the source's tokens.css/bundle.css differ from it (colour values by token, class names: the source uses 'ps-' and 'ob-' prefixes, the kit's names are unprefixed). Say plainly whether the source is the same system and whether any measured check (Step 6) fails on the source's own CSS: run reskin.py audit against the source's bundle.css (and tokens.css) and tick the Step 6 mechanical checks by hand for the source CSS, in both themes where the source has them (dark tokens exist but are not wired: the source forces data-theme=light; keep the app light-only and name that as a port-note gap, do not wire dark).
+2. Deliverables under studio/design-system/unifyapps/: tokens.css (the source's token block with a measured ratio beside each from the audit), port-note.md (source version, the clone decision, the diff, every gap, dial = expert/internal tool or demo per the bridge's mapping of demo.intent use-case with an internal audience: choose and say why, theme light), type-note.md (Spectral + IBM Plex Mono: the source already loads both from Google Fonts), the logo kit you already made. SKIP style-guide.html: say in port-note.md that the source app itself is the living style guide for this clone.
+3. Do NOT derive Nebula's 'app look' line (the app is a code app; the bridge says it takes none).
+
+## design.md: only the NEW or CHANGED regions
+The cloned screens are kept as they are. Write one 'job' line and one 'design' block per page (Home /, POC page /pocs/:pocId, Feedback /feedback) describing ONLY what changes, composed from classes that already exist in the source's CSS (name them exactly: .tile, .tag, .seg, .tbl, .btn .btn-p, .ps-banner, .ps-drawer, .ob-*, ...; read bundle.css/orbit.css for them; invent no new component, and if a region truly needs a style the source lacks, define it as ONE small rule using only the source's tokens and name it in the port note as a gap). The changes (from rulings.md §2 'UI changes to the cloned code'):
+- Home: derived status 'Waiting on you' for a fresh row (status running + stage 0_kickoff + empty build_run_id): same tag as the source's 'Waiting on you'; rows appear without a reload.
+- POC page header: a Build button (primary .btn-p, shown under the ready-to-build predicate) and, once build_run_id is set, a 'Claude session' link; the status tag reads 'Building . Understand'; the tab 'Artifacts' is renamed 'Documents'; the header drops a leading client name from use_case; the channel prints with '#'.
+- Approval card: a new 'To review' list under the summary (the open gate's in_review documents, each row = a document row of the Artifacts list that opens the Reader), above the Approve button; Approve states: working, already decided, forbidden (page-default toasts).
+- History tab: Slack rows (those with slack_ts) as chat bubbles: round avatar (image, initials when empty, the source's initials tones), sender name, the text in a bubble, the time under it linking to slack_ref; day groups stay as date dividers; every other event kind keeps the source's compact line, centred as a notice. All bubbles left-aligned. No entrance animation.
+- Feedback page: per skill group add the current version, the pending suggestion (current prompt beside proposed, evidence tickets, as the source's sticky summary card + article stack), an Approve button shown only to a manager-viewer, and the version list.
+Each block must say which beat of rulings.md §1 it serves and name its states (loading, empty, error, disabled while saving, toast).
+
+## design-package.md
+Paths of every deliverable; dial and theme; type note in one line; the '## Rules' lines the bridge lists for code-app tasks BUT adapted to the clone: the stylesheet to keep is the source's (give its path: $WORKDIR/app-b4fe5a0a30eb/main/app/src/orbit/ds/ and orbit.css), the file list to port (only src/orbit/** and src/data/orbit.ts), the files never copied, and the doctrine lines the Critic will audit. Put 'Check this' beside every adaptation you made to the pipeline.
+Reply in under 15 lines: the audit result on the source CSS (fail count), whether source == a fresh v3.4 transform in kind, the dial and theme, and any region the kit cannot express.

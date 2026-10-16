@@ -1,0 +1,245 @@
+{
+  "hue": 103.0,
+  "sat_scale": 0.7,
+  "sat_cap": 0.62,
+  "secondary_hue": 74.0,
+  "warm": false,
+  "before": {
+    "distinct_hex": 47,
+    "distinct_rgb_triples": 25,
+    "bare_aur_triples": 6,
+    "by_family": {
+      "brand": 51,
+      "secondary": 10,
+      "attention": 5,
+      "negative": 4,
+      "positive": 5,
+      "neutral": 3
+    }
+  },
+  "after": {
+    "distinct_hex": 46,
+    "distinct_rgb_triples": 25,
+    "bare_aur_triples": 6
+  },
+  "moved": 51,
+  "max_abs_dY": 0.00496,
+  "collisions": [
+    {
+      "to": "#2F6718",
+      "from": [
+        "#0058B8",
+        "#0059B6"
+      ],
+      "source_dY": 0.00082,
+      "kind": "rounding"
+    }
+  ],
+  "accent_headroom": null,
+  "moves": {
+    "#0033A1": {
+      "to": "#204711",
+      "family": "brand"
+    },
+    "#0071CE": {
+      "to": "#3A7F1E",
+      "family": "brand"
+    },
+    "#CC27B0": {
+      "to": "#6A7B32",
+      "family": "secondary"
+    },
+    "#E17FD2": {
+      "to": "#94AA4C",
+      "family": "secondary"
+    },
+    "#F1F5FB": {
+      "to": "#EFF7ED",
+      "family": "brand"
+    },
+    "#0B1220": {
+      "to": "#0D150A",
+      "family": "brand"
+    },
+    "#47566B": {
+      "to": "#4A5943",
+      "family": "brand"
+    },
+    "#626D84": {
+      "to": "#62715C",
+      "family": "brand"
+    },
+    "#8E9AAE": {
+      "to": "#8C9F85",
+      "family": "brand"
+    },
+    "#1F6F5B": {
+      "to": "#207138",
+      "family": "positive"
+    },
+    "#00325C": {
+      "to": "#19370D",
+      "family": "brand"
+    },
+    "#005194": {
+      "to": "#295C15",
+      "family": "brand"
+    },
+    "#0070CC": {
+      "to": "#397F1E",
+      "family": "brand"
+    },
+    "#0A90FF": {
+      "to": "#49A126",
+      "family": "brand"
+    },
+    "#47ACFF": {
+      "to": "#55BC2C",
+      "family": "brand"
+    },
+    "#85C8FF": {
+      "to": "#7BD857",
+      "family": "brand"
+    },
+    "#192030": {
+      "to": "#1A2316",
+      "family": "brand"
+    },
+    "#2F3D57": {
+      "to": "#31422B",
+      "family": "brand"
+    },
+    "#D8E0EC": {
+      "to": "#D6E3D1",
+      "family": "brand"
+    },
+    "#AAB7CB": {
+      "to": "#A8BCA0",
+      "family": "brand"
+    },
+    "#9FADC3": {
+      "to": "#9DB295",
+      "family": "brand"
+    },
+    "#78869F": {
+      "to": "#768C6E",
+      "family": "brand"
+    },
+    "#6BB3EA": {
+      "to": "#62C23C",
+      "family": "brand"
+    },
+    "#3A72DE": {
+      "to": "#45842C",
+      "family": "brand"
+    },
+    "#E884D6": {
+      "to": "#98B047",
+      "family": "secondary"
+    },
+    "#F2BCE9": {
+      "to": "#C5D495",
+      "family": "secondary"
+    },
+    "#86CDB4": {
+      "to": "#8ACF9E",
+      "family": "positive"
+    },
+    "#E6F2FF": {
+      "to": "#E3F7DB",
+      "family": "brand"
+    },
+    "#B9DDFF": {
+      "to": "#B1E89B",
+      "family": "brand"
+    },
+    "#8CC6F8": {
+      "to": "#78D653",
+      "family": "brand"
+    },
+    "#62ADEC": {
+      "to": "#5DBC37",
+      "family": "brand"
+    },
+    "#3F90D6": {
+      "to": "#569B3A",
+      "family": "brand"
+    },
+    "#3576B0": {
+      "to": "#4D7E39",
+      "family": "brand"
+    },
+    "#005DB4": {
+      "to": "#306B19",
+      "family": "brand"
+    },
+    "#0035A6": {
+      "to": "#224A11",
+      "family": "brand"
+    },
+    "#2C8A74": {
+      "to": "#2D8D4A",
+      "family": "positive"
+    },
+    "#0056B4": {
+      "to": "#2E6518",
+      "family": "brand"
+    },
+    "#0058B8": {
+      "to": "#2F6718",
+      "family": "brand"
+    },
+    "#B93CA5": {
+      "to": "#68763D",
+      "family": "secondary"
+    },
+    "#8C1E79": {
+      "to": "#485424",
+      "family": "secondary"
+    },
+    "#0059B6": {
+      "to": "#2F6718",
+      "family": "brand"
+    },
+    "#061636": {
+      "to": "#0D1B07",
+      "family": "brand"
+    },
+    "#06122E": {
+      "to": "#0B1707",
+      "family": "brand"
+    },
+    "#78A5E1": {
+      "to": "#65B646",
+      "family": "brand"
+    },
+    "#82AFEB": {
+      "to": "#66C143",
+      "family": "brand"
+    },
+    "#D6E8FF": {
+      "to": "#CDF0C0",
+      "family": "brand"
+    },
+    "#CEE0FF": {
+      "to": "#BEECAC",
+      "family": "brand"
+    },
+    "#02060E": {
+      "to": "#030702",
+      "family": "brand"
+    },
+    "#060B16": {
+      "to": "#070C05",
+      "family": "brand"
+    },
+    "#003FA8": {
+      "to": "#255213",
+      "family": "brand"
+    },
+    "#4C7FE8": {
+      "to": "#49942C",
+      "family": "brand"
+    }
+  }
+}

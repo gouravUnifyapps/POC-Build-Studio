@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "key": "WORKFLOW_DEFINITION:6ad1c66313ea2c28e645e538",
+  "entityType": "WORKFLOW_DEFINITION",
+  "id": "6ad1c66313ea2c28e645e538",
+  "version": 2,
+  "cachedAt": "2026-10-16T13:59:49.170Z",
+  "source": "solution-refresh",
+  "ref": {
+    "id": "6ad1c66313ea2c28e645e538",
+    "type": "WORKFLOW_DEFINITION",
+    "state": "COMPLETED"
+  },
+  "entity": {
+    "appsUsed": [],
+    "createdTime": 1792132707871,
+    "deleted": false,
+    "deployedVersion": 3,
+    "deploymentState": {
+      "deployedAt": 1792142518287,
+      "deployedBy": 66770,
+      "deployedDefinitionId": "6ad1ecb1d885ae5a4da89502",
+      "deploymentNotes": "Start build disabled: builds start from Claude Code via /demo-studio:build",
+      "status": "DEPLOYED",
+      "version": 3,
+      "workflowVersion": 2
+    },
+    "description": "Disabled: builds start from Claude Code via /demo-studio:build. Every call returns status disabled and does nothing else; the trigger contract is kept for its callers (the app data source and Approve gate).",
+    "edges": [
+      {
+        "fromNodeId": "n_a73ny",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_ziege",
+        "type": "next"
+      }
+    ],
+    "id": "6ad1c66313ea2c28e645e538",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792142518590,
+    "lcName": "poc studio live · start build",
+    "modifiedTime": 1792142518590,
+    "name": "POC Studio Live · Start build",
+    "nodes": [
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_from_automation"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "25vy0-1",
+        "id": "n_a73ny",
+        "index": 1,
+        "inputs": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "title": "Status"
+              },
+              "build_run_id": {
+                "type": "string",
+                "title": "Build run id"
+              },
+              "message": {
+                "type": "string",
+                "title": "Message"
+              }
+            },
+            "required": [
+              "status",
+              "build_run_id",
+              "message"
+            ]
+          },
+          "setup": {
+            "type": "object",
+            "properties": {
+              "poc_id": {
+                "type": "string",
+                "title": "POC id"
+              },
+              "mode": {
+                "type": "string",
+                "title": "Mode"
+              },
+              "approved_prd_link": {
+                "type": "string",
+                "title": "Approved PRD link"
+              }
+            },
+            "required": [
+              "poc_id"
+            ]
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Callable",
+        "title": "Trigger from automation",
+        "trigger": {
+          "type": "CALLABLE"
+        },
+        "type": "START"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "25vy0-1",
+        "id": "n_ziege",
+        "index": 2,
+        "inputs": {
+          "result": {
+            "status": "disabled",
+            "build_run_id": "=\"\"",
+            "message": "Builds start from Claude Code now: copy the /demo-studio:build prompt from the POC page."
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Answer disabled",
+        "title": "Respond to automation",
+        "type": "STOP"
+      }
+    ],
+    "ownerUserId": 66770,
+    "settings": {
+      "enableNodeLevelLogging": true,
+      "enableRunLogging": true,
+      "enableVariableLogging": true,
+      "route": {
+        "default": false,
+        "tierName": "global"
+      }
+    },
+    "standard": false,
+    "tags": [
+      "AI Generated",
+      "Nebula"
+    ],
+    "version": 2,
+    "entityType": "WORKFLOW_DEFINITION"
+  }
+}

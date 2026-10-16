@@ -1,0 +1,36 @@
+# POC Studio Agent: Slack app manifest.
+# Create at https://api.slack.com/apps -> Create New App -> From an app manifest -> workspace UnifyApps -> paste this (YAML tab).
+# Event subscriptions are NOT in this manifest on purpose: they need the Request URL of the "Slack listener" automation, which exists only after the build deploys it.
+# The user scope is there only because the platform's Slack connection form requires a User OAuth Token; it is never used for anything.
+# After the build says the listener is deployed: Event Subscriptions -> Enable -> paste the Request URL -> Subscribe to bot events:
+#   message.channels, message.groups, member_joined_channel   (do NOT add app_mention: a tag would arrive twice)
+display_information:
+  name: POC Studio Agent
+  description: Creates POC rows when tagged, logs channel updates, relays approvals
+features:
+  app_home:
+    home_tab_enabled: false
+    messages_tab_enabled: true
+    messages_tab_read_only_enabled: false
+  bot_user:
+    display_name: POC Studio Agent
+    always_online: true
+oauth_config:
+  scopes:
+    bot:
+      - chat:write
+      - channels:history
+      - groups:history
+      - channels:read
+      - groups:read
+      - users:read
+      - users:read.email
+      - im:write
+      - files:read
+      - reactions:write
+    user:
+      - users:read
+settings:
+  org_deploy_enabled: false
+  socket_mode_enabled: false
+  token_rotation_enabled: false

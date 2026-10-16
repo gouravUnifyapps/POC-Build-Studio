@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "key": "WORKFLOW_DEFINITION:6ad1c75967956c53e38f1a70",
+  "entityType": "WORKFLOW_DEFINITION",
+  "id": "6ad1c75967956c53e38f1a70",
+  "version": 0,
+  "cachedAt": "2026-10-16T06:55:35.761Z",
+  "source": {
+    "sessionId": "52426a5b-cd90-4079-9a32-784d7f7dc53d",
+    "planId": "e_6ad1c588674d735893a476dc",
+    "taskId": "t23",
+    "phase": "write-readback"
+  },
+  "ref": {
+    "kind": "automation",
+    "name": "POC Studio Live · Approve gate",
+    "id": "6ad1c75967956c53e38f1a70"
+  },
+  "entity": {
+    "appsUsed": [],
+    "createdTime": 1792132953929,
+    "deleted": false,
+    "deployedVersion": 1,
+    "deploymentState": {
+      "deployedAt": 1792132961629,
+      "deployedBy": 66770,
+      "deployedDefinitionId": "6ad1c761baada8326ecf8044",
+      "deploymentNotes": "Contract shell for POC Studio Live · Approve gate [nebula task t_639203afcf0f]",
+      "status": "DEPLOYED",
+      "version": 1,
+      "workflowVersion": 0
+    },
+    "description": "Contract shell. Records the manager's or the owner's approval of a POC's open gate. Called by the app's Approve button (role manager) and by the Slack listener (role owner).",
+    "edges": [
+      {
+        "fromNodeId": "n_u29pa",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_f3sgl",
+        "type": "next"
+      }
+    ],
+    "id": "6ad1c75967956c53e38f1a70",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792132961630,
+    "lcName": "poc studio live · approve gate",
+    "modifiedTime": 1792132961630,
+    "name": "POC Studio Live · Approve gate",
+    "nodes": [
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_from_automation"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_u29pa",
+        "index": 1,
+        "inputs": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "title": "Status"
+              },
+              "gate_passed": {
+                "type": "boolean",
+                "title": "Gate passed"
+              },
+              "warnings": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Warnings"
+              },
+              "message": {
+                "type": "string",
+                "title": "Message"
+              }
+            }
+          },
+          "setup": {
+            "type": "object",
+            "properties": {
+              "poc_id": {
+                "type": "string",
+                "title": "POC id"
+              },
+              "role": {
+                "type": "string",
+                "title": "Role (manager or owner)"
+              },
+              "caller_email": {
+                "type": "string",
+                "title": "Caller email"
+              },
+              "caller_name": {
+                "type": "string",
+                "title": "Caller name"
+              },
+              "caller_slack_id": {
+                "type": "string",
+                "title": "Caller Slack id"
+              }
+            },
+            "required": []
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Callable",
+        "title": "Trigger from automation",
+        "trigger": {
+          "type": "CALLABLE"
+        },
+        "type": "START"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "2hlp7-1",
+        "id": "n_f3sgl",
+        "index": 2,
+        "inputs": {
+          "result": {
+            "status": "error",
+            "gate_passed": false,
+            "warnings": [],
+            "message": "This is a contract shell: the approve logic is not built yet."
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Contract shell: answers a typed error until the real logic is built",
+        "title": "Respond to automation",
+        "type": "STOP"
+      }
+    ],
+    "ownerUserId": 66770,
+    "settings": {
+      "enableNodeLevelLogging": true,
+      "enableRunLogging": true,
+      "enableVariableLogging": true,
+      "route": {
+        "default": false,
+        "tierName": "global"
+      }
+    },
+    "standard": false,
+    "tags": [
+      "AI Generated",
+      "Nebula"
+    ],
+    "version": 0,
+    "entityType": "WORKFLOW_DEFINITION"
+  }
+}

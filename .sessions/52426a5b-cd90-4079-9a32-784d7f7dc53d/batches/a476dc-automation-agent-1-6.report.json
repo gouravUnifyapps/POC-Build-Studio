@@ -1,0 +1,26 @@
+{
+  "tasks": [
+    {
+      "id": "t27",
+      "status": "ok",
+      "change": "updated",
+      "ids": { "entity": "6ad1cc2a300f9003500f1da3" },
+      "readBack": [
+        "POC Studio Live · Slack listener 6ad1cc2a300f9003500f1da3: search_workflows before the deploy showed version 0 (saved definitionVersion to deploy: 0), nodeCount 37 (the 37 nodes the build task reported) and deployment null.",
+        "POC Studio Live · Slack listener 6ad1cc2a300f9003500f1da3: deploy_workflow with deploymentNotes 'POC Studio Live · Slack listener' answered ok:true, workflowVersion 0, deployedVersion 1, paused false, storedVersion 0, message 'Deployed version 0 of automation 6ad1cc2a300f9003500f1da3.'",
+        "POC Studio Live · Slack listener 6ad1cc2a300f9003500f1da3: search_workflows after the deploy shows version 0, nodeCount 37, deployment.status DEPLOYED, definitionVersion 0 (equal to the saved version 0 read in step 1), deployedVersion 1, deployedAt 1792134313435."
+      ],
+      "unverified": [
+        "The deployed listener has not received a real Slack event: the build task's draft runs used simulated events that all ended before any agent call, post or write. Check: tag the bot in a channel with a use case name, then read list_workflow_runs with runType 'workflow' for 6ad1cc2a300f9003500f1da3 and the thread reply in Slack.",
+        "Whether Slack delivers new-message events to the deployed trigger (the event subscription on the Slack app for connection 6ad1be602ac9ba64653a9d36) was not read. Check: one message in a channel the bot is in produces a run with runType 'workflow'.",
+        "The listener calls the POC Studio Agent (aiAgentId e_6ad1ca0bc0f97b3e983d2679) and Approve gate (6ad1c75967956c53e38f1a70); this task did not read whether the agent is published. Check: the agent's deployed state with `cache agent e_6ad1ca0bc0f97b3e983d2679` or get_agent before the first live tag.",
+        "The version was read with search_workflows right before the deploy, not with a second open_workflow; the version number and node count matched the build task's read-back."
+      ],
+      "notes": [
+        "Release approval: the plan's approval (the accepted spec names this deploy under Ready when), not the person's answer to this call; the router's message gave it as 'yes, deploy POC Studio Live · Slack listener. The spec the person accepted names it under Ready when, so it is already approved'.",
+        "handover: Slack listener workflowId 6ad1cc2a300f9003500f1da3 is now DEPLOYED (deployedVersion 1 = saved definitionVersion 0, paused false); it reacts to every new Slack message and member_joined_channel event of connection POC Studio Live Slack from now on, and calls Approve gate with role owner for an 'approve' reply under a bot post whose first line holds [<poc id>]."
+      ],
+      "error": ""
+    }
+  ]
+}

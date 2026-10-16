@@ -1,0 +1,2977 @@
+{
+  "schemaVersion": 1,
+  "key": "WORKFLOW_DEFINITION:6ad1c99ad885ae5a4da04722",
+  "entityType": "WORKFLOW_DEFINITION",
+  "id": "6ad1c99ad885ae5a4da04722",
+  "version": 0,
+  "cachedAt": "2026-10-16T13:59:49.658Z",
+  "source": "solution-refresh",
+  "ref": {
+    "id": "6ad1c99ad885ae5a4da04722",
+    "type": "WORKFLOW_DEFINITION",
+    "state": "COMPLETED"
+  },
+  "entity": {
+    "appsUsed": [
+      "slack"
+    ],
+    "createdTime": 1792133530827,
+    "deleted": false,
+    "deployedVersion": 1,
+    "deploymentState": {
+      "deployedAt": 1792133779062,
+      "deployedBy": 66770,
+      "deployedDefinitionId": "6ad1ca92d885ae5a4da05ea1",
+      "deploymentNotes": "POC Studio Live · Receive build result [nebula task t_639203afcf0f]",
+      "status": "DEPLOYED",
+      "version": 1,
+      "workflowVersion": 0
+    },
+    "description": "Receives what a Claude build run sends back for a POC row: a plan or a final build for a gate, feedback entries, or a status line. Writes the documents, activity, iteration and feedback rows, moves the row to the gate, and posts the gate in the row's Slack channel.",
+    "edges": [
+      {
+        "fromNodeId": "n_c3hc7",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_4qlyg",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_4qlyg",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_95nmm",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_95nmm",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_en5qh",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_95nmm",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_3erg9",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_en5qh",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_3erg9",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_3erg9",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_bnfi2",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_bnfi2",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_gse8b",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_bnfi2",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_z4gw9",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_gse8b",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_z4gw9",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_z4gw9",
+        "name": "1",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_z4gw9@1",
+        "type": "branch"
+      },
+      {
+        "fromNodeId": "n_z4gw9",
+        "name": "2",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_z4gw9@2",
+        "type": "branch"
+      },
+      {
+        "fromNodeId": "n_z4gw9",
+        "name": "3",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_z4gw9@3",
+        "type": "branch"
+      },
+      {
+        "fromNodeId": "n_z4gw9",
+        "name": "default",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_70xdr",
+        "type": "branch"
+      },
+      {
+        "fromNodeId": "n_z4gw9@1",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_2bowo",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_2bowo",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_s23lx",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_s23lx",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_p5zm4",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_s23lx",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_96fs0",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_p5zm4",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_crdhv",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_crdhv",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_wk8sj",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_wk8sj",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_96fs0",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_96fs0",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_ic6eb",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_ic6eb",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_ek301",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_ic6eb",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_e08ud",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_ek301",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_6lq0h",
+        "type": "loop"
+      },
+      {
+        "fromNodeId": "n_ek301",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_e08ud",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_6lq0h",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_ot2v2",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_ot2v2",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_c4ki8",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_c4ki8",
+        "name": "loopback",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_ek301",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_e08ud",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_sxmjo",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_sxmjo",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_19rjj",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_sxmjo",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_rqwcv",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_19rjj",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_rqwcv",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_z4gw9@2",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_0yaah",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_0yaah",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_5s6w2",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_5s6w2",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_owmbx",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_owmbx",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_ct97q",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_owmbx",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_2knqg",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_ct97q",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_rrenj",
+        "type": "loop"
+      },
+      {
+        "fromNodeId": "n_ct97q",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_2knqg",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_rrenj",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_rqf4h",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_rqf4h",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_2mp6i",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_2mp6i",
+        "name": "loopback",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_ct97q",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_2knqg",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_qgiab",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_qgiab",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_nhh27",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_qgiab",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_7impv",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_nhh27",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_7impv",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_7impv",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_px8hx",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_7impv",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_rqwcv",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_px8hx",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_59u87",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_59u87",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_kqpzx",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_59u87",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_rqwcv",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_kqpzx",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_rqwcv",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_z4gw9@3",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_pxrj1",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_pxrj1",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_fka75",
+        "type": "loop"
+      },
+      {
+        "fromNodeId": "n_pxrj1",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_rqwcv",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_fka75",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_o3yte",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_o3yte",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_7257j",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_7257j",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_iyz0q",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_iyz0q",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_p6j4v",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_p6j4v",
+        "name": "loopback",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_pxrj1",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_70xdr",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_otf8c",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_70xdr",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_6lo57",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_otf8c",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_rqwcv",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_6lo57",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_rqwcv",
+        "type": "next"
+      }
+    ],
+    "id": "6ad1c99ad885ae5a4da04722",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792133779063,
+    "lcName": "poc studio live · receive build result",
+    "modifiedTime": 1792133779063,
+    "name": "POC Studio Live · Receive build result",
+    "nodes": [
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_from_api"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "scv5o-1",
+        "id": "n_c3hc7",
+        "index": 1,
+        "inputs": {
+          "request": {
+            "contentType": "application/json",
+            "body": {
+              "type": "object",
+              "properties": {
+                "row_id": {
+                  "type": "string",
+                  "title": "Row id (the POC id)"
+                },
+                "kind": {
+                  "type": "string",
+                  "title": "Kind: plan, final, feedback or status"
+                },
+                "gate": {
+                  "type": "string",
+                  "title": "Gate: g2 or g3"
+                },
+                "title": {
+                  "type": "string",
+                  "title": "Title"
+                },
+                "summary": {
+                  "type": "string",
+                  "title": "Summary"
+                },
+                "documents": {
+                  "type": "array",
+                  "title": "Documents",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": {
+                        "type": "string"
+                      },
+                      "type": {
+                        "type": "string"
+                      },
+                      "format": {
+                        "type": "string"
+                      },
+                      "content": {
+                        "type": "string"
+                      },
+                      "link": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                },
+                "feedback": {
+                  "type": "array",
+                  "title": "Feedback",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "phase": {
+                        "type": "string"
+                      },
+                      "source": {
+                        "type": "string"
+                      },
+                      "actor_name": {
+                        "type": "string"
+                      },
+                      "text": {
+                        "type": "string"
+                      },
+                      "skill": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              },
+              "required": [
+                "row_id"
+              ]
+            }
+          },
+          "endpointType": "REST",
+          "response": [
+            {
+              "name": "posted",
+              "status": 200,
+              "contentType": "application/json",
+              "body": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            {
+              "name": "row_not_found",
+              "status": 404,
+              "contentType": "application/json",
+              "body": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  }
+                }
+              }
+            },
+            {
+              "name": "bad_request",
+              "status": 400,
+              "contentType": "application/json",
+              "body": {
+                "type": "object",
+                "properties": {
+                  "status": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          ],
+          "streamingResponse": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Callable",
+        "title": "Trigger from API",
+        "trigger": {
+          "type": "CALLABLE"
+        },
+        "type": "START"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "scv5o-1",
+        "id": "n_4qlyg",
+        "index": 2,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "ok": {
+                "type": "boolean"
+              },
+              "error": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "ok",
+              "error"
+            ]
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "row_id": {
+                "type": "string"
+              },
+              "kind": {
+                "type": "string"
+              },
+              "summary": {
+                "type": "string"
+              },
+              "documents": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              },
+              "feedback": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                }
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef text = { v -> v == null ? '' : v.toString().trim() }\ndef errors = []\ndef kinds = ['plan', 'final', 'feedback', 'status']\ndef docTypes = ['brief','input','requirements','scope','email','brd','design_system','build_report','app','evidence_pack','demo_script','deck','video','use_case','design','automation','object','agent','walkthrough','poc_link']\ndef docFormats = ['markdown', 'html', 'link']\ndef phases = ['understand', 'plan', 'build', 'deliver']\ndef sources = ['judge', 'person']\ndef kind = text(value('kind'))\nif (!text(value('row_id'))) errors << 'row_id is required'\nif (!(kind in kinds)) errors << 'kind must be plan, final, feedback or status'\nif (kind == 'plan' || kind == 'final') {\n  def docs = (value('documents') ?: []) as List\n  docs.eachWithIndex { d, i ->\n    def at = 'documents[' + (i + 1) + ']'\n    if (!text(d?.name)) errors << (at + '.name is required')\n    if (!(text(d?.type) in docTypes)) errors << (at + '.type is not a known document type')\n    def fmt = text(d?.format)\n    if (fmt && !(fmt in docFormats)) errors << (at + '.format must be markdown, html or link')\n  }\n}\nif (kind == 'feedback') {\n  def items = (value('feedback') ?: []) as List\n  if (items.isEmpty()) errors << 'feedback must have at least one entry'\n  items.eachWithIndex { f, i ->\n    def at = 'feedback[' + (i + 1) + ']'\n    if (!(text(f?.phase) in phases)) errors << (at + '.phase must be understand, plan, build or deliver')\n    if (!(text(f?.source) in sources)) errors << (at + '.source must be judge or person')\n    if (!text(f?.actor_name)) errors << (at + '.actor_name is required')\n    if (!text(f?.text)) errors << (at + '.text is required')\n  }\n}\nif (kind == 'status' && !text(value('summary'))) errors << 'summary is required for a status update'\nresult = [ok: errors.isEmpty(), error: errors.join('; ').toString()]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "row_id": "{{ n_c3hc7.outputs.body.row_id }}",
+            "kind": "{{ n_c3hc7.outputs.body.kind }}",
+            "summary": "{{ n_c3hc7.outputs.body.summary }}",
+            "documents": {
+              "ua:type": "mappedArray",
+              "source": "{{ n_c3hc7.outputs.body.documents }}",
+              "items": {
+                "name": "{{ n_c3hc7.outputs.body.documents[0].name }}",
+                "type": "{{ n_c3hc7.outputs.body.documents[0].type }}",
+                "format": "{{ n_c3hc7.outputs.body.documents[0].format }}"
+              }
+            },
+            "feedback": {
+              "ua:type": "mappedArray",
+              "source": "{{ n_c3hc7.outputs.body.feedback }}",
+              "items": {
+                "phase": "{{ n_c3hc7.outputs.body.feedback[0].phase }}",
+                "source": "{{ n_c3hc7.outputs.body.feedback[0].source }}",
+                "actor_name": "{{ n_c3hc7.outputs.body.feedback[0].actor_name }}",
+                "text": "{{ n_c3hc7.outputs.body.feedback[0].text }}"
+              }
+            }
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Check the request body",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "scv5o-1",
+        "id": "n_95nmm",
+        "index": 3,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_4qlyg.outputs.result.ok }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": false
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Body not valid?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_response_to_api",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_95nmm@scv5o-1@y",
+        "id": "n_en5qh",
+        "index": 4,
+        "inputs": {
+          "streamingCompleted": true,
+          "responseName": "400_bad_request",
+          "body": {
+            "status": "bad_request"
+          },
+          "status": 400
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Respond 400",
+        "title": "Respond to API request",
+        "type": "STOP"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_fetch_records",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "scv5o-1",
+        "id": "n_3erg9",
+        "index": 5,
+        "inputs": {
+          "triggerInputCondition": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "properties_poc_id",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_c3hc7.outputs.body.row_id }}"
+                }
+              }
+            ]
+          },
+          "shouldSearchInAnalyticsStore": false,
+          "object_type": "psl_poc",
+          "includeRoleMappings": false,
+          "includeCurrentUserPermissions": false,
+          "translationsOption": "DEFAULT",
+          "numberOfRecordsToFetch": "SINGLE",
+          "readThroughSessionVariables": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Read the POC row",
+        "title": "Fetch records",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "scv5o-1",
+        "id": "n_bnfi2",
+        "index": 6,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_3erg9.outputs.id }}",
+              "filter": {
+                "operator": "MISSING"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "No such row?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_response_to_api",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_bnfi2@scv5o-1@y",
+        "id": "n_gse8b",
+        "index": 7,
+        "inputs": {
+          "streamingCompleted": true,
+          "responseName": "404_row_not_found",
+          "body": {
+            "status": "row_not_found"
+          },
+          "status": 404
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Respond 404",
+        "title": "Respond to API request",
+        "type": "STOP"
+      },
+      {
+        "context": {
+          "appName": "branch",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "scv5o-1",
+        "id": "n_z4gw9",
+        "index": 8,
+        "inputs": {
+          "branches": [
+            {
+              "id": "1",
+              "inputs": {
+                "conditions": {
+                  "filters": [
+                    {
+                      "property": "{{ n_c3hc7.outputs.body.kind }}",
+                      "filter": {
+                        "operator": "EQUAL",
+                        "value": "plan"
+                      }
+                    }
+                  ],
+                  "operator": "AND"
+                },
+                "name": "Plan"
+              }
+            },
+            {
+              "id": "2",
+              "inputs": {
+                "conditions": {
+                  "filters": [
+                    {
+                      "property": "{{ n_c3hc7.outputs.body.kind }}",
+                      "filter": {
+                        "operator": "EQUAL",
+                        "value": "final"
+                      }
+                    }
+                  ],
+                  "operator": "AND"
+                },
+                "name": "Final"
+              }
+            },
+            {
+              "id": "3",
+              "inputs": {
+                "conditions": {
+                  "filters": [
+                    {
+                      "property": "{{ n_c3hc7.outputs.body.kind }}",
+                      "filter": {
+                        "operator": "EQUAL",
+                        "value": "feedback"
+                      }
+                    }
+                  ],
+                  "operator": "AND"
+                },
+                "name": "Feedback"
+              }
+            },
+            {
+              "id": "default"
+            }
+          ]
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "One arm per kind. Each arm writes its rows in the order the contract names them.",
+        "title": "",
+        "type": "BRANCH"
+      },
+      {
+        "context": {
+          "appName": "branch_condition",
+          "resourceName": "branch_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@1",
+        "id": "n_z4gw9@1",
+        "index": 9,
+        "inputs": {
+          "name": "Plan",
+          "conditions": {
+            "filters": [
+              {
+                "property": "{{ n_c3hc7.outputs.body.kind }}",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "plan"
+                }
+              }
+            ],
+            "operator": "AND"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Branch Condition",
+        "title": "",
+        "type": "BRANCH_CONDITION"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@1",
+        "id": "n_2bowo",
+        "index": 10,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "slack_text": {
+                "type": "string"
+              },
+              "dm_text": {
+                "type": "string"
+              },
+              "activity_message": {
+                "type": "string"
+              },
+              "now": {
+                "type": "integer"
+              },
+              "g1_activity_id": {
+                "type": "string"
+              },
+              "gate_activity_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "slack_text",
+              "dm_text",
+              "activity_message",
+              "now",
+              "g1_activity_id",
+              "gate_activity_id"
+            ]
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string"
+              },
+              "poc_id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "summary": {
+                "type": "string"
+              },
+              "app_url": {
+                "type": "string"
+              },
+              "links": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "now": {
+                "type": "number"
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef text = { v -> v == null ? '' : v.toString().trim() }\ndef toBig = { v -> try { new BigDecimal(text(v)).toBigInteger() } catch (e) { BigInteger.ZERO } }\ndef kind = text(value('kind'))\ndef poc = text(value('poc_id'))\ndef title = text(value('title'))\ndef summary = text(value('summary'))\ndef base = text(value('app_url'))\nwhile (base.endsWith('/')) { base = base.substring(0, base.length() - 1) }\ndef link = base ? (base + '/pocs/' + poc) : ''\ndef now = toBig(value('now'))\ndef lines = ['[' + poc + ']']\nif (title) lines << ('*' + title + '*')\nif (summary) lines << summary\ndef builtLinks = ((value('links') ?: []) as List).collect { text(it) }.findAll { it }\nif (kind == 'final' && builtLinks) { lines << 'Built assets:'; builtLinks.each { lines << ('- ' + it) } }\nif (link) lines << link\ndef label = kind == 'final' ? 'Build posted for G3 · Build sign-off' : 'Plan posted for G2 · Design check'\ndef activity = (title ? label + ': ' + title : label)\nresult = [slack_text: lines.join('\\n').toString(), dm_text: ('BUILD is complete' + (link ? '\\n' + link : '')).toString(), activity_message: activity.toString(), now: now.longValue(), g1_activity_id: ('ACT-' + now + '-g1').toString(), gate_activity_id: ('ACT-' + now + '-gate').toString()]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "kind": "plan",
+            "poc_id": "{{ n_c3hc7.outputs.body.row_id }}",
+            "title": "{{ n_c3hc7.outputs.body.title }}",
+            "summary": "{{ n_c3hc7.outputs.body.summary }}",
+            "app_url": "{{ __ENV__.outputs.POC_STUDIO_APP_URL }}",
+            "links": {
+              "ua:type": "mappedArray",
+              "source": "{{ n_c3hc7.outputs.body.documents }}",
+              "items": "{{ n_c3hc7.outputs.body.documents[0].link }}"
+            },
+            "now": "{{ __RUN__.outputs.currentTime }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Compose the gate texts",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@1",
+        "id": "n_s23lx",
+        "index": 11,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_3erg9.outputs.properties.stage }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": "0_kickoff"
+              }
+            },
+            {
+              "property": "{{ n_3erg9.outputs.properties.stage }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": "1_signal_capture"
+              }
+            },
+            {
+              "property": "{{ n_3erg9.outputs.properties.stage }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": "2_research_assess"
+              }
+            }
+          ],
+          "operator": "OR"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Is the POC still in Understand?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "variable_by_unifyapps",
+          "resourceName": "variable_by_unifyapps_create_variables",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_s23lx@n_z4gw9@scv5o-1@1@y",
+        "id": "n_p5zm4",
+        "index": 12,
+        "inputSchema": {
+          "type": "SCHEMA_AND_LAYOUT",
+          "dynamic": false,
+          "layout": {},
+          "schema": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "yes": {
+                "type": "boolean",
+                "default": true,
+                "title": "Yes"
+              }
+            },
+            "required": [
+              "yes"
+            ]
+          }
+        },
+        "inputs": {
+          "yes": true
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "outputSchema": {
+          "type": "SCHEMA",
+          "dynamic": false,
+          "schema": {
+            "additionalProperties": false,
+            "type": "object",
+            "properties": {
+              "yes": {
+                "type": "boolean",
+                "default": true,
+                "title": "Yes"
+              }
+            },
+            "required": [
+              "yes"
+            ]
+          }
+        },
+        "skip": false,
+        "subTitle": "The setValue input takes text, so the two true values come from a variable",
+        "title": "Create variables",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_update_record_fields_by_id",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_s23lx@n_z4gw9@scv5o-1@1@y",
+        "id": "n_crdhv",
+        "index": 13,
+        "inputs": {
+          "recordId": "{{ n_3erg9.outputs.id }}",
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_poc",
+          "skipIfBlank": false,
+          "skipPermissionCheck": false,
+          "updateFields": [
+            {
+              "fieldName": "properties.g1_status",
+              "actionType": "SET",
+              "setValue": "approved"
+            },
+            {
+              "fieldName": "properties.g1_owner_approved",
+              "actionType": "SET",
+              "setValue": "{{ n_p5zm4.outputs.yes }}"
+            },
+            {
+              "fieldName": "properties.g1_manager_approved",
+              "actionType": "SET",
+              "setValue": "{{ n_p5zm4.outputs.yes }}"
+            }
+          ],
+          "skipSchemaValidation": true,
+          "unsetIfNull": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Record G1 as passed by the Judge",
+        "title": "Update an existing record's fields",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_create_record",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_s23lx@n_z4gw9@scv5o-1@1@y",
+        "id": "n_wk8sj",
+        "index": 14,
+        "inputs": {
+          "useRawPayload": false,
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_activity",
+          "skipIfBlank": false,
+          "inlineRefresh": false,
+          "record": {
+            "activity_id": "{{ n_2bowo.outputs.result.g1_activity_id }}",
+            "poc": "{{ n_c3hc7.outputs.body.row_id }}",
+            "type": "gate_decided",
+            "stage": "{{ n_3erg9.outputs.properties.stage }}",
+            "gate": "g1",
+            "decision": "approve",
+            "actor_type": "ai",
+            "actor_name": "Judge",
+            "message": "Judge passed G1 · Scope check",
+            "posted_to": "{{ n_3erg9.outputs.properties.slack_channel }}",
+            "created_at": "{{ n_2bowo.outputs.result.now }}"
+          },
+          "useUuid": false,
+          "batching": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Log the Judge's G1 decision",
+        "title": "Create record",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_update_record_fields_by_id",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@1",
+        "id": "n_96fs0",
+        "index": 15,
+        "inputs": {
+          "recordId": "{{ n_3erg9.outputs.id }}",
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_poc",
+          "skipIfBlank": false,
+          "skipPermissionCheck": false,
+          "updateFields": [
+            {
+              "fieldName": "properties.stage",
+              "actionType": "SET",
+              "setValue": "4_design_system"
+            },
+            {
+              "fieldName": "properties.current_gate",
+              "actionType": "SET",
+              "setValue": "g2"
+            },
+            {
+              "fieldName": "properties.g2_status",
+              "actionType": "SET",
+              "setValue": "waiting"
+            },
+            {
+              "fieldName": "properties.gate_summary",
+              "actionType": "SET",
+              "setValue": "{{ n_c3hc7.outputs.body.summary }}"
+            },
+            {
+              "fieldName": "properties.status",
+              "actionType": "SET",
+              "setValue": "waiting"
+            },
+            {
+              "fieldName": "properties.last_activity",
+              "actionType": "SET",
+              "setValue": "{{ n_2bowo.outputs.result.activity_message }}"
+            },
+            {
+              "fieldName": "properties.last_activity_at",
+              "actionType": "SET",
+              "setValue": "{{ n_2bowo.outputs.result.now }}"
+            }
+          ],
+          "skipSchemaValidation": true,
+          "unsetIfNull": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Move the row to the G2 gate",
+        "title": "Update an existing record's fields",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@1",
+        "id": "n_ic6eb",
+        "index": 16,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_c3hc7.outputs.body.documents[0].name }}",
+              "filter": {
+                "operator": "EXISTS"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Any documents?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "loop",
+          "resourceName": "loop_for_each",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_ic6eb@n_z4gw9@scv5o-1@1@y",
+        "id": "n_ek301",
+        "index": 17,
+        "inputs": {
+          "listSource": "{{ n_c3hc7.outputs.body.documents }}",
+          "captureIterations": true
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Loop over the documents",
+        "title": "For each loop",
+        "type": "LOOP"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_fetch_records",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_ek301@n_ic6eb@n_z4gw9@scv5o-1@1@y@l",
+        "id": "n_6lq0h",
+        "index": 18,
+        "inputs": {
+          "triggerInputCondition": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "properties_poc",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_c3hc7.outputs.body.row_id }}"
+                }
+              },
+              {
+                "property": "properties_name",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_ek301.outputs.item.name }}"
+                }
+              }
+            ]
+          },
+          "shouldSearchInAnalyticsStore": false,
+          "object_type": "psl_document",
+          "includeRoleMappings": false,
+          "includeCurrentUserPermissions": false,
+          "sortBy": [
+            {
+              "field": "version",
+              "order": "DESC"
+            }
+          ],
+          "translationsOption": "DEFAULT",
+          "numberOfRecordsToFetch": "SINGLE",
+          "readThroughSessionVariables": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Find the latest version of this document on the row",
+        "title": "Fetch records",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_ek301@n_ic6eb@n_z4gw9@scv5o-1@1@y@l",
+        "id": "n_ot2v2",
+        "index": 19,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "integer"
+              },
+              "document_id": {
+                "type": "string"
+              },
+              "format": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "version",
+              "document_id",
+              "format"
+            ]
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "poc_id": {
+                "type": "string"
+              },
+              "stage": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "latest": {
+                "type": [
+                  "integer",
+                  "string"
+                ]
+              },
+              "format": {
+                "type": "string"
+              },
+              "link": {
+                "type": "string"
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef text = { v -> v == null ? '' : v.toString().trim() }\ndef latest = value('latest')\ndef last = 0\nif (latest instanceof Number) { last = latest as int }\nelse if (text(latest).isInteger()) { last = text(latest).toInteger() }\ndef slug = text(value('name')).toLowerCase().replaceAll(/[^a-z0-9]+/, '-').replaceAll(/^-+|-+$/, '')\nif (!slug) slug = 'document'\ndef version = last + 1\ndef fmt = text(value('format')).toLowerCase()\nif (!(fmt in ['markdown', 'html', 'link'])) { fmt = text(value('link')) ? 'link' : 'markdown' }\nresult = [version: version, document_id: (text(value('poc_id')) + '__' + text(value('stage')) + '__' + slug + '__v' + version).toString(), format: fmt]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "poc_id": "{{ n_c3hc7.outputs.body.row_id }}",
+            "stage": "4_design_system",
+            "name": "{{ n_ek301.outputs.item.name }}",
+            "latest": "{{ n_6lq0h.outputs.properties.version }}",
+            "format": "{{ n_ek301.outputs.item.format }}",
+            "link": "{{ n_ek301.outputs.item.link }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Number the document",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_create_record",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_ek301@n_ic6eb@n_z4gw9@scv5o-1@1@y@l",
+        "id": "n_c4ki8",
+        "index": 20,
+        "inputs": {
+          "useRawPayload": false,
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_document",
+          "skipIfBlank": false,
+          "inlineRefresh": false,
+          "record": {
+            "document_id": "{{ n_ot2v2.outputs.result.document_id }}",
+            "poc": "{{ n_c3hc7.outputs.body.row_id }}",
+            "name": "{{ n_ek301.outputs.item.name }}",
+            "type": "{{ n_ek301.outputs.item.type }}",
+            "stage": "4_design_system",
+            "gate_pack": "g2",
+            "version": "{{ n_ot2v2.outputs.result.version }}",
+            "status": "in_review",
+            "content": "{{ n_ek301.outputs.item.content }}",
+            "file_link": "{{ n_ek301.outputs.item.link }}",
+            "created_by": "Claude build run",
+            "saved_at": "{{ n_2bowo.outputs.result.now }}",
+            "format": "{{ n_ot2v2.outputs.result.format }}"
+          },
+          "useUuid": false,
+          "batching": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Save the document for review",
+        "title": "Create record",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_create_record",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@1",
+        "id": "n_e08ud",
+        "index": 21,
+        "inputs": {
+          "useRawPayload": false,
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_activity",
+          "skipIfBlank": false,
+          "inlineRefresh": false,
+          "record": {
+            "activity_id": "{{ n_2bowo.outputs.result.gate_activity_id }}",
+            "poc": "{{ n_c3hc7.outputs.body.row_id }}",
+            "type": "gate_posted",
+            "stage": "4_design_system",
+            "gate": "g2",
+            "actor_type": "ai",
+            "actor_name": "Claude build run",
+            "message": "{{ n_2bowo.outputs.result.activity_message }}",
+            "posted_to": "{{ n_3erg9.outputs.properties.slack_channel }}",
+            "created_at": "{{ n_2bowo.outputs.result.now }}"
+          },
+          "useUuid": false,
+          "batching": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Log that the gate was posted",
+        "title": "Create record",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@1",
+        "id": "n_sxmjo",
+        "index": 22,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_3erg9.outputs.properties.slack_channel_id }}",
+              "filter": {
+                "operator": "EXISTS"
+              }
+            },
+            {
+              "property": "{{ n_3erg9.outputs.properties.slack_channel_id }}",
+              "filter": {
+                "operator": "NOT_EQUAL",
+                "value": "=\"\""
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Row has a channel?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_post_message_in_channel",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_sxmjo@n_z4gw9@scv5o-1@1@y",
+        "id": "n_19rjj",
+        "index": 23,
+        "inputs": {
+          "link_names": true,
+          "messageType": "text",
+          "channel": "{{ n_3erg9.outputs.properties.slack_channel_id }}",
+          "text": "{{ n_2bowo.outputs.result.slack_text }}",
+          "token_type": "bot_token",
+          "mrkdwn": true
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Post the plan in the row's channel",
+        "title": "Post message",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "branch_condition",
+          "resourceName": "branch_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@2",
+        "id": "n_z4gw9@2",
+        "index": 24,
+        "inputs": {
+          "name": "Final",
+          "conditions": {
+            "filters": [
+              {
+                "property": "{{ n_c3hc7.outputs.body.kind }}",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "final"
+                }
+              }
+            ],
+            "operator": "AND"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Branch Condition",
+        "title": "",
+        "type": "BRANCH_CONDITION"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@2",
+        "id": "n_0yaah",
+        "index": 25,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "slack_text": {
+                "type": "string"
+              },
+              "dm_text": {
+                "type": "string"
+              },
+              "activity_message": {
+                "type": "string"
+              },
+              "now": {
+                "type": "integer"
+              },
+              "g1_activity_id": {
+                "type": "string"
+              },
+              "gate_activity_id": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "slack_text",
+              "dm_text",
+              "activity_message",
+              "now",
+              "g1_activity_id",
+              "gate_activity_id"
+            ]
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string"
+              },
+              "poc_id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "summary": {
+                "type": "string"
+              },
+              "app_url": {
+                "type": "string"
+              },
+              "links": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "now": {
+                "type": "number"
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef text = { v -> v == null ? '' : v.toString().trim() }\ndef toBig = { v -> try { new BigDecimal(text(v)).toBigInteger() } catch (e) { BigInteger.ZERO } }\ndef kind = text(value('kind'))\ndef poc = text(value('poc_id'))\ndef title = text(value('title'))\ndef summary = text(value('summary'))\ndef base = text(value('app_url'))\nwhile (base.endsWith('/')) { base = base.substring(0, base.length() - 1) }\ndef link = base ? (base + '/pocs/' + poc) : ''\ndef now = toBig(value('now'))\ndef lines = ['[' + poc + ']']\nif (title) lines << ('*' + title + '*')\nif (summary) lines << summary\ndef builtLinks = ((value('links') ?: []) as List).collect { text(it) }.findAll { it }\nif (kind == 'final' && builtLinks) { lines << 'Built assets:'; builtLinks.each { lines << ('- ' + it) } }\nif (link) lines << link\ndef label = kind == 'final' ? 'Build posted for G3 · Build sign-off' : 'Plan posted for G2 · Design check'\ndef activity = (title ? label + ': ' + title : label)\nresult = [slack_text: lines.join('\\n').toString(), dm_text: ('BUILD is complete' + (link ? '\\n' + link : '')).toString(), activity_message: activity.toString(), now: now.longValue(), g1_activity_id: ('ACT-' + now + '-g1').toString(), gate_activity_id: ('ACT-' + now + '-gate').toString()]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "kind": "final",
+            "poc_id": "{{ n_c3hc7.outputs.body.row_id }}",
+            "title": "{{ n_c3hc7.outputs.body.title }}",
+            "summary": "{{ n_c3hc7.outputs.body.summary }}",
+            "app_url": "{{ __ENV__.outputs.POC_STUDIO_APP_URL }}",
+            "links": {
+              "ua:type": "mappedArray",
+              "source": "{{ n_c3hc7.outputs.body.documents }}",
+              "items": "{{ n_c3hc7.outputs.body.documents[0].link }}"
+            },
+            "now": "{{ __RUN__.outputs.currentTime }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Compose the gate texts",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_update_record_fields_by_id",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@2",
+        "id": "n_5s6w2",
+        "index": 26,
+        "inputs": {
+          "recordId": "{{ n_3erg9.outputs.id }}",
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_poc",
+          "skipIfBlank": false,
+          "skipPermissionCheck": false,
+          "updateFields": [
+            {
+              "fieldName": "properties.stage",
+              "actionType": "SET",
+              "setValue": "6_finalize"
+            },
+            {
+              "fieldName": "properties.current_gate",
+              "actionType": "SET",
+              "setValue": "g3"
+            },
+            {
+              "fieldName": "properties.g3_status",
+              "actionType": "SET",
+              "setValue": "waiting"
+            },
+            {
+              "fieldName": "properties.gate_summary",
+              "actionType": "SET",
+              "setValue": "{{ n_c3hc7.outputs.body.summary }}"
+            },
+            {
+              "fieldName": "properties.status",
+              "actionType": "SET",
+              "setValue": "waiting"
+            },
+            {
+              "fieldName": "properties.last_activity",
+              "actionType": "SET",
+              "setValue": "{{ n_0yaah.outputs.result.activity_message }}"
+            },
+            {
+              "fieldName": "properties.last_activity_at",
+              "actionType": "SET",
+              "setValue": "{{ n_0yaah.outputs.result.now }}"
+            }
+          ],
+          "skipSchemaValidation": true,
+          "unsetIfNull": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Move the row to the G3 gate",
+        "title": "Update an existing record's fields",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@2",
+        "id": "n_owmbx",
+        "index": 27,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_c3hc7.outputs.body.documents[0].name }}",
+              "filter": {
+                "operator": "EXISTS"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Any documents?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "loop",
+          "resourceName": "loop_for_each",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_owmbx@n_z4gw9@scv5o-1@2@y",
+        "id": "n_ct97q",
+        "index": 28,
+        "inputs": {
+          "listSource": "{{ n_c3hc7.outputs.body.documents }}",
+          "captureIterations": true
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Loop over the documents",
+        "title": "For each loop",
+        "type": "LOOP"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_fetch_records",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_ct97q@n_owmbx@n_z4gw9@scv5o-1@2@y@l",
+        "id": "n_rrenj",
+        "index": 29,
+        "inputs": {
+          "triggerInputCondition": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "properties_poc",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_c3hc7.outputs.body.row_id }}"
+                }
+              },
+              {
+                "property": "properties_name",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_ct97q.outputs.item.name }}"
+                }
+              }
+            ]
+          },
+          "shouldSearchInAnalyticsStore": false,
+          "object_type": "psl_document",
+          "includeRoleMappings": false,
+          "includeCurrentUserPermissions": false,
+          "sortBy": [
+            {
+              "field": "version",
+              "order": "DESC"
+            }
+          ],
+          "translationsOption": "DEFAULT",
+          "numberOfRecordsToFetch": "SINGLE",
+          "readThroughSessionVariables": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Find the latest version of this document on the row",
+        "title": "Fetch records",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_ct97q@n_owmbx@n_z4gw9@scv5o-1@2@y@l",
+        "id": "n_rqf4h",
+        "index": 30,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "integer"
+              },
+              "document_id": {
+                "type": "string"
+              },
+              "format": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "version",
+              "document_id",
+              "format"
+            ]
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "poc_id": {
+                "type": "string"
+              },
+              "stage": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "latest": {
+                "type": [
+                  "integer",
+                  "string"
+                ]
+              },
+              "format": {
+                "type": "string"
+              },
+              "link": {
+                "type": "string"
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef text = { v -> v == null ? '' : v.toString().trim() }\ndef latest = value('latest')\ndef last = 0\nif (latest instanceof Number) { last = latest as int }\nelse if (text(latest).isInteger()) { last = text(latest).toInteger() }\ndef slug = text(value('name')).toLowerCase().replaceAll(/[^a-z0-9]+/, '-').replaceAll(/^-+|-+$/, '')\nif (!slug) slug = 'document'\ndef version = last + 1\ndef fmt = text(value('format')).toLowerCase()\nif (!(fmt in ['markdown', 'html', 'link'])) { fmt = text(value('link')) ? 'link' : 'markdown' }\nresult = [version: version, document_id: (text(value('poc_id')) + '__' + text(value('stage')) + '__' + slug + '__v' + version).toString(), format: fmt]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "poc_id": "{{ n_c3hc7.outputs.body.row_id }}",
+            "stage": "6_finalize",
+            "name": "{{ n_ct97q.outputs.item.name }}",
+            "latest": "{{ n_rrenj.outputs.properties.version }}",
+            "format": "{{ n_ct97q.outputs.item.format }}",
+            "link": "{{ n_ct97q.outputs.item.link }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Number the document",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_create_record",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_ct97q@n_owmbx@n_z4gw9@scv5o-1@2@y@l",
+        "id": "n_2mp6i",
+        "index": 31,
+        "inputs": {
+          "useRawPayload": false,
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_document",
+          "skipIfBlank": false,
+          "inlineRefresh": false,
+          "record": {
+            "document_id": "{{ n_rqf4h.outputs.result.document_id }}",
+            "poc": "{{ n_c3hc7.outputs.body.row_id }}",
+            "name": "{{ n_ct97q.outputs.item.name }}",
+            "type": "{{ n_ct97q.outputs.item.type }}",
+            "stage": "6_finalize",
+            "gate_pack": "g3",
+            "version": "{{ n_rqf4h.outputs.result.version }}",
+            "status": "in_review",
+            "content": "{{ n_ct97q.outputs.item.content }}",
+            "file_link": "{{ n_ct97q.outputs.item.link }}",
+            "created_by": "Claude build run",
+            "saved_at": "{{ n_0yaah.outputs.result.now }}",
+            "format": "{{ n_rqf4h.outputs.result.format }}"
+          },
+          "useUuid": false,
+          "batching": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Save the document for review",
+        "title": "Create record",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_create_record",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@2",
+        "id": "n_2knqg",
+        "index": 32,
+        "inputs": {
+          "useRawPayload": false,
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_activity",
+          "skipIfBlank": false,
+          "inlineRefresh": false,
+          "record": {
+            "activity_id": "{{ n_0yaah.outputs.result.gate_activity_id }}",
+            "poc": "{{ n_c3hc7.outputs.body.row_id }}",
+            "type": "gate_posted",
+            "stage": "6_finalize",
+            "gate": "g3",
+            "actor_type": "ai",
+            "actor_name": "Claude build run",
+            "message": "{{ n_0yaah.outputs.result.activity_message }}",
+            "posted_to": "{{ n_3erg9.outputs.properties.slack_channel }}",
+            "created_at": "{{ n_0yaah.outputs.result.now }}"
+          },
+          "useUuid": false,
+          "batching": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Log that the gate was posted",
+        "title": "Create record",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@2",
+        "id": "n_qgiab",
+        "index": 33,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_3erg9.outputs.properties.slack_channel_id }}",
+              "filter": {
+                "operator": "EXISTS"
+              }
+            },
+            {
+              "property": "{{ n_3erg9.outputs.properties.slack_channel_id }}",
+              "filter": {
+                "operator": "NOT_EQUAL",
+                "value": "=\"\""
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Row has a channel?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_post_message_in_channel",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_qgiab@n_z4gw9@scv5o-1@2@y",
+        "id": "n_nhh27",
+        "index": 34,
+        "inputs": {
+          "link_names": true,
+          "messageType": "text",
+          "channel": "{{ n_3erg9.outputs.properties.slack_channel_id }}",
+          "text": "{{ n_0yaah.outputs.result.slack_text }}",
+          "token_type": "bot_token",
+          "mrkdwn": true
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Post the build and its asset links in the row's channel",
+        "title": "Post message",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@2",
+        "id": "n_7impv",
+        "index": 35,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_3erg9.outputs.properties.owner_slack_id }}",
+              "filter": {
+                "operator": "EXISTS"
+              }
+            },
+            {
+              "property": "{{ n_3erg9.outputs.properties.owner_slack_id }}",
+              "filter": {
+                "operator": "NOT_EQUAL",
+                "value": "=\"\""
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Row has an owner Slack id?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_open_conversation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_7impv@n_z4gw9@scv5o-1@2@y",
+        "id": "n_px8hx",
+        "index": 36,
+        "inputs": {
+          "return_im": false,
+          "prevent_creation": false,
+          "token_type": "bot_token",
+          "users": [
+            "{{ n_3erg9.outputs.properties.owner_slack_id }}"
+          ]
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Open a direct message with the owner",
+        "title": "Open MPIM conversation",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_7impv@n_z4gw9@scv5o-1@2@y",
+        "id": "n_59u87",
+        "index": 37,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_px8hx.outputs.channel.id }}",
+              "filter": {
+                "operator": "EXISTS"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Conversation opened?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_post_message_in_channel",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_59u87@n_7impv@n_z4gw9@scv5o-1@2@y@y",
+        "id": "n_kqpzx",
+        "index": 38,
+        "inputs": {
+          "link_names": true,
+          "messageType": "text",
+          "channel": "{{ n_px8hx.outputs.channel.id }}",
+          "text": "{{ n_0yaah.outputs.result.dm_text }}",
+          "token_type": "bot_token",
+          "mrkdwn": true
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Tell the owner the build is complete",
+        "title": "Post message",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "branch_condition",
+          "resourceName": "branch_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@3",
+        "id": "n_z4gw9@3",
+        "index": 39,
+        "inputs": {
+          "name": "Feedback",
+          "conditions": {
+            "filters": [
+              {
+                "property": "{{ n_c3hc7.outputs.body.kind }}",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "feedback"
+                }
+              }
+            ],
+            "operator": "AND"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Branch Condition",
+        "title": "",
+        "type": "BRANCH_CONDITION"
+      },
+      {
+        "context": {
+          "appName": "loop",
+          "resourceName": "loop_for_each",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@3",
+        "id": "n_pxrj1",
+        "index": 40,
+        "inputs": {
+          "listSource": "{{ n_c3hc7.outputs.body.feedback }}",
+          "captureIterations": true
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Loop over the feedback entries",
+        "title": "For each loop",
+        "type": "LOOP"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_count_records",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_pxrj1@n_z4gw9@scv5o-1@3@l",
+        "id": "n_fka75",
+        "index": 41,
+        "inputs": {
+          "triggerInputCondition": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "properties_poc",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_c3hc7.outputs.body.row_id }}"
+                }
+              }
+            ]
+          },
+          "object_type": "psl_iteration"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Count the iterations the row already has",
+        "title": "Count records",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_pxrj1@n_z4gw9@scv5o-1@3@l",
+        "id": "n_o3yte",
+        "index": 42,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "ticket_no": {
+                "type": "string"
+              },
+              "iteration_id": {
+                "type": "string"
+              },
+              "activity_id": {
+                "type": "string"
+              },
+              "title": {
+                "type": "string"
+              },
+              "gate": {
+                "type": "string"
+              },
+              "iteration": {
+                "type": "integer"
+              },
+              "created_at": {
+                "type": "integer"
+              },
+              "actor_type": {
+                "type": "string"
+              },
+              "activity_message": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "ticket_no",
+              "iteration_id",
+              "activity_id",
+              "title",
+              "gate",
+              "iteration",
+              "created_at",
+              "actor_type",
+              "activity_message"
+            ]
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "now": {
+                "type": "number"
+              },
+              "index": {
+                "type": "number"
+              },
+              "count": {
+                "type": "number"
+              },
+              "text": {
+                "type": "string"
+              },
+              "phase": {
+                "type": "string"
+              },
+              "source": {
+                "type": "string"
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef text = { v -> v == null ? '' : v.toString().trim() }\ndef toBig = { v -> try { new BigDecimal(text(v)).toBigInteger() } catch (e) { BigInteger.ZERO } }\ndef now = toBig(value('now'))\ndef n = toBig(value('index')).intValue() + 1\ndef cnt = toBig(value('count')).intValue()\ndef body = text(value('text'))\ndef title = body.length() > 80 ? body.substring(0, 80) : body\ndef phase = text(value('phase'))\ndef gate = [understand: 'g1', plan: 'g2', build: 'g3', deliver: 'g4'][phase] ?: 'none'\ndef actor = text(value('source')) == 'person' ? 'person' : 'ai'\nresult = [ticket_no: ('FB-' + now + '-' + n).toString(), iteration_id: ('ITR-' + now + '-' + n).toString(), activity_id: ('ACT-' + now + '-i' + n).toString(), title: title, gate: gate, iteration: cnt + 1, created_at: now.longValue(), actor_type: actor, activity_message: ('Change logged: ' + title).toString()]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "now": "{{ __RUN__.outputs.currentTime }}",
+            "index": "{{ n_pxrj1.outputs.index }}",
+            "count": "{{ n_fka75.outputs.count }}",
+            "text": "{{ n_pxrj1.outputs.item.text }}",
+            "phase": "{{ n_pxrj1.outputs.item.phase }}",
+            "source": "{{ n_pxrj1.outputs.item.source }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Number the entry",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_create_record",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_pxrj1@n_z4gw9@scv5o-1@3@l",
+        "id": "n_7257j",
+        "index": 43,
+        "inputs": {
+          "useRawPayload": false,
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_iteration",
+          "skipIfBlank": false,
+          "inlineRefresh": false,
+          "record": {
+            "iteration_id": "{{ n_o3yte.outputs.result.iteration_id }}",
+            "poc": "{{ n_c3hc7.outputs.body.row_id }}",
+            "phase": "{{ n_pxrj1.outputs.item.phase }}",
+            "source": "{{ n_pxrj1.outputs.item.source }}",
+            "actor_name": "{{ n_pxrj1.outputs.item.actor_name }}",
+            "title": "{{ n_o3yte.outputs.result.title }}",
+            "reason": "{{ n_pxrj1.outputs.item.text }}",
+            "skill": "{{ n_pxrj1.outputs.item.skill }}",
+            "related_ticket": "{{ n_o3yte.outputs.result.ticket_no }}",
+            "created_at": "{{ n_o3yte.outputs.result.created_at }}"
+          },
+          "useUuid": false,
+          "batching": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Log the change",
+        "title": "Create record",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_create_record",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_pxrj1@n_z4gw9@scv5o-1@3@l",
+        "id": "n_iyz0q",
+        "index": 44,
+        "inputs": {
+          "useRawPayload": false,
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_feedback",
+          "skipIfBlank": false,
+          "inlineRefresh": false,
+          "record": {
+            "ticket_no": "{{ n_o3yte.outputs.result.ticket_no }}",
+            "poc": "{{ n_c3hc7.outputs.body.row_id }}",
+            "poc_stage": "{{ n_3erg9.outputs.properties.stage }}",
+            "gate": "{{ n_o3yte.outputs.result.gate }}",
+            "iteration": "{{ n_o3yte.outputs.result.iteration }}",
+            "client_name": "{{ n_3erg9.outputs.properties.client_name }}",
+            "title": "{{ n_o3yte.outputs.result.title }}",
+            "feedback": "{{ n_pxrj1.outputs.item.text }}",
+            "severity": "medium",
+            "target_skill": "{{ n_pxrj1.outputs.item.skill }}",
+            "status": "open",
+            "given_by_name": "{{ n_pxrj1.outputs.item.actor_name }}",
+            "created_at": "{{ n_o3yte.outputs.result.created_at }}"
+          },
+          "useUuid": false,
+          "batching": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Open a feedback ticket",
+        "title": "Create record",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_create_record",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_pxrj1@n_z4gw9@scv5o-1@3@l",
+        "id": "n_p6j4v",
+        "index": 45,
+        "inputs": {
+          "useRawPayload": false,
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_activity",
+          "skipIfBlank": false,
+          "inlineRefresh": false,
+          "record": {
+            "activity_id": "{{ n_o3yte.outputs.result.activity_id }}",
+            "poc": "{{ n_c3hc7.outputs.body.row_id }}",
+            "type": "iteration_logged",
+            "stage": "{{ n_3erg9.outputs.properties.stage }}",
+            "gate": "{{ n_o3yte.outputs.result.gate }}",
+            "actor_type": "{{ n_o3yte.outputs.result.actor_type }}",
+            "actor_name": "{{ n_pxrj1.outputs.item.actor_name }}",
+            "message": "{{ n_o3yte.outputs.result.activity_message }}",
+            "posted_to": "{{ n_3erg9.outputs.properties.slack_channel }}",
+            "created_at": "{{ n_o3yte.outputs.result.created_at }}"
+          },
+          "useUuid": false,
+          "batching": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Log the change in the activity feed",
+        "title": "Create record",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_z4gw9@scv5o-1@default",
+        "id": "n_70xdr",
+        "index": 46,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_c3hc7.outputs.body.summary }}",
+              "filter": {
+                "operator": "REGEX",
+                "value": "(?i)^\\s*error"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Summary starts with \"error\"?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_update_record_fields_by_id",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_70xdr@n_z4gw9@scv5o-1@default@y",
+        "id": "n_otf8c",
+        "index": 47,
+        "inputs": {
+          "recordId": "{{ n_3erg9.outputs.id }}",
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_poc",
+          "skipIfBlank": false,
+          "skipPermissionCheck": false,
+          "updateFields": [
+            {
+              "fieldName": "properties.last_activity",
+              "actionType": "SET",
+              "setValue": "{{ n_c3hc7.outputs.body.summary }}"
+            },
+            {
+              "fieldName": "properties.last_activity_at",
+              "actionType": "SET",
+              "setValue": "{{ __RUN__.outputs.currentTime }}"
+            },
+            {
+              "fieldName": "properties.status",
+              "actionType": "SET",
+              "setValue": "blocked"
+            },
+            {
+              "fieldName": "properties.blocked_on",
+              "actionType": "SET",
+              "setValue": "{{ n_c3hc7.outputs.body.summary }}"
+            }
+          ],
+          "skipSchemaValidation": true,
+          "unsetIfNull": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Block the row and say what it is blocked on",
+        "title": "Update an existing record's fields",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_update_record_fields_by_id",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_70xdr@n_z4gw9@scv5o-1@default@n",
+        "id": "n_6lo57",
+        "index": 48,
+        "inputs": {
+          "recordId": "{{ n_3erg9.outputs.id }}",
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_poc",
+          "skipIfBlank": false,
+          "skipPermissionCheck": false,
+          "updateFields": [
+            {
+              "fieldName": "properties.last_activity",
+              "actionType": "SET",
+              "setValue": "{{ n_c3hc7.outputs.body.summary }}"
+            },
+            {
+              "fieldName": "properties.last_activity_at",
+              "actionType": "SET",
+              "setValue": "{{ __RUN__.outputs.currentTime }}"
+            }
+          ],
+          "skipSchemaValidation": true,
+          "unsetIfNull": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Record the status line",
+        "title": "Update an existing record's fields",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_response_to_api",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "scv5o-1",
+        "id": "n_rqwcv",
+        "index": 49,
+        "inputs": {
+          "streamingCompleted": true,
+          "responseName": "200_posted",
+          "body": {
+            "status": "posted"
+          },
+          "status": 200
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Respond 200",
+        "title": "Respond to API request",
+        "type": "STOP"
+      }
+    ],
+    "ownerUserId": 66770,
+    "settings": {
+      "enableNodeLevelLogging": true,
+      "enableRunLogging": true,
+      "enableVariableLogging": true,
+      "route": {
+        "default": false,
+        "tierName": "global"
+      }
+    },
+    "standard": false,
+    "tags": [
+      "AI Generated",
+      "Nebula"
+    ],
+    "version": 0,
+    "entityType": "WORKFLOW_DEFINITION"
+  }
+}

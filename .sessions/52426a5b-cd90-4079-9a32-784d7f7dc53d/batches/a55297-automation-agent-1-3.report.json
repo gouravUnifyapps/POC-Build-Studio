@@ -1,0 +1,26 @@
+{
+  "tasks": [
+    {
+      "id": "t5",
+      "status": "ok",
+      "change": "updated",
+      "ids": { "entity": "6ad1cd1b6123771ba2c0346e" },
+      "readBack": [
+        "POC Studio Live · Approve skill suggestion 6ad1cd1b6123771ba2c0346e: before the deploy, search_workflows showed version 1 and deployment {status: DEPLOYED, deployedVersion: 1, definitionVersion: 0, deployedAt: 1792134483854}, i.e. the old shell was live; open_workflow just before the deploy showed version 1 (27 nodes, 8 return paths, 16905 characters), the same version the six workflow_test runs of the previous task exercised, so the deploy shipped the tested save.",
+        "POC Studio Live · Approve skill suggestion 6ad1cd1b6123771ba2c0346e: deploy_workflow answered ok:true, workflowVersion 1, deployedVersion 2, storedVersion 1, paused:false, message \"Deployed version 1 of automation 6ad1cd1b6123771ba2c0346e.\"",
+        "POC Studio Live · Approve skill suggestion 6ad1cd1b6123771ba2c0346e: search_workflows read back after the deploy: version 1, deployment {status: DEPLOYED, deployedVersion: 2, definitionVersion: 1, deployedAt: 1792135218141}; deployment.status DEPLOYED and definitionVersion 1 equals the saved version 1 read in step 1.",
+        "Security rules: the release changed no object, app or page setting and holds no secret; the manager check, the pending-status read and the field-only writes are the ones read back in the build task."
+      ],
+      "unverified": [
+        "The deployed copy was not called: the task named no run, and a run that approves would change live demo rows. The six earlier runs were workflow_test runs of the same saved version 1; settle the deployed copy with one runType workflow call with a non-manager caller (expect status forbidden) through trigger_workflow_run.",
+        "The approved path and the failed-write path were never run (see the build task): the first real Approve click is their first test; read psl_skill, the evidence tickets and the suggestion after it.",
+        "The plan tag on the deploy's deploymentNotes is added by the bridge and was not shown in the deploy reply; settle with the deployment history of 6ad1cd1b6123771ba2c0346e.",
+        "UAT has no pending suggestion at this moment (the one run of Suggest skill improvements wrote none), so an Approve click now answers not_found for any id except the two seeded approved ones, which answer already_decided."
+      ],
+      "notes": [
+        "handover: automation 6ad1cd1b6123771ba2c0346e is now live with the full logic (deployedVersion 2, definitionVersion 1); callers get the approval answers, no longer the shell's status error. Input keys suggestion_id (required), caller_email, caller_name; result keys status, skill_id, to_version, message, read flat from the calling node."
+      ],
+      "error": ""
+    }
+  ]
+}

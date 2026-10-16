@@ -1,0 +1,57 @@
+{
+  "tasks": [
+    {
+      "id": "t15",
+      "status": "needs_confirmation",
+      "change": "created",
+      "ids": { "entity": "6ad1c663d885ae5a4d9fd8a6" },
+      "readBack": [
+        "POC Studio Live · Save POC from Slack 6ad1c663d885ae5a4d9fd8a6: search_workflows before the create answered totalHits 0 (name free).",
+        "POC Studio Live · Save POC from Slack 6ad1c663d885ae5a4d9fd8a6: compile_and_save_workflow with no workflowId answered ok true, created true, version 0, 2 nodes, terminal return.",
+        "POC Studio Live · Save POC from Slack 6ad1c663d885ae5a4d9fd8a6: search_workflows read back version 0, deployment null (NOT deployed: the deploy call was refused by the Claude Code auto mode classifier).",
+        "POC Studio Live · Save POC from Slack 6ad1c663d885ae5a4d9fd8a6: describe_callable_workflow lists exactly channel_id (required), channel_name, tagger_slack_id (required), use_case (required), thread_ts, manager_slack_id, poc_id; count 7."
+      ],
+      "unverified": [
+        "Deployment of the shell: not done. Check: after the person allows it, run deploy_workflow for 6ad1c663d885ae5a4d9fd8a6 with deploymentNotes 'Contract shell for POC Studio Live · Save POC from Slack', then search_workflows must show a non-null deployment with definitionVersion 0.",
+        "Result schema (status, poc_id, message, all strings, all required) and the stub answer status 'error' were written in the saved code; open_workflow was not run to quote them back."
+      ],
+      "notes": [
+        "handover: workflow id 6ad1c663d885ae5a4d9fd8a6 (saved at version 0, not yet deployed); input keys channel_id, channel_name, tagger_slack_id, use_case, thread_ts, manager_slack_id, poc_id; result keys status, poc_id, message.",
+        "plan_change: absorbed: the shell exists and is saved; only its deploy is outstanding. A retry of t15 should deploy this same workflowId, not create a second automation."
+      ],
+      "error": "Blocked by auto mode: deploy_workflow [Modify Shared Resources] on POC Studio Live · Save POC from Slack"
+    },
+    {
+      "id": "t16",
+      "status": "not_started",
+      "readBack": [],
+      "unverified": [],
+      "notes": [
+        "Not started because t15 (its prerequisite) is not settled: its shell deploy was blocked by auto mode. Nothing was written for t16. The shell to build on is 6ad1c663d885ae5a4d9fd8a6 (saved, version 0, undeployed).",
+        "handover: for the t16 retry, discovery is already done and need not be repeated: Slack connection POC Studio Live Slack 6ad1be602ac9ba64653a9d36 (appName slack, active); slack_get_user_info_by_id takes {user} and answers user.real_name and user.profile.email (email optional); storage_by_unifyapps_fetch_records needs object_type and numberOfRecordsToFetch SINGLE|MULTIPLE, filter key triggerInputCondition (object field names written as properties_<field>), page {paginateBy OFFSET, limit, offset} for MULTIPLE, output objects[i].properties.<field> for MULTIPLE and the record itself for SINGLE; storage_by_unifyapps_create_record takes object_type and record; storage_by_unifyapps_update_record_fields_by_id takes object_type, recordId and updateFields [{fieldName, actionType SET, setValue}]."
+      ],
+      "error": "Needs t15, which is waiting on a person's yes for the shell deploy."
+    },
+    {
+      "id": "t20",
+      "status": "ok",
+      "change": "created",
+      "ids": { "entity": "6ad1c66313ea2c28e645e538" },
+      "readBack": [
+        "POC Studio Live · Start build 6ad1c66313ea2c28e645e538: search_workflows before the create answered totalHits 0 (name free).",
+        "POC Studio Live · Start build 6ad1c66313ea2c28e645e538: compile_and_save_workflow with no workflowId answered ok true, created true, version 0, 2 nodes, terminal return; it was the last save.",
+        "POC Studio Live · Start build 6ad1c66313ea2c28e645e538: deploy_workflow answered ok true, workflowVersion 0, deployedVersion 1, paused false, message 'Deployed version 0 of automation 6ad1c66313ea2c28e645e538.'",
+        "POC Studio Live · Start build 6ad1c66313ea2c28e645e538: search_workflows read back deployment {status DEPLOYED, deployedVersion 1, definitionVersion 0, deployedAt 1792132726096}; saved version 0 equals definitionVersion 0.",
+        "POC Studio Live · Start build 6ad1c66313ea2c28e645e538: describe_callable_workflow lists exactly poc_id (string, required), mode (string, optional), approved_prd_link (string, optional); count 3."
+      ],
+      "unverified": [
+        "Result schema (status, build_run_id, message, all strings, all required) and the stub answer status 'error' were written in the saved code; open_workflow and a test run were not done for the shell.",
+        "The spec's default for mode ('plan') is not declared in the shell schema; the real body must apply it when mode is empty."
+      ],
+      "notes": [
+        "handover: workflow id 6ad1c66313ea2c28e645e538 (deployed shell, version 0, deployedVersion 1); input keys poc_id (required), mode, approved_prd_link; result keys status, build_run_id, message."
+      ],
+      "error": ""
+    }
+  ]
+}

@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "key": "e_interface:app-79ea7266eab9",
+  "entityType": "e_interface",
+  "id": "app-79ea7266eab9",
+  "version": 8,
+  "cachedAt": "2026-10-16T08:52:31.737Z",
+  "source": "solution-refresh",
+  "entity": {
+    "createdTime": 1792133136192,
+    "deleted": false,
+    "deploymentState": {
+      "additionalDetails": {
+        "sourceCommitHash": "41eed67e0b3cb81884257252eff8227a1dba854e"
+      },
+      "deployedAt": 1792140738557,
+      "deployedBy": 66770,
+      "deploymentNotes": "Build button copies the /demo-studio:build <client> <use case> prompt for Claude Code instead of starting a cloud session.",
+      "entityVersion": 8,
+      "version": 3
+    },
+    "entityType": "e_interface",
+    "grants": {
+      "configs": [
+        {
+          "permissions": [
+            "A",
+            "C",
+            "S",
+            "VI",
+            "D",
+            "T",
+            "E",
+            "V",
+            "M_L"
+          ],
+          "principalIds": [
+            "66770"
+          ],
+          "principalType": "USER"
+        }
+      ]
+    },
+    "id": "app-79ea7266eab9",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792140738562,
+    "modifiedTime": 1792140738562,
+    "ownerUserId": 66770,
+    "properties": {
+      "standard": false,
+      "deviceDetails": {
+        "base": "desktop"
+      },
+      "metadata": {
+        "logo": {
+          "small": "https://assets.unifyapps.com/interface/brand-logo/brand-logo-sm-3-comp.svg",
+          "large": "https://assets.unifyapps.com/interface/brand-logo/brand-logo-lg-4.svg",
+          "favicon": "https://assets.unifyapps.com/interface/brand-logo/brand-logo-sm-3-comp.svg"
+        },
+        "_counter": {
+          "_mqttTopicCounter": 0,
+          "_pageCount": 0,
+          "_moduleCount": 0,
+          "_templateComponentCount": 0
+        }
+      },
+      "manifest": {
+        "type": "WEB",
+        "mode": "code"
+      },
+      "additional": {
+        "dependentAssets": {
+          "ENTITY_TYPE": [],
+          "WORKFLOW_DEFINITION": [
+            "6ad1c66313ea2c28e645e538",
+            "6ad1c75967956c53e38f1a70",
+            "6ad1cd1b6123771ba2c0346e"
+          ],
+          "ai_agent": []
+        }
+      },
+      "flags": {
+        "shouldReEvaluateUsingEntityIds": true
+      },
+      "type": "application",
+      "locale": {
+        "defaultLocale": "en-US"
+      },
+      "navigation": {
+        "secondary": [],
+        "defaultPageId": "/",
+        "primary": []
+      },
+      "security": {
+        "type": "PRIVATE",
+        "cspData": {
+          "resourceControl": [
+            {
+              "key": "https://avatars.slack-edge.com",
+              "value": "Slack profile pictures in the History tab"
+            },
+            {
+              "key": "https://secure.gravatar.com",
+              "value": "Gravatar profile pictures Slack returns for people without an uploaded picture"
+            },
+            {
+              "key": "https://fonts.googleapis.com",
+              "value": "Spectral and IBM Plex Mono font stylesheets"
+            },
+            {
+              "key": "https://fonts.gstatic.com",
+              "value": "Spectral and IBM Plex Mono font files"
+            },
+            {
+              "key": "https://placehold.co",
+              "value": "added automatically — reached by this app's code"
+            }
+          ]
+        }
+      },
+      "interfacePageIdVsSlugMap": {
+        "e_global_app-79ea7266eab9": "global-page-of-app-79ea7266eab9"
+      },
+      "name": "POC Studio Live",
+      "theme": {
+        "defaultThemeId": "e_6abf7f3f0ffbc92231382321"
+      },
+      "provisionApp": false,
+      "integrations": {
+        "appAnalytics": {
+          "enabled": true
+        }
+      },
+      "entityDetailsMap": {
+        "e_global_app-79ea7266eab9": {
+          "slug": "global-page-of-app-79ea7266eab9",
+          "isPublic": false,
+          "type": "PAGE"
+        }
+      }
+    },
+    "standard": false,
+    "version": 8
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "createdTime": 1792132834693,
+  "deleted": false,
+  "entityType": "solution_linked_assets",
+  "id": "e_6ad1c6e2674d735893a48eb7",
+  "lastModifiedBy": 66770,
+  "lastPlatformUpdateBy": 66770,
+  "lastPlatformUpdateOn": 1792132834693,
+  "modifiedTime": 1792132834693,
+  "ownerUserId": 66770,
+  "properties": {
+    "asset_class": "ENTITY_TYPE",
+    "asset_id": "psl_iteration",
+    "state": "COMPLETED",
+    "solution_id": "e_6ad1b45199f8a565171d7f1c"
+  },
+  "standard": false,
+  "version": 0
+}

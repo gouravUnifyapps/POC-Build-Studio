@@ -1,0 +1,980 @@
+{
+  "schemaVersion": 1,
+  "key": "ENTITY_TYPE:psl_poc",
+  "entityType": "ENTITY_TYPE",
+  "id": "psl_poc",
+  "version": 0,
+  "cachedAt": "2026-10-16T13:59:49.242Z",
+  "source": "solution-refresh",
+  "ref": {
+    "id": "psl_poc",
+    "type": "ENTITY_TYPE",
+    "state": "COMPLETED"
+  },
+  "entity": {
+    "columnCounts": 42,
+    "createdTime": 1792132575521,
+    "deleted": false,
+    "description": "POC Studio Live: one row per POC. poc_id is client-sent: POC-<client slug>-<use case slug>-<yyyymmdd>.",
+    "id": "psl_poc",
+    "input": {
+      "type": "SCHEMA_AND_LAYOUT",
+      "dynamic": false,
+      "layout": {
+        "ui:order": [
+          "poc_id",
+          "client_name",
+          "client_slug",
+          "use_case",
+          "brief",
+          "owner_name",
+          "owner_email",
+          "started_by",
+          "started_at",
+          "stage",
+          "current_gate",
+          "g1_status",
+          "g2_status",
+          "g3_status",
+          "g4_status",
+          "status",
+          "blocked_on",
+          "slack_channel",
+          "last_activity",
+          "last_activity_at",
+          "manager_name",
+          "manager_email",
+          "g1_owner_approved",
+          "g2_owner_approved",
+          "g3_owner_approved",
+          "g4_owner_approved",
+          "g1_manager_approved",
+          "g2_manager_approved",
+          "g3_manager_approved",
+          "g4_manager_approved",
+          "gate_summary",
+          "g1_summary",
+          "g2_summary",
+          "g3_summary",
+          "g4_summary",
+          "slack_channel_id",
+          "owner_slack_id",
+          "manager_slack_id",
+          "build_run_id",
+          "slack_last_ts",
+          "bot_thread_ts",
+          "slack_live"
+        ]
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "poc_id": {
+            "type": "string",
+            "title": "POC ID",
+            "help": "POC-<client slug>-<use case slug>-<yyyymmdd>",
+            "primaryKey": true,
+            "uniqueKey": true,
+            "searchable": true,
+            "sortable": true
+          },
+          "client_name": {
+            "type": "string",
+            "title": "Client name",
+            "nameField": true,
+            "searchable": true,
+            "sortable": true
+          },
+          "client_slug": {
+            "type": "string",
+            "title": "Client slug"
+          },
+          "use_case": {
+            "type": "string",
+            "title": "Use case",
+            "searchable": true
+          },
+          "brief": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Brief"
+          },
+          "owner_name": {
+            "type": "string",
+            "title": "Owner name",
+            "sortable": true
+          },
+          "owner_email": {
+            "type": "string",
+            "title": "Owner email"
+          },
+          "started_by": {
+            "type": "string",
+            "title": "Started by"
+          },
+          "started_at": {
+            "type": "integer",
+            "format": "date-time",
+            "dateFormat": "epoch",
+            "title": "Started at",
+            "sortable": true
+          },
+          "stage": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Stage",
+            "sortable": true,
+            "oneOf": [
+              {
+                "const": "0_kickoff",
+                "title": "Kickoff"
+              },
+              {
+                "const": "1_signal_capture",
+                "title": "Signal capture"
+              },
+              {
+                "const": "2_research_assess",
+                "title": "Research & assess"
+              },
+              {
+                "const": "3_scope",
+                "title": "Scope the demo"
+              },
+              {
+                "const": "4_design_system",
+                "title": "Design system"
+              },
+              {
+                "const": "5_build",
+                "title": "Build with Nebula"
+              },
+              {
+                "const": "6_finalize",
+                "title": "Finalize"
+              },
+              {
+                "const": "7_collaterals",
+                "title": "Collaterals"
+              },
+              {
+                "const": "8_demo_ready",
+                "title": "Demo-ready"
+              }
+            ]
+          },
+          "current_gate": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Current gate",
+            "default": "none",
+            "oneOf": [
+              {
+                "const": "none",
+                "title": "None"
+              },
+              {
+                "const": "g1",
+                "title": "G1 · Scope check"
+              },
+              {
+                "const": "g2",
+                "title": "G2 · Design check"
+              },
+              {
+                "const": "g3",
+                "title": "G3 · Build sign-off"
+              },
+              {
+                "const": "g4",
+                "title": "G4 · Release"
+              }
+            ]
+          },
+          "g1_status": {
+            "type": "string",
+            "format": "single-select",
+            "title": "G1 status",
+            "default": "pending",
+            "oneOf": [
+              {
+                "const": "pending",
+                "title": "Pending"
+              },
+              {
+                "const": "waiting",
+                "title": "Waiting"
+              },
+              {
+                "const": "approved",
+                "title": "Approved"
+              },
+              {
+                "const": "changes_requested",
+                "title": "Changes requested"
+              }
+            ]
+          },
+          "g2_status": {
+            "type": "string",
+            "format": "single-select",
+            "title": "G2 status",
+            "default": "pending",
+            "oneOf": [
+              {
+                "const": "pending",
+                "title": "Pending"
+              },
+              {
+                "const": "waiting",
+                "title": "Waiting"
+              },
+              {
+                "const": "approved",
+                "title": "Approved"
+              },
+              {
+                "const": "changes_requested",
+                "title": "Changes requested"
+              }
+            ]
+          },
+          "g3_status": {
+            "type": "string",
+            "format": "single-select",
+            "title": "G3 status",
+            "default": "pending",
+            "oneOf": [
+              {
+                "const": "pending",
+                "title": "Pending"
+              },
+              {
+                "const": "waiting",
+                "title": "Waiting"
+              },
+              {
+                "const": "approved",
+                "title": "Approved"
+              },
+              {
+                "const": "changes_requested",
+                "title": "Changes requested"
+              }
+            ]
+          },
+          "g4_status": {
+            "type": "string",
+            "format": "single-select",
+            "title": "G4 status",
+            "default": "pending",
+            "oneOf": [
+              {
+                "const": "pending",
+                "title": "Pending"
+              },
+              {
+                "const": "waiting",
+                "title": "Waiting"
+              },
+              {
+                "const": "approved",
+                "title": "Approved"
+              },
+              {
+                "const": "changes_requested",
+                "title": "Changes requested"
+              }
+            ]
+          },
+          "status": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Status",
+            "default": "running",
+            "sortable": true,
+            "oneOf": [
+              {
+                "const": "running",
+                "title": "Running"
+              },
+              {
+                "const": "waiting",
+                "title": "Waiting"
+              },
+              {
+                "const": "blocked",
+                "title": "Blocked"
+              },
+              {
+                "const": "stopped",
+                "title": "Stopped"
+              },
+              {
+                "const": "demo_ready",
+                "title": "Demo-ready"
+              }
+            ]
+          },
+          "blocked_on": {
+            "type": "string",
+            "title": "Blocked on"
+          },
+          "slack_channel": {
+            "type": "string",
+            "title": "Slack channel",
+            "help": "Channel name, no hash"
+          },
+          "last_activity": {
+            "type": "string",
+            "title": "Last activity"
+          },
+          "last_activity_at": {
+            "type": "integer",
+            "format": "date-time",
+            "dateFormat": "epoch",
+            "title": "Last activity at",
+            "sortable": true
+          },
+          "manager_name": {
+            "type": "string",
+            "title": "Manager name",
+            "help": "Manager / L1 reviewer who approves gates in the app"
+          },
+          "manager_email": {
+            "type": "string",
+            "title": "Manager email"
+          },
+          "g1_owner_approved": {
+            "type": "boolean",
+            "title": "G1 owner approved"
+          },
+          "g2_owner_approved": {
+            "type": "boolean",
+            "title": "G2 owner approved"
+          },
+          "g3_owner_approved": {
+            "type": "boolean",
+            "title": "G3 owner approved"
+          },
+          "g4_owner_approved": {
+            "type": "boolean",
+            "title": "G4 owner approved"
+          },
+          "g1_manager_approved": {
+            "type": "boolean",
+            "title": "G1 manager approved"
+          },
+          "g2_manager_approved": {
+            "type": "boolean",
+            "title": "G2 manager approved"
+          },
+          "g3_manager_approved": {
+            "type": "boolean",
+            "title": "G3 manager approved"
+          },
+          "g4_manager_approved": {
+            "type": "boolean",
+            "title": "G4 manager approved"
+          },
+          "gate_summary": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Gate summary",
+            "help": "Current approval summary for the open gate"
+          },
+          "g1_summary": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Understand summary"
+          },
+          "g2_summary": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Plan summary"
+          },
+          "g3_summary": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Build summary"
+          },
+          "g4_summary": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Deliver summary"
+          },
+          "slack_channel_id": {
+            "type": "string",
+            "title": "Slack channel ID"
+          },
+          "owner_slack_id": {
+            "type": "string",
+            "title": "Owner Slack ID"
+          },
+          "manager_slack_id": {
+            "type": "string",
+            "title": "Manager Slack ID"
+          },
+          "build_run_id": {
+            "type": "string",
+            "title": "Build run ID",
+            "help": "The cloud session URL"
+          },
+          "slack_last_ts": {
+            "type": "string",
+            "title": "Slack last ts",
+            "help": "Slack ts of the newest message read"
+          },
+          "bot_thread_ts": {
+            "type": "string",
+            "title": "Bot thread ts",
+            "help": "ts of the bot's manager question thread, never cleared"
+          },
+          "slack_live": {
+            "type": "boolean",
+            "title": "Slack live"
+          }
+        },
+        "required": [
+          "poc_id",
+          "client_name",
+          "client_slug",
+          "use_case",
+          "owner_name",
+          "started_by",
+          "started_at",
+          "stage",
+          "current_gate",
+          "g1_status",
+          "g2_status",
+          "g3_status",
+          "g4_status",
+          "status"
+        ]
+      }
+    },
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792132575613,
+    "lcName": "poc studio live · poc",
+    "metadata": {
+      "auditable": false,
+      "autoGeneratedFields": [],
+      "cacheable": false,
+      "captureActivity": false,
+      "captureReferences": false,
+      "captureReporting": false,
+      "customIndexDefinitions": [
+        {
+          "indexFieldMetadataList": [
+            {
+              "field": "properties.status",
+              "type": 1
+            }
+          ],
+          "name": "idx_status",
+          "status": "SUCCESS"
+        }
+      ],
+      "dateFields": [
+        "last_activity_at",
+        "started_at"
+      ],
+      "deleteStaleEntitiesOnConfigSync": false,
+      "deployable": false,
+      "derivedEdgeEntity": false,
+      "encryptedFields": [],
+      "external": false,
+      "filterableFields": [
+        "poc_id",
+        "client_name",
+        "client_slug",
+        "use_case",
+        "brief",
+        "owner_name",
+        "owner_email",
+        "started_by",
+        "started_at",
+        "stage",
+        "current_gate",
+        "g1_status",
+        "g2_status",
+        "g3_status",
+        "g4_status",
+        "status",
+        "blocked_on",
+        "slack_channel",
+        "last_activity",
+        "last_activity_at",
+        "manager_name",
+        "manager_email",
+        "g1_owner_approved",
+        "g2_owner_approved",
+        "g3_owner_approved",
+        "g4_owner_approved",
+        "g1_manager_approved",
+        "g2_manager_approved",
+        "g3_manager_approved",
+        "g4_manager_approved",
+        "gate_summary",
+        "g1_summary",
+        "g2_summary",
+        "g3_summary",
+        "g4_summary",
+        "slack_channel_id",
+        "owner_slack_id",
+        "manager_slack_id",
+        "build_run_id",
+        "slack_last_ts",
+        "bot_thread_ts",
+        "slack_live"
+      ],
+      "graphType": "LEGACY_MDM",
+      "hasTimeSeriesRecords": true,
+      "hashedFields": [],
+      "inaccessibleFromUI": false,
+      "includeInDependency": false,
+      "nameField": "client_name",
+      "partFields": [],
+      "piiFields": [],
+      "primaryKeyField": "poc_id",
+      "referenceKeys": [],
+      "scdType2Enabled": false,
+      "schemaValidationEnabled": true,
+      "searchableFields": [
+        "poc_id",
+        "client_name",
+        "client_name",
+        "use_case"
+      ],
+      "sessionBackedStorageEnabled": false,
+      "skipConfigSyncIfModified": false,
+      "skipDeletedEntityBackup": false,
+      "skipFetchBeforeUpdate": false,
+      "skipIndexLimitValidation": false,
+      "skipPermissionCheckForAggregation": false,
+      "skipPermissionsFilter": false,
+      "skipReportingEventsOrdering": false,
+      "skipRoutineLoad": false,
+      "skipTotalHitsInAggregation": false,
+      "skipVersionIncrementOnUpdate": false,
+      "storeDetails": {
+        "store": "MONGO",
+        "uniqueKeySupported": true
+      },
+      "supportsDistinctValues": false,
+      "supportsWebhook": false,
+      "syncFromSourceCustomer": false,
+      "translationsEnabled": false,
+      "uniqueKeyFields": [
+        "poc_id"
+      ],
+      "urlValidationEnabledFields": [],
+      "useCachedEntityStoreForAutomations": false,
+      "userLevelEncryption": false,
+      "vectorFields": [],
+      "versioningEnabled": false
+    },
+    "modifiedTime": 1792132575613,
+    "name": "POC Studio Live · POC",
+    "ownerUserId": 66770,
+    "packaged": false,
+    "pluralName": "POC Studio Live · POCs",
+    "schema": {
+      "type": "SCHEMA",
+      "dynamic": false,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "poc_id": {
+            "type": "string",
+            "title": "POC ID",
+            "help": "POC-<client slug>-<use case slug>-<yyyymmdd>",
+            "primaryKey": true,
+            "uniqueKey": true,
+            "searchable": true,
+            "sortable": true
+          },
+          "client_name": {
+            "type": "string",
+            "title": "Client name",
+            "nameField": true,
+            "searchable": true,
+            "sortable": true
+          },
+          "client_slug": {
+            "type": "string",
+            "title": "Client slug"
+          },
+          "use_case": {
+            "type": "string",
+            "title": "Use case",
+            "searchable": true
+          },
+          "brief": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Brief"
+          },
+          "owner_name": {
+            "type": "string",
+            "title": "Owner name",
+            "sortable": true
+          },
+          "owner_email": {
+            "type": "string",
+            "title": "Owner email"
+          },
+          "started_by": {
+            "type": "string",
+            "title": "Started by"
+          },
+          "started_at": {
+            "type": "integer",
+            "format": "date-time",
+            "dateFormat": "epoch",
+            "title": "Started at",
+            "sortable": true
+          },
+          "stage": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Stage",
+            "sortable": true,
+            "oneOf": [
+              {
+                "const": "0_kickoff",
+                "title": "Kickoff"
+              },
+              {
+                "const": "1_signal_capture",
+                "title": "Signal capture"
+              },
+              {
+                "const": "2_research_assess",
+                "title": "Research & assess"
+              },
+              {
+                "const": "3_scope",
+                "title": "Scope the demo"
+              },
+              {
+                "const": "4_design_system",
+                "title": "Design system"
+              },
+              {
+                "const": "5_build",
+                "title": "Build with Nebula"
+              },
+              {
+                "const": "6_finalize",
+                "title": "Finalize"
+              },
+              {
+                "const": "7_collaterals",
+                "title": "Collaterals"
+              },
+              {
+                "const": "8_demo_ready",
+                "title": "Demo-ready"
+              }
+            ]
+          },
+          "current_gate": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Current gate",
+            "default": "none",
+            "oneOf": [
+              {
+                "const": "none",
+                "title": "None"
+              },
+              {
+                "const": "g1",
+                "title": "G1 · Scope check"
+              },
+              {
+                "const": "g2",
+                "title": "G2 · Design check"
+              },
+              {
+                "const": "g3",
+                "title": "G3 · Build sign-off"
+              },
+              {
+                "const": "g4",
+                "title": "G4 · Release"
+              }
+            ]
+          },
+          "g1_status": {
+            "type": "string",
+            "format": "single-select",
+            "title": "G1 status",
+            "default": "pending",
+            "oneOf": [
+              {
+                "const": "pending",
+                "title": "Pending"
+              },
+              {
+                "const": "waiting",
+                "title": "Waiting"
+              },
+              {
+                "const": "approved",
+                "title": "Approved"
+              },
+              {
+                "const": "changes_requested",
+                "title": "Changes requested"
+              }
+            ]
+          },
+          "g2_status": {
+            "type": "string",
+            "format": "single-select",
+            "title": "G2 status",
+            "default": "pending",
+            "oneOf": [
+              {
+                "const": "pending",
+                "title": "Pending"
+              },
+              {
+                "const": "waiting",
+                "title": "Waiting"
+              },
+              {
+                "const": "approved",
+                "title": "Approved"
+              },
+              {
+                "const": "changes_requested",
+                "title": "Changes requested"
+              }
+            ]
+          },
+          "g3_status": {
+            "type": "string",
+            "format": "single-select",
+            "title": "G3 status",
+            "default": "pending",
+            "oneOf": [
+              {
+                "const": "pending",
+                "title": "Pending"
+              },
+              {
+                "const": "waiting",
+                "title": "Waiting"
+              },
+              {
+                "const": "approved",
+                "title": "Approved"
+              },
+              {
+                "const": "changes_requested",
+                "title": "Changes requested"
+              }
+            ]
+          },
+          "g4_status": {
+            "type": "string",
+            "format": "single-select",
+            "title": "G4 status",
+            "default": "pending",
+            "oneOf": [
+              {
+                "const": "pending",
+                "title": "Pending"
+              },
+              {
+                "const": "waiting",
+                "title": "Waiting"
+              },
+              {
+                "const": "approved",
+                "title": "Approved"
+              },
+              {
+                "const": "changes_requested",
+                "title": "Changes requested"
+              }
+            ]
+          },
+          "status": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Status",
+            "default": "running",
+            "sortable": true,
+            "oneOf": [
+              {
+                "const": "running",
+                "title": "Running"
+              },
+              {
+                "const": "waiting",
+                "title": "Waiting"
+              },
+              {
+                "const": "blocked",
+                "title": "Blocked"
+              },
+              {
+                "const": "stopped",
+                "title": "Stopped"
+              },
+              {
+                "const": "demo_ready",
+                "title": "Demo-ready"
+              }
+            ]
+          },
+          "blocked_on": {
+            "type": "string",
+            "title": "Blocked on"
+          },
+          "slack_channel": {
+            "type": "string",
+            "title": "Slack channel",
+            "help": "Channel name, no hash"
+          },
+          "last_activity": {
+            "type": "string",
+            "title": "Last activity"
+          },
+          "last_activity_at": {
+            "type": "integer",
+            "format": "date-time",
+            "dateFormat": "epoch",
+            "title": "Last activity at",
+            "sortable": true
+          },
+          "manager_name": {
+            "type": "string",
+            "title": "Manager name",
+            "help": "Manager / L1 reviewer who approves gates in the app"
+          },
+          "manager_email": {
+            "type": "string",
+            "title": "Manager email"
+          },
+          "g1_owner_approved": {
+            "type": "boolean",
+            "title": "G1 owner approved"
+          },
+          "g2_owner_approved": {
+            "type": "boolean",
+            "title": "G2 owner approved"
+          },
+          "g3_owner_approved": {
+            "type": "boolean",
+            "title": "G3 owner approved"
+          },
+          "g4_owner_approved": {
+            "type": "boolean",
+            "title": "G4 owner approved"
+          },
+          "g1_manager_approved": {
+            "type": "boolean",
+            "title": "G1 manager approved"
+          },
+          "g2_manager_approved": {
+            "type": "boolean",
+            "title": "G2 manager approved"
+          },
+          "g3_manager_approved": {
+            "type": "boolean",
+            "title": "G3 manager approved"
+          },
+          "g4_manager_approved": {
+            "type": "boolean",
+            "title": "G4 manager approved"
+          },
+          "gate_summary": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Gate summary",
+            "help": "Current approval summary for the open gate"
+          },
+          "g1_summary": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Understand summary"
+          },
+          "g2_summary": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Plan summary"
+          },
+          "g3_summary": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Build summary"
+          },
+          "g4_summary": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Deliver summary"
+          },
+          "slack_channel_id": {
+            "type": "string",
+            "title": "Slack channel ID"
+          },
+          "owner_slack_id": {
+            "type": "string",
+            "title": "Owner Slack ID"
+          },
+          "manager_slack_id": {
+            "type": "string",
+            "title": "Manager Slack ID"
+          },
+          "build_run_id": {
+            "type": "string",
+            "title": "Build run ID",
+            "help": "The cloud session URL"
+          },
+          "slack_last_ts": {
+            "type": "string",
+            "title": "Slack last ts",
+            "help": "Slack ts of the newest message read"
+          },
+          "bot_thread_ts": {
+            "type": "string",
+            "title": "Bot thread ts",
+            "help": "ts of the bot's manager question thread, never cleared"
+          },
+          "slack_live": {
+            "type": "boolean",
+            "title": "Slack live"
+          }
+        },
+        "required": [
+          "poc_id",
+          "client_name",
+          "client_slug",
+          "use_case",
+          "owner_name",
+          "started_by",
+          "started_at",
+          "stage",
+          "current_gate",
+          "g1_status",
+          "g2_status",
+          "g3_status",
+          "g4_status",
+          "status"
+        ]
+      }
+    },
+    "standard": false,
+    "tags": [
+      "Nebula"
+    ],
+    "version": 0,
+    "entityType": "ENTITY_TYPE"
+  }
+}

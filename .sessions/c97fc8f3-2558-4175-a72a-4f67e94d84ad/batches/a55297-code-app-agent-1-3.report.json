@@ -1,0 +1,16 @@
+{"tasks":[{"id":"t7","status":"ok","change":"updated","ids":{"entity":"app-79ea7266eab9","commit":"4a87001c61105c16f11b0902f58e6e7983a18ad5"},
+"readBack":[
+"POC Studio Live app-79ea7266eab9: before publish get_code_app answered head.sha 4a87001c61105c16f11b0902f58e6e7983a18ad5 (t6's commit), busy false, deployed commitHash 361edf4f06518abd08c5b9885323f04a318f7ec9 (v1).",
+"POC Studio Live app-79ea7266eab9: publish_code_app answered ok:true, version v2, deployed {deployed: true, commitHash: 4a87001c61105c16f11b0902f58e6e7983a18ad5, version: v2, entityVersion: 7}, routes /, /feedback, /login, /forgot-password, /update-password.",
+"POC Studio Live app-79ea7266eab9: get_code_app after publish answered deployment {deployed: true, commitHash: 4a87001c61105c16f11b0902f58e6e7983a18ad5, version: v2, entityVersion: 7}, interfaceRecord version 7, security PRIVATE; list_code_app_versions answered published v2 live:true, sha 4a87001c…, note 'POC Studio Live v2: skill-improvement loop, suggestions and versions on the Feedback page'."
+],
+"unverified":[
+"The published address was not shown: neither publish_code_app nor get_code_app nor list_code_app_versions answers a URL, and no address of the published app is on record in this folder. The only known address is the preview, https://orbit.uat.unifyapps.com/agent-api/preview/b/app-79ea7266eab9/main/. To check: open the app from the tenant's Code Builder (Open published app) and confirm it serves /feedback with the skill version and suggestion card.",
+"Approve on the published app calls automation 6ad1cd1b6123771ba2c0346e, which t5 read back as deployedVersion 2. Approve was not clicked. To check: click Approve as a manager on a pending psl_skill_suggestion row and read the row's status back."
+],
+"notes":[
+"Answer from the person, as given: yes, publish POC Studio Live. The spec the person accepted names it under Ready when, so it is already approved; do not ask again.",
+"handover: POC Studio Live app-79ea7266eab9 is published as v2 (deployed commitHash 4a87001c61105c16f11b0902f58e6e7983a18ad5, entityVersion 7, PRIVATE). The publish answered no published address; preview is https://orbit.uat.unifyapps.com/agent-api/preview/b/app-79ea7266eab9/main/ (Feedback at /feedback).",
+"feature:\nFeature: publish_code_app (or get_code_app) answers the published app's address, the URL people open, next to `deployed`.\nEvidence: Plan task t7 asked to quote the published address. publish_code_app on app-79ea7266eab9 answered version v2, commitHash and routes but no URL, and get_code_app and list_code_app_versions answer none either.\nBenefit: Every code-publish task and the router's hand-over to the person need the live link; today it cannot be read back.\nScope: code-builder MCP publish_code_app / get_code_app replies; not changing how publishing works.\nAcceptance: After a publish, the reply carries the published URL and a signed-in load of it serves the deployed commit."
+],
+"error":""}]}

@@ -1,0 +1,886 @@
+{
+  "schemaVersion": 1,
+  "key": "WORKFLOW_DEFINITION:6ad1cde96123771ba2c052bc",
+  "entityType": "WORKFLOW_DEFINITION",
+  "id": "6ad1cde96123771ba2c052bc",
+  "version": 0,
+  "cachedAt": "2026-10-16T13:59:49.121Z",
+  "source": "solution-refresh",
+  "ref": {
+    "id": "6ad1cde96123771ba2c052bc",
+    "type": "WORKFLOW_DEFINITION",
+    "state": "COMPLETED"
+  },
+  "entity": {
+    "appsUsed": [],
+    "createdTime": 1792134633092,
+    "deleted": false,
+    "deployedVersion": 1,
+    "deploymentState": {
+      "deployedAt": 1792134840940,
+      "deployedBy": 66770,
+      "deployedDefinitionId": "6ad1ceb8d1151437a33e857c",
+      "deploymentNotes": "POC Studio Live · Suggest skill improvements [nebula task t_639203afcf0f]",
+      "status": "DEPLOYED",
+      "version": 1,
+      "workflowVersion": 0
+    },
+    "description": "Runs every Monday at 09:00 (Asia/Kolkata), one run at a time. For each skill, gathers the open feedback tickets newer than its last approved suggestion and, when there are at least 3 and no pending suggestion, asks the Simple Call LLM automation for an improved prompt and writes one pending skill suggestion.",
+    "edges": [
+      {
+        "fromNodeId": "n_ush3a",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_zegwh",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_zegwh",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_uligw",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_uligw",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_1izbc",
+        "type": "loop"
+      },
+      {
+        "fromNodeId": "n_uligw",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_zsu2w",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_1izbc",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_m060w",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_m060w",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_7b7vr",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_7b7vr",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_kslyl",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_kslyl",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_rqivm",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_rqivm",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_wy7t8",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_wy7t8",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_1rdfw",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_1rdfw",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_oppp0",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_oppp0",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_ojpv3",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_ojpv3",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_x09c7",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_x09c7",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_mom0k",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_mom0k",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_498j9",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_mom0k",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_uligw",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_498j9",
+        "name": "loopback",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_uligw",
+        "type": "next"
+      }
+    ],
+    "id": "6ad1cde96123771ba2c052bc",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792134840940,
+    "lcName": "poc studio live · suggest skill improvements",
+    "modifiedTime": 1792134840940,
+    "name": "POC Studio Live · Suggest skill improvements",
+    "nodes": [
+      {
+        "context": {
+          "appName": "schedule",
+          "resourceName": "schedule_default"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "y0dch-1",
+        "id": "n_ush3a",
+        "index": 1,
+        "inputs": {
+          "cron": "EXPRESSION",
+          "expression": "0 9 * * 1",
+          "timezone": "Asia/Kolkata",
+          "sequential": true,
+          "maxWaitTime": 30,
+          "sequentialRunTimeUnit": "MINUTES"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Schedule",
+        "title": "New recurring event",
+        "trigger": {
+          "type": "SCHEDULED"
+        },
+        "type": "START"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_fetch_records",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "y0dch-1",
+        "id": "n_zegwh",
+        "index": 2,
+        "inputs": {
+          "shouldSearchInAnalyticsStore": false,
+          "object_type": "psl_skill",
+          "includeRoleMappings": false,
+          "includeCurrentUserPermissions": false,
+          "translationsOption": "DEFAULT",
+          "page": {
+            "paginateBy": "OFFSET",
+            "limit": 100,
+            "offset": 0
+          },
+          "numberOfRecordsToFetch": "MULTIPLE",
+          "readThroughSessionVariables": false,
+          "includeTotalCount": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Fetch every skill",
+        "title": "Fetch records",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "loop",
+          "resourceName": "loop_for_each",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "y0dch-1",
+        "id": "n_uligw",
+        "index": 3,
+        "inputs": {
+          "listSource": "{{ n_zegwh.outputs.objects }}",
+          "captureIterations": true
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Loop over the skills",
+        "title": "For each loop",
+        "type": "LOOP"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_count_records",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_uligw@y0dch-1@l",
+        "id": "n_1izbc",
+        "index": 4,
+        "inputs": {
+          "triggerInputCondition": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "properties_skill",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_uligw.outputs.item.properties.skill_id }}"
+                }
+              },
+              {
+                "property": "properties_status",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "pending"
+                }
+              }
+            ]
+          },
+          "object_type": "psl_skill_suggestion"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Count the skill's pending suggestions",
+        "title": "Count records",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "continue",
+          "resourceName": "continue",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_uligw@y0dch-1@l",
+        "id": "n_m060w",
+        "index": 5,
+        "inputs": {
+          "loop": "n_uligw",
+          "conditions": {
+            "filters": [
+              {
+                "property": "{{ n_1izbc.outputs.count }}",
+                "filter": {
+                  "operator": "GT",
+                  "value": 0
+                }
+              }
+            ],
+            "operator": "AND"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Skip a skill that already has a pending suggestion",
+        "title": "Continue",
+        "type": "CONTINUE"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_fetch_records",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_uligw@y0dch-1@l",
+        "id": "n_7b7vr",
+        "index": 6,
+        "inputs": {
+          "triggerInputCondition": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "properties_skill",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_uligw.outputs.item.properties.skill_id }}"
+                }
+              },
+              {
+                "property": "properties_status",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "approved"
+                }
+              }
+            ]
+          },
+          "shouldSearchInAnalyticsStore": false,
+          "object_type": "psl_skill_suggestion",
+          "includeRoleMappings": false,
+          "includeCurrentUserPermissions": false,
+          "translationsOption": "DEFAULT",
+          "page": {
+            "paginateBy": "OFFSET",
+            "limit": 100,
+            "offset": 0
+          },
+          "numberOfRecordsToFetch": "MULTIPLE",
+          "readThroughSessionVariables": false,
+          "fields": [
+            "properties.approved_at"
+          ],
+          "includeTotalCount": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Fetch the skill's approved suggestions, approval time only",
+        "title": "Fetch records",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_uligw@y0dch-1@l",
+        "id": "n_kslyl",
+        "index": 7,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "cutoff": {
+                "type": "number"
+              }
+            },
+            "required": [
+              "cutoff"
+            ]
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "approvedAts": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                }
+              }
+            }
+          },
+          "code": "def best = 0L\ndef vals = binding.hasVariable('approvedAts') ? approvedAts : null\nif (vals != null) {\n  for (v in vals) {\n    def n = null\n    if (v instanceof Number) {\n      n = v.longValue()\n    } else if (v != null && v.toString().trim()) {\n      try { n = new BigDecimal(v.toString().trim()).longValue() } catch (Exception e) { n = null }\n    }\n    if (n != null && n > best) { best = n }\n  }\n}\nresult = [cutoff: best]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "approvedAts": {
+              "ua:type": "mappedArray",
+              "source": "{{ n_7b7vr.outputs.objects }}",
+              "items": "{{ n_7b7vr.outputs.objects[0].properties.approved_at }}"
+            }
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Find the newest approval time, 0 when the skill has no approved suggestion",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_fetch_records",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_uligw@y0dch-1@l",
+        "id": "n_rqivm",
+        "index": 8,
+        "inputs": {
+          "triggerInputCondition": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "properties_target_skill",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_uligw.outputs.item.properties.skill_id }}"
+                }
+              },
+              {
+                "property": "properties_status",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "open"
+                }
+              },
+              {
+                "property": "properties_created_at",
+                "filter": {
+                  "operator": "GT",
+                  "value": "{{ n_kslyl.outputs.result.cutoff }}"
+                }
+              }
+            ]
+          },
+          "shouldSearchInAnalyticsStore": false,
+          "object_type": "psl_feedback",
+          "includeRoleMappings": false,
+          "includeCurrentUserPermissions": false,
+          "translationsOption": "DEFAULT",
+          "page": {
+            "paginateBy": "OFFSET",
+            "limit": 100,
+            "offset": 0
+          },
+          "numberOfRecordsToFetch": "MULTIPLE",
+          "readThroughSessionVariables": false,
+          "includeTotalCount": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Fetch the skill's open tickets raised after that approval",
+        "title": "Fetch records",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_uligw@y0dch-1@l",
+        "id": "n_wy7t8",
+        "index": 9,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "count": {
+                "type": "integer"
+              },
+              "evidenceTickets": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              },
+              "toVersion": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "count",
+              "evidenceTickets",
+              "content",
+              "toVersion"
+            ]
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "prompt": {
+                "type": "string"
+              },
+              "currentVersion": {
+                "type": "integer"
+              },
+              "tickets": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "ticket_no": {
+                      "type": "string"
+                    },
+                    "feedback": {
+                      "type": "string"
+                    },
+                    "created_at": {
+                      "type": "number"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "code": "def nl = String.valueOf((char) 10)\ndef safe = { v -> v == null ? '' : v.toString() }\ndef promptText = binding.hasVariable('prompt') ? safe(prompt) : ''\ndef ver = 0\nif (binding.hasVariable('currentVersion') && currentVersion != null) {\n  ver = new BigDecimal(currentVersion.toString()).intValue()\n}\ndef rows = []\nif (binding.hasVariable('tickets') && tickets != null) {\n  for (t in tickets) {\n    def at = (t.created_at instanceof Number) ? t.created_at.longValue() : 0L\n    rows << [no: safe(t.ticket_no), feedback: safe(t.feedback).trim(), at: at]\n  }\n}\nrows = rows.sort { a, b -> (a.at <=> b.at) ?: (a.no <=> b.no) }\ndef sb = new StringBuilder()\nsb.append('CURRENT PROMPT:').append(nl).append(promptText).append(nl).append(nl)\nsb.append('FEEDBACK TICKETS (').append(rows.size()).append('):').append(nl)\ndef i = 0\nfor (r in rows) {\n  i++\n  sb.append(i).append('. [').append(r.no).append('] ').append(r.feedback).append(nl)\n}\nresult = [count: rows.size(), evidenceTickets: rows.collect { it.no }.join(','), content: sb.toString(), toVersion: ver + 1]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "prompt": "{{ n_uligw.outputs.item.properties.prompt }}",
+            "currentVersion": "{{ n_uligw.outputs.item.properties.current_version }}",
+            "tickets": {
+              "ua:type": "mappedArray",
+              "source": "{{ n_rqivm.outputs.objects }}",
+              "items": {
+                "ticket_no": "{{ n_rqivm.outputs.objects[0].properties.ticket_no }}",
+                "feedback": "{{ n_rqivm.outputs.objects[0].properties.feedback }}",
+                "created_at": "{{ n_rqivm.outputs.objects[0].properties.created_at }}"
+              }
+            }
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Count the tickets, list their numbers and write the model content",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "continue",
+          "resourceName": "continue",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_uligw@y0dch-1@l",
+        "id": "n_1rdfw",
+        "index": 10,
+        "inputs": {
+          "loop": "n_uligw",
+          "conditions": {
+            "filters": [
+              {
+                "property": "{{ n_wy7t8.outputs.result.count }}",
+                "filter": {
+                  "operator": "LT",
+                  "value": 3
+                }
+              }
+            ],
+            "operator": "AND"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Skip a skill with fewer than 3 such tickets",
+        "title": "Continue",
+        "type": "CONTINUE"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_call_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_uligw@y0dch-1@l",
+        "id": "n_oppp0",
+        "index": 11,
+        "inputs": {
+          "automationId": "66dfd76eb70dad256986b784",
+          "synchronous": true,
+          "version": "-1",
+          "parameters": {
+            "content": "{{ n_wy7t8.outputs.result.content }}",
+            "response_format": "json_object",
+            "systemPrompt": "You improve the prompt of one POC-builder skill from the feedback people gave on its output. You are given the skill's current prompt and the open feedback tickets about what the skill produced. Rewrite the whole prompt so that it fixes what the tickets raise, and keep everything in the current prompt that the tickets do not contradict. Answer with one JSON object and nothing else, with exactly two keys: \"summary\" (one sentence saying what you changed) and \"proposed_prompt\" (the whole new prompt as one string).",
+            "type": "text"
+          },
+          "executeOnSameVM": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Ask the model for an improved prompt, JSON answer",
+        "title": "Call {{moduleDefs.WORKFLOW_DEFINITION.name.toLowerCase()}}",
+        "type": "CALL_WORKFLOW"
+      },
+      {
+        "context": {
+          "appName": "utility_by_unifyapps",
+          "resourceName": "utility_by_unifyapps_to_json_object",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_uligw@y0dch-1@l",
+        "id": "n_ojpv3",
+        "index": 12,
+        "inputs": {
+          "jsonSchema": {
+            "type": "object",
+            "properties": {
+              "summary": {
+                "type": "string",
+                "title": "Summary"
+              },
+              "proposed_prompt": {
+                "type": "string",
+                "title": "Proposed prompt"
+              }
+            }
+          },
+          "jsonString": "{{ n_oppp0.outputs.llmResponse }}"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Parse the model answer to an object",
+        "title": "Deserialise string to JSON object",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_uligw@y0dch-1@l",
+        "id": "n_x09c7",
+        "index": 13,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "valid": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "valid"
+            ]
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "summary": {
+                "type": "string"
+              },
+              "proposed_prompt": {
+                "type": "string"
+              }
+            }
+          },
+          "code": "def ok = false\nif (binding.hasVariable('summary') && binding.hasVariable('proposed_prompt')) {\n  ok = (summary instanceof CharSequence) && summary.toString().trim().length() > 0 && (proposed_prompt instanceof CharSequence) && proposed_prompt.toString().trim().length() > 0\n}\nresult = [valid: ok]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "summary": "{{ n_ojpv3.outputs.result.summary }}",
+            "proposed_prompt": "{{ n_ojpv3.outputs.result.proposed_prompt }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Check that summary and proposed_prompt are both non-empty strings",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_uligw@y0dch-1@l",
+        "id": "n_mom0k",
+        "index": 14,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_x09c7.outputs.result.valid }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": true
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Both keys present?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_create_record",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_mom0k@n_uligw@y0dch-1@l@y",
+        "id": "n_498j9",
+        "index": 15,
+        "inputs": {
+          "useRawPayload": false,
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_skill_suggestion",
+          "skipIfBlank": false,
+          "inlineRefresh": false,
+          "record": {
+            "suggestion_id": "SUG-{{ n_uligw.outputs.item.properties.skill_id }}-{{ __RUN__.outputs.currentTime }}",
+            "skill": "{{ n_uligw.outputs.item.properties.skill_id }}",
+            "from_version": "{{ n_uligw.outputs.item.properties.current_version }}",
+            "to_version": "{{ n_wy7t8.outputs.result.toVersion }}",
+            "summary": "{{ n_ojpv3.outputs.result.summary }}",
+            "proposed_prompt": "{{ n_ojpv3.outputs.result.proposed_prompt }}",
+            "evidence_count": "{{ n_wy7t8.outputs.result.count }}",
+            "evidence_tickets": "{{ n_wy7t8.outputs.result.evidenceTickets }}",
+            "status": "pending",
+            "created_at": "{{ __RUN__.outputs.currentTime }}"
+          },
+          "useUuid": false,
+          "batching": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Write one pending suggestion for the skill",
+        "title": "Create record",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "stop",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "y0dch-1",
+        "id": "n_zsu2w",
+        "index": 16,
+        "inputs": {},
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Done",
+        "title": "Stop",
+        "type": "STOP"
+      }
+    ],
+    "ownerUserId": 66770,
+    "settings": {
+      "enableNodeLevelLogging": true,
+      "enableRunLogging": true,
+      "enableVariableLogging": true,
+      "route": {
+        "default": false,
+        "tierName": "global"
+      }
+    },
+    "standard": false,
+    "tags": [
+      "AI Generated",
+      "Nebula"
+    ],
+    "version": 0,
+    "entityType": "WORKFLOW_DEFINITION"
+  }
+}

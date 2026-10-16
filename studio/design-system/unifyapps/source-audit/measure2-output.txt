@@ -1,0 +1,42 @@
+light  .tag.ob-tag-brand                                              --brand on --brand-tint over glass-1  ('Building' tag)           4.27:1 bar 4.5 FAIL
+light  .tag.ob-tag-accent                                             --accent-text on --accent-tint over glass-1                      5.69:1 bar 4.5 pass
+light  .tag (no tone)                                                 --ink-2 on --inner over glass-1                                  6.75:1 bar 4.5 pass
+light  .av.ob-av-ai                                                   --accent-text on --accent-tint over glass-1                      5.69:1 bar 4.5 pass
+light  .tag.ob-tag-brand                                              --brand on --brand-tint over glass-solid  ('Building' tag)       4.38:1 bar 4.5 FAIL
+light  .tag.ob-tag-accent                                             --accent-text on --accent-tint over glass-solid                  5.80:1 bar 4.5 pass
+light  .tag (no tone)                                                 --ink-2 on --inner over glass-solid                              6.92:1 bar 4.5 pass
+light  .av.ob-av-ai                                                   --accent-text on --accent-tint over glass-solid                  5.80:1 bar 4.5 pass
+light  .ps-nav-item .ct.hot                                           --nav-3 on --nav-mark                                            7.27:1 bar 4.5 pass
+light  .ps-iconbtn .badge / .btn-d:hover                              --on-fill on --status-negative                                   7.64:1 bar 4.5 pass
+dark   .tag.ob-tag-brand                                              --brand on --brand-tint over glass-1  ('Building' tag)           4.49:1 bar 4.5 FAIL
+dark   .tag.ob-tag-accent                                             --accent-text on --accent-tint over glass-1                      5.09:1 bar 4.5 pass
+dark   .tag (no tone)                                                 --ink-2 on --inner over glass-1                                  5.61:1 bar 4.5 pass
+dark   .av.ob-av-ai                                                   --accent-text on --accent-tint over glass-1                      5.09:1 bar 4.5 pass
+dark   .tag.ob-tag-brand                                              --brand on --brand-tint over glass-solid  ('Building' tag)       3.78:1 bar 4.5 FAIL
+dark   .tag.ob-tag-accent                                             --accent-text on --accent-tint over glass-solid                  4.28:1 bar 4.5 FAIL
+dark   .tag (no tone)                                                 --ink-2 on --inner over glass-solid                              4.66:1 bar 4.5 pass
+dark   .av.ob-av-ai                                                   --accent-text on --accent-tint over glass-solid                  4.28:1 bar 4.5 FAIL
+dark   .ps-nav-item .ct.hot                                           --nav-3 on --nav-mark                                            7.27:1 bar 4.5 pass
+dark   .ps-iconbtn .badge / .btn-d:hover                              --on-fill on --status-negative                                   1.92:1 bar 4.5 FAIL
+light  .av.ob-tone-0                                                  white on gradient start (--fill-1 to --fill-3)                   7.61:1 bar 4.5 pass
+light  .av.ob-tone-0                                                  white on gradient mid (--fill-1 to --fill-3)                    11.27:1 bar 4.5 pass
+light  .av.ob-tone-0                                                  white on gradient end (--fill-1 to --fill-3)                    15.84:1 bar 4.5 pass
+light  .av.ob-tone-1 (as rendered: --accent = --inner)                white on gradient start                                          1.08:1 bar 4.5 FAIL
+light  .av.ob-tone-1 (as rendered: --accent = --inner)                white on gradient mid                                            2.37:1 bar 4.5 FAIL
+light  .av.ob-tone-1 (as rendered: --accent = --inner)                white on gradient end                                            6.73:1 bar 4.5 pass
+light  .av.ob-tone-2                                                  white on gradient start (--pos-fill-1 to --pos-fill-2)           4.20:1 bar 4.5 FAIL
+light  .av.ob-tone-2                                                  white on gradient mid (--pos-fill-1 to --pos-fill-2)             4.98:1 bar 4.5 pass
+light  .av.ob-tone-2                                                  white on gradient end (--pos-fill-1 to --pos-fill-2)             6.03:1 bar 4.5 pass
+light  .av.ob-tone-3                                                  white on gradient start (--status-attention to --accent-text)    5.89:1 bar 4.5 pass
+light  .av.ob-tone-3                                                  white on gradient mid (--status-attention to --accent-text)      6.43:1 bar 4.5 pass
+light  .av.ob-tone-3                                                  white on gradient end (--status-attention to --accent-text)      6.73:1 bar 4.5 pass
+light  .av.ob-tone-4                                                  white on gradient start (--brand to --brand-deep)                4.98:1 bar 4.5 pass
+light  .av.ob-tone-4                                                  white on gradient mid (--brand to --brand-deep)                  7.20:1 bar 4.5 pass
+light  .av.ob-tone-4                                                  white on gradient end (--brand to --brand-deep)                 10.57:1 bar 4.5 pass
+light  .av.ob-tone-5                                                  white on gradient start (--chart-3 to --chart-1)                 5.05:1 bar 4.5 pass
+light  .av.ob-tone-5                                                  white on gradient mid (--chart-3 to --chart-1)                   8.08:1 bar 4.5 pass
+light  .av.ob-tone-5                                                  white on gradient end (--chart-3 to --chart-1)                  12.97:1 bar 4.5 pass
+light  .ob-jgate.is-open .ob-jgate-d ring, as rendered in light (--accent = --inner) ring colour on --glass-solid (non-text 3:1)                      1.08:1 bar 3.0 FAIL
+dark   .ob-jgate.is-open ring, dark (--accent = bronze, but dark is not wired) ring colour on --glass-solid (non-text 3:1)                      4.51:1 bar 3.0 pass
+light  .ob-jgate.is-open ring if --accent were the declared bronze #857242 ring colour on --glass-solid (non-text 3:1)                      4.68:1 bar 3.0 pass
+rows below bar: 11

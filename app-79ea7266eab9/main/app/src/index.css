@@ -1,0 +1,283 @@
+/* source("./") roots Tailwind's automatic source detection at src/ (this file's
+   directory) instead of the app dir. The app dir also holds the bun package cache
+   (app/.bun-cache, ~32k files on a network volume); scanned from the app root,
+   every build read all of it -- 60-85s per build -- and emitted ~16KB of junk
+   utilities from class-looking tokens in package files. The only .gitignore that
+   names the cache is the tree root's, which the build sandbox cannot see. All
+   app code lives under src/ (tsconfig.app.json), so nothing is lost by scoping. */
+@import "tailwindcss" source("./");
+@import "tw-animate-css";
+@import "./shadcn-tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: var(--app-font-heading);
+    --font-sans: var(--app-font-sans);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    /* status colours. Without these keys `bg-success-subtle`,
+       `text-destructive-subtle-foreground` and friends are not utilities at all, so the
+       class is dropped and the element keeps whatever was under it. `theming.py`
+       (`_utility_color_pairs`) inserts the same declarations before a THEMED build; they
+       live here too so an app that follows no platform theme has them as well. Same
+       values either way, and the insert replaces in place, so the two cannot disagree. */
+    --color-success: var(--success);
+    --color-success-foreground: var(--success-foreground);
+    --color-success-subtle: var(--success-subtle);
+    --color-success-subtle-foreground: var(--success-subtle-foreground);
+    --color-success-border: var(--success-border);
+    --color-warning: var(--warning);
+    --color-warning-foreground: var(--warning-foreground);
+    --color-warning-subtle: var(--warning-subtle);
+    --color-warning-subtle-foreground: var(--warning-subtle-foreground);
+    --color-warning-border: var(--warning-border);
+    --color-destructive-foreground: var(--destructive-foreground);
+    --color-destructive-subtle: var(--destructive-subtle);
+    --color-destructive-subtle-foreground: var(--destructive-subtle-foreground);
+    --color-destructive-border: var(--destructive-border);
+    --color-info: var(--info);
+    --color-info-foreground: var(--info-foreground);
+    --color-info-subtle: var(--info-subtle);
+    --color-info-subtle-foreground: var(--info-subtle-foreground);
+    --color-info-border: var(--info-border);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-placeholder: var(--placeholder);
+    --color-disabled-foreground: var(--disabled-foreground);
+    --color-disabled-placeholder: var(--disabled-placeholder);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    /* every step of the rounded-* scale, the bare `rounded` included — its Tailwind
+       key is literally `--radius`, so it has to read a differently-named token or it
+       keeps Tailwind's own 0.25rem and never follows the theme */
+    --radius: calc(var(--app-radius) * 0.6);
+    --radius-xs: calc(var(--app-radius) * 0.4);
+    --radius-sm: calc(var(--app-radius) * 0.6);
+    --radius-md: calc(var(--app-radius) * 0.8);
+    --radius-lg: var(--app-radius);
+    --radius-xl: calc(var(--app-radius) * 1.4);
+    --radius-2xl: calc(var(--app-radius) * 1.8);
+    --radius-3xl: calc(var(--app-radius) * 2.2);
+    --radius-4xl: calc(var(--app-radius) * 2.6);
+}
+
+:root {
+    /* the font goes through a var so dark mode can change it: Tailwind bakes an
+       @theme inline value straight into `font-sans`, where no .dark rule reaches it */
+    --app-font-sans: 'Geist', sans-serif;
+    --app-font-heading: var(--app-font-sans);
+    --background: oklch(1 0 0);
+    --foreground: oklch(0.145 0 0);
+    --card: oklch(1 0 0);
+    --card-foreground: oklch(0.145 0 0);
+    --popover: oklch(1 0 0);
+    --popover-foreground: oklch(0.145 0 0);
+    --primary: oklch(0.205 0 0);
+    --primary-foreground: oklch(0.985 0 0);
+    --secondary: oklch(0.97 0 0);
+    --secondary-foreground: oklch(0.205 0 0);
+    --muted: oklch(0.97 0 0);
+    --muted-foreground: oklch(0.556 0 0);
+    /* input placeholder + disabled text. a theme replaces both with its own Text Base
+       colours; on their own they keep today's look — a muted placeholder, and body
+       colour for disabled text that the fade below turns into a grey. */
+    --placeholder: var(--muted-foreground);
+    --disabled-foreground: var(--foreground);
+    /* the hint inside a disabled field. `::placeholder` has its own colour, so the
+       disabled text colour above never reaches it — without this a disabled empty
+       field looks exactly like an enabled one. */
+    --disabled-placeholder: var(--placeholder);
+    /* how far a disabled field fades. 0.5 is what dims the body colour above into
+       looking disabled at all; a theme that states its own disabled ink sends 1, so
+       its colour arrives as written instead of being halved a second time. */
+    --disabled-field-opacity: 0.5;
+    --accent: oklch(0.97 0 0);
+    --accent-foreground: oklch(0.205 0 0);
+    --destructive: oklch(0.577 0.245 27.325);
+    /* Status colours — success / warning / destructive / info, five tokens each.
+       These are the design system's own, byte-identical to what
+       `platform_theme.default_status_tokens()` bakes for an app that DOES follow a
+       platform brand theme, so picking a theme later changes the values but never
+       introduces the set.
+
+       They ship in the base template because a status colour is not derived from the
+       brand: the Toaster paints `toast.success()` from `--success-subtle` and
+       `toast.error()` from `--destructive-subtle`, and with neither token defined both
+       fell through to `--normal-bg` and every outcome toast was the same white card.
+       The same set backs the Badge status variants, alerts and validation messages.
+
+       `--destructive` itself is deliberately absent: shadcn already owns that name and
+       the engine leaves it alone for the same reason (`_PREEXISTING_SOLIDS`). */
+    --success: oklch(0.586 0.143 155.2);
+    --success-foreground: oklch(0.985 0 0);
+    --success-subtle: oklch(0.99 0.011 158.9);
+    --success-subtle-foreground: oklch(0.586 0.143 155.2);
+    --success-border: oklch(0.827 0.129 158.5);
+    --warning: oklch(0.646 0.17 50.2);
+    --warning-foreground: oklch(0.985 0 0);
+    --warning-subtle: oklch(0.991 0.01 87.5);
+    --warning-subtle-foreground: oklch(0.646 0.17 50.2);
+    --warning-border: oklch(0.859 0.15 84.7);
+    --destructive-foreground: oklch(0.985 0 0);
+    --destructive-subtle: oklch(0.991 0.004 34.3);
+    --destructive-subtle-foreground: oklch(0.576 0.209 29.5);
+    --destructive-border: oklch(0.801 0.109 24.6);
+    --info: oklch(0.572 0.208 258.9);
+    --info-foreground: oklch(0.985 0 0);
+    --info-subtle: oklch(0.983 0.009 247.9);
+    --info-subtle-foreground: oklch(0.572 0.208 258.9);
+    --info-border: oklch(0.813 0.103 242.3);
+    --border: oklch(0.922 0 0);
+    --input: oklch(0.922 0 0);
+    --ring: oklch(0.708 0 0);
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    /* the corner radius. it goes through a var the same way the font does, so dark
+       mode can change it, and --radius stays the name app code reads directly */
+    --app-radius: 0.625rem;
+    --radius: var(--app-radius);
+    --sidebar: oklch(0.985 0 0);
+    --sidebar-foreground: oklch(0.145 0 0);
+    --sidebar-primary: oklch(0.205 0 0);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.97 0 0);
+    --sidebar-accent-foreground: oklch(0.205 0 0);
+    --sidebar-border: oklch(0.922 0 0);
+    --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+    --background: oklch(0.145 0 0);
+    --foreground: oklch(0.985 0 0);
+    --card: oklch(0.205 0 0);
+    --card-foreground: oklch(0.985 0 0);
+    --popover: oklch(0.205 0 0);
+    --popover-foreground: oklch(0.985 0 0);
+    --primary: oklch(0.922 0 0);
+    --primary-foreground: oklch(0.205 0 0);
+    --secondary: oklch(0.269 0 0);
+    --secondary-foreground: oklch(0.985 0 0);
+    --muted: oklch(0.269 0 0);
+    --muted-foreground: oklch(0.708 0 0);
+    /* restated so a light-only theme cannot leak its light placeholder into dark */
+    --placeholder: var(--muted-foreground);
+    --disabled-foreground: var(--foreground);
+    --disabled-placeholder: var(--placeholder);
+    --disabled-field-opacity: 0.5;
+    --accent: oklch(0.269 0 0);
+    --accent-foreground: oklch(0.985 0 0);
+    --destructive: oklch(0.704 0.191 22.216);
+    /* status colours — the dark steps of the same four families; see :root above.
+       Restated in full rather than inherited: a status ramp has its own dark seeds, and
+       the light `--success-subtle` (a near-white) on a dark shell is unreadable. */
+    --success: oklch(0.673 0.16 155.6);
+    --success-foreground: oklch(0.985 0 0);
+    --success-subtle: oklch(0.286 0.059 161.8);
+    --success-subtle-foreground: oklch(0.758 0.153 157.2);
+    --success-border: oklch(0.423 0.095 158.6);
+    --warning: oklch(0.786 0.167 72.7);
+    --warning-foreground: oklch(0.205 0 0);
+    --warning-subtle: oklch(0.301 0.08 40.9);
+    --warning-subtle-foreground: oklch(0.831 0.154 78.6);
+    --warning-border: oklch(0.46 0.109 54.2);
+    --destructive-foreground: oklch(0.985 0 0);
+    --destructive-subtle: oklch(0.305 0.095 31.7);
+    --destructive-subtle-foreground: oklch(0.709 0.17 26.5);
+    --destructive-border: oklch(0.432 0.15 29);
+    --info: oklch(0.652 0.181 253.9);
+    --info-foreground: oklch(0.985 0 0);
+    --info-subtle: oklch(0.293 0.086 260.3);
+    --info-subtle-foreground: oklch(0.736 0.142 245.9);
+    --info-border: oklch(0.435 0.163 261.9);
+    --border: oklch(1 0 0 / 10%);
+    --input: oklch(1 0 0 / 15%);
+    --ring: oklch(0.556 0 0);
+    --chart-1: oklch(0.87 0 0);
+    --chart-2: oklch(0.556 0 0);
+    --chart-3: oklch(0.439 0 0);
+    --chart-4: oklch(0.371 0 0);
+    --chart-5: oklch(0.269 0 0);
+    --sidebar: oklch(0.205 0 0);
+    --sidebar-foreground: oklch(0.985 0 0);
+    --sidebar-primary: oklch(0.488 0.243 264.376);
+    --sidebar-primary-foreground: oklch(0.985 0 0);
+    --sidebar-accent: oklch(0.269 0 0);
+    --sidebar-accent-foreground: oklch(0.985 0 0);
+    --sidebar-border: oklch(1 0 0 / 10%);
+    --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+  html {
+    @apply font-sans;
+    }
+  /* the document must own the viewport height: full-height layouts and the SDK's
+     centered boot loader size against their parents, and with the app in an iframe
+     an unsized html/body would collapse them all to content height */
+    html, body {
+        height: 100vh;
+    }
+    #root {
+        height: 100%;
+      }
+  button:not(:disabled), [role="button"]:not(:disabled) {
+    cursor: pointer;
+    }
+  /* Leaflet divIcon markup (a map pin, a cluster bubble) is usually a <span>, and an inline
+     box ignores width/height: a 22px pin paints as a 4x19px sliver and a cluster opens onto
+     "nothing". Here in the BASE layer at zero specificity, so the app's own classes and
+     Tailwind's utilities (`grid`, `flex`) still win. Matches nothing in an app with no map. */
+  :where(.leaflet-marker-icon > *) {
+    display: block;
+    }
+}
+
+/* Global reduced-motion fallback (impeccable: "Reduced motion is not optional").
+   Collapses every animation/transition to near-instant for users who ask for it,
+   so generated pages never need per-animation @media blocks. Kept outside the
+   :root/.dark token blocks so theme materialization passes it through. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

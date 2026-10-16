@@ -1,0 +1,658 @@
+{
+  "schemaVersion": 1,
+  "key": "ENTITY_TYPE:psl_feedback",
+  "entityType": "ENTITY_TYPE",
+  "id": "psl_feedback",
+  "version": 0,
+  "cachedAt": "2026-10-16T13:59:49.214Z",
+  "source": "solution-refresh",
+  "ref": {
+    "id": "psl_feedback",
+    "type": "ENTITY_TYPE",
+    "state": "COMPLETED"
+  },
+  "entity": {
+    "columnCounts": 20,
+    "createdTime": 1792132768183,
+    "deleted": false,
+    "description": "POC Studio Live: one row per feedback ticket. ticket_no is client-sent: FB-<n>.",
+    "id": "psl_feedback",
+    "input": {
+      "type": "SCHEMA_AND_LAYOUT",
+      "dynamic": false,
+      "layout": {
+        "ui:order": [
+          "ticket_no",
+          "poc",
+          "poc_stage",
+          "gate",
+          "iteration",
+          "client_name",
+          "title",
+          "feedback",
+          "quote",
+          "severity",
+          "source",
+          "target_skill",
+          "skill_proposal",
+          "incorporated_in_version",
+          "status",
+          "action_taken",
+          "reviewed_by",
+          "given_by_name",
+          "created_at",
+          "resolved_at"
+        ]
+      },
+      "schema": {
+        "type": "object",
+        "properties": {
+          "ticket_no": {
+            "type": "string",
+            "title": "Ticket no",
+            "help": "FB-<n>",
+            "primaryKey": true,
+            "uniqueKey": true,
+            "searchable": true,
+            "sortable": true
+          },
+          "poc": {
+            "type": "string",
+            "format": "single-select",
+            "title": "POC",
+            "help": "The parent's poc_id",
+            "sortable": true,
+            "foreignKey": {
+              "reference": "ENTITY_ID:psl_poc"
+            }
+          },
+          "poc_stage": {
+            "type": "string",
+            "format": "single-select",
+            "title": "POC stage",
+            "sortable": true,
+            "oneOf": [
+              {
+                "const": "0_kickoff",
+                "title": "Kickoff"
+              },
+              {
+                "const": "1_signal_capture",
+                "title": "Signal capture"
+              },
+              {
+                "const": "2_research_assess",
+                "title": "Research & assess"
+              },
+              {
+                "const": "3_scope",
+                "title": "Scope the demo"
+              },
+              {
+                "const": "4_design_system",
+                "title": "Design system"
+              },
+              {
+                "const": "5_build",
+                "title": "Build with Nebula"
+              },
+              {
+                "const": "6_finalize",
+                "title": "Finalize"
+              },
+              {
+                "const": "7_collaterals",
+                "title": "Collaterals"
+              },
+              {
+                "const": "8_demo_ready",
+                "title": "Demo-ready"
+              }
+            ]
+          },
+          "gate": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Gate",
+            "default": "none",
+            "oneOf": [
+              {
+                "const": "none",
+                "title": "None"
+              },
+              {
+                "const": "g1",
+                "title": "G1 · Scope check"
+              },
+              {
+                "const": "g2",
+                "title": "G2 · Design check"
+              },
+              {
+                "const": "g3",
+                "title": "G3 · Build sign-off"
+              },
+              {
+                "const": "g4",
+                "title": "G4 · Release"
+              }
+            ]
+          },
+          "iteration": {
+            "type": "integer",
+            "title": "Iteration",
+            "help": "The loop's number within its POC"
+          },
+          "client_name": {
+            "type": "string",
+            "title": "Client name"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "nameField": true,
+            "searchable": true
+          },
+          "feedback": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Feedback"
+          },
+          "quote": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Quote"
+          },
+          "severity": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Severity",
+            "oneOf": [
+              {
+                "const": "low",
+                "title": "Low"
+              },
+              {
+                "const": "medium",
+                "title": "Medium"
+              },
+              {
+                "const": "high",
+                "title": "High"
+              }
+            ]
+          },
+          "source": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Source",
+            "help": "Where the feedback came from.",
+            "filterable": true,
+            "oneOf": [
+              {
+                "const": "self_llm",
+                "title": "Self-LLM"
+              },
+              {
+                "const": "iteration",
+                "title": "Iteration"
+              },
+              {
+                "const": "user",
+                "title": "User"
+              },
+              {
+                "const": "reviewer",
+                "title": "Reviewer"
+              }
+            ]
+          },
+          "target_skill": {
+            "type": "string",
+            "title": "Target skill"
+          },
+          "skill_proposal": {
+            "type": "string",
+            "title": "Skill proposal",
+            "help": "proposal_id of the skill proposal this feedback is in.",
+            "filterable": true
+          },
+          "incorporated_in_version": {
+            "type": "string",
+            "title": "Incorporated in version",
+            "help": "version_id (<skill_key>@v<n>) that incorporated this feedback.",
+            "filterable": true
+          },
+          "status": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Status",
+            "default": "open",
+            "sortable": true,
+            "oneOf": [
+              {
+                "const": "open",
+                "title": "New"
+              },
+              {
+                "const": "in_review",
+                "title": "Under review"
+              },
+              {
+                "const": "resolved",
+                "title": "Incorporated"
+              },
+              {
+                "const": "not_incorporated",
+                "title": "Not incorporated"
+              }
+            ]
+          },
+          "action_taken": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Action taken"
+          },
+          "reviewed_by": {
+            "type": "string",
+            "title": "Reviewed by"
+          },
+          "given_by_name": {
+            "type": "string",
+            "title": "Given by"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "date-time",
+            "dateFormat": "epoch",
+            "title": "Created at",
+            "sortable": true
+          },
+          "resolved_at": {
+            "type": "integer",
+            "format": "date-time",
+            "dateFormat": "epoch",
+            "title": "Resolved at",
+            "sortable": true
+          }
+        },
+        "required": [
+          "ticket_no",
+          "poc",
+          "title",
+          "feedback",
+          "severity",
+          "status",
+          "given_by_name",
+          "created_at"
+        ]
+      }
+    },
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792132768228,
+    "lcName": "poc studio live · feedback",
+    "metadata": {
+      "auditable": false,
+      "autoGeneratedFields": [],
+      "cacheable": false,
+      "captureActivity": false,
+      "captureReferences": false,
+      "captureReporting": false,
+      "customIndexDefinitions": [
+        {
+          "indexFieldMetadataList": [
+            {
+              "field": "properties.poc",
+              "type": 1
+            },
+            {
+              "field": "properties.status",
+              "type": 1
+            }
+          ],
+          "name": "idx_poc_status",
+          "status": "SUCCESS"
+        }
+      ],
+      "dateFields": [
+        "resolved_at",
+        "created_at"
+      ],
+      "deleteStaleEntitiesOnConfigSync": false,
+      "deployable": false,
+      "derivedEdgeEntity": false,
+      "encryptedFields": [],
+      "external": false,
+      "filterableFields": [
+        "ticket_no",
+        "poc",
+        "poc_stage",
+        "gate",
+        "iteration",
+        "client_name",
+        "title",
+        "feedback",
+        "quote",
+        "severity",
+        "source",
+        "target_skill",
+        "skill_proposal",
+        "incorporated_in_version",
+        "status",
+        "action_taken",
+        "reviewed_by",
+        "given_by_name",
+        "created_at",
+        "resolved_at"
+      ],
+      "graphType": "LEGACY_MDM",
+      "hasTimeSeriesRecords": true,
+      "hashedFields": [],
+      "inaccessibleFromUI": false,
+      "includeInDependency": false,
+      "nameField": "title",
+      "partFields": [],
+      "piiFields": [],
+      "primaryKeyField": "ticket_no",
+      "referenceKeys": [
+        {
+          "key": "properties.poc",
+          "referenceType": "psl_poc"
+        }
+      ],
+      "scdType2Enabled": false,
+      "schemaValidationEnabled": true,
+      "searchableFields": [
+        "ticket_no",
+        "title",
+        "title"
+      ],
+      "sessionBackedStorageEnabled": false,
+      "skipConfigSyncIfModified": false,
+      "skipDeletedEntityBackup": false,
+      "skipFetchBeforeUpdate": false,
+      "skipIndexLimitValidation": false,
+      "skipPermissionCheckForAggregation": false,
+      "skipPermissionsFilter": false,
+      "skipReportingEventsOrdering": false,
+      "skipRoutineLoad": false,
+      "skipTotalHitsInAggregation": false,
+      "skipVersionIncrementOnUpdate": false,
+      "storeDetails": {
+        "store": "MONGO",
+        "uniqueKeySupported": true
+      },
+      "supportsDistinctValues": false,
+      "supportsWebhook": false,
+      "syncFromSourceCustomer": false,
+      "translationsEnabled": false,
+      "uniqueKeyFields": [
+        "ticket_no"
+      ],
+      "urlValidationEnabledFields": [],
+      "useCachedEntityStoreForAutomations": false,
+      "userLevelEncryption": false,
+      "vectorFields": [],
+      "versioningEnabled": false
+    },
+    "modifiedTime": 1792132768228,
+    "name": "POC Studio Live · Feedback",
+    "ownerUserId": 66770,
+    "packaged": false,
+    "pluralName": "POC Studio Live · Feedback",
+    "schema": {
+      "type": "SCHEMA",
+      "dynamic": false,
+      "schema": {
+        "type": "object",
+        "properties": {
+          "ticket_no": {
+            "type": "string",
+            "title": "Ticket no",
+            "help": "FB-<n>",
+            "primaryKey": true,
+            "uniqueKey": true,
+            "searchable": true,
+            "sortable": true
+          },
+          "poc": {
+            "type": "string",
+            "format": "single-select",
+            "title": "POC",
+            "help": "The parent's poc_id",
+            "sortable": true,
+            "foreignKey": {
+              "reference": "ENTITY_ID:psl_poc"
+            }
+          },
+          "poc_stage": {
+            "type": "string",
+            "format": "single-select",
+            "title": "POC stage",
+            "sortable": true,
+            "oneOf": [
+              {
+                "const": "0_kickoff",
+                "title": "Kickoff"
+              },
+              {
+                "const": "1_signal_capture",
+                "title": "Signal capture"
+              },
+              {
+                "const": "2_research_assess",
+                "title": "Research & assess"
+              },
+              {
+                "const": "3_scope",
+                "title": "Scope the demo"
+              },
+              {
+                "const": "4_design_system",
+                "title": "Design system"
+              },
+              {
+                "const": "5_build",
+                "title": "Build with Nebula"
+              },
+              {
+                "const": "6_finalize",
+                "title": "Finalize"
+              },
+              {
+                "const": "7_collaterals",
+                "title": "Collaterals"
+              },
+              {
+                "const": "8_demo_ready",
+                "title": "Demo-ready"
+              }
+            ]
+          },
+          "gate": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Gate",
+            "default": "none",
+            "oneOf": [
+              {
+                "const": "none",
+                "title": "None"
+              },
+              {
+                "const": "g1",
+                "title": "G1 · Scope check"
+              },
+              {
+                "const": "g2",
+                "title": "G2 · Design check"
+              },
+              {
+                "const": "g3",
+                "title": "G3 · Build sign-off"
+              },
+              {
+                "const": "g4",
+                "title": "G4 · Release"
+              }
+            ]
+          },
+          "iteration": {
+            "type": "integer",
+            "title": "Iteration",
+            "help": "The loop's number within its POC"
+          },
+          "client_name": {
+            "type": "string",
+            "title": "Client name"
+          },
+          "title": {
+            "type": "string",
+            "title": "Title",
+            "nameField": true,
+            "searchable": true
+          },
+          "feedback": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Feedback"
+          },
+          "quote": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Quote"
+          },
+          "severity": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Severity",
+            "oneOf": [
+              {
+                "const": "low",
+                "title": "Low"
+              },
+              {
+                "const": "medium",
+                "title": "Medium"
+              },
+              {
+                "const": "high",
+                "title": "High"
+              }
+            ]
+          },
+          "source": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Source",
+            "help": "Where the feedback came from.",
+            "filterable": true,
+            "oneOf": [
+              {
+                "const": "self_llm",
+                "title": "Self-LLM"
+              },
+              {
+                "const": "iteration",
+                "title": "Iteration"
+              },
+              {
+                "const": "user",
+                "title": "User"
+              },
+              {
+                "const": "reviewer",
+                "title": "Reviewer"
+              }
+            ]
+          },
+          "target_skill": {
+            "type": "string",
+            "title": "Target skill"
+          },
+          "skill_proposal": {
+            "type": "string",
+            "title": "Skill proposal",
+            "help": "proposal_id of the skill proposal this feedback is in.",
+            "filterable": true
+          },
+          "incorporated_in_version": {
+            "type": "string",
+            "title": "Incorporated in version",
+            "help": "version_id (<skill_key>@v<n>) that incorporated this feedback.",
+            "filterable": true
+          },
+          "status": {
+            "type": "string",
+            "format": "single-select",
+            "title": "Status",
+            "default": "open",
+            "sortable": true,
+            "oneOf": [
+              {
+                "const": "open",
+                "title": "New"
+              },
+              {
+                "const": "in_review",
+                "title": "Under review"
+              },
+              {
+                "const": "resolved",
+                "title": "Incorporated"
+              },
+              {
+                "const": "not_incorporated",
+                "title": "Not incorporated"
+              }
+            ]
+          },
+          "action_taken": {
+            "type": "string",
+            "format": "textarea",
+            "title": "Action taken"
+          },
+          "reviewed_by": {
+            "type": "string",
+            "title": "Reviewed by"
+          },
+          "given_by_name": {
+            "type": "string",
+            "title": "Given by"
+          },
+          "created_at": {
+            "type": "integer",
+            "format": "date-time",
+            "dateFormat": "epoch",
+            "title": "Created at",
+            "sortable": true
+          },
+          "resolved_at": {
+            "type": "integer",
+            "format": "date-time",
+            "dateFormat": "epoch",
+            "title": "Resolved at",
+            "sortable": true
+          }
+        },
+        "required": [
+          "ticket_no",
+          "poc",
+          "title",
+          "feedback",
+          "severity",
+          "status",
+          "given_by_name",
+          "created_at"
+        ]
+      }
+    },
+    "standard": false,
+    "tags": [
+      "Nebula"
+    ],
+    "version": 0,
+    "entityType": "ENTITY_TYPE"
+  }
+}

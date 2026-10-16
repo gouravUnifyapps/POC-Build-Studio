@@ -1,0 +1,17 @@
+.ob-loops-chip chip                                            --accent-text on accent-soft 28% over base             4.94:1 bar 4.5 pass
+.ob-loops-chip chip                                            --accent-text on accent-soft 28% over glass-solid      5.31:1 bar 4.5 pass
+.ob-loops-chip chip hover/open                                 --accent-text on accent-soft 48% over base             4.19:1 bar 4.5 FAIL
+.ob-loops-chip chip hover/open                                 --accent-text on accent-soft 48% over glass-solid      4.43:1 bar 4.5 FAIL
+.ob-loops-box rows                                             --ink on box                                          16.84:1 bar 4.5 pass
+.ob-loops-box rows                                             --ink-2 on box                                         6.73:1 bar 4.5 pass
+.ob-loops-box rows                                             --ink-3 (time) on box                                  4.68:1 bar 4.5 pass
+.ob-loops-row:hover                                            --ink on hover wash                                   14.29:1 bar 4.5 pass
+.ob-loops-latest                                               --accent-text on accent-soft 45% over box              4.26:1 bar 4.5 FAIL
+.ob-branch-n                                                   white on top stop #806F44                              4.91:1 bar 4.5 pass
+.ob-branch-n                                                   white on bottom stop --accent-text                     6.73:1 bar 4.5 pass
+.av.ob-tone-1 IF --accent = #857242 (fix P1)                   white on gradient start                                4.68:1 bar 4.5 pass
+.av.ob-tone-1 IF --accent = #857242 (fix P1)                   white on gradient mid                                  5.58:1 bar 4.5 pass
+.av.ob-tone-1 IF --accent = #857242 (fix P1)                   white on gradient end                                  6.73:1 bar 4.5 pass
+.ob-jgate.is-open ring IF --accent = #857242 (fix P1)          ring on glass-solid, non-text                          4.68:1 bar 3.0 pass
+.ob-jgate-d / .ob-jcard.is-selected ring (--accent-soft, as is) ring on glass-solid, non-text                          2.59:1 bar 3.0 FAIL
+.tag.ob-tag-brand IF color = --brand-deep (fix P2)             --brand-deep on --brand-tint over glass-solid          9.30:1 bar 4.5 pass

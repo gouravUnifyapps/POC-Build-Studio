@@ -1,0 +1,213 @@
+/* UnifyApps · POC Studio: the token block of the CLONED stylesheet, with a measured ratio beside each token.
+   Values are the source's, byte for byte (src/orbit/ds/tokens.css; checked by source-audit/verify_tokens.py). Nothing here is a
+   new colour and no value was moved: this file is the source's block annotated, not a second stylesheet. Do not import it
+   into the app (the app imports the source's own three files, design-package.md).
+   Ratios are WCAG contrast from reskin.py (scripts/reskin.py audit and contrast), composited over --base as the audit does.
+   Bar: 4.5 for text, 3.0 for non-text. 'FAIL' and 'under 3:1' are printed, not fixed: see port-note.md section 3.
+   LIGHT is the theme the app runs (Shell.tsx forces data-theme=light). DARK is live in the source but not wired. */
+
+:root {
+
+  /* FACES  (type-note.md; the app loads both from Google Fonts in index.html) */
+  --font-serif: Spectral, Georgia, "Times New Roman", serif; /* not a colour pair */
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace; /* not a colour pair */
+
+  /* RADII  five-step scale: 10 everything, 6 small inner, pill, circle. The studio steps (28/22/16/12) are declared and unused by any screen */
+  --r: 10px; /* not a colour pair */
+  --r-sm: 6px; /* not a colour pair */
+  --r-pill: 999px; /* not a colour pair */
+  --r-shell: 28px; /* not a colour pair */
+  --r-canvas: 22px; /* not a colour pair */
+  --r-sheet: 16px; /* not a colour pair */
+  --r-tile: 12px; /* not a colour pair */
+
+  /* SPACING  (not a colour; no ratio) */
+  --space-4: 4px; /* not a colour pair */
+  --space-6: 6px; /* not a colour pair */
+  --space-8: 8px; /* not a colour pair */
+  --space-10: 10px; /* not a colour pair */
+  --space-12: 12px; /* not a colour pair */
+  --space-14: 14px; /* not a colour pair */
+  --space-16: 16px; /* not a colour pair */
+  --space-18: 18px; /* not a colour pair */
+  --space-22: 22px; /* not a colour pair */
+  --space-28: 28px; /* not a colour pair */
+
+  /* TYPE  display 34 / title 19 / body 15 / small 13 / micro 11 mono / table head 10.5 mono; weights 400 and 600 */
+  --type-display-size: 34px; /* not a colour pair */
+  --type-display-leading: 1.12; /* not a colour pair */
+  --type-display-weight: 400; /* not a colour pair */
+  --type-display-accent-size: 34px; /* not a colour pair */
+  --type-display-accent-leading: 1.12; /* not a colour pair */
+  --type-display-accent-weight: 400; /* not a colour pair */
+  --type-title-size: 19px; /* not a colour pair */
+  --type-title-leading: 1.3; /* not a colour pair */
+  --type-title-weight: 600; /* not a colour pair */
+  --type-body-size: 15px; /* not a colour pair */
+  --type-body-leading: 1.6; /* not a colour pair */
+  --type-body-weight: 400; /* not a colour pair */
+  --type-body-strong-size: 15px; /* not a colour pair */
+  --type-body-strong-leading: 1.6; /* not a colour pair */
+  --type-body-strong-weight: 600; /* not a colour pair */
+  --type-small-size: 13px; /* not a colour pair */
+  --type-small-leading: 1.45; /* not a colour pair */
+  --type-small-weight: 400; /* not a colour pair */
+  --type-micro-size: 11px; /* not a colour pair */
+  --type-micro-leading: 1.4; /* not a colour pair */
+  --type-micro-weight: 600; /* not a colour pair */
+  --type-table-head-size: 10.5px; /* not a colour pair */
+  --type-table-head-leading: 1.4; /* not a colour pair */
+  --type-table-head-weight: 600; /* not a colour pair */
+
+  /* GROUND  page and glass tiers.  Ratios: --ink, --ink-2, --ink-3, --ink-mute on each ground, LIGHT (dark in the second block) */
+  --base: #f8f4ee; /* ink 17.03 · ink-2 6.81 · ink-3 4.73 · ink-mute 2.59 (dimmed) · brand 4.55 · accent-text 6.14 */
+  --page-tint: rgba(41,70,27,.022); /* non-text wash */
+  --glass-1: rgba(255,255,255,.72); /* ink 18.19 · ink-2 7.27 · ink-3 5.05 · ink-mute 2.77 (dimmed) */
+  --glass-2: rgba(255,255,255,.82); /* ink 18.36 · ink-2 7.34 · ink-3 5.10 · ink-mute 2.79 (dimmed) */
+  --glass-3: rgba(255,255,255,.93); /* ink 18.53 · ink-2 7.41 · ink-3 5.14 · ink-mute 2.82 (dimmed) */
+  --glass-solid: rgba(255,255,255,.965); /* ink 18.64 · ink-2 7.45 · ink-3 5.18 · ink-mute 2.83 (dimmed); the ground under every table, banner, drawer */
+  --inner: rgba(41,70,27,.045); /* non-text tint; --ink-2 on it 6.75 (.tag, over glass-1) */
+  --hair: rgba(15,20,12,.07); /* non-text, decorative separator */
+  --hair-2: rgba(15,20,12,.12); /* non-text, decorative separator */
+
+  /* INK  text on the grounds above */
+  --ink: #0f140c; /* 17.03 on base · 18.64 on glass-solid */
+  --ink-2: #4e5849; /* 6.81 on base · 7.45 on glass-solid */
+  --ink-3: #667061; /* 4.73 on base · 5.18 on glass-solid */
+  --ink-mute: #9a9b86; /* 2.59 on base · 2.83 on glass-solid: DIMMED role, placeholder and disabled only, under 3:1 by design as in v3.4 */
+
+  /* BRAND  accent text, focus ring, the 'Building' tag. v3.4 doctrine: brand colour is for the primary action, the active nav item and the selected state */
+  --brand: #4a7c30; /* text 4.55 on base · 4.98 on glass-solid · focus ring non-text 4.55 · as text on its own 10% tint (.tag.ob-tag-brand 'Building') 4.27 on glass-1 / 4.38 on glass-solid: FAIL 4.5 */
+  --brand-deep: #29461b; /* 9.65 on base */
+  --brand-tint: rgba(74,124,48,.10); /* non-text tint; see --brand for the tag text on it */
+
+  /* FILL  the .btn-p gradient, top to bottom, with white text (--on-fill) */
+  --fill-1: #4e582d; /* white on it 7.61 */
+  --fill-2: #2e3f1a; /* white on it 11.40 */
+  --fill-3: #0f2805; /* white on it 15.84 */
+  --on-fill: #ffffff; /* the white above; also on --status-negative 7.64 (badge, .btn-d:hover) */
+  --focus: #4a7c30; /* non-text 4.55 on base */
+  --focus-halo: rgba(74,124,48,.18); /* non-text halo */
+
+  /* ACCENT  bronze, the client's logo gold. Carries: italic accent word, avatar tone, iteration chips, 'stale' banner */
+  --accent: #857242; /* AS DECLARED non-text 4.28 on base. AS RENDERED in light it is NOT bronze: orbit.css:22 re-binds --accent to var(--inner), computed in a browser as rgba(41,70,27,.045); 1.08:1 on glass-solid (port-note, defect D1) */
+  --accent-soft: #b39f6e; /* non-text 2.37 on base · 2.59 on glass-solid: under 3:1 (gate ring, selected-phase ring; defect D4) */
+  --accent-text: #6a5a32; /* 6.14 on base · 6.72 on glass-solid */
+  --accent-tint: rgba(132,115,71,.12); /* non-text tint; --accent-text on it 5.69 (glass-1) · 5.80 (glass-solid) */
+
+  /* STATUS  tonal only: text on its own tint over glass-1 (the audit's convention), and plain on glass-solid */
+  --status-neutral: #4e5849; /* on its tint 6.30 · plain on glass-solid 7.45 */
+  --status-neutral-tint: rgba(78,88,73,.10); /* non-text tint */
+  --status-attention: #9f4e07; /* on its tint 4.92 · plain on glass-solid 5.88 */
+  --status-attention-tint: rgba(159,78,7,.11); /* non-text tint */
+  --status-negative: #94322a; /* on its tint 6.25 · plain on glass-solid 7.63 */
+  --status-negative-tint: rgba(148,50,42,.11); /* non-text tint */
+  --status-positive: #276e5f; /* on its tint 5.03 · plain on glass-solid 6.03 */
+  --status-positive-tint: rgba(39,110,95,.11); /* non-text tint */
+  --on-status: #ffffff; /* no rule in bundle.css or orbit.css reads it */
+
+  /* POSITIVE FILL  pips and done stepper stops; white digit on it */
+  --pos-fill-1: #358978; /* white on it 4.20 (v3.4's own #2C8A74 measures the same 4.20: inherited) */
+  --pos-fill-2: #276e5f; /* white on it 6.03 */
+
+  /* CHART RAMP  one hue, six lightness steps; non-text, held to 3:1 on glass-solid. Not rendered by any screen; tone-5 avatars borrow --chart-3 and --chart-1 */
+  --chart-1: #203715; /* non-text 12.97 on glass-solid */
+  --chart-2: #355923; /* non-text 8.06 */
+  --chart-3: #497b30; /* non-text 5.05 */
+  --chart-4: #5e9f3e; /* non-text 3.23 */
+  --chart-5: #86b26f; /* non-text 2.44: under 3:1 (v3.4's own step 5 is 2.44) */
+  --chart-6: #accb9d; /* non-text 1.78: under 3:1 (v3.4's own step 6 is 1.79) */
+
+  /* AMBIENT  three washes, not text. No screen renders an .amb element, so these paint nothing today */
+  --aurora-1: rgba(41,70,27,.055); /* non-text */
+  --aurora-2: rgba(133,114,66,.045); /* non-text */
+  --aurora-3: rgba(74,124,48,.050); /* non-text */
+
+  /* NAV RAIL  the brand gradient (199deg, nav-1 to nav-2 to nav-3 over background-color nav-3), the one branded surface */
+  --nav-1: #324223; /* --nav-ink on it 8.72 · ink-2 6.24 · ink-3 4.63 · marker 4.35 (non-text) · cream logo 8.72 (non-text) */
+  --nav-2: #012a00; /* --nav-ink 12.68 · ink-2 8.50 · ink-3 5.91 · marker 6.32 (non-text) · cream logo 12.68 */
+  --nav-3: #071a05; /* --nav-ink 14.58 · ink-2 9.58 · ink-3 6.53 · marker 7.27 (non-text) · cream logo 14.58; text on --nav-mark (badge) 7.27 */
+  --nav-ink: #ede6d7; /* on the active item (nav-active over the stops) 6.03 · 8.83 · 10.21 */
+  --nav-ink-2: rgba(237,230,215,.80); /* 80% of nav-ink, composited: 6.24 · 8.50 · 9.58 on the three stops */
+  --nav-ink-3: rgba(237,230,215,.64); /* 64% of nav-ink, composited: 4.63 · 5.91 · 6.53 on the three stops */
+  --nav-hover: rgba(237,230,215,.08); /* non-text */
+  --nav-active: rgba(237,230,215,.14); /* non-text; see --nav-ink */
+  --nav-mark: #b3a378; /* non-text 4.35 · 6.32 · 7.27 on the three stops */
+  --nav-line: rgba(237,230,215,.12); /* non-text separator */
+
+  /* OVERLAY  scrim and tooltip */
+  --scrim: rgba(15,20,12,.36); /* non-text */
+  --tip-bg: #0f140c; /* --tip-ink on it 17.03 */
+  --tip-ink: #f8f4ee; /* 17.03 on --tip-bg */
+
+  /* ELEVATION  one 1px top edge, two lifts. Non-text */
+  --edge: inset 0 1px 0 rgba(255,255,255,.92); /* non-text */
+  --lift-1: 0 1px 2px rgba(17,26,12,.05),0 12px 32px -18px rgba(17,26,12,.28); /* non-text */
+  --lift-2: 0 2px 6px rgba(17,26,12,.07),0 28px 60px -26px rgba(17,26,12,.40); /* non-text */
+}
+
+/* DARK: live, not wired. Only what the source overrides. */
+:root[data-theme="dark"] {
+  --base: #202117; /* ink 12.29 · ink-2 8.05 · ink-3 7.18 · ink-mute 4.46 · brand 7.21 · accent-text 8.00 */
+  --page-tint: rgba(135,173,117,.055); /* same use and rule as light */
+  --glass-1: rgba(135,173,117,.12); /* ink 10.00 · ink-2 6.55 · ink-3 5.84 · ink-mute 3.63 */
+  --glass-2: rgba(135,173,117,.17); /* ink 9.07 · ink-2 5.94 · ink-3 5.30 · ink-mute 3.29 */
+  --glass-3: rgba(135,173,117,.23); /* ink 8.09 · ink-2 5.30 · ink-3 4.73 · ink-mute 2.93 (dimmed) */
+  --glass-solid: #3e3e2d; /* ink 8.22 · ink-2 5.38 · ink-3 4.80 · ink-mute 2.98 (dimmed) */
+  --inner: rgba(145,184,125,.085); /* same use and rule as light */
+  --hair: rgba(212,228,204,.10); /* same use and rule as light */
+  --hair-2: rgba(212,228,204,.17); /* same use and rule as light */
+  --ink: #e0e1d2; /* 12.29 on base · 8.22 on glass-solid */
+  --ink-2: #b7b8a2; /* 8.05 · 5.38 */
+  --ink-3: #adae96; /* 7.18 · 4.80 */
+  --ink-mute: #7c8a76; /* 4.46 · 2.98 (dimmed) */
+  --brand: #8fb87a; /* 7.21 on base · 4.82 on glass-solid · as text on its tint (.ob-tag-brand) 4.49 on glass-1 · 3.78 on glass-solid: FAIL */
+  --brand-deep: #578142; /* 3.58 on base: FAIL as text (read as text only by --info-subtle-foreground, never fired) */
+  --brand-tint: rgba(143,184,122,.14); /* same use and rule as light */
+  --fill-1: #4a7c30; /* white 4.98 */
+  --fill-2: #3e6929; /* white 6.45 */
+  --fill-3: #2b481c; /* white 10.26 */
+  --on-fill: #ffffff; /* same use and rule as light */
+  --focus: #8fb87a; /* same use and rule as light */
+  --focus-halo: rgba(143,184,122,.24); /* same use and rule as light */
+  --accent: #baa571; /* non-text 6.74 on base */
+  --accent-soft: #d7ccae; /* non-text 10.17 */
+  --accent-text: #c4b58c; /* 8.00 on base · 5.35 on glass-solid */
+  --accent-tint: rgba(179,163,120,.14); /* --accent-text on it 5.09 (glass-1) · 4.28 (glass-solid): FAIL on glass-solid (.av.ob-av-ai, .ob-tag-accent) */
+  --status-neutral: #bcbda8; /* on its tint 5.70 · plain on glass-solid 5.69 */
+  --status-neutral-tint: rgba(170,183,162,.10); /* same use and rule as light */
+  --status-attention: #e5b183; /* 5.61 · 5.67 */
+  --status-attention-tint: rgba(229,177,131,.10); /* same use and rule as light */
+  --status-negative: #f0a9a3; /* 5.75 · 5.65 · white (--on-fill) on it 1.92: FAIL (badge, latent) */
+  --status-negative-tint: rgba(236,151,144,.10); /* same use and rule as light */
+  --status-positive: #91cabf; /* 5.82 · 5.90 */
+  --status-positive-tint: rgba(145,202,191,.10); /* same use and rule as light */
+  --on-status: #1b1712; /* same use and rule as light */
+  --pos-fill-1: #358978; /* same use and rule as light */
+  --pos-fill-2: #276e5f; /* same use and rule as light */
+  --chart-1: #ebf3e8; /* non-text 9.59 */
+  --chart-2: #ccdfc3; /* 7.72 */
+  --chart-3: #aac99b; /* 5.97 */
+  --chart-4: #87b371; /* 4.51 */
+  --chart-5: #699752; /* 3.18 */
+  --chart-6: #5a7b4a; /* 2.26: under 3:1 */
+  --aurora-1: rgba(99,142,77,.26); /* same use and rule as light */
+  --aurora-2: rgba(186,165,113,.19); /* same use and rule as light */
+  --aurora-3: rgba(143,184,122,.22); /* same use and rule as light */
+  --nav-1: #324223; /* same use and rule as light */
+  --nav-2: #012a00; /* same use and rule as light */
+  --nav-3: #071a05; /* same use and rule as light */
+  --nav-ink: #ede6d7; /* same use and rule as light */
+  --nav-ink-2: rgba(237,230,215,.80); /* same use and rule as light */
+  --nav-ink-3: rgba(237,230,215,.64); /* same use and rule as light */
+  --nav-hover: rgba(237,230,215,.08); /* same use and rule as light */
+  --nav-active: rgba(237,230,215,.14); /* same use and rule as light */
+  --nav-mark: #b3a378; /* same use and rule as light */
+  --nav-line: rgba(237,230,215,.12); /* same use and rule as light */
+  --scrim: rgba(0,0,0,.52); /* same use and rule as light */
+  --tip-bg: #e0e1d2; /* --tip-ink on it 12.29 */
+  --tip-ink: #202117; /* same use and rule as light */
+  --edge: inset 0 1px 0 rgba(222,234,215,.17); /* same use and rule as light */
+  --lift-1: 0 1px 2px rgba(4,7,3,.46),0 14px 34px -18px rgba(4,7,3,.68); /* same use and rule as light */
+  --lift-2: 0 2px 7px rgba(4,7,3,.52),0 32px 66px -26px rgba(4,7,3,.80); /* same use and rule as light */
+}

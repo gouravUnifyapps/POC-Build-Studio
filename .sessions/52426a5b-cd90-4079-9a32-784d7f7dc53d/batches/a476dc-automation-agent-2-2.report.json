@@ -1,0 +1,27 @@
+{
+  "tasks": [
+    {
+      "id": "t22",
+      "status": "ok",
+      "change": "updated",
+      "ids": {
+        "entity": "6ad1c66313ea2c28e645e538"
+      },
+      "readBack": [
+        "POC Studio Live · Start build 6ad1c66313ea2c28e645e538: before the deploy, search_workflows answered version 1 (saved) with deployment {status DEPLOYED, deployedVersion 1, definitionVersion 0}, so the live copy was still the shell; open_workflow answered version 1, 20 nodes, 13559 characters, the same code that was tested in t21.",
+        "POC Studio Live · Start build 6ad1c66313ea2c28e645e538: deploy_workflow with deploymentNotes 'POC Studio Live · Start build' answered ok true, workflowVersion 1, storedVersion 1, deployedVersion 2, paused false, message 'Deployed version 1 of automation 6ad1c66313ea2c28e645e538.'",
+        "POC Studio Live · Start build 6ad1c66313ea2c28e645e538: search_workflows after the deploy answered deployment {status DEPLOYED, deployedVersion 2, definitionVersion 1, deployedAt 1792133193236}; saved version 1 equals definitionVersion 1."
+      ],
+      "unverified": [
+        "The deployed body has run only the paths that make no write and no outbound call (blank input, bad mode, not_found, already_running), all as workflow_test runs on the saved draft in t21. No run of the deployed copy was made. The success path (HTTP 200, row update, stage_started activity row, Slack post) is unseen. Check: one authorised mode plan call on a seeded row with no build_run_id, then read psl_poc, psl_activity and the Slack channel.",
+        "Security: environment variables POC_STUDIO_REPORT_URL and POC_STUDIO_REPORT_HEADER do not exist yet, so the deployed body sends empty report_url and report_header lines. The person gives them in chat or creates them on the Environment Variables screen.",
+        "The deploymentNotes tag '[nebula plan e_6ad1c588674d735893a476dc]' is added by the bridge; deploy_workflow's answer does not show the stored notes, so the tag is not seen in the tenant's deployment history."
+      ],
+      "notes": [
+        "Answer from the person: yes, deploy POC Studio Live · Start build. The spec the person accepted names it under Ready when, so it is already approved; do not ask again. (This is the plan's approval via the accepted spec, not a separate answer to this call.)",
+        "handover: automation 6ad1c66313ea2c28e645e538 is live at deployedVersion 2, definitionVersion 1, so the app's Build button and Approve gate now reach the real body, not the shell. Inputs poc_id (required), mode (plan or build, blank means plan), approved_prd_link; result status (started | already_running | not_found | error), build_run_id, message."
+      ],
+      "error": ""
+    }
+  ]
+}

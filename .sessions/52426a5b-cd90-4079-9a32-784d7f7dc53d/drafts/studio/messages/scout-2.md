@@ -1,0 +1,32 @@
+NEBULA=/Users/gouravmahunta/.claude/plugins/cache/nebula/nebula/3.55.8
+STUDIO_ROOT=/Users/gouravmahunta/.claude/plugins/cache/demo-studio/demo-studio/0.8.1
+STUDIO=/Users/gouravmahunta/Desktop/DEMO studio test/POST design skill/Demo studio/.sessions/52426a5b-cd90-4079-9a32-784d7f7dc53d/drafts/studio
+CLI=bash "$NEBULA/scripts/run-node.sh" "$NEBULA/scripts/nebula.mjs"   (add --json; CLAUDE_CODE_SESSION_ID=52426a5b-cd90-4079-9a32-784d7f7dc53d is set)
+REFS=$STUDIO_ROOT/skills/build/references
+WORKDIR=/Users/gouravmahunta/Desktop/DEMO studio test/POST design skill/Demo studio
+PROFILE=/Users/gouravmahunta/Desktop/DEMO studio test/POST design skill/Demo studio/studio/profiles/unifyapps.md
+REQUEST=/Users/gouravmahunta/Desktop/DEMO studio test/POST design skill/Demo studio/.sessions/52426a5b-cd90-4079-9a32-784d7f7dc53d/drafts/studio/request.md   (read it in full: it is the request word for word)
+SOLUTION=e_6ad1b45199f8a565171d7f1c  'POC Studio Live', the NEW solution this build writes to, tenant orbit.uat.unifyapps.com
+SOURCE=e_6ad1031ce0ef8b24527e9ed9  'POC Studio', the solution whose UI is to be cloned. READ-ONLY. Never write to it, never edit its entities.
+# Scout, message 2: the capability check (round 2)
+
+Read $STUDIO/rulings.md in full (the chosen storyline, the entity list, the build order, the pre-mortem), $STUDIO/stand-in.md ('Schema' and 'UI changes'), $STUDIO/data-plan.md and $STUDIO/external.md. Append to $STUDIO/scout.md a section '## Capability check' with a table, one row per intended '## Contract' line:
+  line | beat that uses it | builder | tool that makes it | read that proves it | ok or 'no tool' + the nearest alternative.
+The lines: the 7 psl_ objects (with schema features: pk, unique, FK to psl_poc, enums, textarea long text, an integer epoch date-time, boolean, indexes), the seed loads (volumes in data-plan.md, parents first), the 8 automations (trigger kind, nodes, ops, callable contract), the one AI agent (tool attached = automation 2; model id; instructions), the API chain for 'Receive build result' (API Group, API, client, access profile), the 3 environment variables (save_env_variables sensitive flag), the Slack connection (see below), the code-app tasks (create_code_app, port, bindings, push, publish, CSP, refetch) and every deploy/publish. A line no beat or request line uses gets 'beat: none' (the Judge cuts it).
+
+## New live facts to use
+- The Slack connection now EXISTS: 'POC Studio Live Slack', id 6ad1be602ac9ba64653a9d36, appName slack, authType TOKEN, active. It is the new 'POC Studio Agent' bot. Probe it READ-ONLY (auth.test or the nearest read operation; never post anything, never print a token) and record: the bot user id and name, the workspace, the scopes seen, whether it is already a member of any channel, and whether it can read users.info with image URLs and look up a user by email (users.lookupByEmail).
+- The Claude routine fire call is VERIFIED (read from code.claude.com/docs/en/routines): POST https://api.anthropic.com/v1/claude_code/routines/<trigger id>/fire; headers Authorization: Bearer <token>, anthropic-beta: experimental-cc-routine-2026-04-01, anthropic-version: 2023-06-01, Content-Type: application/json; body {"text": "<free text>"}; answer {type: routine_fire, claude_code_session_id, claude_code_session_url}. The text reaches the routine wrapped as untrusted data, so the routine's saved prompt must say to act on it. 30 fires per hour per routine.
+
+## Platform questions (Source: NEBULA, one row each, with the exact tool/limit named; Check this where only a deployed test proves it)
+1. data.long_text_limit: can a 'textarea' field hold a 6.7 KB HTML string (a PRD with inline SVG)? What is the stated or practical limit of a Storage string/textarea (psl_document.content, psl_poc.brief)? Also what does the code app's Storage fetch return for a long string (truncated?).
+2. Slack inbound: for the 'slack_on_new_message' trigger, how does the platform answer Slack's one-time url_verification challenge when the person pastes the webhook URL as the Request URL (automatic?), and does the same trigger deliver message.groups (private channel) events and member_joined_channel / subtype channel_join events with 'event.user' = the bot? Does it dedupe Slack retries (x-slack-retry-num)? State what the person pastes and where the URL is read from after deploy.
+3. Slack DM: can an automation DM a user with the bot token by passing the user's id as 'channel' in slack_post_message_in_channel (or must conversations.open run first: which operation)? Which scope does it need?
+4. Slack lookups: operations for users.info (profile image URLs), users.lookupByEmail, and permalink; slack_list_conversation_history 'oldest' cursor semantics.
+5. ENV in an HTTP node: can 'custom_http_endpoint_execute' put ENV.<NAME> in a path parameter and in headersList value ('Bearer ' + ENV.X) at runtime? What happens to a SENSITIVE env variable's value in the run log?
+6. Agent and automation tool: can the AI agent's tool be an automation (add_tools) whose return value ('created' | 'needs_manager' | 'exists' | 'noted') the agent reads; can the invoking automation pass a sessionId so the manager's thread reply continues the same agent conversation, and what does the agent need as instructions so it never invents a manager?
+7. Code app: 'create_code_app_data_sources' with kind automation: the input fields; how the app passes the signed-in user (email) to an automation so Approve gate can check 'manager' server-side (is the caller identity available inside the automation, or must the app send the email?). The refetch interval option on useData (read code-builder skills if reachable; the Scout lacks those tools, so say 'not reachable' and name the skill the code-app task must read).
+8. API chain: save_api_group / save_api / save_client / save_access_profile order and inputs for an API backed by a callableApi automation; where the key is read once; the header name the auth method needs.
+9. Scheduled automation: confirm the 'sequential: true' form with maxWaitTime, and whether a schedule trigger can iterate an array read from Storage and call Slack per item (loop node) inside the sandbox restrictions.
+10. Anything in rulings.md §2 you cannot back with a tool: say 'no tool' with the nearest thing.
+Reply in under 20 lines: the number of 'ok' and 'no tool' rows, each platform answer in one line, the bot's identity, and anything that changes rulings.md.

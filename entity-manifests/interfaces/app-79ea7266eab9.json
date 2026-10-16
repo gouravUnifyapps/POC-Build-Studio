@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 1,
+  "interfaceId": "app-79ea7266eab9",
+  "validatedAt": "2026-10-16T13:59:48.325Z",
+  "retiredKeys": [],
+  "members": [
+    {
+      "key": "e_interface:app-79ea7266eab9",
+      "entityType": "e_interface",
+      "id": "app-79ea7266eab9",
+      "parentKey": null
+    },
+    {
+      "key": "e_component:e_global_app-79ea7266eab9",
+      "entityType": "e_component",
+      "id": "e_global_app-79ea7266eab9",
+      "parentKey": "e_interface:app-79ea7266eab9"
+    },
+    {
+      "key": "e_data_source:e_6ad1cf9fc0f97b3e983d929d",
+      "entityType": "e_data_source",
+      "id": "e_6ad1cf9fc0f97b3e983d929d",
+      "parentKey": "e_component:e_global_app-79ea7266eab9"
+    },
+    {
+      "key": "e_data_source:e_6ad1cac5674d735893a4e364",
+      "entityType": "e_data_source",
+      "id": "e_6ad1cac5674d735893a4e364",
+      "parentKey": "e_component:e_global_app-79ea7266eab9"
+    },
+    {
+      "key": "e_data_source:e_6ad1c91e99f8a565172184ad",
+      "entityType": "e_data_source",
+      "id": "e_6ad1c91e99f8a565172184ad",
+      "parentKey": "e_component:e_global_app-79ea7266eab9"
+    },
+    {
+      "key": "e_data_source:e_6ad1c855c0f97b3e983c6f4d",
+      "entityType": "e_data_source",
+      "id": "e_6ad1c855c0f97b3e983c6f4d",
+      "parentKey": "e_component:e_global_app-79ea7266eab9"
+    },
+    {
+      "key": "e_data_source:e_6ad1c855c0f97b3e983c6f4a",
+      "entityType": "e_data_source",
+      "id": "e_6ad1c855c0f97b3e983c6f4a",
+      "parentKey": "e_component:e_global_app-79ea7266eab9"
+    },
+    {
+      "key": "e_data_source:e_6ad1c855c0f97b3e983c6f47",
+      "entityType": "e_data_source",
+      "id": "e_6ad1c855c0f97b3e983c6f47",
+      "parentKey": "e_component:e_global_app-79ea7266eab9"
+    },
+    {
+      "key": "e_data_source:e_6ad1c85599f8a56517217068",
+      "entityType": "e_data_source",
+      "id": "e_6ad1c85599f8a56517217068",
+      "parentKey": "e_component:e_global_app-79ea7266eab9"
+    },
+    {
+      "key": "e_data_source:e_6ad1c85599f8a56517217065",
+      "entityType": "e_data_source",
+      "id": "e_6ad1c85599f8a56517217065",
+      "parentKey": "e_component:e_global_app-79ea7266eab9"
+    }
+  ]
+}

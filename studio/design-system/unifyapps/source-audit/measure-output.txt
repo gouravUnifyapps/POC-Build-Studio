@@ -1,0 +1,139 @@
+## A. reskin.py audit on source-measured.css (tokens.css with names mapped, no value touched)
+light --ink on base                                     17.03:1  pass
+light --ink on glass-1                                  18.19:1  pass
+light --ink on glass-2                                  18.36:1  pass
+light --ink on glass-3                                  18.53:1  pass
+light --ink on glass-solid                              18.64:1  pass
+light --ink-2 on base                                    6.81:1  pass
+light --ink-2 on glass-1                                 7.27:1  pass
+light --ink-2 on glass-2                                 7.34:1  pass
+light --ink-2 on glass-3                                 7.41:1  pass
+light --ink-2 on glass-solid                             7.45:1  pass
+light --ink-3 on base                                    4.73:1  pass
+light --ink-3 on glass-1                                 5.05:1  pass
+light --ink-3 on glass-2                                 5.10:1  pass
+light --ink-3 on glass-3                                 5.14:1  pass
+light --ink-3 on glass-solid                             5.18:1  pass
+light --ink-mute on base                                 2.59:1  under 3:1, dimmed role
+light --ink-mute on glass-1                              2.77:1  under 3:1, dimmed role
+light --ink-mute on glass-2                              2.79:1  under 3:1, dimmed role
+light --ink-mute on glass-3                              2.82:1  under 3:1, dimmed role
+light --ink-mute on glass-solid                          2.83:1  under 3:1, dimmed role
+light --sp-blue (accent as text) on base                 4.55:1  pass
+light #fff on .btn-p stop 1 #4E582D                      7.61:1  pass
+light #fff on .btn-p stop 2 #2E3F1A                     11.40:1  pass
+light #fff on .btn-p stop 3 #0F2805                     15.84:1  pass
+light --st-neutral text on its tint over glass-1         6.30:1  pass
+light --st-attention text on its tint over glass-1       4.92:1  pass
+light --st-negative text on its tint over glass-1        6.25:1  pass
+light --st-positive text on its tint over glass-1        5.03:1  pass
+dark  --ink on base                                     12.29:1  pass
+dark  --ink on glass-1                                  10.00:1  pass
+dark  --ink on glass-2                                   9.07:1  pass
+dark  --ink on glass-3                                   8.09:1  pass
+dark  --ink on glass-solid                               8.22:1  pass
+dark  --ink-2 on base                                    8.05:1  pass
+dark  --ink-2 on glass-1                                 6.55:1  pass
+dark  --ink-2 on glass-2                                 5.94:1  pass
+dark  --ink-2 on glass-3                                 5.30:1  pass
+dark  --ink-2 on glass-solid                             5.38:1  pass
+dark  --ink-3 on base                                    7.18:1  pass
+dark  --ink-3 on glass-1                                 5.84:1  pass
+dark  --ink-3 on glass-2                                 5.30:1  pass
+dark  --ink-3 on glass-3                                 4.73:1  pass
+dark  --ink-3 on glass-solid                             4.80:1  pass
+dark  --ink-mute on base                                 4.46:1  pass
+dark  --ink-mute on glass-1                              3.63:1  pass
+dark  --ink-mute on glass-2                              3.29:1  pass
+dark  --ink-mute on glass-3                              2.93:1  under 3:1, dimmed role
+dark  --ink-mute on glass-solid                          2.98:1  under 3:1, dimmed role
+dark  --sp-blue (accent as text) on base                 7.21:1  pass
+dark  --st-neutral text on its tint over glass-1         5.70:1  pass
+dark  --st-attention text on its tint over glass-1       5.61:1  pass
+dark  --st-negative text on its tint over glass-1        5.75:1  pass
+dark  --st-positive text on its tint over glass-1        5.82:1  pass
+text failures: 0 | dimmed roles under 3:1: 7 (v3.4 ships --ink-mute dimmed on purpose; a change here is a design decision, not a fix)
+
+## B. contrast rows the audit does not cover  (bar: 4.5 text, 3.0 non-text; adjacent chart steps listed for the record)
+light  --brand (accent text) on base                                    4.55:1  bar 4.5  pass
+light  --brand on glass-solid                                           4.98:1  bar 4.5  pass
+light  --brand-deep on base                                             9.65:1  bar 4.5  pass
+light  --accent-text on base                                            6.14:1  bar 4.5  pass
+light  --accent-text on glass-solid                                     6.72:1  bar 4.5  pass
+light  --accent (bronze) on base, non-text                              4.28:1  bar 3.0  pass
+light  --accent-soft on base, non-text                                  2.37:1  bar 3.0  under 3:1
+light  --focus ring on base, non-text                                   4.55:1  bar 3.0  pass
+light  #ffffff on --fill-1                                              7.61:1  bar 4.5  pass
+light  #ffffff on --fill-2                                             11.40:1  bar 4.5  pass
+light  #ffffff on --fill-3                                             15.84:1  bar 4.5  pass
+light  white on --pos-fill-1 (.pip.done digit)                          4.20:1  bar 4.5  FAIL
+light  white on --pos-fill-2 (.pip.done digit)                          6.03:1  bar 4.5  pass
+light  --status-neutral on glass-solid (plain)                          7.45:1  bar 4.5  pass
+light  --status-attention on glass-solid (plain)                        5.88:1  bar 4.5  pass
+light  --status-negative on glass-solid (plain)                         7.63:1  bar 4.5  pass
+light  --status-positive on glass-solid (plain)                         6.03:1  bar 4.5  pass
+light  tooltip --tip-ink on --tip-bg                                   17.03:1  bar 4.5  pass
+light  --chart-1 on glass-solid, non-text                              12.97:1  bar 3.0  pass
+light  --chart-2 on glass-solid, non-text                               8.06:1  bar 3.0  pass
+light  --chart-3 on glass-solid, non-text                               5.05:1  bar 3.0  pass
+light  --chart-4 on glass-solid, non-text                               3.23:1  bar 3.0  pass
+light  --chart-5 on glass-solid, non-text                               2.44:1  bar 3.0  under 3:1
+light  --chart-6 on glass-solid, non-text                               1.78:1  bar 3.0  under 3:1
+light  --chart-1 vs --chart-2, adjacent steps                           1.61:1  bar 1.3  (info)
+light  --chart-2 vs --chart-3, adjacent steps                           1.60:1  bar 1.3  (info)
+light  --chart-3 vs --chart-4, adjacent steps                           1.56:1  bar 1.3  (info)
+light  --chart-4 vs --chart-5, adjacent steps                           1.32:1  bar 1.3  (info)
+light  --chart-5 vs --chart-6, adjacent steps                           1.37:1  bar 1.3  (info)
+dark   --brand (accent text) on base                                    7.21:1  bar 4.5  pass
+dark   --brand on glass-solid                                           4.82:1  bar 4.5  pass
+dark   --brand-deep on base                                             3.58:1  bar 4.5  FAIL
+dark   --accent-text on base                                            8.00:1  bar 4.5  pass
+dark   --accent-text on glass-solid                                     5.35:1  bar 4.5  pass
+dark   --accent (bronze) on base, non-text                              6.74:1  bar 3.0  pass
+dark   --accent-soft on base, non-text                                 10.17:1  bar 3.0  pass
+dark   --focus ring on base, non-text                                   7.21:1  bar 3.0  pass
+dark   #ffffff on --fill-1                                              4.98:1  bar 4.5  pass
+dark   #ffffff on --fill-2                                              6.45:1  bar 4.5  pass
+dark   #ffffff on --fill-3                                             10.26:1  bar 4.5  pass
+dark   white on --pos-fill-1 (.pip.done digit)                          4.20:1  bar 4.5  FAIL
+dark   white on --pos-fill-2 (.pip.done digit)                          6.03:1  bar 4.5  pass
+dark   --status-neutral on glass-solid (plain)                          5.69:1  bar 4.5  pass
+dark   --status-attention on glass-solid (plain)                        5.67:1  bar 4.5  pass
+dark   --status-negative on glass-solid (plain)                         5.65:1  bar 4.5  pass
+dark   --status-positive on glass-solid (plain)                         5.90:1  bar 4.5  pass
+dark   tooltip --tip-ink on --tip-bg                                   12.29:1  bar 4.5  pass
+dark   --chart-1 on glass-solid, non-text                               9.59:1  bar 3.0  pass
+dark   --chart-2 on glass-solid, non-text                               7.72:1  bar 3.0  pass
+dark   --chart-3 on glass-solid, non-text                               5.97:1  bar 3.0  pass
+dark   --chart-4 on glass-solid, non-text                               4.51:1  bar 3.0  pass
+dark   --chart-5 on glass-solid, non-text                               3.18:1  bar 3.0  pass
+dark   --chart-6 on glass-solid, non-text                               2.26:1  bar 3.0  under 3:1
+dark   --chart-1 vs --chart-2, adjacent steps                           1.24:1  bar 1.3  (info)
+dark   --chart-2 vs --chart-3, adjacent steps                           1.29:1  bar 1.3  (info)
+dark   --chart-3 vs --chart-4, adjacent steps                           1.32:1  bar 1.3  (info)
+dark   --chart-4 vs --chart-5, adjacent steps                           1.42:1  bar 1.3  (info)
+dark   --chart-5 vs --chart-6, adjacent steps                           1.41:1  bar 1.3  (info)
+rail   --nav-ink on --nav-1 #324223                                     8.72:1  bar 4.5  pass
+rail   --nav-ink-2 (.80) on --nav-1                                     6.24:1  bar 4.5  pass
+rail   --nav-ink-3 (.64) on --nav-1                                     4.63:1  bar 4.5  pass
+rail   --nav-mark (active marker) on --nav-1, non-text                  4.35:1  bar 3.0  pass
+rail   logo #EDE6D7 (source's reversed PNG) on --nav-1, non-text        8.72:1  bar 3.0  pass
+rail   kit reversed-mono.svg #FFFFFF on --nav-1, non-text              10.83:1  bar 3.0  pass
+rail   --nav-ink on --nav-2 #012a00                                    12.68:1  bar 4.5  pass
+rail   --nav-ink-2 (.80) on --nav-2                                     8.50:1  bar 4.5  pass
+rail   --nav-ink-3 (.64) on --nav-2                                     5.91:1  bar 4.5  pass
+rail   --nav-mark (active marker) on --nav-2, non-text                  6.32:1  bar 3.0  pass
+rail   logo #EDE6D7 (source's reversed PNG) on --nav-2, non-text       12.68:1  bar 3.0  pass
+rail   kit reversed-mono.svg #FFFFFF on --nav-2, non-text              15.76:1  bar 3.0  pass
+rail   --nav-ink on --nav-3 #071a05                                    14.58:1  bar 4.5  pass
+rail   --nav-ink-2 (.80) on --nav-3                                     9.58:1  bar 4.5  pass
+rail   --nav-ink-3 (.64) on --nav-3                                     6.53:1  bar 4.5  pass
+rail   --nav-mark (active marker) on --nav-3, non-text                  7.27:1  bar 3.0  pass
+rail   logo #EDE6D7 (source's reversed PNG) on --nav-3, non-text       14.58:1  bar 3.0  pass
+rail   kit reversed-mono.svg #FFFFFF on --nav-3, non-text              18.12:1  bar 3.0  pass
+rail   --nav-ink on active item over --nav-1                            6.03:1  bar 4.5  pass
+rail   --nav-ink on active item over --nav-2                            8.83:1  bar 4.5  pass
+rail   --nav-ink on active item over --nav-3                           10.21:1  bar 4.5  pass
+light  kit gold lockup #847347 on --base, non-text                      4.24:1  bar 3.0  pass
+light  kit gold lockup #847347 on glass-solid, non-text                 4.64:1  bar 3.0  pass
+rows below their bar: 7

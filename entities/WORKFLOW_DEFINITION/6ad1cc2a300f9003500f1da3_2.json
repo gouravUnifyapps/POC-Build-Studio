@@ -1,0 +1,2223 @@
+{
+  "schemaVersion": 1,
+  "key": "WORKFLOW_DEFINITION:6ad1cc2a300f9003500f1da3",
+  "entityType": "WORKFLOW_DEFINITION",
+  "id": "6ad1cc2a300f9003500f1da3",
+  "version": 2,
+  "cachedAt": "2026-10-16T08:07:59.267Z",
+  "source": "solution-refresh",
+  "ref": {
+    "id": "6ad1cc2a300f9003500f1da3",
+    "type": "WORKFLOW_DEFINITION",
+    "state": "COMPLETED"
+  },
+  "entity": {
+    "appsUsed": [
+      "slack"
+    ],
+    "createdTime": 1792134186753,
+    "deleted": false,
+    "deployedVersion": 3,
+    "deploymentState": {
+      "deployedAt": 1792137355957,
+      "deployedBy": 66770,
+      "deployedDefinitionId": "6ad1d88b6123771ba2c2b500",
+      "deploymentNotes": "Slack listener: read agentResponses; remove 👀 after processing",
+      "status": "DEPLOYED",
+      "version": 3,
+      "workflowVersion": 2
+    },
+    "description": "Hears the Slack new-message event of the POC Studio Live Slack connection. Ignores bots and the bot's own messages. Four branches: the bot joined a channel (link its use case rows and say so), the bot was tagged at the top of a channel (the POC Studio Agent answers in a thread), a reply in a manager question thread (the agent answers in the thread), and an owner's 'approve' reply under a gate post (calls Approve gate).",
+    "edges": [
+      {
+        "fromNodeId": "n_aowgf",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_2rjwo",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_2rjwo",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_gtc48",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_gtc48",
+        "name": "1",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_gtc48@1",
+        "type": "branch"
+      },
+      {
+        "fromNodeId": "n_gtc48",
+        "name": "2",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_gtc48@2",
+        "type": "branch"
+      },
+      {
+        "fromNodeId": "n_gtc48",
+        "name": "3",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_gtc48@3",
+        "type": "branch"
+      },
+      {
+        "fromNodeId": "n_gtc48",
+        "name": "4",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_gtc48@4",
+        "type": "branch"
+      },
+      {
+        "fromNodeId": "n_gtc48",
+        "name": "default",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_vyucq",
+        "type": "branch"
+      },
+      {
+        "fromNodeId": "n_gtc48@1",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_hjz35",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_hjz35",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_jv322",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_jv322",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_mn0j7",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_jv322",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_vyucq",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_mn0j7",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_86ivx",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_86ivx",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_xrhgx",
+        "type": "loop"
+      },
+      {
+        "fromNodeId": "n_86ivx",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_93vge",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_xrhgx",
+        "name": "loopback",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_86ivx",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_93vge",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_z0jyy",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_z0jyy",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_vyucq",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_gtc48@2",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_i0rim",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_i0rim",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_mmbkl",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_mmbkl",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_4s0ux",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_4s0ux",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_fb9o1",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_fb9o1",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_30spo",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_fb9o1",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_nqsx8",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_30spo",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_jr4n2",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_jr4n2",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_05u73",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_05u73",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_na8tc",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_na8tc",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_nqsx8",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_nqsx8",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_vyucq",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_gtc48@3",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_le3mt",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_le3mt",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_yheh0",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_yheh0",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_bzqo4",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_bzqo4",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_as65o",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_as65o",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_01yrf",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_as65o",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_m833m",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_01yrf",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_6r3jp",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_6r3jp",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_piwy6",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_piwy6",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_unisf",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_piwy6",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_m833m",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_unisf",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_1ue7d",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_1ue7d",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_eljxp",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_eljxp",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_m833m",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_m833m",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_vyucq",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_gtc48@4",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_kzsml",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_kzsml",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_85l30",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_85l30",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_eon9n",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_eon9n",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_ls5zi",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_ls5zi",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_rfthy",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_ls5zi",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_dw45c",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_rfthy",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_fkku9",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_fkku9",
+        "name": "yes",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_1243e",
+        "type": "if"
+      },
+      {
+        "fromNodeId": "n_fkku9",
+        "name": "no",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_dw45c",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_1243e",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_dw45c",
+        "type": "next"
+      },
+      {
+        "fromNodeId": "n_dw45c",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_vyucq",
+        "type": "next"
+      }
+    ],
+    "id": "6ad1cc2a300f9003500f1da3",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792137355958,
+    "lcName": "poc studio live · slack listener",
+    "modifiedTime": 1792137355958,
+    "name": "POC Studio Live · Slack listener",
+    "nodes": [
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_on_new_message"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "ec1bh-1",
+        "id": "n_aowgf",
+        "index": 1,
+        "inputs": {
+          "triggerInputCondition": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "{{ n_aowgf.outputs.event.bot_id }}",
+                "filter": {
+                  "operator": "MISSING"
+                }
+              },
+              {
+                "operator": "OR",
+                "filters": [
+                  {
+                    "property": "{{ n_aowgf.outputs.event.user }}",
+                    "filter": {
+                      "operator": "NOT_EQUAL",
+                      "value": "U0C9P6MFR62"
+                    }
+                  },
+                  {
+                    "property": "{{ n_aowgf.outputs.event.type }}",
+                    "filter": {
+                      "operator": "EQUAL",
+                      "value": "member_joined_channel"
+                    }
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Slack",
+        "title": "Trigger",
+        "trigger": {
+          "type": "EVENT"
+        },
+        "type": "START"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "ec1bh-1",
+        "id": "n_2rjwo",
+        "index": 2,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "kind": {
+                "type": "string",
+                "title": "Kind"
+              },
+              "nowTs": {
+                "type": "string",
+                "title": "Now as a Slack ts"
+              },
+              "live": {
+                "type": "boolean",
+                "title": "Slack live flag"
+              }
+            }
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "evType": {
+                "type": "string",
+                "title": "Event type"
+              },
+              "evSubtype": {
+                "type": "string",
+                "title": "Subtype"
+              },
+              "evUser": {
+                "type": "string",
+                "title": "User"
+              },
+              "evBotId": {
+                "type": "string",
+                "title": "Bot id"
+              },
+              "evText": {
+                "type": "string",
+                "title": "Text"
+              },
+              "evTs": {
+                "type": "string",
+                "title": "Message ts"
+              },
+              "evThreadTs": {
+                "type": "string",
+                "title": "Thread ts"
+              },
+              "nowMs": {
+                "type": "number",
+                "title": "Now in epoch ms"
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef str = { String name -> (value(name)?.toString() ?: '').trim() }\ndef bot = 'U0C9P6MFR62'\ndef type = str('evType')\ndef subtype = str('evSubtype')\ndef user = str('evUser')\ndef ts = str('evTs')\ndef threadTs = str('evThreadTs')\ndef body = (value('evText')?.toString() ?: '')\ndef kind = 'ignore'\nif (str('evBotId')) {\n  kind = 'ignore'\n} else if (type == 'member_joined_channel') {\n  kind = (user == bot) ? 'joined' : 'ignore'\n} else if (type == 'message' && user && user != bot && (!subtype || subtype in ['thread_broadcast', 'file_share'])) {\n  if (threadTs && threadTs != ts) {\n    kind = (body.trim().toLowerCase() == 'approve') ? 'approve' : 'reply'\n  } else if (body.contains('<@' + bot + '>')) {\n    kind = 'tag'\n  }\n}\nlong ms = (value('nowMs') ?: 0) as long\ndef nowTs = String.format('%d.%06d', ms.intdiv(1000L), (ms % 1000L) * 1000L)\nresult = [kind: kind, nowTs: nowTs, live: true]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "evType": "{{ n_aowgf.outputs.event.type }}",
+            "evSubtype": "{{ n_aowgf.outputs.event.subtype }}",
+            "evUser": "{{ n_aowgf.outputs.event.user }}",
+            "evBotId": "{{ n_aowgf.outputs.event.bot_id }}",
+            "evText": "{{ n_aowgf.outputs.event.text }}",
+            "evTs": "{{ n_aowgf.outputs.event.ts }}",
+            "evThreadTs": "{{ n_aowgf.outputs.event.thread_ts }}",
+            "nowMs": "{{ __RUN__.outputs.currentTime }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Classify the event",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "branch",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "ec1bh-1",
+        "id": "n_gtc48",
+        "index": 3,
+        "inputs": {
+          "branches": [
+            {
+              "id": "1",
+              "inputs": {
+                "conditions": {
+                  "operator": "AND",
+                  "filters": [
+                    {
+                      "property": "{{ n_2rjwo.outputs.result.kind }}",
+                      "filter": {
+                        "operator": "EQUAL",
+                        "value": "joined"
+                      }
+                    }
+                  ]
+                },
+                "name": "Bot joined a channel"
+              }
+            },
+            {
+              "id": "2",
+              "inputs": {
+                "conditions": {
+                  "operator": "AND",
+                  "filters": [
+                    {
+                      "property": "{{ n_2rjwo.outputs.result.kind }}",
+                      "filter": {
+                        "operator": "EQUAL",
+                        "value": "tag"
+                      }
+                    }
+                  ]
+                },
+                "name": "Bot tagged at the top of a channel"
+              }
+            },
+            {
+              "id": "3",
+              "inputs": {
+                "conditions": {
+                  "operator": "AND",
+                  "filters": [
+                    {
+                      "property": "{{ n_2rjwo.outputs.result.kind }}",
+                      "filter": {
+                        "operator": "EQUAL",
+                        "value": "reply"
+                      }
+                    }
+                  ]
+                },
+                "name": "Reply in a manager question thread"
+              }
+            },
+            {
+              "id": "4",
+              "inputs": {
+                "conditions": {
+                  "operator": "AND",
+                  "filters": [
+                    {
+                      "property": "{{ n_2rjwo.outputs.result.kind }}",
+                      "filter": {
+                        "operator": "EQUAL",
+                        "value": "approve"
+                      }
+                    }
+                  ]
+                },
+                "name": "Owner approve reply"
+              }
+            },
+            {
+              "id": "default"
+            }
+          ]
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Route the event",
+        "title": "",
+        "type": "BRANCH"
+      },
+      {
+        "context": {
+          "appName": "branch_condition",
+          "resourceName": "branch_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_gtc48@ec1bh-1@1",
+        "id": "n_gtc48@1",
+        "index": 4,
+        "inputs": {
+          "name": "Bot joined a channel",
+          "conditions": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "{{ n_2rjwo.outputs.result.kind }}",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "joined"
+                }
+              }
+            ]
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Branch Condition",
+        "title": "",
+        "type": "BRANCH_CONDITION"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_get_conversation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_gtc48@ec1bh-1@1",
+        "id": "n_hjz35",
+        "index": 5,
+        "inputs": {
+          "token_type": "bot_token",
+          "channelId": "{{ n_aowgf.outputs.event.channel }}"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Read the channel name",
+        "title": "Get conversation",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_gtc48@ec1bh-1@1",
+        "id": "n_jv322",
+        "index": 6,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_hjz35.outputs.channel.name }}",
+              "filter": {
+                "operator": "EXISTS"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Channel name read?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_fetch_records",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_jv322@n_gtc48@ec1bh-1@1@y",
+        "id": "n_mn0j7",
+        "index": 7,
+        "inputs": {
+          "triggerInputCondition": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "properties_slack_channel",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_hjz35.outputs.channel.name }}"
+                }
+              }
+            ]
+          },
+          "shouldSearchInAnalyticsStore": false,
+          "object_type": "psl_poc",
+          "includeRoleMappings": false,
+          "includeCurrentUserPermissions": false,
+          "translationsOption": "DEFAULT",
+          "page": {
+            "paginateBy": "OFFSET",
+            "limit": 100,
+            "offset": 0
+          },
+          "numberOfRecordsToFetch": "MULTIPLE",
+          "readThroughSessionVariables": false,
+          "includeTotalCount": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Find the use case rows of this channel name",
+        "title": "Fetch records",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "loop",
+          "resourceName": "loop_for_each",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_jv322@n_gtc48@ec1bh-1@1@y",
+        "id": "n_86ivx",
+        "index": 8,
+        "inputs": {
+          "listSource": "{{ n_mn0j7.outputs.objects }}",
+          "captureIterations": true
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "For each use case row of the channel",
+        "title": "For each loop",
+        "type": "LOOP"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_update_record_fields_by_id",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_86ivx@n_jv322@n_gtc48@ec1bh-1@1@y@l",
+        "id": "n_xrhgx",
+        "index": 9,
+        "inputs": {
+          "recordId": "{{ n_86ivx.outputs.item.id }}",
+          "writeThroughSessionVariables": false,
+          "object_type": "psl_poc",
+          "skipIfBlank": false,
+          "skipPermissionCheck": false,
+          "updateFields": [
+            {
+              "fieldName": "properties.slack_channel_id",
+              "actionType": "SET",
+              "setValue": "{{ n_aowgf.outputs.event.channel }}"
+            },
+            {
+              "fieldName": "properties.slack_live",
+              "actionType": "SET",
+              "setValue": "{{ n_2rjwo.outputs.result.live }}"
+            },
+            {
+              "fieldName": "properties.slack_last_ts",
+              "actionType": "SET",
+              "setValue": "{{ n_2rjwo.outputs.result.nowTs }}"
+            }
+          ],
+          "skipSchemaValidation": true,
+          "unsetIfNull": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Link the row to the channel",
+        "title": "Update an existing record's fields",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_jv322@n_gtc48@ec1bh-1@1@y",
+        "id": "n_93vge",
+        "index": 10,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "title": "Message"
+              },
+              "count": {
+                "type": "number",
+                "title": "Linked count"
+              }
+            }
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "names": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "title": "Use case names"
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef names = (value('names') ?: []) as List\ndef cleaned = names.collect { (it?.toString() ?: '').trim().replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;') }.findAll { it }\ndef message = cleaned.isEmpty() ? 'Tag me with the use case name to start a POC' : ('Linked ' + cleaned.size() + ' use case(s): ' + cleaned.join(', '))\nresult = [text: message.toString(), count: cleaned.size()]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "names": {
+              "ua:type": "mappedArray",
+              "source": "{{ n_mn0j7.outputs.objects }}",
+              "items": "{{ n_mn0j7.outputs.objects[0].properties.use_case }}"
+            }
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Write the message to post",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_post_message_in_channel",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_jv322@n_gtc48@ec1bh-1@1@y",
+        "id": "n_z0jyy",
+        "index": 11,
+        "inputs": {
+          "link_names": true,
+          "messageType": "text",
+          "channel": "{{ n_aowgf.outputs.event.channel }}",
+          "text": "{{ n_93vge.outputs.result.text }}",
+          "token_type": "bot_token",
+          "mrkdwn": true
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Say what was linked in the channel",
+        "title": "Post message",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "branch_condition",
+          "resourceName": "branch_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_gtc48@ec1bh-1@2",
+        "id": "n_gtc48@2",
+        "index": 12,
+        "inputs": {
+          "name": "Bot tagged at the top of a channel",
+          "conditions": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "{{ n_2rjwo.outputs.result.kind }}",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "tag"
+                }
+              }
+            ]
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Branch Condition",
+        "title": "",
+        "type": "BRANCH_CONDITION"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_reactions_add",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_gtc48@ec1bh-1@2",
+        "id": "n_i0rim",
+        "index": 13,
+        "inputs": {
+          "channel": "{{ n_aowgf.outputs.event.channel }}",
+          "name": "eyes",
+          "token_type": "bot_token",
+          "timestamp": "{{ n_aowgf.outputs.event.ts }}"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "React with eyes: processing started",
+        "title": "Add reaction",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_list_conversations_replies",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_gtc48@ec1bh-1@2",
+        "id": "n_mmbkl",
+        "index": 14,
+        "inputs": {
+          "channel": "{{ n_aowgf.outputs.event.channel }}",
+          "limit": 50,
+          "token_type": "bot_token",
+          "ts": "{{ n_aowgf.outputs.event.ts }}"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Read the thread of the tag message",
+        "title": "List conversation replies",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_gtc48@ec1bh-1@2",
+        "id": "n_4s0ux",
+        "index": 15,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "answered": {
+                "type": "boolean",
+                "title": "Already answered"
+              }
+            }
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "messages": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                },
+                "title": "Thread messages"
+              },
+              "eventTs": {
+                "type": "string",
+                "title": "Message ts"
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef msgs = (value('messages') ?: []) as List\ndef eventTs = (value('eventTs')?.toString() ?: '').trim()\ndef answered = false\nif (eventTs) {\n  def mine = new BigDecimal(eventTs)\n  msgs.each { m ->\n    def u = m?.user?.toString()\n    def s = m?.ts?.toString()\n    if (u == 'U0C9P6MFR62' && s && new BigDecimal(s) > mine) { answered = true }\n  }\n}\nresult = [answered: answered]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "messages": {
+              "ua:type": "mappedArray",
+              "source": "{{ n_mmbkl.outputs.messages }}",
+              "items": {
+                "user": "{{ n_mmbkl.outputs.messages[0].user }}",
+                "ts": "{{ n_mmbkl.outputs.messages[0].ts }}"
+              }
+            },
+            "eventTs": "{{ n_aowgf.outputs.event.ts }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Look for a reply by the bot",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_gtc48@ec1bh-1@2",
+        "id": "n_fb9o1",
+        "index": 16,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_4s0ux.outputs.result.answered }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": false
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Not answered yet?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_get_conversation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_fb9o1@n_gtc48@ec1bh-1@2@y",
+        "id": "n_30spo",
+        "index": 17,
+        "inputs": {
+          "token_type": "bot_token",
+          "channelId": "{{ n_aowgf.outputs.event.channel }}"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Read the channel name",
+        "title": "Get conversation",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "ai_agents_by_unifyapps",
+          "resourceName": "ai_agents_by_unifyapps_invoke_agent",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_fb9o1@n_gtc48@ec1bh-1@2@y",
+        "id": "n_jr4n2",
+        "index": 18,
+        "inputs": {
+          "callableInterfaceId": "__ua__invoke_ai_agent_by_unifyapps",
+          "triggerWorkflowWithRuntimeType": "IN_MEMORY",
+          "defaultFallbackWorkflowId": "68050ca67df58855654804a0",
+          "parameters": {
+            "aiAgentId": "e_6ad1ca0bc0f97b3e983d2679",
+            "userQuery": "channel id: {{ n_aowgf.outputs.event.channel }}\nchannel name: {{ n_30spo.outputs.channel.name }}\ntagger slack id: {{ n_aowgf.outputs.event.user }}\nthread ts: {{ n_aowgf.outputs.event.ts }}\ntext: {{ n_aowgf.outputs.event.text }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Ask the POC Studio Agent",
+        "title": "Invoke Agent",
+        "type": "CALL_INTERFACE_WORKFLOW"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_fb9o1@n_gtc48@ec1bh-1@2@y",
+        "id": "n_05u73",
+        "index": 19,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "title": "Reply to post"
+              }
+            }
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "replies": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                },
+                "title": "Agent replies"
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef items = (value('replies') ?: []) as List\ndef raw = items.collect { m -> ((m instanceof Map ? m.text : m)?.toString() ?: '').trim() }.findAll { it }.join('\\n\\n')\ndef safe = raw ? raw.replace('<!', '&lt;!') : 'I could not work that out just now. Please tag me again.'\nresult = [text: safe.toString()]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "replies": {
+              "ua:type": "mappedArray",
+              "source": "{{ n_jr4n2.outputs.agentResponses }}",
+              "items": {
+                "text": "{{ n_jr4n2.outputs.agentResponses[0].text }}"
+              }
+            }
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Make the reply safe to post",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_post_message_in_channel",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_fb9o1@n_gtc48@ec1bh-1@2@y",
+        "id": "n_na8tc",
+        "index": 20,
+        "inputs": {
+          "link_names": true,
+          "messageType": "text",
+          "thread_ts": "{{ n_aowgf.outputs.event.ts }}",
+          "channel": "{{ n_aowgf.outputs.event.channel }}",
+          "text": "{{ n_05u73.outputs.result.text }}",
+          "token_type": "bot_token",
+          "mrkdwn": true
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Post the reply under the tag message",
+        "title": "Post message",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_reactions_remove",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_gtc48@ec1bh-1@2",
+        "id": "n_nqsx8",
+        "index": 21,
+        "inputs": {
+          "channel": "{{ n_aowgf.outputs.event.channel }}",
+          "name": "eyes",
+          "timestamp": "{{ n_aowgf.outputs.event.ts }}"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Remove the eyes reaction: processing finished",
+        "title": "Remove reaction",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "branch_condition",
+          "resourceName": "branch_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_gtc48@ec1bh-1@3",
+        "id": "n_gtc48@3",
+        "index": 22,
+        "inputs": {
+          "name": "Reply in a manager question thread",
+          "conditions": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "{{ n_2rjwo.outputs.result.kind }}",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "reply"
+                }
+              }
+            ]
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Branch Condition",
+        "title": "",
+        "type": "BRANCH_CONDITION"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_reactions_add",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_gtc48@ec1bh-1@3",
+        "id": "n_le3mt",
+        "index": 23,
+        "inputs": {
+          "channel": "{{ n_aowgf.outputs.event.channel }}",
+          "name": "eyes",
+          "token_type": "bot_token",
+          "timestamp": "{{ n_aowgf.outputs.event.ts }}"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "React with eyes: processing started",
+        "title": "Add reaction",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_fetch_records",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_gtc48@ec1bh-1@3",
+        "id": "n_yheh0",
+        "index": 24,
+        "inputs": {
+          "triggerInputCondition": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "properties_slack_channel_id",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_aowgf.outputs.event.channel }}"
+                }
+              },
+              {
+                "property": "properties_bot_thread_ts",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_aowgf.outputs.event.thread_ts }}"
+                }
+              }
+            ]
+          },
+          "shouldSearchInAnalyticsStore": false,
+          "object_type": "psl_poc",
+          "includeRoleMappings": false,
+          "includeCurrentUserPermissions": false,
+          "translationsOption": "DEFAULT",
+          "page": {
+            "paginateBy": "OFFSET",
+            "limit": 20,
+            "offset": 0
+          },
+          "numberOfRecordsToFetch": "MULTIPLE",
+          "readThroughSessionVariables": false,
+          "includeTotalCount": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Find the row whose manager question thread this is",
+        "title": "Fetch records",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_gtc48@ec1bh-1@3",
+        "id": "n_bzqo4",
+        "index": 25,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "found": {
+                "type": "boolean",
+                "title": "Found"
+              },
+              "pocId": {
+                "type": "string",
+                "title": "POC id"
+              },
+              "channelName": {
+                "type": "string",
+                "title": "Channel name"
+              }
+            }
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "rows": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                },
+                "title": "Rows of the thread"
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef rows = (value('rows') ?: []) as List\ndef hit = rows.find { r -> (r?.pocId?.toString() ?: '').trim() && !((r?.managerSlackId?.toString() ?: '').trim()) }\nresult = [found: hit != null, pocId: (hit ? hit.pocId.toString() : ''), channelName: (hit ? (hit.channelName?.toString() ?: '') : '')]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "rows": {
+              "ua:type": "mappedArray",
+              "source": "{{ n_yheh0.outputs.objects }}",
+              "items": {
+                "pocId": "{{ n_yheh0.outputs.objects[0].properties.poc_id }}",
+                "managerSlackId": "{{ n_yheh0.outputs.objects[0].properties.manager_slack_id }}",
+                "channelName": "{{ n_yheh0.outputs.objects[0].properties.slack_channel }}"
+              }
+            }
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Pick the row that still has no manager",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_gtc48@ec1bh-1@3",
+        "id": "n_as65o",
+        "index": 26,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_bzqo4.outputs.result.found }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": true
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Manager thread with no manager yet?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_list_conversations_replies",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_as65o@n_gtc48@ec1bh-1@3@y",
+        "id": "n_01yrf",
+        "index": 27,
+        "inputs": {
+          "channel": "{{ n_aowgf.outputs.event.channel }}",
+          "limit": 200,
+          "token_type": "bot_token",
+          "ts": "{{ n_aowgf.outputs.event.thread_ts }}"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Read the thread",
+        "title": "List conversation replies",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_as65o@n_gtc48@ec1bh-1@3@y",
+        "id": "n_6r3jp",
+        "index": 28,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "answered": {
+                "type": "boolean",
+                "title": "Already answered"
+              }
+            }
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "messages": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                },
+                "title": "Thread messages"
+              },
+              "eventTs": {
+                "type": "string",
+                "title": "Message ts"
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef msgs = (value('messages') ?: []) as List\ndef eventTs = (value('eventTs')?.toString() ?: '').trim()\ndef answered = false\nif (eventTs) {\n  def mine = new BigDecimal(eventTs)\n  msgs.each { m ->\n    def u = m?.user?.toString()\n    def s = m?.ts?.toString()\n    if (u == 'U0C9P6MFR62' && s && new BigDecimal(s) > mine) { answered = true }\n  }\n}\nresult = [answered: answered]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "messages": {
+              "ua:type": "mappedArray",
+              "source": "{{ n_01yrf.outputs.messages }}",
+              "items": {
+                "user": "{{ n_01yrf.outputs.messages[0].user }}",
+                "ts": "{{ n_01yrf.outputs.messages[0].ts }}"
+              }
+            },
+            "eventTs": "{{ n_aowgf.outputs.event.ts }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Look for a reply by the bot after this message",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_as65o@n_gtc48@ec1bh-1@3@y",
+        "id": "n_piwy6",
+        "index": 29,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_6r3jp.outputs.result.answered }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": false
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Not answered yet?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "ai_agents_by_unifyapps",
+          "resourceName": "ai_agents_by_unifyapps_invoke_agent",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_piwy6@n_as65o@n_gtc48@ec1bh-1@3@y@y",
+        "id": "n_unisf",
+        "index": 30,
+        "inputs": {
+          "callableInterfaceId": "__ua__invoke_ai_agent_by_unifyapps",
+          "triggerWorkflowWithRuntimeType": "IN_MEMORY",
+          "defaultFallbackWorkflowId": "68050ca67df58855654804a0",
+          "parameters": {
+            "aiAgentId": "e_6ad1ca0bc0f97b3e983d2679",
+            "userQuery": "channel id: {{ n_aowgf.outputs.event.channel }}\nchannel name: {{ n_bzqo4.outputs.result.channelName }}\ntagger slack id: {{ n_aowgf.outputs.event.user }}\nthread ts: {{ n_aowgf.outputs.event.thread_ts }}\npoc id: {{ n_bzqo4.outputs.result.pocId }}\ntext: {{ n_aowgf.outputs.event.text }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Ask the POC Studio Agent",
+        "title": "Invoke Agent",
+        "type": "CALL_INTERFACE_WORKFLOW"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_piwy6@n_as65o@n_gtc48@ec1bh-1@3@y@y",
+        "id": "n_1ue7d",
+        "index": 31,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "text": {
+                "type": "string",
+                "title": "Reply to post"
+              }
+            }
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "replies": {
+                "type": "array",
+                "items": {
+                  "type": "object"
+                },
+                "title": "Agent replies"
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef items = (value('replies') ?: []) as List\ndef raw = items.collect { m -> ((m instanceof Map ? m.text : m)?.toString() ?: '').trim() }.findAll { it }.join('\\n\\n')\ndef safe = raw ? raw.replace('<!', '&lt;!') : 'I could not work that out just now. Please reply again.'\nresult = [text: safe.toString()]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "replies": {
+              "ua:type": "mappedArray",
+              "source": "{{ n_unisf.outputs.agentResponses }}",
+              "items": {
+                "text": "{{ n_unisf.outputs.agentResponses[0].text }}"
+              }
+            }
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Make the reply safe to post",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_post_message_in_channel",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_piwy6@n_as65o@n_gtc48@ec1bh-1@3@y@y",
+        "id": "n_eljxp",
+        "index": 32,
+        "inputs": {
+          "link_names": true,
+          "messageType": "text",
+          "thread_ts": "{{ n_aowgf.outputs.event.thread_ts }}",
+          "channel": "{{ n_aowgf.outputs.event.channel }}",
+          "text": "{{ n_1ue7d.outputs.result.text }}",
+          "token_type": "bot_token",
+          "mrkdwn": true
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Post the reply in the thread",
+        "title": "Post message",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_reactions_remove",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_gtc48@ec1bh-1@3",
+        "id": "n_m833m",
+        "index": 33,
+        "inputs": {
+          "channel": "{{ n_aowgf.outputs.event.channel }}",
+          "name": "eyes",
+          "timestamp": "{{ n_aowgf.outputs.event.ts }}"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Remove the eyes reaction: processing finished",
+        "title": "Remove reaction",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "branch_condition",
+          "resourceName": "branch_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_gtc48@ec1bh-1@4",
+        "id": "n_gtc48@4",
+        "index": 34,
+        "inputs": {
+          "name": "Owner approve reply",
+          "conditions": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "{{ n_2rjwo.outputs.result.kind }}",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "approve"
+                }
+              }
+            ]
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Branch Condition",
+        "title": "",
+        "type": "BRANCH_CONDITION"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_reactions_add",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_gtc48@ec1bh-1@4",
+        "id": "n_kzsml",
+        "index": 35,
+        "inputs": {
+          "channel": "{{ n_aowgf.outputs.event.channel }}",
+          "name": "eyes",
+          "token_type": "bot_token",
+          "timestamp": "{{ n_aowgf.outputs.event.ts }}"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "React with eyes: processing started",
+        "title": "Add reaction",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_list_conversations_replies",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_gtc48@ec1bh-1@4",
+        "id": "n_85l30",
+        "index": 36,
+        "inputs": {
+          "channel": "{{ n_aowgf.outputs.event.channel }}",
+          "limit": 1,
+          "token_type": "bot_token",
+          "ts": "{{ n_aowgf.outputs.event.thread_ts }}"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Read the post the reply sits under",
+        "title": "List conversation replies",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "code_by_unifyapps",
+          "resourceName": "code_by_unifyapps_groovy",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_gtc48@ec1bh-1@4",
+        "id": "n_eon9n",
+        "index": 37,
+        "inputs": {
+          "output": {
+            "type": "object",
+            "properties": {
+              "found": {
+                "type": "boolean",
+                "title": "Found"
+              },
+              "pocId": {
+                "type": "string",
+                "title": "POC id"
+              }
+            }
+          },
+          "input": {
+            "type": "object",
+            "properties": {
+              "parentText": {
+                "type": "string",
+                "title": "Parent post text"
+              },
+              "parentUser": {
+                "type": "string",
+                "title": "Parent post author"
+              }
+            }
+          },
+          "code": "def value = { String name -> binding.hasVariable(name) ? binding.getVariable(name) : null }\ndef first = (value('parentText')?.toString() ?: '').split(/\\r?\\n/, 2)[0]\ndef m = (first =~ /\\[(POC-[A-Za-z0-9._-]+)\\]/)\ndef pocId = m.find() ? m.group(1) : ''\ndef fromBot = (value('parentUser')?.toString() ?: '') == 'U0C9P6MFR62'\nresult = [found: (pocId != '' && fromBot), pocId: pocId]",
+          "compile_static": false,
+          "captureStdOutput": false,
+          "parameters": {
+            "parentText": "{{ n_85l30.outputs.messages[0].text }}",
+            "parentUser": "{{ n_85l30.outputs.messages[0].user }}"
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Read the POC id from the first line of the bot post",
+        "title": "Execute Groovy code",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_gtc48@ec1bh-1@4",
+        "id": "n_ls5zi",
+        "index": 38,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_eon9n.outputs.result.found }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": true
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Bot post that names a POC?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "storage_by_unifyapps",
+          "resourceName": "storage_by_unifyapps_fetch_records",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_ls5zi@n_gtc48@ec1bh-1@4@y",
+        "id": "n_rfthy",
+        "index": 39,
+        "inputs": {
+          "triggerInputCondition": {
+            "operator": "AND",
+            "filters": [
+              {
+                "property": "properties_poc_id",
+                "filter": {
+                  "operator": "EQUAL",
+                  "value": "{{ n_eon9n.outputs.result.pocId }}"
+                }
+              }
+            ]
+          },
+          "shouldSearchInAnalyticsStore": false,
+          "object_type": "psl_poc",
+          "includeRoleMappings": false,
+          "includeCurrentUserPermissions": false,
+          "translationsOption": "DEFAULT",
+          "numberOfRecordsToFetch": "SINGLE",
+          "readThroughSessionVariables": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Read the POC row",
+        "title": "Fetch records",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "if_else",
+          "resourceName": "if_else_condition",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_ls5zi@n_gtc48@ec1bh-1@4@y",
+        "id": "n_fkku9",
+        "index": 40,
+        "inputs": {
+          "filters": [
+            {
+              "property": "{{ n_rfthy.outputs.id }}",
+              "filter": {
+                "operator": "EXISTS"
+              }
+            },
+            {
+              "property": "{{ n_rfthy.outputs.properties.owner_slack_id }}",
+              "filter": {
+                "operator": "EQUAL",
+                "value": "{{ n_aowgf.outputs.event.user }}"
+              }
+            }
+          ],
+          "operator": "AND"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Sent by the owner of the row?",
+        "title": "Condition",
+        "type": "IF_ELSE"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_call_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "n_fkku9@n_ls5zi@n_gtc48@ec1bh-1@4@y@y",
+        "id": "n_1243e",
+        "index": 41,
+        "inputs": {
+          "automationId": "6ad1c75967956c53e38f1a70",
+          "synchronous": true,
+          "version": "-1",
+          "parameters": {
+            "poc_id": "{{ n_eon9n.outputs.result.pocId }}",
+            "role": "owner",
+            "caller_slack_id": "{{ n_aowgf.outputs.event.user }}"
+          },
+          "executeOnSameVM": false
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Approve the gate as the owner",
+        "title": "Call {{moduleDefs.WORKFLOW_DEFINITION.name.toLowerCase()}}",
+        "type": "CALL_WORKFLOW"
+      },
+      {
+        "context": {
+          "appName": "slack",
+          "connectionId": "6ad1be602ac9ba64653a9d36",
+          "resourceName": "slack_reactions_remove",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "CONTINUE",
+        "groupId": "n_gtc48@ec1bh-1@4",
+        "id": "n_dw45c",
+        "index": 42,
+        "inputs": {
+          "channel": "{{ n_aowgf.outputs.event.channel }}",
+          "name": "eyes",
+          "timestamp": "{{ n_aowgf.outputs.event.ts }}"
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "CONTINUE"
+        },
+        "skip": false,
+        "subTitle": "Remove the eyes reaction: processing finished",
+        "title": "Remove reaction",
+        "type": "ACTION"
+      },
+      {
+        "context": {
+          "appName": "stop",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "ec1bh-1",
+        "id": "n_vyucq",
+        "index": 43,
+        "inputs": {},
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Done",
+        "title": "Stop",
+        "type": "STOP"
+      }
+    ],
+    "ownerUserId": 66770,
+    "settings": {
+      "enableNodeLevelLogging": true,
+      "enableRunLogging": true,
+      "enableVariableLogging": true,
+      "route": {
+        "default": false,
+        "tierName": "global"
+      }
+    },
+    "standard": false,
+    "tags": [
+      "AI Generated",
+      "Nebula"
+    ],
+    "version": 2,
+    "entityType": "WORKFLOW_DEFINITION"
+  }
+}

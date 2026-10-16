@@ -1,0 +1,30 @@
+{
+  "tasks": [
+    {
+      "id": "t39",
+      "status": "ok",
+      "change": "updated",
+      "ids": {
+        "entity": "app-79ea7266eab9",
+        "commit": "361edf4f06518abd08c5b9885323f04a318f7ec9"
+      },
+      "readBack": [
+        "POC Studio Live app-79ea7266eab9: get_code_app before the publish answered head.sha 361edf4f06518abd08c5b9885323f04a318f7ec9 (\"Approve through the Approve gate automation, with the To review list\"), gitLinked false, busy false, deployment {deployed: false}; the branch was released (no hold of mine open).",
+        "POC Studio Live app-79ea7266eab9: publish_code_app (versionNote \"POC Studio Live v1: the cloned POC Studio UI on the new psl_ objects, Build button, Approve through Slack\") answered ok true, version v1, commitHash 361edf4f06518abd08c5b9885323f04a318f7ec9, branch main, deployed {deployed: true, commitHash: 361edf4f06518abd08c5b9885323f04a318f7ec9, entityVersion: 6}, routes / (Home), /feedback (Feedback), /login, /forgot-password, /update-password.",
+        "POC Studio Live app-79ea7266eab9: get_code_app after the publish answered deployment {deployed: true, commitHash: 361edf4f06518abd08c5b9885323f04a318f7ec9, entityVersion: 6}, interfaceRecord version 6, mode code, security PRIVATE, and head.sha 053e1fb76215e1c50539c1f2dfcfe7b0f41a7264 with message \"publish v1\", the publish's own commit after the deployed one, as expected.",
+        "POC Studio Live app-79ea7266eab9: the address the tools gave for the app is https://app-79ea7266eab9-orbit.tensor-uat.unifyapps.com (create_code_app's `url`, with domainMapping created true); the publish reply itself carries no address."
+      ],
+      "unverified": [
+        "POC Studio Live published address: https://app-79ea7266eab9-orbit.tensor-uat.unifyapps.com comes from create_code_app, not from the publish reply, and was not opened (no browser from a builder; the app is PRIVATE and needs a sign-in). One check: open it signed in and see Home.",
+        "POC Studio Live deployed routes: the publish read-back lists /, /feedback and the three sign-in pages but not /pocs/:pocId (a path with a parameter); whether the deployed app serves a POC page at /pocs/<poc id> was not seen. One check: open <published address>/pocs/POC-pentland-vulnerability-20261001 signed in.",
+        "POC Studio Live deployed behaviour of Build and Approve against the live automations (Start build deployedVersion 2, Approve gate deployedVersion 2 per Built so far) was not exercised: no button was clicked, since each writes a POC row."
+      ],
+      "notes": [
+        "The deployed commit is the head of the last code-app task (t38, 361edf4f); the publish added its own commit, publish v1 (053e1fb7), so the head and the deployed commit differ on purpose.",
+        "The CSP of the app is still in report-only mode (enforceCSP unset): it reports violations and blocks nothing, as get_code_app_settings said when it was set up.",
+        "handover: published address https://app-79ea7266eab9-orbit.tensor-uat.unifyapps.com (from create_code_app's url; the publish reply gave none, so the main session saves it as POC_STUDIO_APP_URL and may confirm it by opening it signed in), app id app-79ea7266eab9, deployed version v1 at commit 361edf4f06518abd08c5b9885323f04a318f7ec9, preview address https://orbit.uat.unifyapps.com/agent-api/preview/b/app-79ea7266eab9/main/; POC page links are <address>/pocs/<poc id>."
+      ],
+      "error": ""
+    }
+  ]
+}

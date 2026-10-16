@@ -1,0 +1,19 @@
+{
+  "createdTime": 1792133826969,
+  "deleted": false,
+  "entityType": "solution_linked_assets",
+  "id": "e_6ad1cac2674d735893a4e2e3",
+  "lastModifiedBy": 66770,
+  "lastPlatformUpdateBy": 66770,
+  "lastPlatformUpdateOn": 1792133826969,
+  "modifiedTime": 1792133826969,
+  "ownerUserId": 66770,
+  "properties": {
+    "asset_class": "ai_agent",
+    "asset_id": "e_6ad1ca0bc0f97b3e983d2679",
+    "state": "COMPLETED",
+    "solution_id": "e_6ad1b45199f8a565171d7f1c"
+  },
+  "standard": false,
+  "version": 0
+}

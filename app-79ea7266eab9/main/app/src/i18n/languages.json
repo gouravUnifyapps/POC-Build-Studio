@@ -1,0 +1,6 @@
+{
+  "default": "en",
+  "languages": {
+    "en": { "label": "English", "dir": "ltr" }
+  }
+}

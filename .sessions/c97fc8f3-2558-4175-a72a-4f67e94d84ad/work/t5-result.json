@@ -1,0 +1,8 @@
+{
+  "ids": { "entity": "6ad1cd1b6123771ba2c0346e" },
+  "readBack": [
+    "search_workflows: POC Studio Live · Approve skill suggestion (6ad1cd1b6123771ba2c0346e) version 1, deployment.status DEPLOYED, definitionVersion 1, deployedVersion 2, deployedAt 2026-10-16T07:20:18Z"
+  ],
+  "unverified": [],
+  "notes": ["Deploy landed at 07:20:18Z in the earlier session; its builder stopped before reporting. Recorded from a live read in the resuming session."]
+}

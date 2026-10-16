@@ -1,0 +1,36 @@
+{
+  "tasks": [
+    {
+      "id": "t38",
+      "status": "ok",
+      "change": "updated",
+      "ids": {
+        "entity": "app-79ea7266eab9",
+        "commit": "361edf4f06518abd08c5b9885323f04a318f7ec9"
+      },
+      "readBack": [
+        "POC Studio Live app-79ea7266eab9: get_code_app before the change answered head 3b85fcc91c08d8170f2fe7a46a3374148cae3a64 (the t37 commit), busy false; get_branch_codebase with since that commit answered upToDate.",
+        "POC Studio Live app-79ea7266eab9: push_code_patch answered committed true, builds true, commit 361edf4f06518abd08c5b9885323f04a318f7ec9 (parent 3b85fcc9), 8 files: src/data/approveGate.ts (added), src/data/callables.ts, src/data/orbit.ts (+5 -61), src/orbit/components/DocView.tsx, src/orbit/lib/actions.ts (+26 -47), src/orbit/lib/model.ts, src/orbit/views/poc/ApprovalCard.tsx, src/orbit/views/poc/ArtifactsTab.tsx.",
+        "POC Studio Live app-79ea7266eab9: get_code_app after the release answered head.sha 361edf4f06518abd08c5b9885323f04a318f7ec9, message \"Approve through the Approve gate automation, with the To review list\", busy false.",
+        "POC Studio Live app/src/data/callables.ts as pushed holds `// >>> callable 6ad1c75967956c53e38f1a70` exporting APPROVE_GATE (dataSource id e_6ad1cac5674d735893a4e364, overridable poc_id, role, caller_email, caller_name, caller_slack_id) next to the Start build block `// >>> callable 6ad1c66313ea2c28e645e538` (START_BUILD), from create_code_app_data_sources kind automation, name Approve gate; app/src/data/bindings.ts still names FETCH id e_6ad1c855c0f97b3e983c6f47.",
+        "POC Studio Live approval card (views/poc/ApprovalCard.tsx): inside .tx under the gate summary, a `.ob-artgroup` holding `<p class=\"micro\">To review · n</p>` and `.ob-doclist` with one `.ob-docrow` (the Documents tab's DocRow) per latest document of the open gate's pack whose status is in_review (reviewDocsOf in lib/model.ts), each row opening the Reader through the same opener the Documents tab now shares (useOpenDoc in components/DocView.tsx); the section is not rendered when there are none; the note prints #<channel> (t37).",
+        "POC Studio Live Approve (manager only, `.btn.btn-p.ob-approval-btn`): approveGate in lib/actions.ts now calls the automation through src/data/approveGate.ts with poc_id, role manager, caller_email the signed-in viewer's email, caller_name the viewer's full name (useViewer, from useGetApiUserContext) and caller_slack_id '' (empty); the result's `status` decides, never the HTTP status: decided with empty warnings gives `<Phase> approved` (gate passed) or `Your approval of <Phase> is saved` + Waiting on <owner> in Slack; decided with warnings gives the warn toast `Approved, but Slack didn't answer`; already_decided gives the warn toast `Already decided` and the POC, documents and activity lists are read again so the button goes; forbidden gives `Only the manager can approve`; error gives `Couldn't save your approval` with the automation's message; working is disabled, aria-busy, `Approving…`.",
+        "POC Studio Live no direct approve write left: grep of src/orbit, src/data/orbit.ts, src/data/approveGate.ts and src/data/startBuild.ts for useCreateRecord, useUpdateRecord, useDeleteRecord, updatePoc, logActivity and useOrbitWrites finds nothing (exit 1); the app's only writes are the two automation calls.",
+        "POC Studio Live build: tsc -b (exit 0) and vite build (exit 0) passed locally before the push; the engine built the same push green.",
+        "POC Studio Live previewUrl of the green push: https://orbit.uat.unifyapps.com/agent-api/preview/b/app-79ea7266eab9/main/"
+      ],
+      "unverified": [
+        "POC Studio Live preview https://orbit.uat.unifyapps.com/agent-api/preview/b/app-79ea7266eab9/main/ was not opened (no browser from a builder; signed-in only): the To review list on the story row POC-pentland-vulnerability-20261001 (its PRD and mockup are in_review in g2) and how it looks inside the card were not seen. One check: open the story row signed in and look at the approval card.",
+        "POC Studio Live Approve was not clicked (it would write the seeded story row), so none of the five toasts was seen. The automation 6ad1c75967956c53e38f1a70 is still the deployed shell and answers status error with the message 'This is a contract shell: the approve logic is not built yet.', so until its logic lands Approve shows the `Couldn't save your approval` toast with that sentence. One check: press Approve as the manager once the logic task has deployed.",
+        "POC Studio Live look of the To review rows inside the card: the kit rule `.ps-banner .tx span` (font-size 13.5px, colour --ink-2) is more specific than the `.ob-docrow-*` and `.ob-doctype` rules, so the three spans of each row probably read slightly larger and greyer than the same rows in the Documents tab; correcting it needs a CSS rule beyond the four design.md allows, so none was added. One check: compare a To review row with a Documents row in the preview."
+      ],
+      "notes": [
+        "Removed with the direct write: useOrbitWrites, updatePoc, logActivity, newActivityId and their helpers (clean, merged, LOOKUPS) from src/data/orbit.ts, the `_raw` field of Poc (it only fed the whole-record update), and the logFailed field of the approve result; the template's own write hooks in src/lib/data.ts and toPayload in bindings.ts remain, unused. The Documents tab's open-a-document logic moved into useOpenDoc (components/DocView.tsx) so the To review rows and the tab open documents the same way; behaviour of the tab is unchanged.",
+        "The approval toasts use the page's default ok, warn and fail from lib/notify.ts; forbidden and error add the automation's own `message` as the description when it sent one. A saved approval with a non-empty `warnings` list shows only the Slack warning toast, as design.md's five states list it.",
+        "Tailwind is used only for the vertical margin of the To review group (`my-2`); no colour, radius, shadow or type utility and no new CSS rule.",
+        "handover: app id app-79ea7266eab9, branch main, head 361edf4f06518abd08c5b9885323f04a318f7ec9, routes / (Home), /pocs/:pocId and /feedback, preview address https://orbit.uat.unifyapps.com/agent-api/preview/b/app-79ea7266eab9/main/; src/data/approveGate.ts is the Approve gate wrapper (APPROVE_GATE from src/data/callables.ts, status read from data.response, POC, document and activity lists refreshed and awaited on decided and already_decided); the Approve gate automation 6ad1c75967956c53e38f1a70 is still a shell that answers status error, so the app's Approve cannot be exercised end to end until its logic task deploys over the same id."
+      ],
+      "error": ""
+    }
+  ]
+}

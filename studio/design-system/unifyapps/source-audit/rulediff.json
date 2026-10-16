@@ -1,0 +1,2747 @@
+[
+ [
+  [
+   "",
+   ".agenda .at"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".ai .hd .micro"
+  ],
+  "color",
+  "var(--sp-blue)",
+  "var(--brand)"
+ ],
+ [
+  [
+   "",
+   ".ai:not(.msg)"
+  ],
+  "background",
+  "linear-gradient(135deg,rgba(0,51,161,.075) 0%,rgba(0,113,206,.045) 48%,rgba(204,39,176,.065) 100%),var(--glass-1)",
+  "linear-gradient(135deg,rgba(41,70,27,.075) 0%,rgba(74,124,48,.045) 48%,rgba(133,114,66,.065) 100%),var(--glass-1)"
+ ],
+ [
+  [
+   "",
+   ".amb.a"
+  ],
+  "background",
+  "radial-gradient(62% 52% at 12% 4%,rgba(var(--aur-a),var(--aur-1)),transparent 72%),radial-gradient(56% 48% at 90% 20%,rgba(var(--aur-b),var(--aur-3)),transparent 72%),radial-gradient(64% 54% at 28% 82%,rgba(var(--aur-a),var(--aur-1)),transparent 74%)",
+  "radial-gradient(62% 52% at 12% 4%,var(--aurora-1),transparent 72%),radial-gradient(56% 48% at 90% 20%,var(--aurora-3),transparent 72%),radial-gradient(64% 54% at 28% 82%,var(--aurora-1),transparent 74%)"
+ ],
+ [
+  [
+   "",
+   ".amb.b"
+  ],
+  "background",
+  "radial-gradient(50% 42% at 78% 64%,rgba(var(--aur-c),var(--aur-2)),transparent 72%),radial-gradient(44% 38% at 6% 44%,rgba(var(--aur-c),var(--aur-2)),transparent 72%)",
+  "radial-gradient(50% 42% at 78% 64%,var(--aurora-2),transparent 72%),radial-gradient(44% 38% at 6% 44%,var(--aurora-2),transparent 72%)"
+ ],
+ [
+  [
+   "",
+   ".av"
+  ],
+  "background",
+  "linear-gradient(150deg,#0058B8,#0033A1)",
+  "linear-gradient(150deg,var(--fill-1),var(--fill-3))"
+ ],
+ [
+  [
+   "",
+   ".av"
+  ],
+  "box-shadow",
+  "inset 0 1px 0 rgba(255,255,255,.22),0 1px 3px rgba(6,22,54,.20)",
+  "inset 0 1px 0 rgba(255,255,255,.22),0 1px 3px rgba(17,26,12,.20)"
+ ],
+ [
+  [
+   "",
+   ".av.c2"
+  ],
+  "background",
+  "linear-gradient(150deg,#B93CA5,#8C1E79)",
+  "linear-gradient(150deg,#7D6F4A,#5B4F2F)"
+ ],
+ [
+  [
+   "",
+   ".btn"
+  ],
+  "min-height",
+  null,
+  "40px"
+ ],
+ [
+  [
+   "",
+   ".btn"
+  ],
+  "gap",
+  null,
+  "8px"
+ ],
+ [
+  [
+   "",
+   ".btn"
+  ],
+  "display",
+  null,
+  "inline-flex"
+ ],
+ [
+  [
+   "",
+   ".btn"
+  ],
+  "color",
+  null,
+  "inherit"
+ ],
+ [
+  [
+   "",
+   ".btn"
+  ],
+  "align-items",
+  null,
+  "center"
+ ],
+ [
+  [
+   "",
+   ".btn"
+  ],
+  "justify-content",
+  null,
+  "center"
+ ],
+ [
+  [
+   "",
+   ".btn-p"
+  ],
+  "background",
+  "linear-gradient(180deg,#0071CE 0%,#005DB4 42%,#0035A6 100%)",
+  "linear-gradient(180deg,var(--fill-1) 0%,var(--fill-2) 42%,var(--fill-3) 100%)"
+ ],
+ [
+  [
+   "",
+   ".btn-p"
+  ],
+  "color",
+  "#fff",
+  "var(--on-fill)"
+ ],
+ [
+  [
+   "",
+   ".btn-p"
+  ],
+  "box-shadow",
+  "0 1px 1px rgba(6,22,54,.18),0 10px 22px -12px rgba(0,63,168,.70),inset 0 1px 0 rgba(255,255,255,.28)",
+  "0 1px 1px rgba(17,26,12,.18),0 10px 22px -12px rgba(47,80,31,.70),inset 0 1px 0 rgba(255,255,255,.28)"
+ ],
+ [
+  [
+   "",
+   ".btn-p:hover"
+  ],
+  "box-shadow",
+  "0 1px 1px rgba(6,22,54,.20),0 16px 30px -14px rgba(0,63,168,.80),inset 0 1px 0 rgba(255,255,255,.32)",
+  "0 1px 1px rgba(17,26,12,.20),0 16px 30px -14px rgba(47,80,31,.80),inset 0 1px 0 rgba(255,255,255,.32)"
+ ],
+ [
+  [
+   "",
+   ".btn:focus-visible"
+  ],
+  "outline",
+  "2px solid var(--sp-blue)",
+  "2px solid var(--brand)"
+ ],
+ [
+  [
+   "",
+   ".cal .d.busy .evd"
+  ],
+  "background",
+  "var(--st-attention)",
+  "var(--status-attention)"
+ ],
+ [
+  [
+   "",
+   ".cal .d.sel"
+  ],
+  "background",
+  "linear-gradient(180deg,#0071CE,#005DB4 60%,#0035A6)",
+  "linear-gradient(180deg,var(--fill-1),var(--fill-2) 60%,var(--fill-3))"
+ ],
+ [
+  [
+   "",
+   ".cal .d.today"
+  ],
+  "box-shadow",
+  "inset 0 0 0 1.5px var(--sp-blue)",
+  "inset 0 0 0 1.5px var(--brand)"
+ ],
+ [
+  [
+   "",
+   ".cal .dow"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".cal .evd"
+  ],
+  "background",
+  "var(--sp-blue)",
+  "var(--brand)"
+ ],
+ [
+  [
+   "",
+   ".canv .gen2"
+  ],
+  "background",
+  "linear-gradient(90deg,rgba(0,51,161,.07),rgba(0,113,206,.04) 55%,rgba(204,39,176,.05))",
+  "linear-gradient(90deg,rgba(41,70,27,.07),rgba(74,124,48,.04) 55%,rgba(133,114,66,.05))"
+ ],
+ [
+  [
+   "",
+   ".canv .gen2 .dot3"
+  ],
+  "background",
+  "var(--sp-blue)",
+  "var(--brand)"
+ ],
+ [
+  [
+   "",
+   ".canvas .composer"
+  ],
+  "box-shadow",
+  "var(--edge),0 2px 6px rgba(6,22,54,.07),0 0 34px -6px rgba(0,113,206,.38),0 0 60px -10px rgba(204,39,176,.26)",
+  "var(--edge),0 2px 6px rgba(17,26,12,.07),0 0 34px -6px rgba(74,124,48,.38),0 0 60px -10px rgba(133,114,66,.26)"
+ ],
+ [
+  [
+   "",
+   ".chart .ax"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".chart .cht .unit"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".chev"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".chips button"
+  ],
+  "box-shadow",
+  "var(--edge),0 1px 2px rgba(6,22,54,.04)",
+  "var(--edge),0 1px 2px rgba(17,26,12,.04)"
+ ],
+ [
+  [
+   "",
+   ".chipsel"
+  ],
+  "border",
+  null,
+  "0"
+ ],
+ [
+  [
+   "",
+   ".chipsel"
+  ],
+  "cursor",
+  null,
+  "pointer"
+ ],
+ [
+  [
+   "",
+   ".chipsel"
+  ],
+  "font-family",
+  null,
+  "inherit"
+ ],
+ [
+  [
+   "",
+   ".chipsel"
+  ],
+  "box-shadow",
+  "var(--edge),0 1px 2px rgba(6,22,54,.04)",
+  "var(--edge),0 1px 2px rgba(17,26,12,.04)"
+ ],
+ [
+  [
+   "",
+   ".convo .dock .composer"
+  ],
+  "box-shadow",
+  "var(--edge),0 1px 2px rgba(6,22,54,.05)",
+  "var(--edge),0 1px 2px rgba(17,26,12,.05)"
+ ],
+ [
+  [
+   "",
+   ".ctl"
+  ],
+  "box-shadow",
+  "var(--edge),0 1px 2px rgba(6,22,54,.04)",
+  "var(--edge),0 1px 2px rgba(17,26,12,.04)"
+ ],
+ [
+  [
+   "",
+   ".ctl.err"
+  ],
+  "background",
+  "linear-gradient(0deg,var(--st-negative-t),var(--st-negative-t)),var(--glass-2)",
+  "linear-gradient(0deg,var(--status-negative-tint),var(--status-negative-tint)),var(--glass-2)"
+ ],
+ [
+  [
+   "",
+   ".ctl.err"
+  ],
+  "box-shadow",
+  "var(--edge),0 0 0 3px rgba(150,48,42,.16),0 1px 2px rgba(6,22,54,.05)",
+  "var(--edge),0 0 0 3px rgba(148,50,42,.16),0 1px 2px rgba(17,26,12,.05)"
+ ],
+ [
+  [
+   "",
+   ".ctl.focus"
+  ],
+  "box-shadow",
+  "var(--edge),0 0 0 3px rgba(0,113,206,.18),0 1px 2px rgba(6,22,54,.05)",
+  "var(--edge),0 0 0 3px var(--focus-halo)"
+ ],
+ [
+  [
+   "",
+   ".ctl.warn"
+  ],
+  "background",
+  "linear-gradient(0deg,var(--st-attention-t),var(--st-attention-t)),var(--glass-2)",
+  "linear-gradient(0deg,var(--status-attention-tint),var(--status-attention-tint)),var(--glass-2)"
+ ],
+ [
+  [
+   "",
+   ".ctl.warn"
+  ],
+  "box-shadow",
+  "var(--edge),0 0 0 3px rgba(138,90,0,.15),0 1px 2px rgba(6,22,54,.05)",
+  "var(--edge),0 0 0 3px rgba(159,78,7,.15),0 1px 2px rgba(17,26,12,.05)"
+ ],
+ [
+  [
+   "",
+   ".delta"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".delta.dn"
+  ],
+  "color",
+  "var(--st-negative)",
+  "var(--status-negative)"
+ ],
+ [
+  [
+   "",
+   ".delta.up"
+  ],
+  "color",
+  "var(--st-positive)",
+  "var(--status-positive)"
+ ],
+ [
+  [
+   "",
+   ".display"
+  ],
+  "letter-spacing",
+  "-.028em",
+  "-.02em"
+ ],
+ [
+  [
+   "",
+   ".display"
+  ],
+  "font-weight",
+  "600",
+  "400"
+ ],
+ [
+  [
+   "",
+   ".drop"
+  ],
+  "outline",
+  null,
+  "1.5px dashed var(--hair-2)"
+ ],
+ [
+  [
+   "",
+   ".drop"
+  ],
+  "font-size",
+  null,
+  "14px"
+ ],
+ [
+  [
+   "",
+   ".drop"
+  ],
+  "color",
+  null,
+  "var(--ink-3)"
+ ],
+ [
+  [
+   "",
+   ".drop"
+  ],
+  "outline-offset",
+  null,
+  "-2px"
+ ],
+ [
+  [
+   "",
+   ".faces .more"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".feed .fd.att"
+  ],
+  "background",
+  "var(--st-attention-t)",
+  "var(--status-attention-tint)"
+ ],
+ [
+  [
+   "",
+   ".feed .fd.att"
+  ],
+  "color",
+  "var(--st-attention)",
+  "var(--status-attention)"
+ ],
+ [
+  [
+   "",
+   ".feed .fd.neg"
+  ],
+  "background",
+  "var(--st-negative-t)",
+  "var(--status-negative-tint)"
+ ],
+ [
+  [
+   "",
+   ".feed .fd.neg"
+  ],
+  "color",
+  "var(--st-negative)",
+  "var(--status-negative)"
+ ],
+ [
+  [
+   "",
+   ".feed .fd.pos"
+  ],
+  "background",
+  "var(--st-positive-t)",
+  "var(--status-positive-tint)"
+ ],
+ [
+  [
+   "",
+   ".feed .fd.pos"
+  ],
+  "color",
+  "var(--st-positive)",
+  "var(--status-positive)"
+ ],
+ [
+  [
+   "",
+   ".feed .fw"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".field"
+  ],
+  "box-shadow",
+  "var(--edge),0 1px 2px rgba(6,22,54,.04)",
+  "var(--edge),0 1px 2px rgba(17,26,12,.04)"
+ ],
+ [
+  [
+   "",
+   ".fld > label"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".hint.e"
+  ],
+  "color",
+  "var(--st-negative)",
+  "var(--status-negative)"
+ ],
+ [
+  [
+   "",
+   ".hint.w"
+  ],
+  "color",
+  "var(--st-attention)",
+  "var(--status-attention)"
+ ],
+ [
+  [
+   "",
+   ".kb .col.wip .ct"
+  ],
+  "background",
+  "var(--st-attention-t)",
+  "var(--status-attention-tint)"
+ ],
+ [
+  [
+   "",
+   ".kb .col.wip .ct"
+  ],
+  "color",
+  "var(--st-attention)",
+  "var(--status-attention)"
+ ],
+ [
+  [
+   "",
+   ".kb .ct"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".kb .kc"
+  ],
+  "transition",
+  null,
+  "box-shadow var(--ease)"
+ ],
+ [
+  [
+   "",
+   ".kb .kc"
+  ],
+  "cursor",
+  null,
+  "grab"
+ ],
+ [
+  [
+   "",
+   ".kb .kc"
+  ],
+  "box-shadow",
+  "var(--edge),0 1px 2px rgba(6,22,54,.05)",
+  "var(--edge),0 1px 2px rgba(17,26,12,.05)"
+ ],
+ [
+  [
+   "",
+   ".kb .kc .kid"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".kpi2.upd"
+  ],
+  "background",
+  "rgba(0,113,206,.07)",
+  "rgba(74,124,48,.07)"
+ ],
+ [
+  [
+   "",
+   ".kpi2.upd"
+  ],
+  "box-shadow",
+  "0 0 0 2px rgba(0,113,206,.30)",
+  "0 0 0 2px rgba(74,124,48,.30)"
+ ],
+ [
+  [
+   "",
+   ".kpi2.upd::after"
+  ],
+  "background",
+  "var(--sp-blue)",
+  "var(--brand)"
+ ],
+ [
+  [
+   "",
+   ".loop .on"
+  ],
+  "background",
+  "linear-gradient(180deg,rgba(0,113,206,.10),rgba(0,113,206,.03))",
+  "linear-gradient(180deg,rgba(74,124,48,.10),rgba(74,124,48,.03))"
+ ],
+ [
+  [
+   "",
+   ".loop .on b"
+  ],
+  "color",
+  "var(--sp-blue)",
+  "var(--brand)"
+ ],
+ [
+  [
+   "",
+   ".menu a kbd"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".menu a.danger"
+  ],
+  "color",
+  "var(--st-negative)",
+  "var(--status-negative)"
+ ],
+ [
+  [
+   "",
+   ".micro"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",ui-monospace,monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".msg .who"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".msg.ai .bub"
+  ],
+  "box-shadow",
+  "var(--edge),0 1px 2px rgba(6,22,54,.05)",
+  "var(--edge),0 1px 2px rgba(17,26,12,.05)"
+ ],
+ [
+  [
+   "",
+   ".msg.me .bub"
+  ],
+  "background",
+  "linear-gradient(180deg,#0071CE,#005DB4 62%,#0059B6)",
+  "linear-gradient(180deg,var(--fill-1),var(--fill-2) 62%,var(--fill-3))"
+ ],
+ [
+  [
+   "",
+   ".msg.me .bub"
+  ],
+  "box-shadow",
+  "inset 0 1px 0 rgba(255,255,255,.24),0 6px 16px -10px rgba(0,63,168,.6)",
+  "inset 0 1px 0 rgba(255,255,255,.24),0 6px 16px -10px rgba(47,80,31,.6)"
+ ],
+ [
+  [
+   "",
+   ".note"
+  ],
+  "background",
+  "linear-gradient(180deg,rgba(138,90,0,.09),rgba(138,90,0,.03)),var(--glass-1)",
+  "linear-gradient(180deg,rgba(159,78,7,.09),rgba(159,78,7,.03)),var(--glass-1)"
+ ],
+ [
+  [
+   "",
+   ".note .micro"
+  ],
+  "color",
+  "var(--st-attention)",
+  "var(--status-attention)"
+ ],
+ [
+  [
+   "",
+   ".opt"
+  ],
+  "font",
+  null,
+  "inherit"
+ ],
+ [
+  [
+   "",
+   ".opt"
+  ],
+  "background",
+  null,
+  "none"
+ ],
+ [
+  [
+   "",
+   ".opt"
+  ],
+  "padding",
+  null,
+  "0"
+ ],
+ [
+  [
+   "",
+   ".opt"
+  ],
+  "text-align",
+  null,
+  "left"
+ ],
+ [
+  [
+   "",
+   ".opt"
+  ],
+  "border",
+  null,
+  "0"
+ ],
+ [
+  [
+   "",
+   ".opt.on .box"
+  ],
+  "background",
+  "linear-gradient(180deg,#0071CE,#005DB4 60%,#0056B4)",
+  "linear-gradient(180deg,var(--fill-1),var(--fill-2) 60%,var(--fill-3))"
+ ],
+ [
+  [
+   "",
+   ".opt.on .box"
+  ],
+  "box-shadow",
+  "inset 0 1px 0 rgba(255,255,255,.3),0 1px 3px rgba(0,63,168,.35)",
+  "inset 0 1px 0 rgba(255,255,255,.3),0 1px 3px rgba(47,80,31,.35)"
+ ],
+ [
+  [
+   "",
+   ".opt.on .dot"
+  ],
+  "background",
+  "linear-gradient(180deg,#0071CE,#005DB4 60%,#0056B4)",
+  "linear-gradient(180deg,var(--fill-1),var(--fill-2) 60%,var(--fill-3))"
+ ],
+ [
+  [
+   "",
+   ".opt.on .dot"
+  ],
+  "box-shadow",
+  "inset 0 1px 0 rgba(255,255,255,.3),0 1px 3px rgba(0,63,168,.35)",
+  "inset 0 1px 0 rgba(255,255,255,.3),0 1px 3px rgba(47,80,31,.35)"
+ ],
+ [
+  [
+   "",
+   ".pad ul li::before"
+  ],
+  "background",
+  "var(--sp-blue)",
+  "var(--brand)"
+ ],
+ [
+  [
+   "",
+   ".pc .pm .k"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".pg .rng"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".pgb[aria-current=\"page\"]"
+  ],
+  "box-shadow",
+  "var(--edge),0 1px 3px rgba(6,22,54,.10)",
+  "var(--edge),0 1px 3px rgba(17,26,12,.10)"
+ ],
+ [
+  [
+   "",
+   ".pip i"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".pip.done"
+  ],
+  "background",
+  "linear-gradient(180deg,#2C8A74,#1F6F5B)",
+  "linear-gradient(180deg,#358978,#276E5F)"
+ ],
+ [
+  [
+   "",
+   ".pip.draft"
+  ],
+  "background",
+  "linear-gradient(180deg,#A87213,#8A5A00)",
+  "linear-gradient(180deg,#BB671D,#9F4E07)"
+ ],
+ [
+  [
+   "",
+   ".pip.stale"
+  ],
+  "background",
+  "var(--st-attention-t)",
+  "var(--status-attention-tint)"
+ ],
+ [
+  [
+   "",
+   ".pip.stale"
+  ],
+  "box-shadow",
+  "inset 0 0 0 1.8px var(--st-attention)",
+  "inset 0 0 0 1.8px var(--status-attention)"
+ ],
+ [
+  [
+   "",
+   ".pip.stale i"
+  ],
+  "color",
+  "var(--st-attention)",
+  "var(--status-attention)"
+ ],
+ [
+  [
+   "",
+   ".prog"
+  ],
+  "box-shadow",
+  "inset 0 1px 2px rgba(6,22,54,.08)",
+  "inset 0 1px 2px rgba(17,26,12,.08)"
+ ],
+ [
+  [
+   "",
+   ".prog i"
+  ],
+  "background",
+  "linear-gradient(90deg,#0033A1,#0071CE)",
+  "linear-gradient(90deg,var(--fill-3),var(--fill-1))"
+ ],
+ [
+  [
+   "",
+   ".req"
+  ],
+  "color",
+  "var(--st-negative)",
+  "var(--status-negative)"
+ ],
+ [
+  [
+   "",
+   ".rscale code"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".rscale code"
+  ],
+  "color",
+  "var(--sp-blue)",
+  "var(--brand)"
+ ],
+ [
+  [
+   "",
+   ".scope"
+  ],
+  "background",
+  "rgba(0,113,206,.10)",
+  "rgba(74,124,48,.10)"
+ ],
+ [
+  [
+   "",
+   ".scope"
+  ],
+  "color",
+  "var(--sp-blue)",
+  "var(--brand)"
+ ],
+ [
+  [
+   "",
+   ".seg button[aria-pressed=\"true\"]"
+  ],
+  "box-shadow",
+  "var(--edge),0 1px 3px rgba(6,22,54,.10)",
+  "var(--edge),0 1px 3px rgba(17,26,12,.10)"
+ ],
+ [
+  [
+   "",
+   ".slot"
+  ],
+  "box-shadow",
+  "var(--edge),0 1px 2px rgba(6,22,54,.04)",
+  "var(--edge),0 1px 2px rgba(17,26,12,.04)"
+ ],
+ [
+  [
+   "",
+   ".slot[aria-pressed=\"true\"]"
+  ],
+  "background",
+  "linear-gradient(180deg,#0071CE,#005DB4 60%,#0035A6)",
+  "linear-gradient(180deg,var(--fill-1),var(--fill-2) 60%,var(--fill-3))"
+ ],
+ [
+  [
+   "",
+   ".stack ul li::before"
+  ],
+  "background",
+  "var(--sp-blue)",
+  "var(--brand)"
+ ],
+ [
+  [
+   "",
+   ".stages .tick.ok"
+  ],
+  "background",
+  "var(--st-positive-t)",
+  "var(--status-positive-tint)"
+ ],
+ [
+  [
+   "",
+   ".stages .tick.ok"
+  ],
+  "color",
+  "var(--st-positive)",
+  "var(--status-positive)"
+ ],
+ [
+  [
+   "",
+   ".stages .tick.run"
+  ],
+  "box-shadow",
+  "inset 0 0 0 1.5px var(--sp-blue)",
+  "inset 0 0 0 1.5px var(--brand)"
+ ],
+ [
+  [
+   "",
+   ".sth .cir"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".sth .cir.block"
+  ],
+  "background",
+  "var(--st-negative-t)",
+  "var(--status-negative-tint)"
+ ],
+ [
+  [
+   "",
+   ".sth .cir.block"
+  ],
+  "color",
+  "var(--st-negative)",
+  "var(--status-negative)"
+ ],
+ [
+  [
+   "",
+   ".sth .cir.block"
+  ],
+  "box-shadow",
+  "inset 0 0 0 1.5px var(--st-negative)",
+  "inset 0 0 0 1.5px var(--status-negative)"
+ ],
+ [
+  [
+   "",
+   ".sth .cir.done"
+  ],
+  "background",
+  "linear-gradient(180deg,#2C8A74,#1F6F5B)",
+  "linear-gradient(180deg,#358978,#276E5F)"
+ ],
+ [
+  [
+   "",
+   ".sth .cir.now"
+  ],
+  "background",
+  "linear-gradient(180deg,#0071CE,#005DB4 60%,#0035A6)",
+  "linear-gradient(180deg,var(--fill-1),var(--fill-2) 60%,var(--fill-3))"
+ ],
+ [
+  [
+   "",
+   ".sth .cir.now"
+  ],
+  "box-shadow",
+  "inset 0 1px 0 rgba(255,255,255,.3),0 0 0 4px rgba(0,113,206,.14)",
+  "inset 0 1px 0 rgba(255,255,255,.3),0 0 0 4px rgba(74,124,48,.14)"
+ ],
+ [
+  [
+   "",
+   ".sth .ln.done"
+  ],
+  "background",
+  "linear-gradient(90deg,#1F6F5B,#2C8A74)",
+  "linear-gradient(90deg,#276E5F,#358978)"
+ ],
+ [
+  [
+   "",
+   ".studio2"
+  ],
+  "background",
+  "linear-gradient(112deg,rgba(255,255,255,.74) 0%,rgba(255,255,255,.52) 26%,rgba(255,255,255,.28) 52%,rgba(255,255,255,.14) 100%),radial-gradient(60% 80% at 4% 0%,rgba(0,51,161,.10),transparent 70%),radial-gradient(52% 66% at 100% 100%,rgba(204,39,176,.09),transparent 72%)",
+  "linear-gradient(112deg,rgba(255,255,255,.74) 0%,rgba(255,255,255,.52) 26%,rgba(255,255,255,.28) 52%,rgba(255,255,255,.14) 100%),radial-gradient(60% 80% at 4% 0%,rgba(41,70,27,.10),transparent 70%),radial-gradient(52% 66% at 100% 100%,rgba(133,114,66,.09),transparent 72%)"
+ ],
+ [
+  [
+   "",
+   ".stv .cir"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".stv .hdr .when"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".tag.attention"
+  ],
+  "background",
+  "var(--st-attention-t)",
+  "var(--status-attention-tint)"
+ ],
+ [
+  [
+   "",
+   ".tag.attention"
+  ],
+  "color",
+  "var(--st-attention)",
+  "var(--status-attention)"
+ ],
+ [
+  [
+   "",
+   ".tag.negative"
+  ],
+  "background",
+  "var(--st-negative-t)",
+  "var(--status-negative-tint)"
+ ],
+ [
+  [
+   "",
+   ".tag.negative"
+  ],
+  "color",
+  "var(--st-negative)",
+  "var(--status-negative)"
+ ],
+ [
+  [
+   "",
+   ".tag.neutral"
+  ],
+  "background",
+  "var(--st-neutral-t)",
+  "var(--status-neutral-tint)"
+ ],
+ [
+  [
+   "",
+   ".tag.neutral"
+  ],
+  "color",
+  "var(--st-neutral)",
+  "var(--status-neutral)"
+ ],
+ [
+  [
+   "",
+   ".tag.positive"
+  ],
+  "background",
+  "var(--st-positive-t)",
+  "var(--status-positive-tint)"
+ ],
+ [
+  [
+   "",
+   ".tag.positive"
+  ],
+  "color",
+  "var(--st-positive)",
+  "var(--status-positive)"
+ ],
+ [
+  [
+   "",
+   ".tbl tbody tr"
+  ],
+  "cursor",
+  null,
+  "pointer"
+ ],
+ [
+  [
+   "",
+   ".tbl thead th"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   ".thumbs2 .th2.on"
+  ],
+  "background",
+  "rgba(0,113,206,.12)",
+  "rgba(74,124,48,.12)"
+ ],
+ [
+  [
+   "",
+   ".thumbs2 .th2.on"
+  ],
+  "color",
+  "var(--sp-blue)",
+  "var(--brand)"
+ ],
+ [
+  [
+   "",
+   ".thumbs2 .th2.on"
+  ],
+  "box-shadow",
+  "0 0 0 2px var(--sp-blue)",
+  "0 0 0 2px var(--brand)"
+ ],
+ [
+  [
+   "",
+   ".tile.flag"
+  ],
+  "background",
+  "linear-gradient(180deg,rgba(138,90,0,.10),rgba(138,90,0,.04)),var(--glass-1)",
+  "linear-gradient(180deg,rgba(159,78,7,.10),rgba(159,78,7,.04)),var(--glass-1)"
+ ],
+ [
+  [
+   "",
+   ".tile.flag .v"
+  ],
+  "color",
+  "var(--st-attention)",
+  "var(--status-attention)"
+ ],
+ [
+  [
+   "",
+   ".toast .ic"
+  ],
+  "color",
+  "var(--st-positive)",
+  "var(--status-positive)"
+ ],
+ [
+  [
+   "",
+   ".toast .ic"
+  ],
+  "background",
+  "var(--st-positive-t)",
+  "var(--status-positive-tint)"
+ ],
+ [
+  [
+   "",
+   ".toast .undo"
+  ],
+  "color",
+  "var(--sp-blue)",
+  "var(--brand)"
+ ],
+ [
+  [
+   "",
+   ".tog"
+  ],
+  "padding",
+  null,
+  "0"
+ ],
+ [
+  [
+   "",
+   ".tog"
+  ],
+  "border",
+  null,
+  "0"
+ ],
+ [
+  [
+   "",
+   ".tog"
+  ],
+  "font",
+  null,
+  "inherit"
+ ],
+ [
+  [
+   "",
+   ".tog"
+  ],
+  "background",
+  null,
+  "none"
+ ],
+ [
+  [
+   "",
+   ".tog .track"
+  ],
+  "box-shadow",
+  "inset 0 1px 2px rgba(6,22,54,.08)",
+  "inset 0 1px 2px rgba(17,26,12,.08)"
+ ],
+ [
+  [
+   "",
+   ".tog .track .knob"
+  ],
+  "box-shadow",
+  "0 1px 3px rgba(6,22,54,.28),inset 0 1px 0 rgba(255,255,255,.9)",
+  "0 1px 3px rgba(17,26,12,.28),inset 0 1px 0 rgba(255,255,255,.9)"
+ ],
+ [
+  [
+   "",
+   ".tog.on .track"
+  ],
+  "background",
+  "linear-gradient(180deg,#0071CE,#005DB4 60%,#0056B4)",
+  "linear-gradient(180deg,var(--fill-1),var(--fill-2) 60%,var(--fill-3))"
+ ],
+ [
+  [
+   "",
+   ".vrail2 .v2.on"
+  ],
+  "background",
+  "rgba(0,113,206,.12)",
+  "rgba(74,124,48,.12)"
+ ],
+ [
+  [
+   "",
+   ".vrail2 .v2.on"
+  ],
+  "color",
+  "var(--sp-blue)",
+  "var(--brand)"
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--aur-b",
+  "0,113,206",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--ink",
+  "#0B1220",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--sp-cerise",
+  "#CC27B0",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--aur-2",
+  ".045",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--c1",
+  "#00325C",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--sp-deep",
+  "#0033A1",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--st-attention-t",
+  "rgba(138,90,0,.11)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--aur-1",
+  ".055",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--st-positive-t",
+  "rgba(31,111,91,.11)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--lift-1",
+  "0 1px 2px rgba(6,22,54,.05),0 12px 32px -18px rgba(6,22,54,.28)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--c4",
+  "#0A90FF",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--page-top",
+  "rgba(0,51,161,.022)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--sp-blue",
+  "#0071CE",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--sp-pink",
+  "#E17FD2",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--ink-mute",
+  "#8E9AAE",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--r-canvas",
+  "22px",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--glass-2",
+  "rgba(255,255,255,.82)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--hair-2",
+  "rgba(11,18,32,.12)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--lift-2",
+  "0 2px 6px rgba(6,22,54,.07),0 28px 60px -26px rgba(6,22,54,.40)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--c5",
+  "#47ACFF",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--c2",
+  "#005194",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--aur-a",
+  "0,51,161",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--c6",
+  "#85C8FF",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--aur-c",
+  "204,39,176",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--glass-solid",
+  "rgba(255,255,255,.965)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--st-neutral",
+  "#47566B",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--r-shell",
+  "28px",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--aur-3",
+  ".050",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--hair",
+  "rgba(11,18,32,.07)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--base",
+  "#F1F5FB",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--st-negative",
+  "#96302A",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--r-tile",
+  "12px",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--inner",
+  "rgba(0,51,161,.045)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--edge",
+  "inset 0 1px 0 rgba(255,255,255,.92)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--st-neutral-t",
+  "rgba(71,86,107,.10)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--ink-3",
+  "#626D84",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--ink-2",
+  "#47566B",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--st-attention",
+  "#8A5A00",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--glass-3",
+  "rgba(255,255,255,.93)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--st-negative-t",
+  "rgba(150,48,42,.11)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--c3",
+  "#0070CC",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--r-pill",
+  "999px",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--r",
+  "10px",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--r-sheet",
+  "16px",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--r-sm",
+  "6px",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--glass-1",
+  "rgba(255,255,255,.72)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--vig",
+  "radial-gradient(120% 100% at 50% 40%,transparent 42%,rgba(6,18,46,.10) 100%)",
+  "radial-gradient(120% 100% at 50% 40%,transparent 42%,rgba(14,21,10,.10) 100%)"
+ ],
+ [
+  [
+   "",
+   ":root"
+  ],
+  "--st-positive",
+  "#1F6F5B",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--aur-b",
+  "107,179,234",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--ink",
+  "#D8E0EC",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--sp-cerise",
+  "#E884D6",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--aur-2",
+  ".19",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--c1",
+  "#E6F2FF",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--sp-deep",
+  "#3A72DE",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--st-attention-t",
+  "rgba(227,180,92,.13)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--aur-1",
+  ".26",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--st-positive-t",
+  "rgba(134,205,180,.13)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--lift-1",
+  "0 1px 2px rgba(2,6,14,.46),0 14px 34px -18px rgba(2,6,14,.68)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--c4",
+  "#62ADEC",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--page-top",
+  "rgba(120,165,225,.055)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--ink-mute",
+  "#78869F",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--sp-blue",
+  "#6BB3EA",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--sp-pink",
+  "#F2BCE9",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--glass-2",
+  "rgba(120,165,225,.17)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--hair-2",
+  "rgba(206,224,255,.17)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--lift-2",
+  "0 2px 7px rgba(2,6,14,.52),0 32px 66px -26px rgba(2,6,14,.80)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--c5",
+  "#3F90D6",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--c2",
+  "#B9DDFF",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--aur-a",
+  "76,127,232",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--c6",
+  "#3576B0",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--aur-c",
+  "232,132,214",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--glass-solid",
+  "#2F3D57",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--st-neutral",
+  "#AAB7CB",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--aur-3",
+  ".22",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--hair",
+  "rgba(206,224,255,.10)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--base",
+  "#192030",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--st-negative",
+  "#EC9790",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--inner",
+  "rgba(130,175,235,.085)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--edge",
+  "inset 0 1px 0 rgba(214,232,255,.17)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--st-neutral-t",
+  "rgba(170,183,203,.12)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--ink-3",
+  "#9FADC3",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--ink-2",
+  "#AAB7CB",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--st-attention",
+  "#E3B45C",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--glass-3",
+  "rgba(120,165,225,.23)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--st-negative-t",
+  "rgba(236,151,144,.13)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--c3",
+  "#8CC6F8",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--glass-1",
+  "rgba(120,165,225,.12)",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--vig",
+  "radial-gradient(120% 100% at 55% 42%,transparent 50%,rgba(6,11,22,.30) 100%)",
+  "radial-gradient(120% 100% at 55% 42%,transparent 50%,rgba(8,12,7,.30) 100%)"
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"]"
+  ],
+  "--st-positive",
+  "#86CDB4",
+  null
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"] .canv"
+  ],
+  "box-shadow",
+  "var(--lift-2),inset 0 1px 0 rgba(214,232,255,.18)",
+  "var(--lift-2),inset 0 1px 0 rgba(222,234,215,.18)"
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"] .chat2 .cmp"
+  ],
+  "background",
+  "rgba(120,165,225,.17)",
+  "rgba(135,173,117,.17)"
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"] .chat2 .cmp"
+  ],
+  "box-shadow",
+  "inset 0 1px 0 rgba(214,232,255,.18),0 2px 9px -5px rgba(2,6,14,.52)",
+  "inset 0 1px 0 rgba(222,234,215,.18),0 2px 9px -5px rgba(4,7,3,.52)"
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"] .seam"
+  ],
+  "background",
+  "linear-gradient(90deg,rgba(120,165,225,0),rgba(120,165,225,.11))",
+  "linear-gradient(90deg,rgba(135,173,117,0),rgba(135,173,117,.11))"
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"] .sheet2"
+  ],
+  "background",
+  "linear-gradient(170deg,rgba(76,127,232,.14),rgba(0,0,0,0) 44%),var(--glass-solid)",
+  "linear-gradient(170deg,rgba(99,142,77,.14),rgba(0,0,0,0) 44%),var(--glass-solid)"
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"] .sheet2"
+  ],
+  "box-shadow",
+  "0 1px 2px rgba(2,6,14,.34),0 20px 48px -24px rgba(2,6,14,.62),inset 0 1px 0 rgba(214,232,255,.16)",
+  "0 1px 2px rgba(4,7,3,.34),0 20px 48px -24px rgba(4,7,3,.62),inset 0 1px 0 rgba(222,234,215,.16)"
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"] .studio2"
+  ],
+  "background",
+  "linear-gradient(112deg,rgba(120,165,225,.24) 0%,rgba(120,165,225,.17) 30%,rgba(120,165,225,.11) 60%,rgba(120,165,225,.07) 100%),radial-gradient(60% 80% at 4% 0%,rgba(76,127,232,.20),transparent 70%),radial-gradient(52% 66% at 100% 100%,rgba(232,132,214,.14),transparent 72%)",
+  "linear-gradient(112deg,rgba(135,173,117,.24) 0%,rgba(135,173,117,.17) 30%,rgba(135,173,117,.11) 60%,rgba(135,173,117,.07) 100%),radial-gradient(60% 80% at 4% 0%,rgba(99,142,77,.20),transparent 70%),radial-gradient(52% 66% at 100% 100%,rgba(186,165,113,.14),transparent 72%)"
+ ],
+ [
+  [
+   "",
+   ":root[data-theme=\"dark\"] .studio2"
+  ],
+  "box-shadow",
+  "var(--lift-2),inset 0 1px 0 rgba(214,232,255,.18)",
+  "var(--lift-2),inset 0 1px 0 rgba(222,234,215,.18)"
+ ],
+ [
+  [
+   "",
+   "body"
+  ],
+  "background-image",
+  "linear-gradient(176deg,var(--page-top) 0%,transparent 46%)",
+  "linear-gradient(176deg,var(--page-tint) 0%,transparent 46%)"
+ ],
+ [
+  [
+   "",
+   "body"
+  ],
+  "font-family",
+  "Archivo,-apple-system,BlinkMacSystemFont,\"Segoe UI\",sans-serif",
+  "var(--font-serif)"
+ ],
+ [
+  [
+   "",
+   "code.inl"
+  ],
+  "font-family",
+  "\"IBM Plex Mono\",monospace",
+  "var(--font-mono)"
+ ],
+ [
+  [
+   "",
+   "header.mast .micro"
+  ],
+  "color",
+  "var(--sp-blue)",
+  "var(--brand)"
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--aur-b",
+  "107,179,234",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--ink",
+  "#D8E0EC",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--sp-cerise",
+  "#E884D6",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--aur-2",
+  ".19",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--c1",
+  "#E6F2FF",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--sp-deep",
+  "#3A72DE",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--st-attention-t",
+  "rgba(227,180,92,.13)",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--aur-1",
+  ".26",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--st-positive-t",
+  "rgba(134,205,180,.13)",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--lift-1",
+  "0 1px 2px rgba(2,6,14,.46),0 14px 34px -18px rgba(2,6,14,.68)",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--c4",
+  "#62ADEC",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--page-top",
+  "rgba(120,165,225,.055)",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--ink-mute",
+  "#78869F",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--sp-blue",
+  "#6BB3EA",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--sp-pink",
+  "#F2BCE9",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--glass-2",
+  "rgba(120,165,225,.17)",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--hair-2",
+  "rgba(206,224,255,.17)",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--lift-2",
+  "0 2px 7px rgba(2,6,14,.52),0 32px 66px -26px rgba(2,6,14,.80)",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--c5",
+  "#3F90D6",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--c2",
+  "#B9DDFF",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--aur-a",
+  "76,127,232",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--c6",
+  "#3576B0",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--aur-c",
+  "232,132,214",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--glass-solid",
+  "#2F3D57",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--st-neutral",
+  "#AAB7CB",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--aur-3",
+  ".22",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--hair",
+  "rgba(206,224,255,.10)",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--base",
+  "#192030",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--st-negative",
+  "#EC9790",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--inner",
+  "rgba(130,175,235,.085)",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--edge",
+  "inset 0 1px 0 rgba(214,232,255,.17)",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--st-neutral-t",
+  "rgba(170,183,203,.12)",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--ink-3",
+  "#9FADC3",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--ink-2",
+  "#AAB7CB",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--st-attention",
+  "#E3B45C",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--glass-3",
+  "rgba(120,165,225,.23)",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--st-negative-t",
+  "rgba(236,151,144,.13)",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--c3",
+  "#8CC6F8",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--glass-1",
+  "rgba(120,165,225,.12)",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--vig",
+  "radial-gradient(120% 100% at 55% 42%,transparent 50%,rgba(6,11,22,.30) 100%)",
+  "radial-gradient(120% 100% at 55% 42%,transparent 50%,rgba(8,12,7,.30) 100%)"
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"])"
+  ],
+  "--st-positive",
+  "#86CDB4",
+  null
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"]) .canv"
+  ],
+  "box-shadow",
+  "var(--lift-2),inset 0 1px 0 rgba(214,232,255,.18)",
+  "var(--lift-2),inset 0 1px 0 rgba(222,234,215,.18)"
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"]) .chat2 .cmp"
+  ],
+  "background",
+  "rgba(120,165,225,.17)",
+  "rgba(135,173,117,.17)"
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"]) .chat2 .cmp"
+  ],
+  "box-shadow",
+  "inset 0 1px 0 rgba(214,232,255,.18),0 2px 9px -5px rgba(2,6,14,.52)",
+  "inset 0 1px 0 rgba(222,234,215,.18),0 2px 9px -5px rgba(4,7,3,.52)"
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"]) .seam"
+  ],
+  "background",
+  "linear-gradient(90deg,rgba(120,165,225,0),rgba(120,165,225,.11))",
+  "linear-gradient(90deg,rgba(135,173,117,0),rgba(135,173,117,.11))"
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"]) .sheet2"
+  ],
+  "background",
+  "linear-gradient(170deg,rgba(76,127,232,.14),rgba(0,0,0,0) 44%),var(--glass-solid)",
+  "linear-gradient(170deg,rgba(99,142,77,.14),rgba(0,0,0,0) 44%),var(--glass-solid)"
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"]) .sheet2"
+  ],
+  "box-shadow",
+  "0 1px 2px rgba(2,6,14,.34),0 20px 48px -24px rgba(2,6,14,.62),inset 0 1px 0 rgba(214,232,255,.16)",
+  "0 1px 2px rgba(4,7,3,.34),0 20px 48px -24px rgba(4,7,3,.62),inset 0 1px 0 rgba(222,234,215,.16)"
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"]) .studio2"
+  ],
+  "background",
+  "linear-gradient(112deg,rgba(120,165,225,.24) 0%,rgba(120,165,225,.17) 30%,rgba(120,165,225,.11) 60%,rgba(120,165,225,.07) 100%),radial-gradient(60% 80% at 4% 0%,rgba(76,127,232,.20),transparent 70%),radial-gradient(52% 66% at 100% 100%,rgba(232,132,214,.14),transparent 72%)",
+  "linear-gradient(112deg,rgba(135,173,117,.24) 0%,rgba(135,173,117,.17) 30%,rgba(135,173,117,.11) 60%,rgba(135,173,117,.07) 100%),radial-gradient(60% 80% at 4% 0%,rgba(99,142,77,.20),transparent 70%),radial-gradient(52% 66% at 100% 100%,rgba(186,165,113,.14),transparent 72%)"
+ ],
+ [
+  [
+   " @media (prefers-color-scheme:dark)",
+   ":root:not([data-theme=\"light\"]) .studio2"
+  ],
+  "box-shadow",
+  "var(--lift-2),inset 0 1px 0 rgba(214,232,255,.18)",
+  "var(--lift-2),inset 0 1px 0 rgba(222,234,215,.18)"
+ ]
+]

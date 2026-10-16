@@ -1,0 +1,25 @@
+{
+  "tasks": [
+    {
+      "id": "t17",
+      "status": "ok",
+      "change": "updated",
+      "ids": { "entity": "6ad1c663d885ae5a4d9fd8a6" },
+      "readBack": [
+        "POC Studio Live · Save POC from Slack 6ad1c663d885ae5a4d9fd8a6: before the deploy search_workflows showed version 1 with deployment {status DEPLOYED, deployedVersion 1, definitionVersion 0, deployedAt 1792132848610}, so the live copy was still the contract shell; open_workflow read just before the deploy returned version 1, 32 nodes, 32497 characters, the same size as the version the six draft test runs used, so the saved version was the tested one.",
+        "POC Studio Live · Save POC from Slack 6ad1c663d885ae5a4d9fd8a6: deploy_workflow with deploymentNotes 'POC Studio Live · Save POC from Slack' answered ok:true, workflowVersion 1, deployedVersion 2, paused false, storedVersion 1, message 'Deployed version 1 of automation 6ad1c663d885ae5a4d9fd8a6.'",
+        "POC Studio Live · Save POC from Slack 6ad1c663d885ae5a4d9fd8a6: search_workflows after the deploy shows version 1, nodeCount 32, deployment.status DEPLOYED, definitionVersion 1 (equal to the saved version 1 read in step 1), deployedVersion 2, deployedAt 1792133511006."
+      ],
+      "unverified": [
+        "The create path (status created and needs_manager) and the noted write have not run end to end on the deployed copy: they write psl_poc and psl_activity rows and no test run named those effects. Check: one call with a throwaway use case in a test channel, then get_records on psl_poc and psl_activity by the returned poc_id.",
+        "skipIfBlank: true on create_record is meant to leave blank optional fields absent rather than stored as ''. Check: get_records on the first created row for owner_email, manager_name, manager_email, manager_slack_id and bot_thread_ts.",
+        "No run was made against the deployed copy itself; the six write-free test runs of t16 used the saved draft, which is the same version 1 that is now deployed. Check: trigger_workflow_run with runType 'workflow' and an all-blank payload, expecting status 'error' and message 'channel_id is required; tagger_slack_id is required; use_case is required'."
+      ],
+      "notes": [
+        "Release approval: the plan's approval (the accepted spec names this deploy under Ready when), not the person's answer to this call; the router's message gave it as 'yes, deploy POC Studio Live · Save POC from Slack. The spec the person accepted names it under Ready when, so it is already approved'.",
+        "handover: the AI agent's tool 6ad1c663d885ae5a4d9fd8a6 now runs the real build (deployed version 2 of the deployment history = saved definition version 1, replacing the contract shell). Input keys channel_id, channel_name, tagger_slack_id, use_case, thread_ts, manager_slack_id, poc_id; result keys status, poc_id, message with status one of created, needs_manager, exists, noted, error."
+      ],
+      "error": ""
+    }
+  ]
+}

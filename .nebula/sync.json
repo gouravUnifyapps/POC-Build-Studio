@@ -1,0 +1,13 @@
+{
+  "status": "ok",
+  "startedAt": "2026-10-16T13:59:46.340Z",
+  "pid": 75123,
+  "solutionId": "e_6ad1b45199f8a565171d7f1c",
+  "tenant": "orbit.uat.unifyapps.com",
+  "solutionName": "POC Studio Live",
+  "endedAt": "2026-10-16T13:59:49.663Z",
+  "changed": 16,
+  "failed": 0,
+  "error": null,
+  "reason": null
+}

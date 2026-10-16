@@ -1,0 +1,167 @@
+{
+  "schemaVersion": 1,
+  "key": "WORKFLOW_DEFINITION:6ad1cd1b6123771ba2c0346e",
+  "entityType": "WORKFLOW_DEFINITION",
+  "id": "6ad1cd1b6123771ba2c0346e",
+  "version": 0,
+  "cachedAt": "2026-10-16T07:12:02.439Z",
+  "source": {
+    "sessionId": "52426a5b-cd90-4079-9a32-784d7f7dc53d",
+    "planId": "e_6ad1ccf1674d735893a55297",
+    "taskId": "t1",
+    "phase": "write-readback"
+  },
+  "ref": {
+    "kind": "automation",
+    "name": "POC Studio Live · Approve skill suggestion",
+    "id": "6ad1cd1b6123771ba2c0346e"
+  },
+  "entity": {
+    "appsUsed": [],
+    "createdTime": 1792134427319,
+    "deleted": false,
+    "deployedVersion": 1,
+    "deploymentState": {
+      "deployedAt": 1792134483854,
+      "deployedBy": 66770,
+      "deployedDefinitionId": "6ad1cd53300f9003500f5783",
+      "deploymentNotes": "Contract shell for POC Studio Live · Approve skill suggestion [nebula task t_639203afcf0f]",
+      "status": "DEPLOYED",
+      "version": 1,
+      "workflowVersion": 0
+    },
+    "description": "Called by the Approve button on the Feedback page. Approves a pending skill suggestion for a manager: sets the skill's new version and prompt and marks the evidence tickets resolved. This version is a contract shell and always answers status error.",
+    "edges": [
+      {
+        "fromNodeId": "n_i1jhu",
+        "priority": 0,
+        "skip": false,
+        "toNodeId": "n_7gx6j",
+        "type": "next"
+      }
+    ],
+    "id": "6ad1cd1b6123771ba2c0346e",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792134483855,
+    "lcName": "poc studio live · approve skill suggestion",
+    "modifiedTime": 1792134483855,
+    "name": "POC Studio Live · Approve skill suggestion",
+    "nodes": [
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_from_automation"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "i2cfz-1",
+        "id": "n_i1jhu",
+        "index": 1,
+        "inputs": {
+          "result": {
+            "type": "object",
+            "properties": {
+              "status": {
+                "type": "string",
+                "title": "Status"
+              },
+              "skill_id": {
+                "type": "string",
+                "title": "Skill id"
+              },
+              "to_version": {
+                "type": "integer",
+                "title": "To version"
+              },
+              "message": {
+                "type": "string",
+                "title": "Message"
+              }
+            }
+          },
+          "setup": {
+            "type": "object",
+            "properties": {
+              "suggestion_id": {
+                "type": "string",
+                "title": "Suggestion id"
+              },
+              "caller_email": {
+                "type": "string",
+                "title": "Caller email"
+              },
+              "caller_name": {
+                "type": "string",
+                "title": "Caller name"
+              }
+            },
+            "required": [
+              "suggestion_id"
+            ]
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Callable",
+        "title": "Trigger from automation",
+        "trigger": {
+          "type": "CALLABLE"
+        },
+        "type": "START"
+      },
+      {
+        "context": {
+          "appName": "callables",
+          "resourceName": "callables_return_to_automation",
+          "type": "APPLICATION"
+        },
+        "debug": false,
+        "dirty": false,
+        "fallbackMode": "STOP",
+        "groupId": "i2cfz-1",
+        "id": "n_7gx6j",
+        "index": 2,
+        "inputs": {
+          "result": {
+            "status": "error",
+            "skill_id": "=\"\"",
+            "to_version": 0,
+            "message": "This is a contract shell: the approval logic is not built yet."
+          }
+        },
+        "options": {
+          "disableLogging": false,
+          "enabledForReExecution": false,
+          "stepError": "STOP"
+        },
+        "skip": false,
+        "subTitle": "Return the contract shell answer",
+        "title": "Respond to automation",
+        "type": "STOP"
+      }
+    ],
+    "ownerUserId": 66770,
+    "settings": {
+      "enableNodeLevelLogging": true,
+      "enableRunLogging": true,
+      "enableVariableLogging": true,
+      "route": {
+        "default": false,
+        "tierName": "global"
+      }
+    },
+    "standard": false,
+    "tags": [
+      "AI Generated",
+      "Nebula"
+    ],
+    "version": 0,
+    "entityType": "WORKFLOW_DEFINITION"
+  }
+}

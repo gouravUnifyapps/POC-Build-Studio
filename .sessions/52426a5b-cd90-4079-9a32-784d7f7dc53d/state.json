@@ -1,0 +1,67 @@
+{
+  "claudeSessionId": "52426a5b-cd90-4079-9a32-784d7f7dc53d",
+  "tenant": "orbit.uat.unifyapps.com",
+  "solutionId": "e_6ad1b45199f8a565171d7f1c",
+  "solutionName": "POC Studio Live",
+  "key": "poc-studio-live--orbit.uat.unifyapps.com--e_6ad1b45199f8a565171d7f1c",
+  "mode": "sonic",
+  "storage": "platform",
+  "openingRequest": "Clone https://orbit.uat.unifyapps.com/p/0/solutions/e_6ad1031ce0ef8b24527e9ed9 and build a new functional backend linking to this UI: Slack bot @Demo Studio creates POC use case records, History from Slack, journey stages, feedback and skill loop, cloud build trigger, approvals",
+  "userEmail": "gourav.mahunta@unifyapps.com",
+  "userId": "66770",
+  "environment": "uat",
+  "deviceSerialNumber": "HKL725CW0N",
+  "clientMetadataSource": "claude-desktop",
+  "clientMetadataKey": "66a87fe90bb921db6c134171538b4b1868aef83f6887412331950aa8f56074bb",
+  "clientMetadataCapturedAt": 1792135755308,
+  "claudeCodeEmailIssue": "no-account-email",
+  "startedAt": "2026-10-16T05:21:25.621Z",
+  "planIds": [
+    "e_6ad1c588674d735893a476dc",
+    "e_6ad1ccf1674d735893a55297"
+  ],
+  "currentTask": {
+    "id": "t_639203afcf0f",
+    "request": "https://orbit.uat.unifyapps.com/p/0/solutions/e_6ad1031ce0ef8b24527e9ed9\nClone this and build a new functional backend linking to this UI interface\nCore flow:\n\n1. Bot gets tagged in a prospect group --> Bot clarifies the use case name and manager name --> Bot creates a record in the list of all the POC use cases\n2. The UI is linked to agents and automations as required that reads the slack channel in certain interval and updates the UI according to it. History is whenever an announcement is made or new information is released or new update on the POC is their it logs in the History tab with owner user their profile pic and timestamp and what they sent. Documents is just the crisp gathering of all the use case related docs. Note that a single channel may be used for multiple use cases for the same client but a single use case is linked to only a specific channel. So when a bot mentions a particular use case then the history & feedback should be corresponding.\n3. A CTA inside the use case page lets you triggers the build process in a Cloud Claude Code session from the UnifyApps platform via an API that is linked to it in the scheduled API trigger. The environment installs nebula first and the and the triggers you (\"/build\") with the client and use case name\n4. You build and return a simple visual PRD with flowcharts and UI mockups to the same slack channel for review and manager and user approvals via the bot. Then when the manager and user give thier approvals you continue the build and return the final Built assets with their link in the same slack channel and notifying the user that BUILD is complete.\n\nPOC Dashboard and Table View\n\n* Main table shows all POCs with stage gates, current status, and blockers\n   * Statuses: waiting on you, blocked, AI working, etc.\n   * Click into any POC for deep-dive: build report, evidence pack, review/edit comments\n* Each row in the table is linked to one Slack channel (the prospect-facing channel)\n   * One use case can have multiple channels; one channel can have multiple use cases\n   * For now: keep it simple, one channel per use case for first cut\n* Bot added to a Slack channel auto-detects and links it to the corresponding row\n\nAlso create a Slack Bot \"@Demo Studio\" linked to a Agent Flow:\n\n* Bot is a selling agent with multiple tasks: create records in the object linked to the above UI, handle approvals\n* To create a POC: tag @POC Studio Agent in Slack with use case name\n   * Bot picks up channel name and user ID, creates a row in the app\n   * Example: \"Pentland Vulnerability Use Case\" creates a named row; second use case creates a second row\n   * While creating the record the bot asks who is the Manager if not mentioned in the first message and the user tags him in the thread and the bot notes it\n* All core conversation and feedback happens in Claude, not in the app\n   * Slack is purely a messaging/notification channel: nudges user to return to Claude session\n* Manager approval flow:\n   * Manager gets Slack link, reviews artifacts in app, clicks Approve\n   * Slack notification sent to POC owner: \"Manager approved, continue\"\n   * Owner returns to Claude session and continues\n\nJourney Visualization and Feedback Loop\n\n* App UI shows four stages: Understand, Plan, Build, Deliver\n   * Gates sit between stages; clicking a stage shows its artifacts (HTML preview)\n   * Stage status: \"Building\", \"Waiting on [Owner]\", or empty until gate reached\n   * Artifacts logged at approval time, not before\n* Iteration tracking:\n   * Every feedback loop (human or judge) draws a branch line on the journey diagram\n   * Counter on each branch shows how many times that stage was reiterated\n   * Clicking the counter reveals feedback reasons, linked to the relevant skill\n* Feedback section replaced by History:\n   * Timeline view of who sent what document and when (WhatsApp-style)\n   * All input documents stored here; no separate Feedback tab\n* Skill improvement loop:\n   * All gate feedback (human + judge) captured in a feedback object: POC name, iteration, stage, feedback text\n   * Automation runs periodically: aggregates feedback per skill, generates prompt improvement suggestions\n   * Admin reviews suggestions and approves; skill versions tracked",
+    "outcome": null,
+    "targets": [],
+    "references": [],
+    "waiting": null,
+    "tenant": "orbit.uat.unifyapps.com",
+    "solutionId": "e_6ad1b45199f8a565171d7f1c",
+    "mode": "sonic",
+    "phase": null,
+    "approvals": [
+      "publish and deploy without asking · visibility PRIVATE (profile release line)"
+    ],
+    "sent": [],
+    "done": [],
+    "planId": null,
+    "evidence": ".sessions/52426a5b-cd90-4079-9a32-784d7f7dc53d/reads/task-t_639203afcf0f.json",
+    "startedAt": "2026-10-16T05:21:38.363Z",
+    "updatedAt": "2026-10-16T06:34:46.456Z"
+  },
+  "tasks": [],
+  "pendingSave": null,
+  "planCreates": {},
+  "agentNames": [
+    "a476dc-fde-agent-1",
+    "a476dc-automation-agent-1",
+    "a476dc-automation-agent-2",
+    "a476dc-automation-agent-3",
+    "a476dc-code-app-agent-1",
+    "a476dc-agent-builder-1",
+    "a55297-automation-agent-1",
+    "a55297-code-app-agent-1"
+  ],
+  "agentIds": {
+    "a476dc-fde-agent-1": "af5979c6395171ea1",
+    "a476dc-automation-agent-1": "ae53a1be45fd55394",
+    "a476dc-automation-agent-2": "ac6412c0774c0175b",
+    "a476dc-automation-agent-3": "ac404df57d6ed5843",
+    "a476dc-code-app-agent-1": "acb1bd53e55b185b9",
+    "a476dc-agent-builder-1": "a7678d19fa49f6796",
+    "a55297-automation-agent-1": "ac9138beb0aab6458",
+    "a55297-code-app-agent-1": "a2eb1959f594ab636"
+  }
+}

@@ -1,0 +1,22 @@
+# UnifyApps
+
+- status: drafted by Studio on 2026-10-16
+- client: UnifyApps, internal: the pre-sales and FDE team that runs prospect POCs · site https://www.unifyapps.com · industry enterprise AI, integration and automation platform
+- audience: UnifyApps sales leadership, POC owners (FDEs) and their managers · 20 minutes · call · laptop
+- presenter: the person who asked · tells the story from the seat of a POC owner running a prospect POC
+- show off: tagging the bot in a prospect's Slack channel creates the POC row; the POC dashboard and the journey (Understand, Plan, Build, Deliver) with its gates, iteration branches and History timeline kept current from Slack; one click starts the cloud build, and the manager's approval round-trips through Slack
+- intent: use-case · a working internal tool, not a pitch: "build a new functional backend linking to this UI interface"
+- sources: slack gmail calendar · the POC Studio / Demo Studio discussions, and a prospect POC channel such as Pentland's
+- slack: find them (POC Studio, Demo Studio, prospect POC channels)
+- innovate: nebula
+- mockups: off · the request clones the existing UI, which is the design reference
+- avoid: deletes · changing the original solution's entities (clone, never edit the source) · anything needing a connection the tenant lacks beyond the one credential stop per system
+- tenant: orbit.uat.unifyapps.com · solution: decided after reading e_6ad1031ce0ef8b24527e9ed9, the solution whose UI is cloned
+- release: publish and deploy without asking · visibility PRIVATE
+- data: assumed, fictional · 8 to 12 seed rows so every stage and status shows · UnifyApps Storage · live rows come from the bot · one story row: the request's "Pentland Vulnerability Use Case"
+- external: sandbox · Slack is the product's own messaging channel and Claude Code's routine API trigger starts the cloud build; one credential stop allowed for each
+- sandboxes: slack: the tenant's Slack connection when one exists · claude code: a routine with an API trigger, made in this session
+- budget: 3 discussion rounds · 3 pages · 7 objects · 8 automations · 2 AI agents · 2 rehearsal rounds (the request's scope overrides the defaults)
+- voice: plain words · UnifyApps' own terms (POC, use case, prospect, stage gate, POC owner, manager, skill, build report, evidence pack)
+- brand: the existing app in the solution is the reference; else sample https://www.unifyapps.com
+- notes: Slack is only the messaging and notification channel; the core conversation and feedback happen in Claude sessions. One Slack channel per use case for the first cut; one channel may carry several use cases of the same client, and a use case belongs to exactly one channel. Artifacts are logged at approval time, not before.

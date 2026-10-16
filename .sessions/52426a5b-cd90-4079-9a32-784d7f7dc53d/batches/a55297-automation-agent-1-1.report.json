@@ -1,0 +1,58 @@
+{
+  "tasks": [
+    {
+      "id": "t1",
+      "status": "ok",
+      "change": "created",
+      "ids": { "entity": "6ad1cd1b6123771ba2c0346e" },
+      "readBack": [
+        "POC Studio Live · Approve skill suggestion 6ad1cd1b6123771ba2c0346e: search_workflows before the create found no automation of that name (only the six other POC Studio Live automations), so the shell was created.",
+        "POC Studio Live · Approve skill suggestion 6ad1cd1b6123771ba2c0346e: compile_and_save_workflow with no workflowId answered ok:true, created:true, version 0, 2 nodes, no warnings; open_workflow just before the deploy showed version 0, so the deploy shipped the last save.",
+        "POC Studio Live · Approve skill suggestion 6ad1cd1b6123771ba2c0346e: deploy_workflow answered ok:true, deployedVersion 1, storedVersion 0, paused:false; search_workflows read back deployment {status: DEPLOYED, deployedVersion: 1, definitionVersion: 0, deployedAt: 1792134483854}, version 0.",
+        "POC Studio Live · Approve skill suggestion 6ad1cd1b6123771ba2c0346e: describe_callable_workflow parameters: suggestion_id string required, caller_email string optional, caller_name string optional (count 3).",
+        "POC Studio Live · Approve skill suggestion 6ad1cd1b6123771ba2c0346e: open_workflow result schema status string, skill_id string, to_version integer, message string; the stub returns status \"error\", skill_id \"\", to_version 0, message \"This is a contract shell: the approval logic is not built yet.\"",
+        "POC Studio Live · Approve skill suggestion 6ad1cd1b6123771ba2c0346e: workflow_test run 6ad1ce116123771ba2c057c5 (no side effects, constant answer) COMPLETED; STOP output {status: \"error\", skill_id: \"\", to_version: 0, message: \"This is a contract shell: the approval logic is not built yet.\"}.",
+        "Security rules: the shell reads and writes no data and holds no secret, so no rule needed a control here."
+      ],
+      "unverified": [
+        "The plan tag on the deploy's deploymentNotes is added by the bridge and was not shown in the deploy reply; settle with search_workflows or the deployment history of 6ad1cd1b6123771ba2c0346e."
+      ],
+      "notes": [
+        "handover: workflow id 6ad1cd1b6123771ba2c0346e; exact input keys suggestion_id (string, required), caller_email (string), caller_name (string); result keys status, skill_id, to_version (integer), message. It is a deployed shell (deployedVersion 1, saved version 0): the logic task must edit it with open_workflow first and deploy again.",
+        "handover: the callee's response fields are read flat from the node that calls it (status, skill_id, to_version, message), not under result; confirm with describe_callable_workflow before binding the Approve button."
+      ],
+      "error": ""
+    },
+    {
+      "id": "t2",
+      "status": "ok",
+      "change": "created",
+      "ids": { "entity": "6ad1cde96123771ba2c052bc" },
+      "readBack": [
+        "POC Studio Live · Suggest skill improvements 6ad1cde96123771ba2c052bc: search_workflows before the build found no automation of that name; compile_and_save_workflow with no workflowId answered ok:true, created:true, version 0, 16 nodes, 17 edges, no warnings, on the first save. Not deployed: search_workflows shows deployment null, version 0.",
+        "POC Studio Live · Suggest skill improvements 6ad1cde96123771ba2c052bc: open_workflow trigger = schedule({cron: \"EXPRESSION\", expression: \"0 9 * * 1\", timezone: \"Asia/Kolkata\", sequential: true, maxWaitTime: 30, sequentialRunTimeUnit: \"MINUTES\"}), a weekly Monday 09:00 IST schedule that runs one at a time; the DSL took the cron form, so the interval form was not needed.",
+        "POC Studio Live · Suggest skill improvements 6ad1cde96123771ba2c052bc: node names in order: Fetch every skill; Loop over the skills (loop_for_each over psl_skill rows); Count the skill's pending suggestions; Skip a skill that already has a pending suggestion; Fetch the skill's approved suggestions, approval time only; Find the newest approval time, 0 when the skill has no approved suggestion; Fetch the skill's open tickets raised after that approval; Count the tickets, list their numbers and write the model content; Skip a skill with fewer than 3 such tickets; Ask the model for an improved prompt, JSON answer; Parse the model answer to an object; Check that summary and proposed_prompt are both non-empty strings; Both keys present?; Write one pending suggestion for the skill; Done (STOP).",
+        "POC Studio Live · Suggest skill improvements 6ad1cde96123771ba2c052bc: ticket fetch saved as psl_feedback filter AND(properties_target_skill EQUAL skill_id, properties_status EQUAL open, properties_created_at GT newest approved_at) with page limit 100; pending guard saved as count_records psl_skill_suggestion AND(properties_skill EQUAL skill_id, properties_status EQUAL pending) then CONTINUE when count GT 0; threshold guard saved as CONTINUE when count LT 3.",
+        "POC Studio Live · Suggest skill improvements 6ad1cde96123771ba2c052bc: the model call saved as callables_call_automation automationId 66dfd76eb70dad256986b784, version \"-1\", synchronous true, parameters systemPrompt, content, type \"text\", response_format \"json_object\", stepError CONTINUE; the parse saved as utility_by_unifyapps_to_json_object on llmResponse, stepError CONTINUE; the create saved as storage create_record on psl_skill_suggestion with suggestion_id \"SUG-<skill_id>-<RUN.currentTime>\", skill, from_version = skill current_version, to_version = current_version + 1, summary, proposed_prompt, evidence_count, evidence_tickets, status \"pending\", created_at = RUN.currentTime, behind the IF on the check node's valid = true.",
+        "POC Studio Live · Suggest skill improvements 6ad1cde96123771ba2c052bc: result schema: none, the trigger is a schedule and the run ends with a STOP node (n_zsu2w); no inputs and no result keys to describe.",
+        "POC Studio Live · Suggest skill improvements 6ad1cde96123771ba2c052bc: read-only checks on real UAT rows with the saved filters: pending count for prd-writer = 0; approved fetch for prd-writer = SUG-prd-writer-v3, approved_at 1790920800000; open tickets newer than that = FB-9, FB-8, FB-7, FB-5, FB-4 (5, so prd-writer qualifies); mockup-drafter open tickets newer than its cut-off 1790328600000 = FB-6, FB-10 (2, skipped); build-report-writer = none (skipped).",
+        "POC Studio Live · Suggest skill improvements 6ad1cde96123771ba2c052bc: the three Groovy nodes were run alone through run_connector_operation: cut-off 1790920800000 for two approvals and 0 for none; prep gave count 3, evidenceTickets \"FB-4,FB-9,FB-10\" (oldest first), toVersion 4 and empty-input toVersion 2; the check gave valid true for two non-empty strings and false for a blank one. to_json_object gave result.summary and result.proposed_prompt for valid JSON, only summary for a partial answer, and failed with a JSONException for non-JSON text (the node's CONTINUE covers that).",
+        "Security rules: rule 4 landed as a create_record with only the ten listed fields and no whole-record write; rule 5 as no secret in any node (the platform automation is called by id); rule 6 as ticket text and the model's answer only travel as text into the model call and into text fields of the new row. No object, app or page setting was changed."
+      ],
+      "unverified": [
+        "No end-to-end workflow_test run was made: it would call Simple Call LLM and create a pending psl_skill_suggestion row for prd-writer (5 qualifying tickets), which the task did not name and which would block that skill until approved. Settle with the person's yes, then trigger_workflow_run workflow_test once and read psl_skill_suggestion for a pending row with evidence_tickets \"FB-4,FB-5,FB-7,FB-8,FB-9\", from_version 3, to_version 4.",
+        "The model call's output key llmResponse comes from the platform's example for Simple Call LLM, not from a run of this automation. Settle with the same test run: inspect_workflow_run on the call node.",
+        "The schedule fires only after a deploy; the task said not to deploy, so the next Monday 09:00 IST run has not been seen.",
+        "assumed: sequential true with maxWaitTime 30 MINUTES (the platform default) is how \"one run at a time\" is set.",
+        "assumed: each read is capped at 100 rows (skills, a skill's approved suggestions, a skill's open tickets); a skill with more than 100 qualifying tickets uses 100 of them in one run.",
+        "assumed: the model call sends only the four parameters the spec names; temperature, maxTokens and modelId are left to the platform automation's defaults, so a very long proposed prompt could be cut off and then writes nothing for that skill.",
+        "A skill skipped for a failed model call or an answer that is not a JSON object with both keys leaves no trace outside the run log; the run still ends COMPLETED, as the contract says."
+      ],
+      "notes": [
+        "handover: workflow id 6ad1cde96123771ba2c052bc, name POC Studio Live · Suggest skill improvements; input keys: none (schedule trigger, no callable setup); result keys: none (the run ends with stop and writes psl_skill_suggestion rows). It is saved at version 0 and not deployed.",
+        "handover: rows it writes use suggestion_id SUG-<skill_id>-<epoch ms>, status \"pending\", evidence_tickets comma-separated with no spaces in the order of the tickets' created_at (the same format as the seeded rows, FB-1,FB-2), from_version = the skill's current_version, to_version one higher. On the live data only prd-writer qualifies, so a run makes exactly one suggestion, for prd-writer."
+      ],
+      "error": ""
+    }
+  ]
+}

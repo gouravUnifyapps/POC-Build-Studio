@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "key": "e_data_source:e_6ad1c855c0f97b3e983c6f4a",
+  "entityType": "e_data_source",
+  "id": "e_6ad1c855c0f97b3e983c6f4a",
+  "version": 0,
+  "cachedAt": "2026-10-16T06:54:09.862Z",
+  "source": "solution-refresh",
+  "entity": {
+    "createdTime": 1792133205890,
+    "deleted": false,
+    "entityType": "e_data_source",
+    "id": "e_6ad1c855c0f97b3e983c6f4a",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792133205890,
+    "modifiedTime": 1792133205890,
+    "ownerUserId": 66770,
+    "properties": {
+      "metadata": {
+        "isManuallyRenamed": false
+      },
+      "dpOn": [],
+      "inputs": {
+        "triggerInputCondition": "{{triggerInputCondition}}",
+        "shouldSearchInAnalyticsStore": false,
+        "object_type": "{{object_type}}",
+        "includeRoleMappings": false,
+        "includeCurrentUserPermissions": false,
+        "translationsOption": "DEFAULT",
+        "numberOfRecordsToFetch": "SINGLE",
+        "readThroughSessionVariables": false
+      },
+      "advancedOptions": {
+        "refetchOnWindowFocus": true,
+        "timing": {
+          "runQueryOnPageLoad": false,
+          "runQueryPeriodically": false
+        },
+        "runBehaviour": "automatic"
+      },
+      "name": "data_fetchOne_app-79ea7266eab9",
+      "context": {
+        "appName": "storage_by_unifyapps",
+        "resourceName": "storage_by_unifyapps_fetch_records"
+      },
+      "interfaceId": "app-79ea7266eab9",
+      "type": "APPLICATION",
+      "dP": [
+        {
+          "p": "inputs.object_type"
+        },
+        {
+          "p": "inputs.triggerInputCondition"
+        }
+      ],
+      "interfacePageId": "e_global_app-79ea7266eab9"
+    },
+    "standard": false,
+    "version": 0
+  }
+}

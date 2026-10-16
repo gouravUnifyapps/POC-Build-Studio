@@ -1,0 +1,56 @@
+- generic [ref=e2]:
+  - generic [ref=e3]:
+    - generic [ref=e4]: Active POCs
+    - generic [ref=e5]: "12"
+    - generic [ref=e6]: 3 building
+  - generic [ref=e7]: solid
+  - generic [ref=e8]: g1 glass
+  - table [ref=e10]:
+    - rowgroup [ref=e11]:
+      - row [ref=e12]:
+        - columnheader "POC" [ref=e13]
+        - columnheader "Status" [ref=e14]
+    - rowgroup [ref=e15]:
+      - row [ref=e16] [cursor=pointer]:
+        - cell "Pentland Building · Understand Waiting on you Demo-ready Blocked Stopped" [ref=e17]:
+          - text: Pentland
+          - generic [ref=e18]: Building · Understand
+          - generic [ref=e19]: Waiting on you
+          - generic [ref=e20]: Demo-ready
+          - generic [ref=e21]: Blocked
+          - generic [ref=e22]: Stopped
+        - cell "1 2 3 4 5 6 7 8 9 0 08:18" [ref=e23]
+  - generic [ref=e24]:
+    - button "Approve Plan" [ref=e25] [cursor=pointer]
+    - button "Open" [ref=e26] [cursor=pointer]
+    - button "Plain" [ref=e27] [cursor=pointer]
+  - generic [ref=e30]:
+    - generic [ref=e31]: Plan is waiting on approval
+    - generic [ref=e32]: summary
+  - button "PRD PRD v3 Plan" [ref=e34] [cursor=pointer]:
+    - generic [ref=e35]: PRD
+    - generic [ref=e36]: PRD v3
+    - generic [ref=e37]: Plan
+  - generic [ref=e38]: prd-writer
+  - article [ref=e41]:
+    - generic [ref=e42]: quote
+  - complementary [ref=e44]:
+    - generic [ref=e45]: Drawer
+  - generic [ref=e47]: tabpanel
+  - generic [ref=e48]:
+    - generic [ref=e49]: AB
+    - generic [ref=e50]: CD
+    - generic [ref=e51]: EF
+    - generic [ref=e52]: GH
+    - generic [ref=e53]: IJ
+    - generic [ref=e54]: KL
+    - generic [ref=e55]: AI
+  - button "2 iterations" [ref=e61] [cursor=pointer]
+  - generic [ref=e62]: Latest
+  - complementary [ref=e63]:
+    - button "POCs 3" [ref=e65] [cursor=pointer]:
+      - generic [ref=e66]: POCs
+      - generic [ref=e67]: "3"
+  - generic [ref=e68]:
+    - generic [ref=e69]: Gourav
+    - generic [ref=e70]: kit bubble

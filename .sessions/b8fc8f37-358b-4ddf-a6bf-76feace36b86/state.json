@@ -1,0 +1,97 @@
+{
+  "claudeSessionId": "b8fc8f37-358b-4ddf-a6bf-76feace36b86",
+  "tenant": "orbit.uat.unifyapps.com",
+  "solutionId": "e_6ad1b45199f8a565171d7f1c",
+  "solutionName": "POC Studio Live",
+  "key": "poc-studio-live--orbit.uat.unifyapps.com--e_6ad1b45199f8a565171d7f1c",
+  "mode": "sonic",
+  "storage": "platform",
+  "openingRequest": null,
+  "userEmail": "gourav.mahunta@unifyapps.com",
+  "userId": "66770",
+  "environment": "uat",
+  "deviceSerialNumber": "HKL725CW0N",
+  "clientMetadataSource": "claude-desktop",
+  "clientMetadataKey": "66a87fe90bb921db6c134171538b4b1868aef83f6887412331950aa8f56074bb",
+  "clientMetadataCapturedAt": 1792139038756,
+  "claudeCodeEmailIssue": "no-account-email",
+  "startedAt": "2026-10-16T08:01:17.991Z",
+  "planIds": [],
+  "currentTask": null,
+  "tasks": [
+    {
+      "id": "t_887c058f9016",
+      "request": "Backfill on every new POC: make the channel's earlier messages (like the PDF in C0C9MTCEDAQ) reach the dashboard",
+      "outcome": null,
+      "targets": [],
+      "references": [],
+      "waiting": null,
+      "tenant": "orbit.uat.unifyapps.com",
+      "solutionId": "e_6ad1b45199f8a565171d7f1c",
+      "mode": "sonic",
+      "phase": null,
+      "approvals": [],
+      "sent": [],
+      "done": [
+        {
+          "what": "Save POC from Slack no longer writes slack_last_ts on a new POC row, so the first channel read covers the whole channel; deployed",
+          "entity": "6ad1c663d885ae5a4d9fd8a6",
+          "readBack": "Save POC from Slack (6ad1c663d885ae5a4d9fd8a6): definitionVersion 2, deployedVersion 3, DEPLOYED; open_workflow shows no slack_last_ts key",
+          "at": "2026-10-16T08:07:56.056Z"
+        },
+        {
+          "what": "POC-vulnerability-agent-20261016 cursor reset; the PDF now shows in History and Documents",
+          "entity": "psl_poc",
+          "readBack": "psl_poc POC-vulnerability-agent-20261016: slack_last_ts moved 0 -> 1792137450.908949; psl_document row AIPL_Vendor_Management_Procurement_AI_Requirement_Brief.pdf and psl_activity document_saved row by Utkarsh Kumar exist",
+          "at": "2026-10-16T08:07:56.184Z"
+        }
+      ],
+      "planId": null,
+      "evidence": ".sessions/b8fc8f37-358b-4ddf-a6bf-76feace36b86/reads/task-t_887c058f9016.json",
+      "startedAt": "2026-10-16T08:05:45.847Z",
+      "updatedAt": "2026-10-16T08:07:59.834Z",
+      "status": "done",
+      "endedAt": "2026-10-16T08:07:59.834Z"
+    },
+    {
+      "id": "t_f9e578c47811",
+      "request": "Fix the two remaining gaps: listener keeps the cursor; last activity only moves forward",
+      "outcome": null,
+      "targets": [],
+      "references": [],
+      "waiting": null,
+      "tenant": "orbit.uat.unifyapps.com",
+      "solutionId": "e_6ad1b45199f8a565171d7f1c",
+      "mode": "sonic",
+      "phase": null,
+      "approvals": [],
+      "sent": [],
+      "done": [
+        {
+          "what": "Slack listener: bot-joined branch no longer writes slack_last_ts; deployed",
+          "entity": "6ad1cc2a300f9003500f1da3",
+          "readBack": "Slack listener (6ad1cc2a300f9003500f1da3): definitionVersion 3, deployedVersion 4, DEPLOYED; Link the row to the channel sets only slack_channel_id and slack_live",
+          "at": "2026-10-16T08:12:02.683Z"
+        },
+        {
+          "what": "Read channels into History: last_activity only moves forward; deployed",
+          "entity": "6ad1c9dcbaada8326ecfd65a",
+          "readBack": "Read channels into History (6ad1c9dcbaada8326ecfd65a): definitionVersion 1, deployedVersion 2, DEPLOYED; run 6ad1dcb3634ef36bd06c5123 COMPLETED with current_last_activity_at 1792137170009 carried",
+          "at": "2026-10-16T08:15:21.341Z"
+        },
+        {
+          "what": "POC-vulnerability-agent-20261016 last activity restored",
+          "entity": "psl_poc",
+          "readBack": "psl_poc POC-vulnerability-agent-20261016: last_activity 'Started from Slack by Gourav Mahunta', last_activity_at 1792137170009",
+          "at": "2026-10-16T08:15:21.455Z"
+        }
+      ],
+      "planId": null,
+      "evidence": ".sessions/b8fc8f37-358b-4ddf-a6bf-76feace36b86/reads/task-t_f9e578c47811.json",
+      "startedAt": "2026-10-16T08:10:27.497Z",
+      "updatedAt": "2026-10-16T08:15:21.608Z",
+      "status": "done",
+      "endedAt": "2026-10-16T08:15:21.608Z"
+    }
+  ]
+}

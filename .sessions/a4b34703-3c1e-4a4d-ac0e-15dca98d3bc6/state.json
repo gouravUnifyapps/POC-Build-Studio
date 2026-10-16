@@ -1,0 +1,20 @@
+{
+  "claudeSessionId": "a4b34703-3c1e-4a4d-ac0e-15dca98d3bc6",
+  "tenant": "orbit.uat.unifyapps.com",
+  "solutionId": "e_6ad1b45199f8a565171d7f1c",
+  "solutionName": "POC Studio Live",
+  "key": "poc-studio-live--orbit.uat.unifyapps.com--e_6ad1b45199f8a565171d7f1c",
+  "mode": "sonic",
+  "storage": "platform",
+  "openingRequest": null,
+  "userEmail": "gourav.mahunta@unifyapps.com",
+  "userId": "66770",
+  "environment": "uat",
+  "deviceSerialNumber": "HKL725CW0N",
+  "clientMetadataSource": "claude-desktop",
+  "clientMetadataKey": "66a87fe90bb921db6c134171538b4b1868aef83f6887412331950aa8f56074bb",
+  "clientMetadataCapturedAt": 1792139072549,
+  "claudeCodeEmailIssue": "no-account-email",
+  "startedAt": "2026-10-16T08:24:32.549Z",
+  "planIds": []
+}

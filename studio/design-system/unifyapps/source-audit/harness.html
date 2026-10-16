@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" data-theme="light"><head><meta charset="utf-8"><title>source CSS harness</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Spectral:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../../../app-b4fe5a0a30eb/main/app/src/orbit/ds/tokens.css"><link rel="stylesheet" href="../../../../app-b4fe5a0a30eb/main/app/src/orbit/ds/bundle.css"><link rel="stylesheet" href="../../../../app-b4fe5a0a30eb/main/app/src/orbit/orbit.css">
+</head><body>
+<div style="padding:24px;display:grid;gap:16px;max-width:980px">
+<div class="tile" id="t-tile"><span class="micro">Active POCs</span><span class="v">12</span><span class="sub">3 building</span></div>
+<div class="solid pad" id="t-solid">solid</div>
+<div class="g1 pad" id="t-g1">g1 glass</div>
+<div class="tblwrap" id="t-tblwrap"><table class="tbl ob-ptable"><thead><tr><th>POC</th><th>Status</th></tr></thead><tbody><tr><td>Pentland <span class="tag ob-tag-brand" id="t-tagbrand">Building · Understand</span> <span class="tag attention" id="t-tagatt">Waiting on you</span> <span class="tag positive">Demo-ready</span> <span class="tag negative">Blocked</span> <span class="tag neutral">Stopped</span></td><td>1 2 3 4 5 6 7 8 9 0 08:18</td></tr></tbody></table></div>
+<div class="row"><button class="btn btn-p" id="t-btnp">Approve Plan</button><button class="btn btn-s btn-sm" id="t-btnsm">Open</button><button class="btn" id="t-btn">Plain</button></div>
+<section class="ps-banner need ob-approval ob-approval--gate has-action" id="t-banner"><span class="ic"></span><div class="tx"><b>Plan is waiting on approval</b><span>summary</span></div></section>
+<div class="ob-doclist" id="t-doclist"><button class="ob-docrow"><span class="ob-doctype">PRD</span><span class="ob-docrow-name">PRD v3</span><span class="ob-docrow-meta">Plan</span></button></div>
+<div class="ps-skill" id="t-skill"><div class="hd"><b>prd-writer</b></div></div>
+<article class="ps-fb ob-fb" id="t-fb"><q>quote</q></article>
+<div style="position:relative;height:120px"><aside class="ps-drawer ob-drawer" id="t-drawer"><div class="hd"><span class="title">Drawer</span></div></aside></div>
+<div class="tabpanel" id="t-tabpanel">tabpanel</div>
+<div style="display:flex;gap:10px" id="t-avs"><span class="av ob-tone-0">AB</span><span class="av ob-tone-1">CD</span><span class="av ob-tone-2">EF</span><span class="av ob-tone-3">GH</span><span class="av ob-tone-4">IJ</span><span class="av ob-tone-5">KL</span><span class="av ob-av-ai">AI</span></div>
+<div style="display:flex;gap:30px;padding:20px"><div class="ob-jgate is-open"><span class="ob-jgate-d" id="t-gate-open"></span></div><div class="ob-jgate is-done"><span class="ob-jgate-d" id="t-gate-done"></span></div></div>
+<button class="ob-loops-chip" id="t-chip">2 iterations</button>
+<div class="ob-loops-box" id="t-loopsbox"><span class="ob-loops-latest" id="t-latest">Latest</span></div>
+<aside class="ps-rail" id="t-rail" style="min-height:120px"><div class="lockup"></div><button class="ps-nav-item" aria-current="page"><span>POCs</span><span class="ct hot">3</span></button></aside>
+<div class="msg ai" id="t-msg"><span class="who">Gourav</span><div class="bub">kit bubble</div></div>
+</div>
+<script>
+const $=s=>document.querySelector(s), cs=(e,p)=>getComputedStyle(e)[p];
+async function run(){
+  await document.fonts.ready;
+  await Promise.all(['400 15px Spectral','600 15px Spectral','italic 400 15px Spectral','600 10.5px "IBM Plex Mono"','400 12px "IBM Plex Mono"'].map(f=>document.fonts.load(f,'0123456789 Ag')));
+  const out={};
+  const root=getComputedStyle(document.documentElement);
+  out.rootTokens={'--accent':root.getPropertyValue('--accent').trim(),'--inner':root.getPropertyValue('--inner').trim(),'--accent-text':root.getPropertyValue('--accent-text').trim(),'--accent-soft':root.getPropertyValue('--accent-soft').trim(),'--brand':root.getPropertyValue('--brand').trim()};
+  const cards=['#t-tile','#t-solid','#t-g1','#t-tblwrap','#t-banner','#t-doclist','#t-skill','#t-fb','#t-drawer','#t-tabpanel','#t-loopsbox','#t-rail'];
+  out.cards=cards.map(s=>{const e=$(s);return {sel:s,className:e.className,borderTopWidth:cs(e,'borderTopWidth'),borderLeftWidth:cs(e,'borderLeftWidth'),radius:cs(e,'borderTopLeftRadius'),backdrop:cs(e,'backdropFilter'),shadow:cs(e,'boxShadow').slice(0,140),bgColor:cs(e,'backgroundColor')}});
+  const th=$('#t-tblwrap th');
+  out.type={thFamily:cs(th,'fontFamily'),thSize:cs(th,'fontSize'),thWeight:cs(th,'fontWeight'),bodyFamily:cs(document.body,'fontFamily'),bodySize:cs(document.body,'fontSize'),bodyTabular:cs(document.body,'fontVariantNumeric'),
+    tagSize:cs($('#t-tagbrand'),'fontSize'),btnSize:cs($('#t-btn'),'fontSize'),btnSmSize:cs($('#t-btnsm'),'fontSize'),
+    plexLoaded:document.fonts.check('600 10.5px "IBM Plex Mono"'),spectralLoaded:document.fonts.check('400 15px Spectral'),spectral600:document.fonts.check('600 15px Spectral')};
+  const c=document.createElement('canvas').getContext('2d');
+  c.font='400 15px Spectral'; out.digitWidthsSpectral=['0','1','2','3','4','5','6','7','8','9'].map(d=>+c.measureText(d).width.toFixed(3));
+  c.font='400 15px Georgia'; out.digitWidthsGeorgia=['0','1','8'].map(d=>+c.measureText(d).width.toFixed(3));
+  out.tagBrand={color:cs($('#t-tagbrand'),'color'),bg:cs($('#t-tagbrand'),'backgroundColor'),radius:cs($('#t-tagbrand'),'borderRadius')};
+  out.avatars=[...document.querySelectorAll('#t-avs .av')].map(e=>({cls:e.className,bgImage:cs(e,'backgroundImage').slice(0,230),color:cs(e,'color'),radius:cs(e,'borderRadius')}));
+  out.gate={open:cs($('#t-gate-open'),'boxShadow'),done:cs($('#t-gate-done'),'boxShadow'),radius:cs($('#t-gate-open'),'borderRadius')};
+  out.chip={color:cs($('#t-chip'),'color'),bg:cs($('#t-chip'),'backgroundColor')};
+  out.latest={color:cs($('#t-latest'),'color'),bg:cs($('#t-latest'),'backgroundColor')};
+  out.loopsBox={border:cs($('#t-loopsbox'),'borderTopWidth'),radius:cs($('#t-loopsbox'),'borderRadius')};
+  out.msg={maxWidth:cs($('#t-msg'),'maxWidth'),whoFamily:cs($('#t-msg .who'),'fontFamily'),bubBg:cs($('#t-msg .bub'),'backgroundColor'),bubRadius:cs($('#t-msg .bub'),'borderRadius'),alignSelf:cs($('#t-msg'),'alignSelf')};
+  out.railBg={color:cs($('#t-rail'),'backgroundColor'),image:cs($('#t-rail'),'backgroundImage').slice(0,200)};
+  // every distinct border-radius in the harness
+  const radii={};document.querySelectorAll('body *').forEach(e=>{const r=cs(e,'borderTopLeftRadius');radii[r]=(radii[r]||0)+1});out.radii=radii;
+  out.pageScrollX=document.documentElement.scrollWidth>document.documentElement.clientWidth;
+  document.title='DONE';window.__out=out;
+  const pre=document.createElement('pre');pre.id='out';pre.textContent=JSON.stringify(out,null,1);document.body.appendChild(pre);
+}
+run();
+</script></body></html>

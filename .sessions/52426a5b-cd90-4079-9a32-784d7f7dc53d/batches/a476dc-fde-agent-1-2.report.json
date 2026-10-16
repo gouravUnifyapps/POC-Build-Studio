@@ -1,0 +1,159 @@
+{
+  "tasks": [
+    {
+      "id": "t3",
+      "status": "ok",
+      "change": "created",
+      "ids": { "entity": "psl_document" },
+      "readBack": [
+        "psl_document: get_objects before the write answered missing for psl_document (id free); orbit_studio_document read as the model (source untouched); psl_poc existed from t1.",
+        "psl_document: apply_object_batch create_object answered wrote true, written [psl_document], unmirroredFields [] (live get_objects read-back also unmirroredFields []).",
+        "psl_document: name \"POC Studio Live · Document\", store MONGO; fields [document_id, poc, name, type, stage, gate_pack, version, status, summary, content, file_link, created_by, saved_at, format] = the 17 source fields minus path_in_build_session, size_bytes, file; nothing added.",
+        "psl_document: document_id {type string, primaryKey true, uniqueKey true, searchable true, sortable true}; name {nameField true, searchable true, sortable true}; poc {type string, format single-select, sortable true, foreignKey.reference ENTITY_ID:psl_poc} in both schema halves; content {type string, format textarea} with no maxLength.",
+        "psl_document: required [document_id, poc, name, type, stage, version, status, created_by, saved_at].",
+        "psl_document: picklist status = draft, in_review, approved, final, superseded; gate_pack = none, g1, g2, g3, g4 (default none); format = markdown, html, link; stage = the nine codes 0_kickoff..8_demo_ready; type = brief, input, requirements, scope, email, brd, design_system, build_report, app, evidence_pack, demo_script, deck, video, use_case, design, automation, object, agent, walkthrough, poc_link.",
+        "psl_document: indexes [{name idx_poc, fields [{poc asc}], status SUCCESS}].",
+        "psl_document: access settings external false, skipPermissionsFilter false (secure-by-default rule 1 held); no secret in any field."
+      ],
+      "unverified": [
+        "document_id pattern <poc id>__<stage>__<name slug>__v<n> is stored as the field's help text, not enforced (pattern is not a documented field key).",
+        "The poc lookup is checked on write only: deleting a psl_poc row leaves its documents pointing at a gone id.",
+        "No rows written: the seed of psl_document (6 documents) is another task."
+      ],
+      "notes": [
+        "handover: object id psl_document; primary key and unique key document_id (string, required, <poc id>__<stage>__<name slug>__v<n>); name field name; poc is a lookup to psl_poc holding the parent's poc_id; version integer (required, sortable); saved_at epoch ms (required); content long text with no maxLength, summary and file_link plain strings; picklist codes: type brief|input|requirements|scope|email|brd|design_system|build_report|app|evidence_pack|demo_script|deck|video|use_case|design|automation|object|agent|walkthrough|poc_link, stage 0_kickoff..8_demo_ready, gate_pack none|g1|g2|g3|g4 (default none), status draft|in_review|approved|final|superseded, format markdown|html|link; index idx_poc (poc asc). Pre-check of data/seed/psl_document.json: every type, stage, gate_pack, status and format value is a code above, and every poc is one of the 11 seeded psl_poc ids.",
+        "The platform added the tag \"Nebula\" to the object's tags on create; none was sent."
+      ],
+      "error": ""
+    },
+    {
+      "id": "t4",
+      "status": "ok",
+      "change": "created",
+      "ids": { "entity": "psl_iteration" },
+      "readBack": [
+        "psl_iteration: get_objects before the write answered missing for psl_iteration (id free); orbit_studio_iteration read as the model (source untouched); psl_poc existed from t1.",
+        "psl_iteration: apply_object_batch create_object answered wrote true, written [psl_iteration], unmirroredFields [] (live get_objects read-back also unmirroredFields []).",
+        "psl_iteration: name \"POC Studio Live · Iteration\", store MONGO; fields [iteration_id, poc, phase, source, actor_name, actor_email, title, reason, skill, related_document, related_ticket, slack_ref, created_at], the same 13 as orbit_studio_iteration.",
+        "psl_iteration: iteration_id {type string, primaryKey true, uniqueKey true}; title {nameField true, searchable true}; poc {type string, format single-select, sortable true, foreignKey.reference ENTITY_ID:psl_poc}; reason {type string, format textarea}; created_at {integer, date-time, epoch, sortable true}.",
+        "psl_iteration: required [iteration_id, poc, phase, source, actor_name, title, created_at].",
+        "psl_iteration: picklist phase = understand, plan, build, deliver; source = nebula, judge, person.",
+        "psl_iteration: indexes [{name idx_poc_created, fields [{poc asc}, {created_at desc}], status SUCCESS}].",
+        "psl_iteration: access settings external false, skipPermissionsFilter false (secure-by-default rule 1 held); no secret in any field."
+      ],
+      "unverified": [
+        "iteration_id pattern ITR-<epoch>-<n> is stored as the field's help text, not enforced.",
+        "The poc lookup is checked on write only: deleting a psl_poc row leaves its iterations pointing at a gone id.",
+        "No rows written: the seed of psl_iteration (7 loops) is another task."
+      ],
+      "notes": [
+        "handover: object id psl_iteration; primary key and unique key iteration_id (string, required, ITR-<epoch>-<n>); name field title (required); poc is a lookup to psl_poc holding the parent's poc_id; actor_name and source and phase required; created_at epoch ms required (sortable); related_document, related_ticket, skill, slack_ref, actor_email plain strings, reason long text; picklist codes: phase understand|plan|build|deliver, source nebula|judge|person; index idx_poc_created (poc asc, created_at desc). Pre-check of data/seed/psl_iteration.json: phase and source values are all codes above, and every poc is one of the 11 seeded psl_poc ids.",
+        "The platform added the tag \"Nebula\" to the object's tags on create; none was sent."
+      ],
+      "error": ""
+    },
+    {
+      "id": "t5",
+      "status": "ok",
+      "change": "created",
+      "ids": { "entity": "psl_feedback" },
+      "readBack": [
+        "psl_feedback: get_objects before the write answered missing for psl_feedback (id free); orbit_studio_feedback read as the model (source untouched); psl_poc existed from t1.",
+        "psl_feedback: apply_object_batch create_object answered wrote true, written [psl_feedback], unmirroredFields [] (live get_objects read-back also unmirroredFields []).",
+        "psl_feedback: name \"POC Studio Live · Feedback\", store MONGO; 20 fields [ticket_no, poc, poc_stage, gate, iteration, client_name, title, feedback, quote, severity, source, target_skill, skill_proposal, incorporated_in_version, status, action_taken, reviewed_by, given_by_name, created_at, resolved_at] = the source fields minus channel_ref, parent_ticket, given_by_email, related_document, category, channel, plus iteration.",
+        "psl_feedback: ticket_no {type string, primaryKey true, uniqueKey true, searchable true, sortable true}; title {nameField true, searchable true}; poc {type string, format single-select, sortable true, foreignKey.reference ENTITY_ID:psl_poc}; iteration {type integer, optional}; feedback, quote, action_taken {format textarea}; created_at and resolved_at {integer, date-time, epoch}.",
+        "psl_feedback: required [ticket_no, poc, title, feedback, severity, status, given_by_name, created_at].",
+        "psl_feedback: picklist status = open \"New\", in_review \"Under review\", resolved \"Incorporated\", not_incorporated \"Not incorporated\", default open, sortable true; severity = low, medium, high; gate = none, g1, g2, g3, g4 (default none); poc_stage = the nine codes 0_kickoff..8_demo_ready (sortable true); source = self_llm, iteration, user, reviewer.",
+        "psl_feedback: indexes [{name idx_poc_status, fields [{poc asc}, {status asc}], status SUCCESS}].",
+        "psl_feedback: access settings external false, skipPermissionsFilter false (secure-by-default rule 1 held); no secret in any field."
+      ],
+      "unverified": [
+        "ticket_no pattern FB-<n> is stored as the field's help text, not enforced.",
+        "status carries the four codes the contract lists; the source object also holds in_proposal, incorporated and dismissed, which were left out because the contract names four. source, skill_proposal and incorporated_in_version were kept because the contract drops only six fields and adds iteration.",
+        "The poc lookup is checked on write only: deleting a psl_poc row leaves its tickets pointing at a gone id.",
+        "No rows written: the seed of psl_feedback (10 tickets) is another task."
+      ],
+      "notes": [
+        "handover: object id psl_feedback; primary key and unique key ticket_no (string, required, FB-<n>); name field title; poc is a lookup to psl_poc holding the parent's poc_id; required fields ticket_no, poc, title, feedback, severity, status, given_by_name, created_at; iteration optional integer (the loop's number within its POC); created_at and resolved_at epoch ms; picklist codes: status open|in_review|resolved|not_incorporated (default open), severity low|medium|high, gate none|g1|g2|g3|g4 (default none), poc_stage 0_kickoff..8_demo_ready, source self_llm|iteration|user|reviewer; index idx_poc_status (poc asc, status asc). Pre-check of data/seed/psl_feedback.json: status open|resolved, severity high|medium, gate g2, poc_stage 3_scope|4_design_system are all codes above, and every poc is one of the 11 seeded psl_poc ids.",
+        "The platform added the tag \"Nebula\" to the object's tags on create; none was sent."
+      ],
+      "error": ""
+    },
+    {
+      "id": "t8",
+      "status": "ok",
+      "change": "updated",
+      "ids": { "entity": "psl_skill", "records": ["prd-writer", "mockup-drafter", "build-report-writer"] },
+      "readBack": [
+        "psl_skill: get_records before the write answered total 0, so all 3 rows of psl_skill.json were missing; the file's enum and lookup checks had nothing to refuse (psl_skill has no picklist and no lookup).",
+        "psl_skill: apply_record_edits made 3 creates, every result ok true, recordId prd-writer, mockup-drafter, build-report-writer.",
+        "psl_skill: get_records limit 1 answered total 3, equal to the 3 rows of psl_skill.json.",
+        "psl_skill: get_records by id prd-writer returned properties skill_id \"prd-writer\", name \"PRD writer\", current_version 3 and the full prompt text, every field of the file's row present."
+      ],
+      "unverified": [
+        "Only prd-writer was read back by id with every field; mockup-drafter and build-report-writer are confirmed by their ok create results, which echo every field, and by the total of 3."
+      ],
+      "notes": [
+        "No row existed before, so nothing was rewritten."
+      ],
+      "error": ""
+    },
+    {
+      "id": "t9",
+      "status": "ok",
+      "change": "updated",
+      "ids": {
+        "entity": "psl_poc",
+        "records": [
+          "POC-pentland-vulnerability-20261001",
+          "POC-pentland-product-enrichment-20261008",
+          "POC-harborline-claims-triage-20260921",
+          "POC-northgate-onboarding-20261009",
+          "POC-alder-returns-20260902",
+          "POC-tidewater-invoice-match-20260915",
+          "POC-kestrel-fraud-alerts-20260826",
+          "POC-marlow-policy-q-a-20260829",
+          "POC-orchard-contract-review-20260903",
+          "POC-sable-supplier-onboarding-20260817",
+          "POC-quill-helpdesk-20260805"
+        ]
+      },
+      "readBack": [
+        "psl_poc: get_records before the write answered total 0, so all 11 rows of psl_poc.json were missing; every stage, current_gate, g*_status and status value in the file is a code the object holds.",
+        "psl_poc: apply_record_edits made 11 creates in one call, every result ok true, recordId equal to the row's poc_id.",
+        "psl_poc: get_records limit 1 answered total 11, equal to the 11 rows of psl_poc.json.",
+        "psl_poc POC-pentland-vulnerability-20261001 (the story row), read by id: owner_name \"Gourav Mahunta\" (owner_email gourav.mahunta@unifyapps.com), manager_name \"Gourav Mahunta\" (manager_email gourav.mahunta@unifyapps.com), stage \"4_design_system\", current_gate \"g2\", g1_status \"approved\", g2_status \"waiting\", status \"waiting\"; approvals g1_owner_approved true, g1_manager_approved true, g2_owner_approved true, g2_manager_approved false, g3 and g4 approvals false; use_case \"Pentland Vulnerability Use Case\", slack_channel \"pentland-poc\", slack_channel_id \"C0SEED0001\", owner_slack_id and manager_slack_id \"U09EK0B6NKD\", slack_live false; every field of the file's row present.",
+        "psl_poc POC-northgate-onboarding-20261009, read by id: stage \"0_kickoff\", status \"running\", build_run_id \"https://claude.invalid/code/session_northgate\", every field of the file's row present."
+      ],
+      "unverified": [
+        "The other nine rows are confirmed by their ok create results, which echo every property, and by the total of 11; only the two rows above were re-read by id.",
+        "Every seed row has slack_live false and a C0SEED channel id, so the Read channels into History automation (which reads only slack_live true rows) will skip them; no row sets slack_last_ts or bot_thread_ts. This is as the file gives it."
+      ],
+      "notes": [
+        "No row existed before, so nothing was rewritten.",
+        "handover: psl_poc now holds 11 rows. Their poc_id values are POC-pentland-vulnerability-20261001, POC-pentland-product-enrichment-20261008, POC-harborline-claims-triage-20260921, POC-northgate-onboarding-20261009, POC-alder-returns-20260902, POC-tidewater-invoice-match-20260915, POC-kestrel-fraud-alerts-20260826, POC-marlow-policy-q-a-20260829, POC-orchard-contract-review-20260903, POC-sable-supplier-onboarding-20260817, POC-quill-helpdesk-20260805. The seed files of psl_activity, psl_document, psl_iteration and psl_feedback only name poc values from this list (checked), so their lookups will pass."
+      ],
+      "error": ""
+    },
+    {
+      "id": "t14",
+      "status": "ok",
+      "change": "updated",
+      "ids": { "entity": "psl_skill_suggestion", "records": ["SUG-prd-writer-v3", "SUG-mockup-drafter-v2"] },
+      "readBack": [
+        "psl_skill_suggestion: get_records before the write answered total 0, so both rows of psl_skill_suggestion.json were missing; both rows' status is approved, a code the object holds.",
+        "psl_skill_suggestion: apply_record_edits made 2 creates, every result ok true, recordId SUG-prd-writer-v3 and SUG-mockup-drafter-v2.",
+        "psl_skill_suggestion: get_records limit 1 answered total 2, equal to the 2 rows of psl_skill_suggestion.json.",
+        "psl_skill_suggestion SUG-prd-writer-v3, read by id: skill \"prd-writer\", from_version 2, to_version 3, summary, proposed_prompt, evidence_count 2, evidence_tickets \"FB-1,FB-2\", status \"approved\", created_at 1790652600000, approved_by \"Rahul Sen\", approved_at 1790920800000; every field of the file's row present."
+      ],
+      "unverified": [
+        "Only SUG-prd-writer-v3 was re-read by id; SUG-mockup-drafter-v2 is confirmed by its ok create result, which echoes every property, and by the total of 2."
+      ],
+      "notes": [
+        "No row existed before, so nothing was rewritten.",
+        "The skill values (prd-writer, mockup-drafter) match rows seeded in psl_skill (t8), though skill is a plain string and not a lookup."
+      ],
+      "error": ""
+    }
+  ]
+}

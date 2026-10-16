@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "key": "e_data_source:e_6ad1cf9fc0f97b3e983d929d",
+  "entityType": "e_data_source",
+  "id": "e_6ad1cf9fc0f97b3e983d929d",
+  "version": 0,
+  "cachedAt": "2026-10-16T07:24:33.488Z",
+  "source": "solution-refresh",
+  "entity": {
+    "createdTime": 1792135071922,
+    "deleted": false,
+    "entityType": "e_data_source",
+    "id": "e_6ad1cf9fc0f97b3e983d929d",
+    "lastModifiedBy": 66770,
+    "lastPlatformUpdateBy": 66770,
+    "lastPlatformUpdateOn": 1792135071922,
+    "modifiedTime": 1792135071922,
+    "ownerUserId": 66770,
+    "properties": {
+      "metadata": {
+        "isManuallyRenamed": false
+      },
+      "dpOn": [],
+      "inputs": {
+        "automationId": "6ad1cd1b6123771ba2c0346e",
+        "runtimeConnections": {},
+        "version": "-1",
+        "parameters": {
+          "suggestion_id": "{{suggestion_id}}",
+          "caller_email": "{{caller_email}}",
+          "caller_name": "{{caller_name}}"
+        },
+        "synchronous": true
+      },
+      "advancedOptions": {
+        "refetchOnWindowFocus": true,
+        "timing": {
+          "runQueryOnPageLoad": false,
+          "runQueryPeriodically": false
+        },
+        "runBehaviour": "automatic"
+      },
+      "name": "Approve skill suggestion",
+      "context": {
+        "appName": "callables",
+        "resourceName": "callables_call_automation",
+        "resourceVersion": 3156
+      },
+      "type": "APPLICATION",
+      "dP": [
+        {
+          "p": "inputs.parameters.suggestion_id"
+        },
+        {
+          "p": "inputs.parameters.caller_email"
+        },
+        {
+          "p": "inputs.parameters.caller_name"
+        }
+      ],
+      "interfacePageId": "e_global_app-79ea7266eab9"
+    },
+    "standard": false,
+    "version": 0
+  }
+}

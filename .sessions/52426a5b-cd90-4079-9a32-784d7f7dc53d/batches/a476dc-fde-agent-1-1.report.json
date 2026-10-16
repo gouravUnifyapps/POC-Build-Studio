@@ -1,0 +1,137 @@
+{
+  "tasks": [
+    {
+      "id": "t1",
+      "status": "ok",
+      "change": "created",
+      "ids": { "entity": "psl_poc" },
+      "readBack": [
+        "psl_poc: get_objects before the write answered missing for psl_poc (id free); orbit_studio_poc read as the model (source untouched).",
+        "psl_poc: apply_object_batch create_object answered wrote true, written [psl_poc], unmirroredFields [] (live get_objects read-back also unmirroredFields []).",
+        "psl_poc: name \"POC Studio Live · POC\", pluralName \"POC Studio Live · POCs\", store MONGO; 42 fields = the 42 source fields minus tier, approvers, demo_date, watch_email, documents_count, open_feedback_count, tenant_host, plus slack_channel_id, owner_slack_id, manager_slack_id, build_run_id, slack_last_ts, bot_thread_ts, slack_live.",
+        "psl_poc: poc_id input {type string, primaryKey true, uniqueKey true, searchable true, sortable true}; client_name nameField true, searchable true; use_case searchable true.",
+        "psl_poc: required [poc_id, client_name, client_slug, use_case, owner_name, started_by, started_at, stage, current_gate, g1_status, g2_status, g3_status, g4_status, status].",
+        "psl_poc: picklist stage codes 0_kickoff, 1_signal_capture, 2_research_assess, 3_scope, 4_design_system, 5_build, 6_finalize, 7_collaterals, 8_demo_ready (titles Kickoff, Signal capture, Research & assess, Scope the demo, Design system, Build with Nebula, Finalize, Collaterals, Demo-ready); current_gate none/g1/g2/g3/g4 default none; g1_status..g4_status pending/waiting/approved/changes_requested default pending; status running/waiting/blocked/stopped/demo_ready default running (sortable true).",
+        "psl_poc: indexes [{name idx_status, fields [{status asc}], status SUCCESS}].",
+        "psl_poc: access settings external false, skipPermissionsFilter false (secure-by-default rule 1 held); no secret in any field."
+      ],
+      "unverified": [
+        "poc_id pattern POC-<client slug>-<use case slug>-<yyyymmdd> is stored as the field's help text, not enforced: pattern is not a documented field key of the object tool, so the platform will not reject a poc_id of another shape. Settle with a record write of a malformed poc_id if enforcement is wanted.",
+        "Slack booleans and the g*_owner_approved / g*_manager_approved booleans carry no default (as in the source): a row that never sets one reads MISSING, not false."
+      ],
+      "notes": [
+        "handover: object id psl_poc; primary key and unique key poc_id (string, required); name field client_name; picklist codes: stage 0_kickoff|1_signal_capture|2_research_assess|3_scope|4_design_system|5_build|6_finalize|7_collaterals|8_demo_ready, current_gate none|g1|g2|g3|g4 (default none), g1_status..g4_status pending|waiting|approved|changes_requested (default pending), status running|waiting|blocked|stopped|demo_ready (default running); booleans slack_live, g1..g4_owner_approved, g1..g4_manager_approved; epoch ms integers started_at, last_activity_at; lookups to this object store the parent's poc_id string; index idx_status (status asc).",
+        "design: no new entity beyond the contract; poc_id is the natural client-sent key (unique, required); the one index is idx_status for the status filter; lookups from psl_activity and the other children point here by poc_id, nothing protects a delete (an automation guard owns that).",
+        "The platform added the tag \"Nebula\" to the object's tags on create; none was sent."
+      ],
+      "error": ""
+    },
+    {
+      "id": "t2",
+      "status": "ok",
+      "change": "created",
+      "ids": { "entity": "psl_activity" },
+      "readBack": [
+        "psl_activity: get_objects before the write answered missing for psl_activity (id free); orbit_studio_activity read as the model (source untouched); psl_poc existed from t1.",
+        "psl_activity: apply_object_batch create_object answered wrote true, written [psl_activity], unmirroredFields [] (live get_objects read-back also unmirroredFields []).",
+        "psl_activity: name \"POC Studio Live · Activity\"; fields [activity_id, poc, type, stage, gate, decision, actor_type, actor_name, actor_email, message, related_document, posted_to, created_at, actor_avatar_url, slack_ts, slack_ref] = the source fields minus note and related_ticket, plus actor_avatar_url, slack_ts, slack_ref.",
+        "psl_activity: activity_id {primaryKey true, uniqueKey true, searchable true, sortable true}; message {nameField true, searchable true}; poc {type string, format single-select, sortable true, foreignKey.reference ENTITY_ID:psl_poc} in both schema halves.",
+        "psl_activity: required [activity_id, poc, type, actor_type, actor_name, message, created_at].",
+        "psl_activity: picklist type = poc_started, stage_started, stage_completed, document_saved, gate_posted, gate_decided, feedback_created, feedback_reviewed, input_added, nudge_sent, poc_stopped, poc_restarted, owner_approved, manager_approved, iteration_logged; gate = none, g1, g2, g3, g4; decision = approve, request_changes, stop; actor_type = ai, person, system.",
+        "psl_activity: indexes [{name idx_poc_created, fields [{poc asc}, {created_at desc}], status SUCCESS}].",
+        "psl_activity: created with the object default access (permission filter kept); no secret in any field."
+      ],
+      "unverified": [
+        "The poc lookup is checked on write only: a delete of a psl_poc row leaves its psl_activity rows pointing at a gone id (platform behaviour, nothing in the store guards it).",
+        "No rows written: the seed of psl_activity (15 events) and the Slack reader are other tasks."
+      ],
+      "notes": [
+        "handover: object id psl_activity; primary key and unique key activity_id (string; Slack rows SLK-<channel id>-<slack ts>, system rows ACT-<epoch>-<n>); name field message; poc is a lookup to psl_poc holding the parent's poc_id; created_at epoch ms (sortable); picklist codes: type poc_started|stage_started|stage_completed|document_saved|gate_posted|gate_decided|feedback_created|feedback_reviewed|input_added|nudge_sent|poc_stopped|poc_restarted|owner_approved|manager_approved|iteration_logged, gate none|g1|g2|g3|g4, decision approve|request_changes|stop, actor_type ai|person|system; stage is a free string; new free strings actor_avatar_url, slack_ts, slack_ref; index idx_poc_created (poc asc, created_at desc). Seed rows must name an existing psl_poc.poc_id in poc and must set every required field."
+      ],
+      "error": ""
+    },
+    {
+      "id": "t6",
+      "status": "ok",
+      "change": "created",
+      "ids": { "entity": "psl_skill" },
+      "readBack": [
+        "psl_skill: get_objects before the write answered missing for psl_skill (id free); there is no source twin, built from the contract.",
+        "psl_skill: apply_object_batch create_object answered wrote true, written [psl_skill], unmirroredFields [] (live get_objects read-back also unmirroredFields []).",
+        "psl_skill: name \"POC Studio Live · Skill\", pluralName \"POC Studio Live · Skills\", store MONGO; fields [skill_id, name, current_version, prompt].",
+        "psl_skill: skill_id {type string, primaryKey true, uniqueKey true, searchable true, sortable true}; name {nameField true, searchable true, sortable true}; current_version {type integer}; prompt {type string, format textarea}.",
+        "psl_skill: required [skill_id, name, current_version].",
+        "psl_skill: access settings external false, skipPermissionsFilter false (secure-by-default rule 1 held)."
+      ],
+      "unverified": [
+        "No index: the contract names none for psl_skill and no access pattern was given, so indexes is [] (the generic index-SUCCESS proof has nothing to show). Add one when a filter is named.",
+        "No rows written: the seed of psl_skill (3 skills) is another task."
+      ],
+      "notes": [
+        "handover: object id psl_skill; primary key and unique key skill_id (string slug, e.g. prd-writer, required); name field name (required); current_version integer (required); prompt long text; no picklists; no index. A seed row must set skill_id, name and current_version; empty values are left out.",
+        "design: skill_id is the stable natural key (a slug); the object holds the current prompt only, versions of it live in psl_skill_suggestion (from_version, to_version)."
+      ],
+      "error": ""
+    },
+    {
+      "id": "t7",
+      "status": "ok",
+      "change": "created",
+      "ids": { "entity": "psl_skill_suggestion" },
+      "readBack": [
+        "psl_skill_suggestion: get_objects before the write answered missing for psl_skill_suggestion (id free); there is no source twin, built from the contract.",
+        "psl_skill_suggestion: apply_object_batch create_object answered wrote true, written [psl_skill_suggestion], unmirroredFields [] (live get_objects read-back also unmirroredFields []).",
+        "psl_skill_suggestion: name \"POC Studio Live · Skill suggestion\"; fields [suggestion_id, skill, from_version, to_version, summary, proposed_prompt, evidence_count, evidence_tickets, status, created_at, approved_by, approved_at].",
+        "psl_skill_suggestion: suggestion_id {primaryKey true, uniqueKey true, searchable true, sortable true}; summary {nameField true, searchable true}; from_version, to_version, evidence_count integers; proposed_prompt textarea; created_at and approved_at {integer, date-time, epoch}.",
+        "psl_skill_suggestion: required [suggestion_id, skill, status, created_at].",
+        "psl_skill_suggestion: picklist status oneOf pending \"Pending\", approved \"Approved\", default pending, sortable true.",
+        "psl_skill_suggestion: access settings external false, skipPermissionsFilter false (secure-by-default rule 1 held)."
+      ],
+      "unverified": [
+        "No index: the contract names none for psl_skill_suggestion, so indexes is [] (the generic index-SUCCESS proof has nothing to show).",
+        "skill is a plain string holding the skill slug, not a lookup to psl_skill, because the contract says slug and not lookup; a slug with no psl_skill row is accepted.",
+        "No rows written: the seed of psl_skill_suggestion (2 approved suggestions) is another task."
+      ],
+      "notes": [
+        "handover: object id psl_skill_suggestion; primary key and unique key suggestion_id (string, required); name field summary; skill (required string slug); status picklist pending|approved, default pending, required; created_at epoch ms required; approved_by string, approved_at epoch ms (both optional); evidence_tickets is a comma-separated string; no index. A seed row must set suggestion_id, skill, status and created_at."
+      ],
+      "error": ""
+    },
+    {
+      "id": "t30",
+      "status": "ok",
+      "change": "created",
+      "ids": { "entity": "6ad1c5e1b0913a13ff2ce7b5", "group": "6ad1c5e1b0913a13ff2ce7b5" },
+      "readBack": [
+        "POC Studio Live API 6ad1c5e1b0913a13ff2ce7b5: list_api_groups search \"POC Studio\" before the write answered only \"POC Studio API\" (path poc-studio), so the name was free; the other groups of the tenant use workspaceId 0.",
+        "POC Studio Live API 6ad1c5e1b0913a13ff2ce7b5: save_api_group answered saved true, notStored [].",
+        "POC Studio Live API 6ad1c5e1b0913a13ff2ce7b5: get_api_group read back groupId 6ad1c5e1b0913a13ff2ce7b5, name \"POC Studio Live API\", path \"poc-studio-live\", includeVersionInPath false, workspaceId 0, description \"The API Group holding the report-back API.\", apiCount 0, apis [], accessProfiles [], policies []."
+      ],
+      "unverified": [
+        "The group holds no API and no access profile yet: the report-back API (\"receive build result\") and the access profile \"POC Studio Live report-back\" are other tasks, so no URL has been called."
+      ],
+      "notes": [
+        "handover: API Group id 6ad1c5e1b0913a13ff2ce7b5 (name POC Studio Live API, path poc-studio-live, no version in the path, workspaceId 0); the API in it will answer under /poc-studio-live/<api path>."
+      ],
+      "error": ""
+    },
+    {
+      "id": "t32",
+      "status": "ok",
+      "change": "created",
+      "ids": { "entity": "6ad1c5e1b0913a13ff2ce7b7", "client": "6ad1c5e1b0913a13ff2ce7b7" },
+      "readBack": [
+        "POC Studio Live client 6ad1c5e1b0913a13ff2ce7b7: list_clients search \"POC Studio\" before the write answered only \"Orbit Studio · POC Studio plugin\" and \"POC Studio plugin\", so the name was free.",
+        "POC Studio Live client 6ad1c5e1b0913a13ff2ce7b7: save_client answered saved true, notStored [].",
+        "POC Studio Live client 6ad1c5e1b0913a13ff2ce7b7: get_client read back clientId 6ad1c5e1b0913a13ff2ce7b7, name \"POC Studio Live client\", description \"The caller of the report-back API.\", workspaceId 0, accessProfiles []."
+      ],
+      "unverified": [
+        "The client has no access profile and no key yet: the access profile \"POC Studio Live report-back\" is another task, so no caller can sign in with this client."
+      ],
+      "notes": [
+        "handover: client id 6ad1c5e1b0913a13ff2ce7b7 (name POC Studio Live client, workspaceId 0, no access profiles); the access profile task creates the Auth Token profile on it, limited to API Group 6ad1c5e1b0913a13ff2ce7b5."
+      ],
+      "error": ""
+    }
+  ]
+}

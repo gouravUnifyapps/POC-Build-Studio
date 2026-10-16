@@ -1,0 +1,99 @@
+{
+ "object": "psl_iteration",
+ "primary_key": "iteration_id",
+ "count": 7,
+ "rows": [
+  {
+   "iteration_id": "ITR-1791018900000-1",
+   "poc": "POC-kestrel-fraud-alerts-20260826",
+   "phase": "plan",
+   "source": "judge",
+   "actor_name": "Judge",
+   "title": "Flowchart skips the analyst approval step",
+   "reason": "Alerts go from scoring to action with no analyst sign-off drawn.",
+   "skill": "prd-writer",
+   "related_ticket": "FB-4",
+   "created_at": 1791018900000
+  },
+  {
+   "iteration_id": "ITR-1791091800000-1",
+   "poc": "POC-alder-returns-20260902",
+   "phase": "plan",
+   "source": "judge",
+   "actor_name": "Judge",
+   "title": "Success measure missing from the scope",
+   "reason": "The PRD lists features but no number that says the use case worked.",
+   "skill": "prd-writer",
+   "related_ticket": "FB-5",
+   "created_at": 1791091800000
+  },
+  {
+   "iteration_id": "ITR-1791176100000-1",
+   "poc": "POC-orchard-contract-review-20260903",
+   "phase": "plan",
+   "source": "person",
+   "actor_name": "Priya Nair",
+   "actor_email": "priya.nair@example.com",
+   "title": "Mockup is desktop only and has no owner view",
+   "reason": "The reviewer works from a phone between meetings. Show a small-screen layout and the owner's own list.",
+   "skill": "mockup-drafter",
+   "related_ticket": "FB-6",
+   "slack_ref": "https://slack.invalid/archives/C0SEED0008/p1791176100000100",
+   "created_at": 1791176100000
+  },
+  {
+   "iteration_id": "ITR-1791273600000-1",
+   "poc": "POC-tidewater-invoice-match-20260915",
+   "phase": "plan",
+   "source": "person",
+   "actor_name": "Priya Nair",
+   "actor_email": "priya.nair@example.com",
+   "title": "Flowchart does not show who approves exceptions",
+   "reason": "Invoices that do not match need an approver. The flowchart ends at the match step.",
+   "skill": "prd-writer",
+   "related_ticket": "FB-7",
+   "slack_ref": "https://slack.invalid/archives/C0SEED0005/p1791273600000100",
+   "created_at": 1791273600000
+  },
+  {
+   "iteration_id": "ITR-1791453000000-1",
+   "poc": "POC-pentland-vulnerability-20261001",
+   "phase": "plan",
+   "source": "judge",
+   "actor_name": "Judge",
+   "title": "Flowchart skips the scan approval step",
+   "reason": "The flowchart goes from ranking straight to raising tickets. The scope says the manager approves the scan first, so that step must be drawn.",
+   "skill": "prd-writer",
+   "related_document": "POC-pentland-vulnerability-20261001__4_design_system__prd-with-flowchart__v3",
+   "related_ticket": "FB-8",
+   "created_at": 1791453000000
+  },
+  {
+   "iteration_id": "ITR-1791541800000-1",
+   "poc": "POC-tidewater-invoice-match-20260915",
+   "phase": "plan",
+   "source": "judge",
+   "actor_name": "Judge",
+   "title": "Success measure missing from the scope",
+   "reason": "No target for match rate or time saved.",
+   "skill": "prd-writer",
+   "related_ticket": "FB-9",
+   "created_at": 1791541800000
+  },
+  {
+   "iteration_id": "ITR-1791700800000-1",
+   "poc": "POC-pentland-vulnerability-20261001",
+   "phase": "plan",
+   "source": "person",
+   "actor_name": "Gourav Mahunta",
+   "actor_email": "gourav.mahunta@unifyapps.com",
+   "title": "Mockup has no owner view",
+   "reason": "The mockup only shows the analyst's triage table. Asset owners need a view of their own items with accept and dispute.",
+   "skill": "mockup-drafter",
+   "related_document": "POC-pentland-vulnerability-20261001__4_design_system__remediation-queue-mockup__v2",
+   "related_ticket": "FB-10",
+   "slack_ref": "https://slack.invalid/archives/C0SEED0001/p1791700800000100",
+   "created_at": 1791700800000
+  }
+ ]
+}

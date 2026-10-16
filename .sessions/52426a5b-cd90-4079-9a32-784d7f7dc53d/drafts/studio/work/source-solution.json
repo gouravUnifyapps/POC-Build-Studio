@@ -1,0 +1,53 @@
+{
+  "_note": "Cache of mcp__plugin_nebula_solution__get_solution(e_6ad1031ce0ef8b24527e9ed9), read-only, read 2026-10-16 (solution version 15). The MCP returned the reply inline (it does not write to disk), so this file is the reply re-saved by the source reader; assets and plan texts are complete, tenant bookkeeping fields (createdTime etc.) are dropped except modifiedTime.",
+  "id": "e_6ad1031ce0ef8b24527e9ed9",
+  "result": "ok",
+  "solution": {
+    "name": "POC Studio",
+    "description": "Orbit · POC Studio — tracks POCs through their journey phases, gates, documents, feedback and activity.",
+    "status": "built",
+    "version": 15,
+    "tags": ["Nebula"],
+    "approvedPlanId": "e_6ad1b5f942133b6ddd8c69f1",
+    "planId": "e_6ad1b5f942133b6ddd8c69f1",
+    "ownerUserId": 23772,
+    "modifiedTime": 1792128554817,
+    "deploymentState": { "deployedAt": 1792122414855, "deployedBy": 66770, "deploymentTag": "V5", "entityVersion": 3, "version": 2 },
+    "globalPlan": "# POC Studio — solution plan\n\nOrbit · POC Studio tracks each POC through its journey phases and gates, with its documents, feedback and activity history, on the app's own objects (orbit_studio_poc, orbit_studio_document, orbit_studio_feedback, orbit_studio_activity, orbit_studio_iteration).\n\n## Decisions\n\n- The app uses its own orbit_studio_* objects, never the poc_studio_* objects written by the separate POC Studio loop.\n- A gate's wait is taken from the newest gate_posted Activity row for that gate, else the newest pack document saved_at.\n- Journey-strip loop-backs are labelled \"iterations\" and render as one compact chip centred under its phase card, attached by a short connector; clicking opens a full-width panel below all phase cards, anchored by a caret to the chip; one panel open at a time.\n\n## Requirements\n\n- R1 — Iterations under a phase card take minimal space while remaining fully inspectable.\n\n## Screens\n\n### POC page — journey strip `execution` [R1]\n\n- **Purpose** — Phase-by-phase journey of a POC with gates and iterations.\n- **Actions** — Each phase with iterations shows one centred \"N iterations\" chip: hover previews the latest iteration; click opens a full-width, newest-first panel.\n",
+    "memory": "# Memory\n## Decisions\n- 2026-10-15 — session — Orbit · POC Studio app uses its own objects (orbit_poc, orbit_document, orbit_feedback, orbit_activity), never Shubhankar's poc_studio_* objects that the POC Studio loop writes — Aastha's call, 2026-10-15.\n- 2026-10-15 — session — Orbit · POC Studio shows a gate's wait from the newest gate_posted Activity row for that gate (else newest pack document saved_at), so whatever posts a gate must write a gate_posted row to orbit_studio_activity.\n## Corrections\n## Errors\n## Notes\n- 2026-10-15 — session — The app's objects are orbit_studio_poc, orbit_studio_document, orbit_studio_feedback, orbit_studio_activity (orbit_poc and orbit_feedback ids were already taken by unrelated objects). Example rows have client_name prefixed [Example].\n"
+  },
+  "counts": { "plans": 3, "specs": 0, "documents": 0, "assets": 10 },
+  "linkedAssets": [
+    { "rowId": "e_6ad13f3299f8a5651708caf5", "asset_class": "ENTITY_TYPE", "asset_id": "orbit_studio_iteration", "state": "COMPLETED", "version": 0 },
+    { "rowId": "e_6ad10ac5875ed2429a968d78", "asset_class": "e_interface", "asset_id": "app-b4fe5a0a30eb", "state": "COMPLETED", "version": 9, "source_commit_hash": "91ab370a8d6f6cc3afa4f25fe1db155279a2b14a" },
+    { "rowId": "e_6ad106bb875ed2429a961cc0", "asset_class": "ENTITY_TYPE", "asset_id": "orbit_studio_activity", "state": "COMPLETED", "version": 1 },
+    { "rowId": "e_6ad106bb875ed2429a961cbf", "asset_class": "ENTITY_TYPE", "asset_id": "orbit_studio_feedback", "state": "COMPLETED", "version": 0 },
+    { "rowId": "e_6ad106bb875ed2429a961ca0", "asset_class": "ENTITY_TYPE", "asset_id": "orbit_studio_document", "state": "COMPLETED", "version": 1 },
+    { "rowId": "e_6ad106ba875ed2429a961c9d", "asset_class": "ENTITY_TYPE", "asset_id": "orbit_studio_poc", "state": "COMPLETED", "version": 1 },
+    { "rowId": "e_6ad103e8875ed2429a959407", "asset_class": "ENTITY_TYPE", "asset_id": "poc_studio_activity", "state": "COMPLETED", "version": 0 },
+    { "rowId": "e_6ad10328e0ef8b24527e9f90", "asset_class": "ENTITY_TYPE", "asset_id": "poc_studio_feedback", "state": "COMPLETED", "version": 3 },
+    { "rowId": "e_6ad10327e0ef8b24527e9f60", "asset_class": "ENTITY_TYPE", "asset_id": "poc_studio_document", "state": "COMPLETED", "version": 4 },
+    { "rowId": "e_6ad10326e0ef8b24527e9f23", "asset_class": "ENTITY_TYPE", "asset_id": "poc_studio_poc", "state": "COMPLETED", "version": 5 }
+  ],
+  "plans": [
+    {
+      "id": "e_6ad1b5f942133b6ddd8c69f1", "caseId": "e_6ad1b1852e03931455478822",
+      "plan": "# POC Studio — iterations chip centred under phase cards\n\nPresentation-only edit to the POC page journey strip. No data, object or workflow changes.\n\n## Decisions\n\n- \"Loops\" is renamed \"iterations\" throughout the strip, tooltip and panel.\n- The chip is centred under its phase card and attached by a short hairline connector, in a quieter tint.\n\n## Requirements\n\n- R1 — Iterations under a phase card take minimal space while remaining fully inspectable.\n\n## Screens\n\n### POC page — journey strip `execution` [R1]\n\n- **Purpose** — The iterations chip reads as part of its phase card.\n- **Actions** — Unchanged: hover preview, click opens the full-width panel with its caret at the centred chip.\n"
+    },
+    {
+      "id": "e_6ad1b30b42133b6ddd8c612d", "caseId": "e_6ad1b1852e03931455478822",
+      "plan": "# POC Studio — full-width loop panel on the journey strip (presentation-only; expanded loop panel spans the full strip width below all phase cards, caret at its chip, one panel open at a time)."
+    },
+    {
+      "id": "e_6ad1b1d64f722904178ab730", "caseId": "e_6ad1b1852e03931455478822",
+      "plan": "# POC Studio — compact loop-back chips on the journey strip (presentation-only; loop-backs under a phase card collapse into one chip, hover previews the latest, click expands a newest-first list)."
+    }
+  ],
+  "members": {
+    "objects": ["orbit_studio_poc", "orbit_studio_document", "orbit_studio_feedback", "orbit_studio_activity", "orbit_studio_iteration", "poc_studio_poc", "poc_studio_document", "poc_studio_feedback", "poc_studio_activity"],
+    "automations": [],
+    "aiAgents": [],
+    "connections": [],
+    "apps": ["app-b4fe5a0a30eb"]
+  }
+}

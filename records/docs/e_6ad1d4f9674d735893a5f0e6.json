@@ -1,0 +1,17 @@
+{
+  "createdTime": 1792136441340,
+  "deleted": false,
+  "entityType": "solution_document",
+  "id": "e_6ad1d4f9674d735893a5f0e6",
+  "lastModifiedBy": 66770,
+  "lastPlatformUpdateBy": 66770,
+  "lastPlatformUpdateOn": 1792136441340,
+  "modifiedTime": 1792136441340,
+  "ownerUserId": 66770,
+  "properties": {
+    "document": "---\nnebula: 3\nslug: \"poc-studio-live-approve-skill-suggestion\"\nname: \"POC Studio Live · Approve skill suggestion\"\nsummary: \"Callable automation the Feedback page's Approve button runs: checks the caller is a manager, then applies the suggested prompt as the skill's new version.\"\nentities: [{\"kind\":\"automation\",\"name\":\"POC Studio Live · Approve skill suggestion\"}]\nplanIds: [\"e_6ad1ccf1674d735893a55297\"]\nupdatedAt: \"2026-10-16T07:40:38.515Z\"\n---\n## Contract\nInputs: `suggestion_id` (required), `caller_email`, `caller_name`. Result: `status` (approved | already_decided | forbidden | not_found | error), `skill_id`, `to_version`, `message` (a sentence ready to show). Read flat from the calling node.\n\n## Rules\n- Only a caller whose email or name matches `manager_email`/`manager_name` on a `psl_poc` row may approve; otherwise `forbidden`.\n- A suggestion that is not pending answers `already_decided`.\n- On approve: the skill's `current_version` and prompt become the suggestion's `to_version` and `proposed_prompt`; each evidence ticket in `psl_feedback` becomes resolved with action \"Included in <skill> v<n>\"; the suggestion becomes approved with approver and time.\n\nDeployed 2026-10-16 (deployed version 2). The approved path has not been run on UAT yet.",
+    "solutionId": "e_6ad1b45199f8a565171d7f1c"
+  },
+  "standard": false,
+  "version": 0
+}
